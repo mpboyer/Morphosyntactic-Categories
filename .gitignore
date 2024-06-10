@@ -1,0 +1,8 @@
+Administratif/*
+*.fdb_latexmk
+*.toc
+*.log
+*.out
+*.fls
+*.aux
+*.tgz
