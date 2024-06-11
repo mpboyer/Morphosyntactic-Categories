@@ -6,3 +6,5 @@ Administratif/*
 *.fls
 *.aux
 *.tgz
+Code/deep/*
+Code/Sentence_Graphs*
