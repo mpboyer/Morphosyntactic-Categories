@@ -6,15 +6,6 @@ import re
 INFINITY: int = 2 ** 64 - 1
 MAX_STUDIED_SENTENCES: int = 10000
 
-parser = argparse.ArgumentParser()
-parser.add_argument("filename", help=".conllu file containing a UD-Treebank")
-parser.add_argument("-p", "--property", help="UD-RELDEP which we're studying, e.g. obl:tmod")
-parser.add_argument("-o", "--out", help="File in which to store the result", required=False)
-parser.add_argument("-i", "--index",
-                    help=f"Number of the sentences to study. Must be smaller than MAX_STUDIED_SENTENCES={MAX_STUDIED_SENTENCES}",
-                    required=False)
-args = parser.parse_args()
-
 
 def is_prefix(a, b):
     if len(a) > len(b):
@@ -25,7 +16,24 @@ def is_prefix(a, b):
     return True
 
 
-def treeifier(filename, out=None):
+def reduce(v, index):
+    if len(v) == 0:
+        return []
+    if v[0] in ["„"]:
+        return [v[0]] + reduce(v[1:], index)
+    if v[-1] == "\n":
+        return reduce(v[:-1], index)
+    if v[-1] in [",", "?", "!", "…", "“"]:
+        return reduce(v[:-1], index) + [v[-1]]
+    elif v[-3:] == "...":
+        return reduce(v[:-3], index) + ["..."]
+    elif v[-1] in ["."] and index:
+        return reduce(v[:-1], index) + [v[-1]]
+    else:
+        return [v]
+
+
+def treeifier(filename, property, out=None):
     with open(filename, "r") as f:
         lines = f.readlines()
     trees = []
@@ -38,7 +46,7 @@ def treeifier(filename, out=None):
             trees.append(tmp)
             tmp = []
             t += 1
-        elif l[:6] == "# text":
+        elif l[:8] == "# text =":
             tmp.append(l[9:])
         elif l[0] == "#":
             pass
@@ -55,18 +63,12 @@ def treeifier(filename, out=None):
         tmp_sentence = []
         for i in range(len(sentence)):
             v = sentence[i]
-            if v[-1] == "\n":
-                v = v[:-1]
-            if v[-1] in [",", "?", "!", "…"]:
-                tmp_sentence = tmp_sentence + [v[:-1], v[-1]]
-            elif v[-1] == "." and i == len(sentence) - 1:
-                tmp_sentence = tmp_sentence + [v[:-1], v[-1]]
-            else:
-                tmp_sentence = tmp_sentence + [v]
+            tmp_sentence = tmp_sentence + reduce(v, i == len(sentence) - 1)
 
         sentence_dict = {}
         sentence = tmp_sentence
-        for word in range(len(sentence)):
+        word = 0
+        while word < len(sentence):
             try:
                 annotations = annotated_sentence[word + 1]
                 annotations = annotations.split("\t")
@@ -92,6 +94,7 @@ def treeifier(filename, out=None):
                 sentence_dict[sentence[word]] = attributes
             except IndexError:
                 print(sentence, word + 1, tree)
+            word += 1
         trees[tree] = sentence_dict
         graphical = graphviz.Digraph()
         for word in sentence_dict:
@@ -114,11 +117,11 @@ def treeifier(filename, out=None):
         for i in range(len(trees)):
             with open(out + "/Graph_Sources/" + str(i) + ".dot", "w") as f:
                 f.write(str(trees[i][1]))
-        with open(out + "/Properties/" + args.property + ".txt", "w") as f:
+        with open(out + "/Properties/" + property + ".txt", "w") as f:
             for t in trees:
                 for w in t[0]:
                     # noinspection PyTypeChecker
-                    if is_prefix(args.property, t[0][w]["edge_type"]):
+                    if is_prefix(property, t[0][w]["edge_type"]):
                         f.write(str(t[0][w]) + "\n")
 
 
@@ -131,21 +134,3 @@ def show_graph(index, directory, view=False):
         pass
     if view:
         s.view()
-
-
-if __name__ == "__main__":
-    try:
-        os.mkdir(args.filename)
-    except FileExistsError:
-        pass
-    out = "deep/" + args.filename + "/" + args.out
-    for c in ["", "Graph_Sources", "Graphs", "Properties"]:
-        try:
-            os.mkdir(out + f"/{c}/")
-        except FileExistsError:
-            pass
-    treeifier("deep/" + args.filename + "/all.conllu", out=out)
-    if args.out and args.index:
-        number_of_sentences = len(os.listdir(out + f"/Graph_Sources"))
-        for n in range(number_of_sentences):
-            show_graph(n, "deep/" + args.filename + "/" + args.out)
