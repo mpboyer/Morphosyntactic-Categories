@@ -168,7 +168,7 @@ def treeifier(filename, ud_reldep=None, grammar_feature=None, out=None):
                 for t in trees:
                     for w in t[0]:
                         # noinspection PyTypeChecker
-                        if is_prefix(grammar_feature[1], t[0][w][grammar_feature[0]]):
+                        if is_prefix(grammar_feature[1], t[0][w].get(grammar_feature[0], "")):
                             f.write(str(t[0][w]) + "\n")
     return number_of_cpt_sentences
 

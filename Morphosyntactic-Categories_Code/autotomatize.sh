@@ -1,5 +1,5 @@
 for i in `ls deep`;
   do
-    python3 main.py "$i" -p obj -f Case ;
+    \rm deep/"$i"/Sentence_Graphs.txt;
   echo "$i";
   done;

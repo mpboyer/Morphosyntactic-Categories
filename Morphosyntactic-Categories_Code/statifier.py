@@ -50,5 +50,13 @@ def frequency_on_grammar_feature_checking_reldep(filename, grammar_feature):
                     v = str(word[f])
                     other_types[f][v] = other_types[f].get(v, 0) + 1
         frequency_dict[c] = frequency_dict.get(c, 0) + 1
-    dom = max(frequency_dict, key=frequency_dict.get, default='')
     return frequency_dict, other_types
+
+def frequency_on_reldep_checking_grammar_feature(filename):
+    with open(filename, 'r') as f:
+        features = f.readlines()
+    features = list(map(str_to_dict, features))
+    frequency_dict = {}
+    for word in features:
+            frequency_dict[word["edge_type"]] = frequency_dict.get(word["edge_type"], 0) + 1
+    return format_case_stats(frequency_dict)
