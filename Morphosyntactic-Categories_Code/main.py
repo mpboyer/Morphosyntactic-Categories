@@ -105,5 +105,6 @@ if __name__ == "__main__":
             reldep_for_grammar_feature = f"We get the following distribution of RelDep for words matching `{args.feature_type}={args.value}`:\n"
             reldep_dict = statifier.format_case_stats(reldep_dict)
             for v in reldep_dict:
-                reldep_for_grammar_feature += f"RelDep {v}: {reldep_dict[v]}"
-
+                reldep_for_grammar_feature += f"RelDep {v}: {reldep_dict[v]}\n"
+            with open(f"RelDep_matching_{args.feature_type}={args.value}.txt", "w") as f:
+                f.write(reldep_for_grammar_feature)
