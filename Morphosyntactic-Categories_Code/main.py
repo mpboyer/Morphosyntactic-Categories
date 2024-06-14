@@ -3,108 +3,133 @@ import argparse
 import conllu_parser
 import statifier
 
+UDDIR = "ud-treebanks-v2.14"
+
 parser = argparse.ArgumentParser()
 parser.add_argument("filename", help=".conllu file containing a UD-Treebank. Use all to iterate on all banks.")
-# parser.add_argument("-v", "--verbose", required=False)
-parser.add_argument("-p", "--property", help="UD-RELDEP which we're studying, e.g. obl:tmod")
-parser.add_argument("-f", "--feature_type", help="Morphosyntactic category we want to study.")
-parser.add_argument("-val", "--value", help="Value of the studied feature")
+parser.add_argument("-v", "--verbose", required=False)
+parser.add_argument("-p", "--property", help="UD-RELDEP which we're studying, e.g. obl:tmod", required=True)
+parser.add_argument("-f", "--feature_type", help="Morphosyntactic category we want to study.", required=True)
+parser.add_argument("-val", "--value", help="Value of the studied feature", required=True)
 parser.add_argument("-o", "--out", help="File in which to store the result", required=False, default="Sentence_Graphs")
 parser.add_argument("-i", "--index",
                     help=f"Number of the sentences to study. Must be smaller than MAX_STUDIED_SENTENCES={conllu_parser.MAX_STUDIED_SENTENCES}",
                     required=False)
 args = parser.parse_args()
 
-if __name__ == "__main__":
-    grammar_feature = None
-    if args.feature_type and args.value:
-        grammar_feature = (args.feature_type, args.value)
-    print(grammar_feature)
-    if args.feature_type :
-        if args.filename == 'all':
-            treebanks = os.listdir("deep/")
-            right_type_dict = {}
-            other_type_dict = {}
-            reldep_dict = {}
-            number_of_sentences = 0
-            property_matches = 0
-            for t in treebanks:
-                cpt = 0
-                out = "deep/" + t + "/" + args.out
-                try:
-                    os.mkdir(out)
-                except FileExistsError:
-                    pass
-                for c in ["/Graph_Sources", "/Graphs", "/UD_RelDep", "/Features"]:
-                    try:
-                        os.mkdir(out + c)
-                    except FileExistsError:
-                        pass
-                try:
-                    with open(out + f"/UD_RelDep/{args.property}.txt", "r") as f:
-                        pass
-                    with open(out + f"/Features/{args.feature_type}={args.value}.txt", "r") as f:
-                        pass
-                except FileNotFoundError:
-                    cpt += conllu_parser.treeifier("deep/" + t + "/all.conllu", ud_reldep=args.property,
-                                        grammar_feature=grammar_feature, out=out)
-                print(t)
-                n = len(os.listdir(f"deep/{str(t)}/{args.out}/Graph_Sources"))
-                number_of_sentences += n
-                d = statifier.frequency_on_grammar_feature_checking_reldep(
-                    f"deep/{t}/{args.out}/UD_RelDep/{args.property}.txt", args.feature_type)
-                property_matches += sum(map(lambda l: l[1], d[0].items()))
-                for v in d[0]:
-                    right_type_dict[v] = right_type_dict.get(v, 0) + d[0][v]
-                for feature in d[1]:
-                    if feature not in other_type_dict:
-                        other_type_dict[feature] = {}
-                    for value in d[1][feature]:
-                        other_type_dict[feature][value] = other_type_dict[feature].get(value, 0) + d[1][feature][value]
-                c = statifier.frequency_on_reldep_checking_grammar_feature(f"deep/{t}/{args.out}/Features/{args.feature_type}={args.value}.txt")
-                for v in c:
-                    reldep_dict[v] = reldep_dict.get(v, 0) + c[v]
 
-        else :
-            out = "deep/" + args.filename + "/" + args.out
-            try:
-                os.mkdir(out)
-            except FileExistsError:
-                pass
-            for c in ["/Graph_Sources", "/Graphs", "/UD_RelDep", "/Features"]:
-                try:
-                    os.mkdir(out + c)
-                except FileExistsError:
-                    pass
+def empacking(filename, reldep, gf, index, verbose):
+    if verbose is None:
+            print(filename)
+    filename = (filename).split("/")
 
-            number_of_sentences = len(os.listdir(out + "/Graph_Sources"))
+    pwd = f"{UDDIR}/{filename[0]}"
+    out = pwd + f"/{filename[1][:-7]}/"
+    try:
+        os.mkdir(out)
+    except FileExistsError:
+        pass
 
-            if args.out and args.index:
-                for n in range(number_of_sentences):
-                    conllu_parser.show_graph(n, "deep/" + args.filename + "/" + args.out)
-            right_type_dict, other_type_dict = statifier.frequency_on_grammar_feature_checking_reldep(out + f"/UD_RelDep/{args.property}.txt",
-                                                                        args.feature_type)
-            property_matches = (sum(map(lambda l: l[1], right_type_dict.items())))
+    for c in ["/Graph_Sources", "/Graphs", "/UD_RelDep", "/Features", "/RelDep_Matches", "/Grammar_Matches"]:
+        try:
+            os.mkdir(out + c)
+        except FileExistsError:
+            pass
 
-        grammar_feature_for_reldep = f"We have studied {number_of_sentences} sentences and failed on {cpt} in treebank `{args.filename}`."
-        grammar_feature_for_reldep += f"Of those, {property_matches} words match `{args.property}`."
+    cpt = conllu_parser.treeifier(pwd + "/" + filename[1], ud_reldep=reldep,
+                                  grammar_feature=gf, out=out)
+    number_of_sentences = len(os.listdir(out + "/Graph_Sources"))
+    if index:
+        conllu_parser.show_graph(index, "deep/" + filename[0] + "/" + args.out)
+    right_type_dict, other_type_dict = statifier.frequency_on_grammar_feature_checking_reldep(
+        out + f"/UD_RelDep/{args.property}.txt",
+        args.feature_type)
+    property_matches = (sum(map(lambda l: l[1], right_type_dict.items())))
+    reldep_dict = statifier.frequency_on_reldep_checking_grammar_feature(
+        f"{out}/Features/{gf[0]}={gf[1]}.txt")
+
+    reldep_for_grammar_feature = ""
+    grammar_feature_for_reldep = f"We have studied {number_of_sentences} sentences and failed on {cpt} in treebank `{filename}`.\n"
+    grammar_feature_for_reldep += f"Of those, {property_matches} words match `{reldep}`.\n"
+    if property_matches != 0:
+        right_type_dict = statifier.format_case_stats(right_type_dict)
+        grammar_feature_for_reldep += (f"We get the following distribution of values for `{gf[0]}` "
+                                       f"matching `{reldep}`:\n")
+        for v in right_type_dict:
+            grammar_feature_for_reldep += f"\t{v}: {right_type_dict[v]}\n"
+
+        if right_type_dict.get("Other_Word_Type", 0) != 0:
+            grammar_feature_for_reldep += ("The Other Words have the following distribution of grammatical "
+                                           "features:\n")
+            other_type_dict = statifier.format_property_stats(other_type_dict)
+            for v in other_type_dict:
+                grammar_feature_for_reldep += f"Feature {v}:\n"
+                for a in other_type_dict[v]:
+                    grammar_feature_for_reldep += f"\t{a}: {other_type_dict[v][a]}\n"
+        with open(f"{out}/Grammar_Matches/{gf[0]}_matching_{reldep}", 'w') as f:
+            f.write(grammar_feature_for_reldep)
+        reldep_for_grammar_feature += (f"We have studied {number_of_sentences} sentences and failed on {cpt} in "
+                                       f"treebank `{filename}`.\n We get the following distribution "
+                                       f"of RelDep for words matching `{gf[0]}={gf[1]}`:\n")
+        reldep_dict = statifier.format_case_stats(reldep_dict)
+        for v in reldep_dict:
+            reldep_for_grammar_feature += f"RelDep {v}: {reldep_dict[v]}\n"
+        with open(f"{out}/RelDep_Matches/RelDep_matching_{gf[0]}={gf[1]}.txt", "w") as f:
+            f.write(reldep_for_grammar_feature)
+    if verbose:
+        print(grammar_feature_for_reldep)
         if property_matches != 0:
-            right_type_dict = statifier.format_case_stats(right_type_dict)
-            grammar_feature_for_reldep += f"We get the following distribution of values for `{args.feature_type}` matching `{args.property}`:\n"
-            for v in right_type_dict:
-                grammar_feature_for_reldep += f"\t{v}: {right_type_dict[v]}\n"
-            if right_type_dict.get("Other_Word_Type", 0) != 0:
-                grammar_feature_for_reldep += "The Other Words have the following distribution of grammatical features:\n"
-                other_type_dict = statifier.format_property_stats(other_type_dict)
-                for v in other_type_dict:
-                    grammar_feature_for_reldep += f"Feature {v}:"
-                    for a in other_type_dict[v]:
-                        grammar_feature_for_reldep += f"\t{a}: {other_type_dict[v][a]}"
-            with open(f"{args.feature_type}_matching_{args.property}", 'w') as f:
-                f.write(grammar_feature_for_reldep)
-            reldep_for_grammar_feature = f"We get the following distribution of RelDep for words matching `{args.feature_type}={args.value}`:\n"
-            reldep_dict = statifier.format_case_stats(reldep_dict)
-            for v in reldep_dict:
-                reldep_for_grammar_feature += f"RelDep {v}: {reldep_dict[v]}\n"
-            with open(f"RelDep_matching_{args.feature_type}={args.value}.txt", "w") as f:
-                f.write(reldep_for_grammar_feature)
+            print(reldep_for_grammar_feature)
+
+
+if __name__ == "__main__":
+    grammar_feature = (args.feature_type, args.value)
+    if args.filename != "all":
+        empacking(args.filename, args.property, grammar_feature, args.index, args.verbose)
+    else:
+        treebanks = os.listdir(UDDIR)
+        reldep_dict = {}
+        number_of_studied_sentences = 0
+        cpt = 0
+        for treebank in treebanks:
+            content = os.listdir(f"{UDDIR}/{treebank}")
+            for c in list(filter(lambda t: t[-7:] == ".conllu", content)):
+                empacking(f"{treebank}/{c}", args.property, grammar_feature, args.index, args.verbose)
+
+        for treebank in treebanks:
+            content = os.listdir(f"{UDDIR}/{treebank}")
+            for c in list(filter(lambda t: t[-7:] == ".conllu", content)):
+                try:
+                    with open(f"{UDDIR}/{treebank}/{c[:-7]}/RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt", 'r') as f:
+                        reldeps = f.readlines()
+                    for i in range(len(reldeps)):
+                        reldeps[i] = reldeps[i].split(" ")
+                    number_of_studied_sentences += int(reldeps[0][3])
+                    cpt += int(reldeps[0][8])
+                    for i in range(2, len(reldeps)):
+                        rel = reldeps[i][1][:-1]
+                        reldep_dict[rel] = reldep_dict.get(rel, 0) + int(reldeps[i][2])
+                except FileNotFoundError:
+                    empacking(f"{treebank}/{c}", args.property, grammar_feature, args.index, args.verbose)
+                    try :
+                        with open(
+                                f"{UDDIR}/{treebank}/{c[:-7]}/RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt",
+                                'r') as f:
+                            reldeps = f.readlines()
+                        for i in range(len(reldeps)):
+                            reldeps[i] = reldeps[i].split(" ")
+                        number_of_studied_sentences += int(reldeps[0][3])
+                        cpt += int(reldeps[0][8])
+                        for i in range(2, len(reldeps)):
+                            rel = reldeps[i][1][:-1]
+                            reldep_dict[rel] = reldep_dict.get(rel, 0) + int(reldeps[i][2])
+                    except FileNotFoundError:
+                        pass
+        reldep_for_grammar_feature = (f"We have studied {number_of_studied_sentences} sentences and failed on {cpt} in "
+                                       f"all treebanks.\nWe get the following distribution "
+                                       f"of RelDep for words matching `{grammar_feature[0]}={grammar_feature[1]}`:\n")
+        reldep_dict = statifier.format_case_stats(reldep_dict)
+        for v in reldep_dict:
+            reldep_for_grammar_feature += f"RelDep {v}: {reldep_dict[v]}\n"
+        with open(f"RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt", "w") as f:
+            f.write(reldep_for_grammar_feature)
