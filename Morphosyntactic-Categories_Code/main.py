@@ -2,15 +2,18 @@ import os
 import argparse
 import conllu_parser
 import statifier
+import openpyxl
+import openpyxl.styles
+import math
 
 UDDIR = "ud-treebanks-v2.14"
 
 parser = argparse.ArgumentParser()
-parser.add_argument("filename", help=".conllu file containing a UD-Treebank. Use all to iterate on all banks.")
+parser.add_argument("-fi", "--filename", help=".conllu file containing a UD-Treebank. Use all to iterate on all banks.")
 parser.add_argument("-v", "--verbose", required=False)
-parser.add_argument("-p", "--property", help="UD-RELDEP which we're studying, e.g. obl:tmod", required=True)
-parser.add_argument("-f", "--feature_type", help="Morphosyntactic category we want to study.", required=True)
-parser.add_argument("-val", "--value", help="Value of the studied feature", required=True)
+parser.add_argument("-p", "--property", help="UD-RELDEP which we're studying, e.g. obl:tmod", required=False)
+parser.add_argument("-f", "--feature_type", help="Morphosyntactic category we want to study.", required=False)
+parser.add_argument("-val", "--value", help="Value of the studied feature", required=False)
 parser.add_argument("-o", "--out", help="File in which to store the result", required=False, default="Sentence_Graphs")
 parser.add_argument("-i", "--index",
                     help=f"Number of the sentences to study. Must be smaller than MAX_STUDIED_SENTENCES={conllu_parser.MAX_STUDIED_SENTENCES}",
@@ -20,7 +23,7 @@ args = parser.parse_args()
 
 def empacking(filename, reldep, gf, index, verbose):
     if verbose is None:
-            print(filename)
+        print(filename)
     filename = (filename).split("/")
 
     pwd = f"{UDDIR}/{filename[0]}"
@@ -82,8 +85,13 @@ def empacking(filename, reldep, gf, index, verbose):
             print(reldep_for_grammar_feature)
 
 
-if __name__ == "__main__":
-    grammar_feature = (args.feature_type, args.value)
+def fmc(c):
+    if c is None:
+        return 0
+    return int(c)
+
+
+def pre_process():
     if args.filename != "all":
         empacking(args.filename, args.property, grammar_feature, args.index, args.verbose)
     else:
@@ -94,13 +102,10 @@ if __name__ == "__main__":
         for treebank in treebanks:
             content = os.listdir(f"{UDDIR}/{treebank}")
             for c in list(filter(lambda t: t[-7:] == ".conllu", content)):
-                empacking(f"{treebank}/{c}", args.property, grammar_feature, args.index, args.verbose)
-
-        for treebank in treebanks:
-            content = os.listdir(f"{UDDIR}/{treebank}")
-            for c in list(filter(lambda t: t[-7:] == ".conllu", content)):
                 try:
-                    with open(f"{UDDIR}/{treebank}/{c[:-7]}/RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt", 'r') as f:
+                    with open(
+                            f"{UDDIR}/{treebank}/{c[:-7]}/RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt",
+                            'r') as f:
                         reldeps = f.readlines()
                     for i in range(len(reldeps)):
                         reldeps[i] = reldeps[i].split(" ")
@@ -111,7 +116,7 @@ if __name__ == "__main__":
                         reldep_dict[rel] = reldep_dict.get(rel, 0) + int(reldeps[i][2])
                 except FileNotFoundError:
                     empacking(f"{treebank}/{c}", args.property, grammar_feature, args.index, args.verbose)
-                    try :
+                    try:
                         with open(
                                 f"{UDDIR}/{treebank}/{c[:-7]}/RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt",
                                 'r') as f:
@@ -126,10 +131,88 @@ if __name__ == "__main__":
                     except FileNotFoundError:
                         pass
         reldep_for_grammar_feature = (f"We have studied {number_of_studied_sentences} sentences and failed on {cpt} in "
-                                       f"all treebanks.\nWe get the following distribution "
-                                       f"of RelDep for words matching `{grammar_feature[0]}={grammar_feature[1]}`:\n")
+                                      f"all treebanks.\nWe get the following distribution "
+                                      f"of RelDep for words matching `{grammar_feature[0]}={grammar_feature[1]}`:\n")
         reldep_dict = statifier.format_case_stats(reldep_dict)
         for v in reldep_dict:
             reldep_for_grammar_feature += f"RelDep {v}: {reldep_dict[v]}\n"
         with open(f"RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt", "w") as f:
             f.write(reldep_for_grammar_feature)
+
+
+def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
+    print(rel_dep_matching_grammar_feature)
+    if wb[rel_dep_matching_grammar_feature]:
+        return
+    wb.create_sheet(title=rel_dep_matching_grammar_feature)
+    ws = wb[rel_dep_matching_grammar_feature]
+    rel_dep_dict = {}
+    max_column = 0
+    max_row = 4
+    ws.cell(1, 1).value = "Treebank"
+    ws.cell(2, 1).value = "Number of Studied Sentences"
+    ws.cell(3, 1).value = "Number of Failed Sentences"
+    for treebanks in os.listdir(UDDIR):
+        for treebank in list(filter(lambda t: t[-7:] == ".conllu", os.listdir(f"{UDDIR}/{treebanks}"))):
+            treebank = treebank[:-7]
+            try:
+                with open(f"{UDDIR}/{treebanks}/{treebank}/RelDep_Matches/{rel_dep_matching_grammar_feature}.txt") as f:
+                    results = f.readlines()
+                results[0] = results[0].split(" ")
+                number_of_sentences = results[0][3]
+                cpt_sentences = results[0][8]
+                title = treebank
+                ws.cell(1, max_column + 2).value = title
+                ws.cell(2, max_column + 2).value = number_of_sentences
+                ws.cell(3, max_column + 2).value = cpt_sentences
+                for line in results[2:]:
+                    res = line.split(" ")
+                    rel_dep = (res[1][:-1])
+                    number = res[2]
+                    # print(number)
+                    if rel_dep not in rel_dep_dict:
+                        ws.cell(max_row, 1).value = rel_dep
+                        ws.cell(max_row, max_column + 2).value = number
+                        rel_dep_dict[rel_dep] = max_row
+                        max_row += 1
+                    else:
+                        ws.cell(rel_dep_dict[rel_dep], max_column + 2).value = number
+                max_column += 1
+            except FileNotFoundError:
+                title = treebank
+                ws.cell(1, max_column + 2).value = title
+                max_column += 1
+    sum_column = ["Sum:"]
+    for column in range(2, max_column + 2):
+        sum_column.append(sum([fmc(ws.cell(k, column).value) for k in range(4, max_row)]))
+    ws.append(sum_column)
+    for row in range(1, max_row):
+        for column in range(1, max_column + 2):
+            ws.cell(row, column).alignment = openpyxl.styles.Alignment(horizontal='center', vertical='center')
+            if row > 3 and column > 1:
+
+                if sum_column[column - 1] == 0:
+                    pass
+                else:
+                    ws.cell(row, column).fill = openpyxl.styles.fills.PatternFill(patternType='solid',
+                                                                                  fgColor=openpyxl.styles.colors.Color(
+                                                                                      indexed=math.floor(fmc(ws.cell(row,
+                                                                                                              column).value) /
+                                                                                                  sum_column[
+                                                                                                      column - 1] * 10 + 2)))
+
+
+def re_process():
+    wb = openpyxl.load_workbook("RelDep_Matches.xlsx")
+    for rel_dep_matching_grammar_feature in os.listdir("RelDep_Matches"):
+        from_reldep_to_table(rel_dep_matching_grammar_feature[:-4], wb)
+        # wb.save("RelDep_Matches.xlsx")
+    # from_reldep_to_table("RelDep_matching_Case=Acc", wb)
+    wb.save("RelDep_Matches.xlsx")
+
+
+if __name__ == "__main__":
+    grammar_feature = (args.feature_type, args.value)
+    if args.filename:
+        pre_process()
+    re_process()
