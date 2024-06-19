@@ -63,7 +63,7 @@ def tree_ifier(filename, ud_reldep=None, grammar_feature=None, out=None, graphic
     index = 0
     number_of_studied_sentences = 0
     number_of_cpt_sentences = 0
-    pbar = tqdm(total=len(lines), colour='#7d1dd3', leave=True)
+    # pbar = tqdm(total=len(lines), colour='#7d1dd3', leave=True)
     while number_of_studied_sentences < MAX_STUDIED_SENTENCES and index < len(lines):
         l = lines[index]
         if l == "\n":
@@ -75,10 +75,11 @@ def tree_ifier(filename, ud_reldep=None, grammar_feature=None, out=None, graphic
         else:
             tmp.append(l)
         index += 1
-        pbar.update(1)
-    pbar.close()
+    #     pbar.update(1)
+    # pbar.close()
 
-    for tree in trange(len(trees), colour='#7d1dd3', leave=True):
+    # for tree in trange(len(trees), colour='#7d1dd3', leave=True):
+    for tree in range(len(trees)):
         sentence = trees[tree]
         sentence_dict = {}
         word = 0
@@ -88,7 +89,7 @@ def tree_ifier(filename, ud_reldep=None, grammar_feature=None, out=None, graphic
             try:
                 annotations = sentence[word]
                 annotations = annotations.split("\t")
-                c = re.compile("-*")
+                c = re.compile("-")
                 if re.search(c, annotations[0]):
                     word += 1
                     offset -= 1
@@ -117,7 +118,8 @@ def tree_ifier(filename, ud_reldep=None, grammar_feature=None, out=None, graphic
                 number_of_cpt_sentences += 1
                 # print(number_of_cpt_sentences)
             word += 1
-        trees[tree] = sentence_dict
+        trees[tree] = (sentence_dict, "")
+
         if graphical:
             graphical = graphviz.Digraph()
             for word in sentence_dict:

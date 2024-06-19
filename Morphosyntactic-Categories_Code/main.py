@@ -110,7 +110,7 @@ def pre_process():
         reldep_dict = {}
         number_of_studied_sentences = 0
         cpt = 0
-        for treebank in (pbar := tqdm(treebanks)):
+        for treebank in (pbar := tqdm(treebanks, colour='#7d1dd3')):
             pbar.set_description(f"Processing {treebank}")
             content = os.listdir(f"{UDDIR}/{treebank}")
             for c in list(filter(lambda t: t[-7:] == ".conllu", content)):
@@ -175,10 +175,11 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
                      os.listdir(f"{UDDIR}/{treebanks}")]
                 )
             )
+        , colour="#7d1dd3"
     )):
         treebanks, treebank = c
         treebank = treebank[:-7]
-        pbar.set_description(f"Processing {treebanks / treebank}")
+        pbar.set_description(f"Processing {treebanks}/{treebank}")
         try:
             with open(
                     f"{UDDIR}/{treebanks}/{treebank}/RelDep_Matches/{rel_dep_matching_grammar_feature}.txt"

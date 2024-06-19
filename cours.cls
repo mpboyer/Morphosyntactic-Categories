@@ -141,9 +141,8 @@
 \usetikzlibrary{math}
 \definecolor{vulm}{HTML}{7d1dd3}
 \definecolor{yulm}{HTML}{ffe500}
-\usepackage{caption}
 
-\usepackage{tcolorbox}
+\RequirePackage{tcolorbox}
 \tcbuselibrary{theorems}
 \NewTcbTheorem[auto counter, number within=section]{définition}{Définition}%
  {colback=yulm!10, colframe=vulm!45!black, fonttitle=\bfseries}{def}
