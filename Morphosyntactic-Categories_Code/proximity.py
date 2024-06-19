@@ -48,11 +48,11 @@ def tabulize(grammar_feature):
     ws.cell(1, 1).value = "Treebank"
     treetab = {}
     mat = database[database.columns[1:]].to_numpy()[2:-1]
+    for i in range(len(mat[0])):
+        d = npl.norm(mat[:, i], ord=2)
+        if d != 0:
+            mat[:, i] /= d
     dot_mat = np.matmul(np.transpose(mat), mat)
-    for k in range(len(dot_mat)):
-        if dot_mat[k, k] != 0:
-            dot_mat[k, :] = dot_mat[k, :]/np.sqrt(dot_mat[k, k])
-            dot_mat[:, k] = dot_mat[:, k] / np.sqrt(dot_mat[k, k])
     i = 2
     for (vec1, vec2) in [(vec1, vec2) for vec1 in database for vec2 in database]:
         if vec1 == "Treebank":
