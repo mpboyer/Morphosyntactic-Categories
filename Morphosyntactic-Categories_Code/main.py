@@ -155,9 +155,9 @@ def pre_process():
 
 
 def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
-    print("Processing ", rel_dep_matching_grammar_feature)
     if rel_dep_matching_grammar_feature in wb.sheetnames:
         return
+    print("Processing ", rel_dep_matching_grammar_feature)
     wb.create_sheet(title=rel_dep_matching_grammar_feature)
     ws = wb[rel_dep_matching_grammar_feature]
     rel_dep_dict = {}

@@ -1,7 +1,7 @@
-# python3 main.py --filename all --property obj --feature_type Case --value Nom;
-# python3 main.py --filename all --property root --feature_type Case --value Acc;
-# python3 main.py --filename all --property nsubj --feature_type Case --value Dat;
-# python3 main.py --filename all --property case --feature_type Case --value Loc;
+python3 main.py --filename all --property obj --feature_type Case --value Nom;
+python3 main.py --filename all --property root --feature_type Case --value Acc;
+python3 main.py --filename all --property nsubj --feature_type Case --value Dat;
+python3 main.py --filename all --property case --feature_type Case --value Loc;
 python3 main.py --filename all --property det --feature_type Case --value Voc;
 python3 main.py --filename all --property conj --feature_type Case --value Gen;
 python3 main.py --filename all --property aux --feature_type Case --value Erg;
