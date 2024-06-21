@@ -144,6 +144,8 @@ def pre_process():
                             reldep_dict[rel] = reldep_dict.get(rel, 0) + int(reldeps[i][2])
                     except FileNotFoundError:
                         pass
+        pbar.set_description("Treebank processing done")
+
         reldep_for_grammar_feature = (f"We have studied {number_of_studied_sentences} sentences and failed on {cpt} in "
                                       f"all treebanks.\nWe get the following distribution "
                                       f"of RelDep for words matching `{grammar_feature[0]}={grammar_feature[1]}`:\n")
@@ -157,7 +159,7 @@ def pre_process():
 def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
     if rel_dep_matching_grammar_feature in wb.sheetnames:
         return
-    print("Processing ", rel_dep_matching_grammar_feature)
+    print("Tabulating ", rel_dep_matching_grammar_feature)
     wb.create_sheet(title=rel_dep_matching_grammar_feature)
     ws = wb[rel_dep_matching_grammar_feature]
     rel_dep_dict = {}
@@ -175,11 +177,11 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
                      os.listdir(f"{UDDIR}/{treebanks}")]
                 )
             )
-        , colour="#7d1dd3"
+            , colour="#7d1dd3"
     )):
         treebanks, treebank = c
         treebank = treebank[:-7]
-        pbar.set_description(f"Processing {treebanks}/{treebank}")
+        pbar.set_description(f"Tabulating {treebanks}/{treebank}")
         try:
             with open(
                     f"{UDDIR}/{treebanks}/{treebank}/RelDep_Matches/{rel_dep_matching_grammar_feature}.txt"
@@ -209,13 +211,13 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
             title = treebank
             ws.cell(1, max_column + 2).value = title
             max_column += 1
+    pbar.set_description("Tabulating Treebanks Done")
 
     sum_column = ["Sum:"]
     for column in range(2, max_column + 2):
         sum_column.append(sum([fmc(ws.cell(k, column).value) for k in range(4, max_row)]))
     ws.append(sum_column)
     for (row, column) in [(row, column) for row in range(1, max_row) for column in range(1, max_column + 2)]:
-        ws.cell(row, column).alignment = openpyxl.styles.Alignment(horizontal='center', vertical='center')
         if row > 3 and column > 1:
             if sum_column[column - 1] == 0:
                 pass

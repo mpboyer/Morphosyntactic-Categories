@@ -18,7 +18,6 @@
 \RequirePackage{ragged2e}
 \RequirePackage{amsmath}
 \RequirePackage{dsfont}
-
 \RequirePackage{amsfonts}
 \RequirePackage{mathrsfs}
 \RequirePackage{amsthm}
@@ -108,7 +107,7 @@
 \makeatletter
 \renewcommand{\ALG@name}{Algorithme}
 \newcommand{\algorithmautorefname}{Algorithme}
-\makeatother 
+\makeatother
 
 \algblock{Input}{EndInput}
 \algnotext{EndInput}
