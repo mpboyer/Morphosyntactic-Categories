@@ -1,41 +1,63 @@
 \documentclass{cours}
 
-\title{{\sc Etude Computationnelle de la Stabilité Interlangue des Catégories Morpho-Syntaxiques}\\
+\title{\textsc{Etude Computationnelle de la Stabilité Interlangue des Catégories Morphosyntaxiques}\\
 {\small Rapport de Stage de L3} }
 \author{Matthieu Boyer}
 
 \newcommand{\codedir}{Morphosyntactic-Categories_Code}
-\newcommand{\STAB}[1]{\begin{tabular}{@{}c@{}}#1\end{tabular}}
 \usepackage{nicematrix}
-
 
 \begin{document}
 
-\begin{abstract}
-	Dans ce rapport nous nous intéressons à la stabilité interlangue des catégories morpho-syntaxiques.
-	Nous avons quantifié la manière dont différentes catégories descriptives d'un langage ont différentes significations dans différents langages,
-	et particulièrement la manière dont un concept est matérialisé dans différents langages.
-\end{abstract}
+    \begin{abstract}
+        Dans ce rapport, nous nous intéressons à la stabilité interlangue des catégories morphosyntaxiques.
+        Nous avons quantifié la manière dont différentes catégories descriptives d'un langage ont différentes
+        significations dans différents langages,
+        et particulièrement la manière dont un concept est matérialisé dans différents langages.
+    \end{abstract}
 
-\section{Why ?}
-Martin Haspelmath sur la différence entre une catégorie linguistique descriptive dans un langage et une catégorie linguistique comparative dans le méta-langage:
-\begin{quote}
-	There is a fundamental distinction between language-particular categories of languages (which descriptive linguists must describe by descriptive categories of their descriptions) and comparative concepts (which comparative linguists may use to compare languages).
-\end{quote}
-{\flushright{\textit{Martin Haspelmath}, \textsc{How comparative concepts and descriptive linguistic categories are different}}}
-Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et comparer les descriptions dans différents langages de catégories linguistiques comparatives.
-Pour ce faire, nous allons considérer que les relations de dépendances (\textit{reldep}) décrites par les annotations de \textsc{Universal Dependencies} (UD) sont une manière de représenter des catégories comparatives.
 
-\section{Première Approche}
-Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs \textit{reldep} ne peuvent instancier une même catégorie comparative.
-En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (donc une catégorie descriptive, que l'on représente par une \textit{feature} de UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes en utilisant par exemple la distance cosinus.
-On trouve par exemple les résultats suivants:
+    \section{Why ?}\label{sec:why-?}
+    Martin Haspelmath sur la différence entre une catégorie linguistique descriptive dans un langage et une catégorie
+    linguistique comparative dans le méta-langage:
+    \begin{quote}
+        There is a fundamental distinction between language-particular categories of languages (which descriptive
+        linguists must describe by descriptive categories of their descriptions) and comparative concepts (which
+        comparative linguists may use to compare languages).
+    \end{quote}
+    {\flushright
+    {\textit{Martin Haspelmath}, \textsc{How comparative concepts and descriptive linguistic categories are different}}}
+    Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et
+    comparer les descriptions dans différents langages de catégories linguistiques comparatives.
+    Pour ce faire, nous allons considérer que les relations de dépendances (\textit{reldep}
+    ) décrites par les annotations de \textsc{Universal Dependencies} (UD)
+    sont une manière de représenter des catégories comparatives.
 
-\input{\codedir/DuoProximity/Case=Acc\_Proximity.tex}
-\input{\codedir/DuoProximity/Case=Dat\_Proximity.tex}
-\input{\codedir/DuoProximity/Case=Gen\_Proximity.tex}
-\input{\codedir/DuoProximity/Case=Loc\_Proximity.tex}
-\input{\codedir/DuoProximity/Case=Nom\_Proximity.tex}
-\input{\codedir/DuoProximity/Case=Voc\_Proximity.tex}
+
+    \section{Première Approche.}\label{sec:premiere-approche.}
+    Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs
+    \textit{reldep} ne peuvent instancier une même catégorie comparative.
+    En comptant le nombre d'instances de chaque \textit{reldep}
+    pour un mot vérifiant une propriété grammaticale de la langue (i.e.\
+    une catégorie descriptive, que l'on représente par une \textit{feature}
+    d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories
+    descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes en
+    utilisant par exemple la distance cosinus.
+    On trouve par exemple les résultats suivants:
+
+
+    \input{\codedir/DuoProximity/Case=Acc\_Proximity.tex}
+
+    \input{\codedir/DuoProximity/Case=Dat\_Proximity.tex}
+
+    \input{\codedir/DuoProximity/Case=Gen\_Proximity.tex}
+
+    \input{\codedir/DuoProximity/Case=Loc\_Proximity.tex}
+
+    \input{\codedir/DuoProximity/Case=Nom\_Proximity.tex}
+
+    \input{\codedir/DuoProximity/Case=Voc\_Proximity.tex}
+
+
 
 \end{document}

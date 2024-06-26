@@ -116,7 +116,7 @@ def tree_ifier(filename, ud_reldep=None, grammar_feature=None, out=None, graphic
                     sentence_dict[attributes["position"]] = attributes
             except IndexError:
                 number_of_cpt_sentences += 1
-                # print(number_of_cpt_sentences)
+                print(number_of_cpt_sentences)
             word += 1
         trees[tree] = (sentence_dict, "")
 
