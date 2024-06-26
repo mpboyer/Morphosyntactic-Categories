@@ -151,7 +151,7 @@ def tabulize_pair(gf1, gf2, result_workbook):
     workbook.close()
 
     mat = np.matrix(np.array([[0. for _ in range(current_column)] for _ in range(i)]))
-    for reldep in tqdm(reldep_table, desc="Reporting Matrix", position=42 * indent, colour="#ffe500"):
+    for reldep in tqdm(reldep_table, desc="Reporting Matrix", colour="#ffe500"):
         row = reldep_table[reldep]
         for k in range(current_column):
             mat[row, k] = all_vec[k].get(reldep, 0.)
@@ -198,7 +198,7 @@ def is_high(n):
 
 
 def figurifier(grammar_feature):
-    results = ""
+    results = r"\renewcommand{\arraystretch}{1.1}" + "\n"
     proximities = pandas.ExcelFile(f"DuoProximity/{grammar_feature[0]}={grammar_feature[1]}_Proximity.xlsx")
     results += r"\begin{table}[H]" + "\n\t" + r"\centering" + "\n\t" + r"\begin{NiceTabular}{" + r"c" * (
         len(proximities.sheet_names)) + "}\n\t\t"
@@ -390,7 +390,7 @@ def vector_space_proximity(treebank1, treebank2):
 
 
 def project(vector, vector_space):
-    return vector_space.dot(npl.inv(vector_space.T.dot(vector_space))).dot(vector_space).dot(vector)
+    return vector_space.dot(npl.inv(vector_space.T.dot(vector_space))).dot(vector_space.T).dot(vector)
 
 
 def is_in_cone(vector, vector_space):
@@ -399,16 +399,21 @@ def is_in_cone(vector, vector_space):
 
 def angle(vector, vector_space):
     projection = project(vector, vector_space)
-    return np.dot(vector, projection) / (npl.norm(vector) * npl.norm(projection))
+    norms = (npl.norm(vector) * npl.norm(projection))
+    return np.dot(vector, projection) / norms if norms else np.nan
 
 
 def get_angle(case_space_filename, vector_filename):
     case_space, vector = enhanced_get_matrix(case_space_filename, vector_filename)
-    return case_space_filename, vector_filename[0], angle(vector, case_space)
+    dimension = scipy.linalg.orth(case_space)
+    if dimension.shape[1]:
+        a = angle(vector, dimension)
+    else:
+        a = np.nan
+    return case_space_filename, vector_filename[0] + f"_Case={vector_filename[1]}", a
 
 
 gf = ["Nom", "Acc", "Dat", "Gen", "Voc", "Loc", "Abl"]
-
 
 if __name__ == "__main__":
     all_banks = []
@@ -420,6 +425,7 @@ if __name__ == "__main__":
         content = os.listdir(f"{UDDIR}/{treebank}")
         for c in list(filter(lambda t: t[-7:] == ".conllu", content)):
             all_banks.append(c[:-7])
+
     try:
         os.mkdir('DuoProximity')
     except FileExistsError:
@@ -442,33 +448,33 @@ if __name__ == "__main__":
     # # TODO: Compute Angles
     # angles = list(
     #     joblib.Parallel(n_jobs=8, verbose=100)(
-    #         joblib.delayed(get_angle)(all_banks[j], [all_banks[i], c]) for i in range(50) for j in range(50) for c in gf
-    #         )
+    #         joblib.delayed(get_angle)(all_banks[j], [all_banks[i], c]) for i in range(64) for j in range(64) for c in gf
     #     )
+    # )
     # wb = openpyxl.load_workbook("Proximity.xlsx")
     # rows = {}
     # row = 2
     # cols = {}
     # col = 2
     # ws = wb.create_sheet("Vector_Angle_Proximity")
-    # for angle in angles:
-    #     if angle[0] in rows:
-    #         cur_row = rows[angle[0]]
+    # for angle_proximity in angles:
+    #     if angle_proximity[1] in rows:
+    #         cur_row = rows[angle_proximity[1]]
     #     else:
     #         cur_row = row
-    #         rows[angle[0]] = row
-    #         ws.cell(row, 1).value = angle[0]
+    #         rows[angle_proximity[1]] = row
+    #         ws.cell(row, 1).value = angle_proximity[1]
     #         row += 1
     #
-    #     if angle[1] in cols:
-    #         cur_col = cols[angle[1]]
+    #     if angle_proximity[0] in cols:
+    #         cur_col = cols[angle_proximity[0]]
     #     else:
     #         cur_col = col
-    #         cols[angle[1]] = col
-    #         ws.cell(1, col).value = angle[1]
+    #         cols[angle_proximity[0]] = col
+    #         ws.cell(1, col).value = angle_proximity[0]
     #         col += 1
-    #     ws.cell(cur_row, cur_col).value = angle[2]
-
+    #     ws.cell(cur_row, cur_col).value = angle_proximity[2]
+    # wb.save("Proximity.xlsx")
 
     # results = dict([(i, {}) for i in all_banks[:50]])
     #
@@ -496,22 +502,3 @@ if __name__ == "__main__":
     # gf2 = (args.feature2, args.value2)
     # if gf2[0] is not None and gf2[1] is not None:
     #     tabulize_pair(gf1, gf2)
-
-    try:
-        os.mkdir('DuoProximity')
-    except FileExistsError:
-        pass
-    for i in range(len(gf)):
-        g1 = ("Case", gf[i])
-        try:
-            res_wb = openpyxl.load_workbook(f"DuoProximity/{g1[0]}={g1[1]}_Proximity.xlsx")
-        except FileNotFoundError:
-            res_wb = openpyxl.Workbook()
-        for j in range(len(gf)):
-            g2 = ("Case", gf[j])
-            print(f"Tabulating Pair {g1[0]}={g1[1]}, {g2[0]}={g2[1]}")
-            tabulize_pair(g1, g2, res_wb)
-            print("")
-        res_wb.save(f"DuoProximity/{g1[0]}={g1[1]}_Proximity.xlsx")
-        print(f"Texifying {g1}")
-        figurifier(g1)
