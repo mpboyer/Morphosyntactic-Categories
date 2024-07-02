@@ -41,24 +41,42 @@
     pour un mot vérifiant une propriété grammaticale de la langue (i.e.\
     une catégorie descriptive, que l'on représente par une \textit{feature}
     d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories
-    descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes en
-    utilisant par exemple la distance cosinus.
+    descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
+    Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, accessibles en ligne.
+
+    \subsection{Avec la distance Cosinus}
     On trouve par exemple les résultats suivants:
 
+    \input{\codedir/DuoProximity/Case=Acc_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Acc\_Proximity.tex}
+    \input{\codedir/DuoProximity/Case=Dat_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Dat\_Proximity.tex}
+    \input{\codedir/DuoProximity/Case=Gen_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Gen\_Proximity.tex}
+    \input{\codedir/DuoProximity/Case=Loc_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Loc\_Proximity.tex}
+    \input{\codedir/DuoProximity/Case=Nom_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Nom\_Proximity.tex}
+    \input{\codedir/DuoProximity/Case=Voc_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Voc\_Proximity.tex}
+    \input{\codedir/DuoProximity/Case=Abl_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Abl\_Proximity.tex}
+    \subsection{Avec l'algorithme de \textsc{Zassenhaus}}
+    On considère les espaces vectoriels engendrés par la représentation vectorielle du système de cas d'une langue, que l'on appellera \textit{espaces de cas}.
+    Ceux-ci sont d'une certaine dimension finie.
+    On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus, permettant de générer une base de l'espace somme et de l'espace intersection.
+    Toutefois, la grande variance au niveau des coordonnées, et la trop faible dimension (au plus 9) dans un grand espace (dimension 218), rend l'intersection toujours nulle numériquement.
+
+    \subsection{Angle entre Cas et Système de Cas}
+    On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
+    Ceci est fait en considérant le projeté orthogonal d'un vecteur sur un espace de cas et en mesurant l'angle entre les deux (ou la distance cosinus).
+    Ici intervient le premier résultat tangible de ce rapport: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $10^{-16}$.
+    En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
+    En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)
+    \textit{ای}\footnote{Translit=āī} est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
+    Ce lemme agit donc en réalité plus comme une apposition.
+    Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.
+    Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, et que par ailleurs, les corpus UD ne sont pas faits pour ce genre de traitement.
 
 
 

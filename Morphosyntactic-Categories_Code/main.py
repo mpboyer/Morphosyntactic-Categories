@@ -44,8 +44,7 @@ def empacking(filename, reldep, gf, index, verbose):
         except FileExistsError:
             pass
 
-    cpt = conllu_parser.tree_ifier(pwd + "/" + filename[1], ud_reldep=reldep, grammar_feature=gf, out=out)
-    number_of_sentences = len(os.listdir(out + "/Graph_Sources"))
+    number_of_sentences, cpt = conllu_parser.tree_ifier(pwd + "/" + filename[1], ud_reldep=reldep, grammar_feature=gf, out=out)
     if index:
         conllu_parser.show_graph(index, "deep/" + filename[0] + "/" + args.out)
     right_type_dict, other_type_dict = statifier.frequency_on_grammar_feature_checking_reldep(
@@ -169,6 +168,7 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
     ws.cell(2, 1).value = "Number of Studied Sentences"
     ws.cell(3, 1).value = "Number of Failed Sentences"
 
+    sum_column = ["Sum:"]
     for c in (pbar := tqdm(
             list(
                 filter(
@@ -182,6 +182,7 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
         treebanks, treebank = c
         treebank = treebank[:-7]
         pbar.set_description(f"Tabulating {treebanks}/{treebank}")
+
         try:
             with open(
                     f"{UDDIR}/{treebanks}/{treebank}/RelDep_Matches/{rel_dep_matching_grammar_feature}.txt"
@@ -194,6 +195,7 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
             ws.cell(1, max_column + 2).value = title
             ws.cell(2, max_column + 2).value = number_of_sentences
             ws.cell(3, max_column + 2).value = cpt_sentences
+            total_values = 0
             for line in results[2:]:
                 res = line.split(" ")
                 rel_dep = (res[1][:-1])
@@ -206,45 +208,23 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
                     max_row += 1
                 else:
                     ws.cell(rel_dep_dict[rel_dep], max_column + 2).value = number
+                total_values += number
             max_column += 1
         except FileNotFoundError:
             title = treebank
             ws.cell(1, max_column + 2).value = title
             max_column += 1
-    pbar.set_description("Tabulating Treebanks Done")
+            total_values = 0
+        sum_column.append(total_values)
 
-    sum_column = ["Sum:"]
-    for column in range(2, max_column + 2):
-        sum_column.append(sum([fmc(ws.cell(k, column).value) for k in range(4, max_row)]))
+    pbar.set_description("Tabulating Treebanks Done")
     ws.append(sum_column)
-    for (row, column) in [(row, column) for row in range(1, max_row) for column in range(1, max_column + 2)]:
-        if row > 3 and column > 1:
-            if sum_column[column - 1] == 0:
-                pass
-            else:
-                ws.cell(row, column).fill = openpyxl.styles.fills.PatternFill(
-                    patternType='solid',
-                    fgColor=openpyxl.styles.colors.Color(
-                        indexed=math.floor(
-                            fmc(
-                                ws.cell(
-                                    row,
-                                    column
-                                ).value
-                            ) /
-                            sum_column[
-                                column - 1] * 10 + 2
-                        )
-                    )
-                )
 
 
 def re_process():
     wb = openpyxl.load_workbook("RelDep_Matches.xlsx")
     for rel_dep_matching_grammar_feature in os.listdir("RelDep_Matches"):
         from_reldep_to_table(rel_dep_matching_grammar_feature[:-4], wb)
-        # wb.save("RelDep_Matches.xlsx")
-    # from_reldep_to_table("RelDep_matching_Case=Acc", wb)
     wb.save("RelDep_Matches.xlsx")
 
 

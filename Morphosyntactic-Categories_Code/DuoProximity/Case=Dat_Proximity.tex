@@ -1,0 +1,19 @@
+\renewcommand{\arraystretch}{1.1}
+\begin{table}[H]
+	\centering
+	\begin{NiceTabular}{cccccccc}
+		Proximity with: & Case=Nom & Case=Acc & Case=Dat & Case=Gen & Case=Voc & Case=Loc & Case=Abl \\
+		Median & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+		Mean & 0.03328 & 0.05376 & 0.09264 & 0.05258 & 0.00444 & 0.05714 & 0.0343 \\
+		NLow & 57901 & 38008 & 28140 & 34565 & 21502 & 16842 & 8188 \\
+		NHigh & 412 & 2446 & 9658 & 2324 & 12 & 7240 & 4837 \\
+		First Quartile & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+		Third Quartile & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+	\CodeAfter
+		\begin{tikzpicture}
+			\foreach \i in {1,...,8}
+				{\draw[draw=vulm] (1|-\i) -- (9|-\i);}
+			\draw[draw=vulm] (2|-1)--(2|-8);\end{tikzpicture}
+	\end{NiceTabular}
+	\caption{Proximities for Case=Dat}
+\end{table}

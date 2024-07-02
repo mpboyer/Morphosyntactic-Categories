@@ -114,7 +114,7 @@ def tree_ifier(filename, ud_reldep=None, grammar_feature=None, out=None, graphic
                             feature = feature.split("=")
                             attributes[feature[0]] = feature[1]
                     sentence_dict[attributes["position"]] = attributes
-            except IndexError:
+            except :
                 number_of_cpt_sentences += 1
                 print(number_of_cpt_sentences)
             word += 1
@@ -156,7 +156,7 @@ def tree_ifier(filename, ud_reldep=None, grammar_feature=None, out=None, graphic
                         # noinspection PyTypeChecker
                         if is_prefix(grammar_feature[1], t[0][w].get(grammar_feature[0], "")):
                             f.write(str(t[0][w]) + "\n")
-    return number_of_cpt_sentences
+    return number_of_studied_sentences, number_of_cpt_sentences
 
 
 def show_graph(index, directory, view=False):
