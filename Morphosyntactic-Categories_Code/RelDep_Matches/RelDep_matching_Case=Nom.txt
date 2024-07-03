@@ -1,4 +1,4 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Case=Nom`:
 RelDep nsubj: 976440
 RelDep amod: 255205

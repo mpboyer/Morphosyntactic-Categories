@@ -42,10 +42,6 @@ def get_all_banks():
     return abank
 
 
-def dot_product(a, b):
-    return sum([a[i] * b[i] for i in range(len(a))])
-
-
 def manhattan_normalizer(vec):
     c = sum(vec)
     if c == 0:
@@ -62,7 +58,7 @@ def is_name_in_sheets(sheetname, filename):
 
 
 def tabulize(grammar_feature):
-    if is_name_in_sheets(f"Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}", "Proximity_old.xlsx"):
+    if is_name_in_sheets(f"Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}", "Proximity.xlsx"):
         return
     print(f"Tabulizing for {grammar_feature[0]}={grammar_feature[1]}")
     database = pandas.read_excel(
@@ -124,7 +120,7 @@ def tabulize(grammar_feature):
 def tabulize_pair(gf1, gf2, result_workbook):
     if f"Proximity_{gf1[0]}={gf1[1]}_{gf2[0]}={gf2[1]}" in result_workbook.sheetnames:
         return
-    workbook = openpyxl.load_workbook("RelDep_Matches_old.xlsx")
+    workbook = openpyxl.load_workbook("RelDep_Matches.xlsx")
     reldep_table = {}
     current_row = 0
     worksheet = workbook[f"RelDep_matching_{gf1[0]}={gf1[1]}"]
@@ -205,58 +201,8 @@ def tabulize_pair(gf1, gf2, result_workbook):
     pbar.close()
 
 
-def figurifier(grammar_feature):
-    results = r"\renewcommand{\arraystretch}{1.1}" + "\n"
-    proximities = pandas.ExcelFile(f"DuoProximity/{grammar_feature[0]}={grammar_feature[1]}_Proximity.xlsx")
-    results += r"\begin{table}[H]" + "\n\t" + r"\centering" + "\n\t" + r"\begin{NiceTabular}{" + r"c" * (
-        len(proximities.sheet_names)) + "}\n\t\t"
-    results += r"Proximity with: "
-    for s in proximities.sheet_names:
-        if s != "Sheet":
-            concurrent_case = s.split("_")[2]
-            results += f"& {concurrent_case} "
-    results += r"\\" + "\n"
-
-    value_dict = {
-        "Median": {},
-        "Mean": {},
-        "NLow": {},
-        "NHigh": {},
-        "First Quartile": {},
-        "Third Quartile": {},
-    }
-    for s in proximities.sheet_names:
-        if s != "Sheet":
-            ws = proximities.parse(s)
-            ws = ws[ws.columns[1:]].to_numpy()[574:, :574]
-            value_dict["Median"][s] = round(np.nanmedian(ws), 5)
-            value_dict["First Quartile"][s] = round(np.nanquantile(ws, 0.25), 5)
-            value_dict["Third Quartile"][s] = round(np.nanquantile(ws, 0.75), 5)
-            value_dict["Mean"][s] = round(np.nanmean(ws), 5)
-            value_dict["NLow"][s] = round(np.count_nonzero((ws > 0) & (ws < .2)), 5)
-            value_dict["NHigh"][s] = round(np.count_nonzero((ws < 1) & (ws > .8)), 5)
-
-    for stat in value_dict:
-        results += f"\t\t{stat} "
-        for g in value_dict[stat]:
-            results += f"& {value_dict[stat][g]} "
-        results += r"\\" + "\n"
-
-    results += "\t" + r"\CodeAfter" + "\n\t\t"
-    results += r"\begin{tikzpicture}" + "\n\t\t\t"
-    results += r"\foreach \i in {1,...," + f"{len(value_dict) + 2}" + r"}" + "\n\t\t\t\t"
-    results += r"{\draw[draw=vulm] (1|-\i) -- (" + f"{len(proximities.sheet_names) + 1}|-" + r"\i);}" + "\n\t\t\t"
-    results += r"\draw[draw=vulm] (2|-1)--(2|-" + f"{len(value_dict) + 2});"
-    results += r"\end{tikzpicture}" + "\n\t"
-    results += r"\end{NiceTabular}" + "\n\t"
-    results += r"\caption{Proximities for " + f"{grammar_feature[0]}={grammar_feature[1]}" + "}\n"
-    results += r"\end{table}"
-    with open(f"DuoProximity/{grammar_feature[0]}={grammar_feature[1]}_Proximity.tex", 'w') as f:
-        f.write(results)
-
-
 def overall_basis():
-    all_reldeps = pandas.ExcelFile("RelDep_Matches_old.xlsx")
+    all_reldeps = pandas.ExcelFile("RelDep_Matches.xlsx")
     case_sheets = [s for s in all_reldeps.sheet_names if s != "Sheet" and s[16:20] == "Case"]
     basis = {}
     for sheet in case_sheets:
@@ -266,12 +212,12 @@ def overall_basis():
     return basis
 
 
-def get_matrix(treebank):
+def get_matrix_xl(treebank):
     """
     :param treebank: Name of ud treebank. `treebank.conllu` must exist.
     :return: Numpy matrix containing the vector representation of the grammatical cases of the treebank. The result is in row-echelon form and is normalized for manhattan distance.
     """
-    reldep_matches = pandas.ExcelFile("RelDep_Matches_old.xlsx")
+    reldep_matches = pandas.ExcelFile("RelDep_Matches.xlsx")
     case_sheets = [s for s in reldep_matches.sheet_names if s != "Sheet" and s[16:20] == "Case"]
     value_dict = {}
     #    for sheet in tqdm(case_sheets, colour="#7d1dd3", desc=f"Vectorizing {treebank}"):
@@ -306,8 +252,8 @@ def get_matrix(treebank):
     return reldep_mat
 
 
-def enhanced_get_matrix(case_space_filename, vector_filename):
-    reldep_matches = pandas.ExcelFile("RelDep_Matches_old.xlsx")
+def enhanced_get_matrix_xl(case_space_filename, vector_filename):
+    reldep_matches = pandas.ExcelFile("RelDep_Matches.xlsx")
     case_sheets = [s for s in reldep_matches.sheet_names if s != "Sheet" and s[16:20] == "Case"]
     case_space_value_dict = {}
     vec_value_dict = {}
@@ -392,13 +338,13 @@ def zassenhaus(m1, m2):
 
 
 def vector_space_proximity(treebank1, treebank2):
-    mat1 = get_matrix(treebank1)
+    mat1 = get_matrix_xl(treebank1)
     dim1 = 0
     for column in range(mat1.shape[1]):
         if np.count_nonzero(mat1[:, column]):
             dim1 += 1
 
-    mat2 = get_matrix(treebank2)
+    mat2 = get_matrix_xl(treebank2)
     dim2 = 0
     for column in range(mat2.shape[1]):
         if np.count_nonzero(mat2[:, column]):
@@ -408,8 +354,8 @@ def vector_space_proximity(treebank1, treebank2):
     return treebank1, treebank2, dim1, dim2, len(s_b), len(i_b)
 
 
-def get_vector(vector_id):
-    vector_values = pandas.ExcelFile("RelDep_Matches_old.xlsx").parse(f"RelDep_matching_Case={vector_id[1]}")
+def get_vector_xl(vector_id):
+    vector_values = pandas.ExcelFile("RelDep_Matches.xlsx").parse(f"RelDep_matching_Case={vector_id[1]}")
     vec_value_dict = {}
     manhattan_norm = np.nan_to_num(vector_values[vector_id[0]][len(vector_values[vector_id[0]]) - 1])
     if manhattan_norm != 0:
@@ -442,7 +388,7 @@ def distance(v1, v2):
     return npl.norm(np.array([v[t] for t in v]))
 
 
-def compute_distances():
+def compute_distances_xl():
     for i in range(len(gf)):
         case1 = gf[i]
         try:
@@ -458,7 +404,7 @@ def compute_distances():
                 cols = {}
                 col = 2
                 ws = wb.create_sheet(f"Distance_{case2}")
-                reldep_matches_database = pandas.ExcelFile("RelDep_Matches_old.xlsx")
+                reldep_matches_database = pandas.ExcelFile("RelDep_Matches.xlsx")
                 case_tabulating_sheets = [s for s in reldep_matches_database.sheet_names if
                                           s != "Sheet" and s[16:20] == "Case"]
                 for case in case_tabulating_sheets:
@@ -509,11 +455,11 @@ def compute_distances():
     return
 
 
-def compute_vector_case_space_angles():
+def compute_vector_case_space_angles_xl():
     angles = []
     all_banks = get_all_banks()
-    for corpus in tqdm(all_banks, colour="#7d1dd3", position=0):
-        reldep_matches_database = pandas.ExcelFile("RelDep_Matches_old.xlsx")
+    for corpus in tqdm(all_banks, colour="#7d1dd3", leave=True, desc="Computing Angles"):
+        reldep_matches_database = pandas.ExcelFile("RelDep_Matches.xlsx")
         case_tabulating_sheets = [s for s in reldep_matches_database.sheet_names if s != "Sheet" and s[16:20] == "Case"]
         mat_value_dict = {}
         for case in case_tabulating_sheets:
@@ -536,7 +482,7 @@ def compute_vector_case_space_angles():
                             case: 0.}
 
         def get_angle(case_space_filename, case_space_value_dict, vector_filename):
-            vec_value_dict = get_vector(vector_filename)
+            vec_value_dict = get_vector_xl(vector_filename)
             case_space = np.array([[0. for _ in case_tabulating_sheets] for _ in case_space_value_dict])
             vector = np.array([0. for _ in case_space_value_dict])
 
@@ -556,14 +502,14 @@ def compute_vector_case_space_angles():
                 a = np.nan
             return case_space_filename, vector_filename[0] + f"_Case={vector_filename[1]}", a
 
-        with tqdm_joblib(tqdm(desc=f"Angles for {corpus}", position=42, colour="#ffe500")) as progress_bar:
+        with tqdm_joblib(tqdm(desc=f"Angles for {corpus}", leave=False, colour="#ffe500", position=1, total=len(all_banks)*len(gf))) as progress_bar:
             angles += list(
-                joblib.Parallel(n_jobs=8, verbose=100)(
+                joblib.Parallel(n_jobs=8, verbose=0)(
                     joblib.delayed(get_angle)(corpus, mat_value_dict, [all_banks[j], c]) for j in range(len(all_banks))
                     for c in gf
+                    )
                 )
-            )
-    wb = openpyxl.load_workbook("Proximity_old.xlsx")
+    wb = openpyxl.load_workbook("Proximity.xlsx")
     rows = {}
     row = 2
     cols = {}
@@ -589,27 +535,11 @@ def compute_vector_case_space_angles():
     wb.save("Proximity.xlsx")
 
 
+def case_space_case_angle_csv(treebank, case):
+    return 0
+
 gf = ["Nom", "Acc", "Dat", "Gen", "Voc", "Loc", "Abl"]
 
 if __name__ == "__main__":
-    # try:
-    #     os.mkdir('DuoProximity')
-    # except FileExistsError:
-    #     pass
-    # for i in range(len(gf)):
-    #     g1 = ("Case", gf[i])
-    #     try:
-    #         res_wb = openpyxl.load_workbook(f"DuoProximity/{g1[0]}={g1[1]}_Proximity.xlsx")
-    #     except FileNotFoundError:
-    #         res_wb = openpyxl.Workbook()
-    #     for j in range(len(gf)):
-    #         g2 = ("Case", gf[j])
-    #         print(f"Tabulating Pair {g1[0]}={g1[1]}, {g2[0]}={g2[1]}")
-    #         tabulize_pair(g1, g2, res_wb)
-    #         print("")
-    #     res_wb.save(f"DuoProximity/{g1[0]}={g1[1]}_Proximity.xlsx")
-    #     print(f"Texifying {g1}")
-    #     figurifier(g1)
-
     # compute_distances()
-    compute_vector_case_space_angles()
+    compute_vector_case_space_angles_xl()

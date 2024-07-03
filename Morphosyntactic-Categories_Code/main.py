@@ -1,11 +1,13 @@
 import os
 import argparse
 
+import pandas
 from tqdm import tqdm
 
 import conllu_parser
 import statifier
 import proximity
+import parse_conllu
 
 import openpyxl
 import openpyxl.styles
@@ -28,6 +30,32 @@ parser.add_argument(
 args = parser.parse_args()
 
 
+def empacker(filename, reldep, gf):
+    files = filename.split("/")
+    pwd = f"{UDDIR}/{files[0]}"
+    out = pwd + f"/{files[1][:-7]}/"
+    try:
+        os.mkdir(out)
+    except FileExistsError:
+        pass
+
+    for c in ["/RelDep_Matches", "/Grammar_Matches"]:
+        try:
+            os.mkdir(out + c)
+        except FileExistsError:
+            pass
+
+    grammar_feature_for_reldep, reldep_for_grammar_feature = parse_conllu.vectorize(
+        f"{UDDIR}/{filename}", grammar_feature, reldep, out=None
+        )
+
+    with open(f"{out}/Grammar_Matches/{gf[0]}_matching_{reldep}", 'w') as f:
+        f.write(grammar_feature_for_reldep)
+
+    with open(f"{out}/RelDep_Matches/RelDep_matching_{gf[0]}={gf[1]}.txt", "w") as f:
+        f.write(reldep_for_grammar_feature)
+
+
 def empacking(filename, reldep, gf, index, verbose):
     filename = filename.split("/")
 
@@ -44,7 +72,9 @@ def empacking(filename, reldep, gf, index, verbose):
         except FileExistsError:
             pass
 
-    number_of_sentences, cpt = conllu_parser.tree_ifier(pwd + "/" + filename[1], ud_reldep=reldep, grammar_feature=gf, out=out)
+    number_of_sentences, cpt = conllu_parser.tree_ifier(
+        pwd + "/" + filename[1], ud_reldep=reldep, grammar_feature=gf, out=out
+        )
     if index:
         conllu_parser.show_graph(index, "deep/" + filename[0] + "/" + args.out)
     right_type_dict, other_type_dict = statifier.frequency_on_grammar_feature_checking_reldep(
@@ -103,7 +133,7 @@ def fmc(c):
 
 def pre_process():
     if args.filename != "all":
-        empacking(args.filename, args.property, grammar_feature, args.index, args.verbose)
+        empacker(args.filename, args.property, grammar_feature)
     else:
         treebanks = os.listdir(UDDIR)
         reldep_dict = {}
@@ -119,15 +149,19 @@ def pre_process():
                             'r'
                     ) as f:
                         reldeps = f.readlines()
+
                     for i in range(len(reldeps)):
                         reldeps[i] = reldeps[i].split(" ")
+
                     number_of_studied_sentences += int(reldeps[0][3])
                     cpt += int(reldeps[0][8])
+
                     for i in range(2, len(reldeps)):
                         rel = reldeps[i][1][:-1]
                         reldep_dict[rel] = reldep_dict.get(rel, 0) + int(reldeps[i][2])
+
                 except FileNotFoundError:
-                    empacking(f"{treebank}/{c}", args.property, grammar_feature, args.index, args.verbose)
+                    empacker(f"{treebank}/{c}", args.property, grammar_feature)
                     try:
                         with open(
                                 f"{UDDIR}/{treebank}/{c[:-7]}/RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.txt",
@@ -143,8 +177,8 @@ def pre_process():
                             reldep_dict[rel] = reldep_dict.get(rel, 0) + int(reldeps[i][2])
                     except FileNotFoundError:
                         pass
-        pbar.set_description("Treebank processing done")
 
+        pbar.set_description("Treebank processing done")
         reldep_for_grammar_feature = (f"We have studied {number_of_studied_sentences} sentences and failed on {cpt} in "
                                       f"all treebanks.\nWe get the following distribution "
                                       f"of RelDep for words matching `{grammar_feature[0]}={grammar_feature[1]}`:\n")
@@ -221,11 +255,65 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
     ws.append(sum_column)
 
 
-def re_process():
+def from_reldep_to_csv(rel_dep_matching_grammar_feature):
+    try:
+        open(f"RelDep_Matches/{rel_dep_matching_grammar_feature}.csv", "r")
+    except FileNotFoundError:
+        print("Tabulating ", rel_dep_matching_grammar_feature)
+        value_dicts = []
+        fieldnames = set()
+
+        for c in (pbar := tqdm(
+                list(
+                    filter(
+                        lambda t: t[1][-7:] == ".conllu",
+                        [(treebanks, treebank) for treebanks in os.listdir(UDDIR) for treebank in
+                         os.listdir(f"{UDDIR}/{treebanks}")]
+                    )
+                )
+                , colour="#7d1dd3"
+        )):
+            vec_coordinates = {}
+            treebanks, treebank = c
+            treebank = treebank[:-7]
+            pbar.set_description(f"Tabulating {treebanks}/{treebank}")
+            vec_coordinates["Treebank"] = treebank
+            try:
+                with open(
+                        f"{UDDIR}/{treebanks}/{treebank}/RelDep_Matches/{rel_dep_matching_grammar_feature}.txt"
+                ) as f:
+                    results = f.readlines()
+                results[0] = results[0].split(" ")
+
+                vec_coordinates["Number of Sentences"] = results[0][3]
+                vec_coordinates["Failures"] = results[0][8]
+                total_values = 0
+                for line in results[2:]:
+                    res = line.split(" ")
+                    reldep = res[1][:-1]
+                    number = res[2]
+                    vec_coordinates[reldep] = number
+                    total_values += int(number)
+                    fieldnames.add(reldep)
+                vec_coordinates["Total"] = total_values
+            except FileNotFoundError:
+                pass
+            value_dicts.append(vec_coordinates)
+        pbar.set_description("Tabulating Treebanks Done")
+        pbar.close()
+        pandas.DataFrame(value_dicts).to_csv(f"RelDep_Matches/{rel_dep_matching_grammar_feature}.csv", index=False)
+
+
+def re_process_xl():
     wb = openpyxl.load_workbook("RelDep_Matches_old.xlsx")
     for rel_dep_matching_grammar_feature in os.listdir("RelDep_Matches"):
         from_reldep_to_table(rel_dep_matching_grammar_feature[:-4], wb)
     wb.save("RelDep_Matches.xlsx")
+
+
+def re_process_csv():
+    for rel_dep_matching_grammar_feature in os.listdir("RelDep_Matches"):
+        from_reldep_to_csv(rel_dep_matching_grammar_feature[:-4])
 
 
 if __name__ == "__main__":
@@ -233,5 +321,4 @@ if __name__ == "__main__":
     grammar_feature = (args.feature_type, args.value)
     if args.filename:
         pre_process()
-    re_process()
-    proximity.tabulize(grammar_feature)
+    re_process_csv()

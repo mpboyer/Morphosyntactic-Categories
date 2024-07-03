@@ -1,18 +1,18 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Case=Abl`:
 RelDep obl: 50051
-RelDep det: 13174
-RelDep nmod: 11707
-RelDep conj: 10404
-RelDep amod: 9067
+RelDep det: 13217
+RelDep nmod: 12348
+RelDep conj: 10429
+RelDep amod: 9109
 RelDep obl:arg: 6134
-RelDep advcl: 3568
+RelDep advcl: 3584
 RelDep nsubj: 3375
 RelDep advcl:abs: 3354
-RelDep flat: 2725
-RelDep root: 2475
+RelDep flat: 2737
+RelDep root: 2485
 RelDep obl:agent: 2371
-RelDep acl: 1946
+RelDep acl: 1953
 RelDep appos: 1633
 RelDep nsubj:pass: 1549
 RelDep obj: 1504
@@ -25,8 +25,8 @@ RelDep xcomp: 487
 RelDep nmod:npmod: 445
 RelDep ccomp: 421
 RelDep case: 420
+RelDep nummod: 317
 RelDep advmod: 314
-RelDep nummod: 308
 RelDep advcl:cmp: 284
 RelDep obl:lmod: 263
 RelDep csubj: 221
@@ -37,11 +37,11 @@ RelDep conj:expl: 134
 RelDep nmod:poss: 132
 RelDep advcl:relcl: 119
 RelDep obl:grad: 114
+RelDep fixed: 107
 RelDep obl:cmp: 106
-RelDep fixed: 98
 RelDep case:loc: 97
 RelDep parataxis: 89
-RelDep dep: 88
+RelDep dep: 89
 RelDep csubj:pass: 87
 RelDep dep:infl: 81
 RelDep advcl:pred: 73
@@ -51,6 +51,7 @@ RelDep compound:lvc: 46
 RelDep advcl:caus: 32
 RelDep nmod:comp: 28
 RelDep obl:goal: 22
+RelDep expl: 18
 RelDep cop: 16
 RelDep dislocated:obj: 16
 RelDep ccomp:relcl: 16
@@ -59,8 +60,8 @@ RelDep compound:redup: 14
 RelDep nmod:appos: 13
 RelDep list: 12
 RelDep obl:manner: 11
+RelDep mark: 11
 RelDep advcl:ccomp: 10
-RelDep mark: 10
 RelDep aux: 10
 RelDep iobj: 9
 RelDep advmod:tmod: 9
@@ -75,6 +76,7 @@ RelDep obl:mod: 4
 RelDep dislocated:nsubj: 3
 RelDep advmod:lmod: 2
 RelDep advmod:cmp: 2
+RelDep compound:prt: 2
 RelDep vocative: 2
 RelDep ccomp:reported: 2
 RelDep csubj:reported: 2
@@ -93,7 +95,6 @@ RelDep clf: 1
 RelDep compound:svc: 1
 RelDep obl:cau: 1
 RelDep _: 1
-RelDep compound:prt: 1
 RelDep dislocated:advcl: 1
 RelDep csubj:cleft: 1
 RelDep parataxis:discourse: 1

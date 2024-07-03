@@ -1,4 +1,4 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Tense=Past`:
 RelDep root: 424212
 RelDep conj: 133008
@@ -91,8 +91,8 @@ RelDep obl:depict: 14
 RelDep advcl:lcl: 13
 RelDep dep:aux: 12
 RelDep nmod:appos: 11
-RelDep obl:manner: 10
 RelDep obl:benef: 10
+RelDep obl:manner: 10
 RelDep advcl:pred: 10
 RelDep aux:nec: 10
 RelDep obl:subj: 9

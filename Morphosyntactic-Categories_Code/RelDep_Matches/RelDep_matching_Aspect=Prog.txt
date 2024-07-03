@@ -1,4 +1,4 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Aspect=Prog`:
 RelDep root: 11765
 RelDep cop: 1779

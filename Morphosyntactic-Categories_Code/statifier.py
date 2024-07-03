@@ -59,5 +59,5 @@ def frequency_on_reldep_checking_grammar_feature(filename):
     features = list(map(str_to_dict, features))
     frequency_dict = {}
     for word in features:
-            frequency_dict[word["edge_type"]] = frequency_dict.get(word["edge_type"], 0) + 1
+        frequency_dict[word["edge_type"]] = frequency_dict.get(word["edge_type"], 0) + 1
     return format_case_stats(frequency_dict)

@@ -1,4 +1,4 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Case=Acc`:
 RelDep obj: 519641
 RelDep case: 279928
@@ -92,8 +92,8 @@ RelDep advcl:relcl: 33
 RelDep punct: 32
 RelDep advmod:tmod: 31
 RelDep obj:caus: 30
-RelDep flat:range: 24
 RelDep parataxis:discourse: 24
+RelDep flat:range: 24
 RelDep flat:sibl: 24
 RelDep det:nummod: 22
 RelDep advcl:fin: 21

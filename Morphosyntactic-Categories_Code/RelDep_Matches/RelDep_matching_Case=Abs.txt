@@ -1,17 +1,17 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Case=Abs`:
-RelDep obj: 5361
-RelDep nsubj: 3184
-RelDep amod: 1633
+RelDep obj: 5363
+RelDep nsubj: 3185
+RelDep amod: 1635
 RelDep conj: 1244
 RelDep root: 1163
 RelDep compound: 946
-RelDep det: 822
+RelDep det: 823
 RelDep advcl: 796
 RelDep obl: 654
 RelDep xcomp: 566
 RelDep nmod: 454
-RelDep case: 384
+RelDep case: 391
 RelDep flat: 366
 RelDep appos: 291
 RelDep ccomp: 237

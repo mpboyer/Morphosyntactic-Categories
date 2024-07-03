@@ -1,17 +1,17 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Case=Dat`:
-RelDep case: 224650
+RelDep case: 224651
 RelDep det: 197098
-RelDep obl: 175571
-RelDep nmod: 72405
+RelDep obl: 175689
+RelDep nmod: 72408
 RelDep amod: 61994
-RelDep iobj: 60309
+RelDep iobj: 60315
 RelDep obl:arg: 59028
 RelDep conj: 30853
-RelDep obj: 25143
+RelDep obj: 25144
 RelDep nmod:poss: 17382
 RelDep nsubj: 10709
-RelDep appos: 7725
+RelDep appos: 7731
 RelDep flat: 6052
 RelDep root: 5611
 RelDep expl:pv: 5498
@@ -93,8 +93,8 @@ RelDep clf: 3
 RelDep parataxis:obj: 2
 RelDep obl:soc: 2
 RelDep obl:manner: 2
-RelDep xcomp:result: 2
 RelDep obl:instr: 2
+RelDep xcomp:result: 2
 RelDep obl:smod: 2
 RelDep flat:repeat: 1
 RelDep advcl:cond: 1

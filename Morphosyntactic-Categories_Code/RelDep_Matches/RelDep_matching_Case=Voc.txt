@@ -1,4 +1,4 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Case=Voc`:
 RelDep vocative: 9847
 RelDep amod: 811
@@ -13,7 +13,7 @@ RelDep orphan: 89
 RelDep ccomp: 89
 RelDep advcl:ccomp: 86
 RelDep nmod:appos: 82
-RelDep nsubj: 48
+RelDep nsubj: 49
 RelDep obj: 45
 RelDep parataxis: 41
 RelDep obl: 38

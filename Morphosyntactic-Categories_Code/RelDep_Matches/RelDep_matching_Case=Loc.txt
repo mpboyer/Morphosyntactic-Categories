@@ -1,4 +1,4 @@
-We have studied 0 sentences and failed on 0 in all treebanks.
+We have studied 1906050 sentences and failed on 0 in all treebanks.
 We get the following distribution of RelDep for words matching `Case=Loc`:
 RelDep obl: 158839
 RelDep case: 112426
@@ -30,7 +30,7 @@ RelDep amod:flat: 431
 RelDep nmod:arg: 358
 RelDep det:nummod: 317
 RelDep advmod:lmod: 306
-RelDep advmod: 289
+RelDep advmod: 299
 RelDep det:poss: 221
 RelDep flat:name: 215
 RelDep advcl:tcl: 192
@@ -59,6 +59,7 @@ RelDep nmod:lmod: 26
 RelDep advcl:ccomp: 22
 RelDep compound:redup: 19
 RelDep obl:manner: 19
+RelDep dep:infl: 17
 RelDep parataxis:insert: 16
 RelDep obl:benef: 16
 RelDep xcomp:ds: 15
