@@ -5,4 +5,3 @@ for i in `ls ud-treebanks-v2.14`;
     \rm -r ./ud-treebanks-v2.14/"$i"/*-ud-*/;
   echo "$i";
   done;
-\rm *.xlsx;

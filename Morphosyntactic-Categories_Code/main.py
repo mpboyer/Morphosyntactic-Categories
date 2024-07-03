@@ -222,7 +222,7 @@ def from_reldep_to_table(rel_dep_matching_grammar_feature, wb):
 
 
 def re_process():
-    wb = openpyxl.load_workbook("RelDep_Matches.xlsx")
+    wb = openpyxl.load_workbook("RelDep_Matches_old.xlsx")
     for rel_dep_matching_grammar_feature in os.listdir("RelDep_Matches"):
         from_reldep_to_table(rel_dep_matching_grammar_feature[:-4], wb)
     wb.save("RelDep_Matches.xlsx")

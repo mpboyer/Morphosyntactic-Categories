@@ -4,13 +4,32 @@ import openpyxl
 import openpyxl.styles
 import pandas
 import scipy.linalg
-from tqdm import tqdm
+from tqdm import tqdm, trange
 import numpy as np
 import numpy.linalg as npl
 from sympy import Matrix
 import os
+import contextlib
 
 UDDIR = "ud-treebanks-v2.14"
+
+
+@contextlib.contextmanager
+def tqdm_joblib(tqdm_object):
+    """Context manager to patch joblib to report into tqdm progress bar given as argument"""
+
+    class TqdmBatchCompletionCallback(joblib.parallel.BatchCompletionCallBack):
+        def __call__(self, *args, **kwargs):
+            tqdm_object.update(n=self.batch_size)
+            return super().__call__(*args, **kwargs)
+
+    old_batch_callback = joblib.parallel.BatchCompletionCallBack
+    joblib.parallel.BatchCompletionCallBack = TqdmBatchCompletionCallback
+    try:
+        yield tqdm_object
+    finally:
+        joblib.parallel.BatchCompletionCallBack = old_batch_callback
+        tqdm_object.close()
 
 
 def get_all_banks():
@@ -43,7 +62,7 @@ def is_name_in_sheets(sheetname, filename):
 
 
 def tabulize(grammar_feature):
-    if is_name_in_sheets(f"Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}", "Proximity.xlsx"):
+    if is_name_in_sheets(f"Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}", "Proximity_old.xlsx"):
         return
     print(f"Tabulizing for {grammar_feature[0]}={grammar_feature[1]}")
     database = pandas.read_excel(
@@ -61,7 +80,7 @@ def tabulize(grammar_feature):
             c = manhattan_normalizer(c)
             for i in range(len(c)):
                 database.loc[i + 2, column] = c[i]
-    workbook = openpyxl.load_workbook("Proximity.xlsx")
+    workbook = openpyxl.load_workbook("Proximity_old.xlsx")
     worksheet = workbook.create_sheet(f"Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}")
     worksheet.cell(1, 1).value = "Treebank"
     treetab = {}
@@ -105,26 +124,28 @@ def tabulize(grammar_feature):
 def tabulize_pair(gf1, gf2, result_workbook):
     if f"Proximity_{gf1[0]}={gf1[1]}_{gf2[0]}={gf2[1]}" in result_workbook.sheetnames:
         return
-    workbook = openpyxl.load_workbook("RelDep_Matches.xlsx")
+    workbook = openpyxl.load_workbook("RelDep_Matches_old.xlsx")
     reldep_table = {}
     current_row = 0
     worksheet = workbook[f"RelDep_matching_{gf1[0]}={gf1[1]}"]
     max_col1 = worksheet.max_column + 1
     max_row1 = worksheet.max_row
     all_vec = [{} for _ in range(2, max_col1)]
-    for column in range(2, max_col1):
-        all_vec[column - 2]["Name"] = f"{worksheet.cell(1, column).value}_{gf1[0]}={gf1[1]}"
-        all_vec[column - 2]["Sum"] = worksheet.cell(max_row1, column).value
+    for working_column in range(2, max_col1):
+        all_vec[working_column - 2]["Name"] = f"{worksheet.cell(1, working_column).value}_{gf1[0]}={gf1[1]}"
+        all_vec[working_column - 2]["Sum"] = worksheet.cell(max_row1, working_column).value
     pbar = tqdm(total=(max_row1 - 4) * (max_col1 - 2), colour="#7d1dd3", desc=f"Reading {gf1}")
-    for current_row in range(4, max_row1):
-        reldep = worksheet.cell(current_row, 1).value
+    for working_row in range(4, max_row1):
+        reldep = worksheet.cell(working_row, 1).value
         if reldep not in reldep_table:
             reldep_table[reldep] = current_row
             current_row += 1
-        for column in range(2, max_col1):
-            if all_vec[column - 2]["Sum"]:
-                dot = int(worksheet.cell(current_row, column).value) if worksheet.cell(current_row, column).value else 0
-                all_vec[column - 2][reldep] = dot / all_vec[column - 2]["Sum"]
+        for working_column in range(2, max_col1):
+            if all_vec[working_column - 2]["Sum"]:
+                dot = int(worksheet.cell(working_row, working_column).value) if worksheet.cell(
+                    working_row, working_column
+                    ).value else 0
+                all_vec[working_column - 2][reldep] = dot / all_vec[working_column - 2]["Sum"]
             pbar.update(1)
     pbar.close()
     current_column = len(all_vec)
@@ -133,18 +154,21 @@ def tabulize_pair(gf1, gf2, result_workbook):
     max_col2 = worksheet.max_column + 1
     max_row2 = worksheet.max_row
     all_vec = all_vec + [{} for _ in range(2, max_col2)]
-    for column in range(2, max_col2):
-        all_vec[current_column + column - 2]["Name"] = f"{worksheet.cell(1, column).value}_{gf2[0]}={gf2[1]}"
+    for working_column in range(2, max_col2):
+        all_vec[current_column + working_column - 2][
+            "Name"] = f"{worksheet.cell(1, working_column).value}_{gf2[0]}={gf2[1]}"
     pbar = tqdm(total=(max_row2 - 4) * (max_col2 - 2), colour="#7d1dd3", desc=f"Reading {gf2}")
-    for current_row in range(4, max_row2):
-        reldep = worksheet.cell(current_row, 1).value
+    for working_row in range(4, max_row2):
+        reldep = worksheet.cell(working_row, 1).value
         if reldep not in reldep_table:
             reldep_table[reldep] = current_row
             current_row += 1
-        for column in range(2, max_col2):
-            if all_vec[column - 2]["Sum"]:
-                dot = int(worksheet.cell(current_row, column).value) if worksheet.cell(current_row, column).value else 0
-                all_vec[current_column + column - 2][reldep] = dot / all_vec[column - 2]["Sum"]
+        for working_column in range(2, max_col2):
+            if all_vec[working_column - 2]["Sum"]:
+                dot = int(worksheet.cell(working_row, working_column).value) if worksheet.cell(
+                    working_row, working_column
+                    ).value else 0
+                all_vec[current_column + working_column - 2][reldep] = dot / all_vec[working_column - 2]["Sum"]
             pbar.update(1)
     pbar.close()
     current_column = len(all_vec)
@@ -152,26 +176,26 @@ def tabulize_pair(gf1, gf2, result_workbook):
 
     mat = np.matrix(np.array([[0. for _ in range(current_column)] for _ in range(current_row)]))
     for reldep in tqdm(reldep_table, desc="Reporting Matrix", colour="#ffe500"):
-        current_row = reldep_table[reldep]
+        working_row = reldep_table[reldep]
         for k in range(current_column):
-            mat[current_row, k] = all_vec[k].get(reldep, 0.)
+            mat[working_row, k] = all_vec[k].get(reldep, 0.)
 
-    for column in tqdm(range(current_column), desc="Normalizing Matrix", colour="#ffe500"):
-        euclidean_norm = npl.norm(mat[:, column])
+    for working_column in tqdm(range(current_column), desc="Normalizing Matrix", colour="#ffe500"):
+        euclidean_norm = npl.norm(mat[:, working_column])
         if euclidean_norm != 0:
-            mat[:, column] /= euclidean_norm
+            mat[:, working_column] /= euclidean_norm
     dot_mat = np.matmul(np.transpose(mat), mat)
 
     worksheet = result_workbook.create_sheet(f"Proximity_{gf1[0]}={gf1[1]}_{gf2[0]}={gf2[1]}")
     worksheet.cell(1, 1).value = "Treebank+GF"
     pbar = tqdm(desc="Reporting Values in Table", total=current_column * current_column, colour="#7d1dd3")
-    for current_row in range(current_column):
-        worksheet.cell(1, current_row + 2).value = all_vec[current_row]["Name"]
-        worksheet.cell(current_row + 2, 1).value = all_vec[current_row]["Name"]
-        for column in range(current_column):
-            dot = dot_mat[current_row, column]
-            worksheet.cell(current_row + 2, column + 2).value = dot
-            worksheet.cell(current_row + 2, column + 2).fill = openpyxl.styles.fills.PatternFill(
+    for working_row in range(current_column):
+        worksheet.cell(1, working_row + 2).value = all_vec[working_row]["Name"]
+        worksheet.cell(working_row + 2, 1).value = all_vec[working_row]["Name"]
+        for working_column in range(current_column):
+            dot = dot_mat[working_row, working_column]
+            worksheet.cell(working_row + 2, working_column + 2).value = dot
+            worksheet.cell(working_row + 2, working_column + 2).fill = openpyxl.styles.fills.PatternFill(
                 patternType='solid',
                 fgColor=openpyxl.styles.colors.Color(
                     indexed=math.floor(dot * 5 + 2)
@@ -232,7 +256,7 @@ def figurifier(grammar_feature):
 
 
 def overall_basis():
-    all_reldeps = pandas.ExcelFile("RelDep_Matches.xlsx")
+    all_reldeps = pandas.ExcelFile("RelDep_Matches_old.xlsx")
     case_sheets = [s for s in all_reldeps.sheet_names if s != "Sheet" and s[16:20] == "Case"]
     basis = {}
     for sheet in case_sheets:
@@ -247,7 +271,7 @@ def get_matrix(treebank):
     :param treebank: Name of ud treebank. `treebank.conllu` must exist.
     :return: Numpy matrix containing the vector representation of the grammatical cases of the treebank. The result is in row-echelon form and is normalized for manhattan distance.
     """
-    reldep_matches = pandas.ExcelFile("RelDep_Matches.xlsx")
+    reldep_matches = pandas.ExcelFile("RelDep_Matches_old.xlsx")
     case_sheets = [s for s in reldep_matches.sheet_names if s != "Sheet" and s[16:20] == "Case"]
     value_dict = {}
     #    for sheet in tqdm(case_sheets, colour="#7d1dd3", desc=f"Vectorizing {treebank}"):
@@ -283,7 +307,7 @@ def get_matrix(treebank):
 
 
 def enhanced_get_matrix(case_space_filename, vector_filename):
-    reldep_matches = pandas.ExcelFile("RelDep_Matches.xlsx")
+    reldep_matches = pandas.ExcelFile("RelDep_Matches_old.xlsx")
     case_sheets = [s for s in reldep_matches.sheet_names if s != "Sheet" and s[16:20] == "Case"]
     case_space_value_dict = {}
     vec_value_dict = {}
@@ -385,7 +409,7 @@ def vector_space_proximity(treebank1, treebank2):
 
 
 def get_vector(vector_id):
-    vector_values = pandas.ExcelFile("RelDep_Matches.xlsx").parse(f"RelDep_matching_Case={vector_id[1]}")
+    vector_values = pandas.ExcelFile("RelDep_Matches_old.xlsx").parse(f"RelDep_matching_Case={vector_id[1]}")
     vec_value_dict = {}
     manhattan_norm = np.nan_to_num(vector_values[vector_id[0]][len(vector_values[vector_id[0]]) - 1])
     if manhattan_norm != 0:
@@ -434,7 +458,7 @@ def compute_distances():
                 cols = {}
                 col = 2
                 ws = wb.create_sheet(f"Distance_{case2}")
-                reldep_matches_database = pandas.ExcelFile("RelDep_Matches.xlsx")
+                reldep_matches_database = pandas.ExcelFile("RelDep_Matches_old.xlsx")
                 case_tabulating_sheets = [s for s in reldep_matches_database.sheet_names if
                                           s != "Sheet" and s[16:20] == "Case"]
                 for case in case_tabulating_sheets:
@@ -488,12 +512,10 @@ def compute_distances():
 def compute_vector_case_space_angles():
     angles = []
     all_banks = get_all_banks()
-    for i in range(64):
-        corpus = all_banks[i]
-        reldep_matches_database = pandas.ExcelFile("RelDep_Matches.xlsx")
+    for corpus in tqdm(all_banks, colour="#7d1dd3", position=0):
+        reldep_matches_database = pandas.ExcelFile("RelDep_Matches_old.xlsx")
         case_tabulating_sheets = [s for s in reldep_matches_database.sheet_names if s != "Sheet" and s[16:20] == "Case"]
         mat_value_dict = {}
-        #    for sheet in tqdm(case_sheets, colour="#7d1dd3", desc=f"Vectorizing {treebank}"):
         for case in case_tabulating_sheets:
             ws = reldep_matches_database.parse(case)
             d = np.nan_to_num(ws[corpus][len(ws[corpus]) - 1])
@@ -534,10 +556,14 @@ def compute_vector_case_space_angles():
                 a = np.nan
             return case_space_filename, vector_filename[0] + f"_Case={vector_filename[1]}", a
 
-        angles += list(
-            joblib.Parallel(n_jobs=8, verbose=100)(
-                joblib.delayed(get_angle)(corpus, mat_value_dict, [all_banks[j], c]) for j in range(64) for c in gf))
-    wb = openpyxl.load_workbook("Proximity.xlsx")
+        with tqdm_joblib(tqdm(desc=f"Angles for {corpus}", position=42, colour="#ffe500")) as progress_bar:
+            angles += list(
+                joblib.Parallel(n_jobs=8, verbose=100)(
+                    joblib.delayed(get_angle)(corpus, mat_value_dict, [all_banks[j], c]) for j in range(len(all_banks))
+                    for c in gf
+                )
+            )
+    wb = openpyxl.load_workbook("Proximity_old.xlsx")
     rows = {}
     row = 2
     cols = {}
@@ -566,8 +592,6 @@ def compute_vector_case_space_angles():
 gf = ["Nom", "Acc", "Dat", "Gen", "Voc", "Loc", "Abl"]
 
 if __name__ == "__main__":
-    # compute_distances()
-
     # try:
     #     os.mkdir('DuoProximity')
     # except FileExistsError:
@@ -587,32 +611,5 @@ if __name__ == "__main__":
     #     print(f"Texifying {g1}")
     #     figurifier(g1)
 
-    # # TODO: Compute Angles
+    # compute_distances()
     compute_vector_case_space_angles()
-
-    # results = dict([(i, {}) for i in all_banks[:50]])
-    #
-    # real_results = list(joblib.Parallel(n_jobs=8, verbose=100)(
-    #   joblib.delayed(vector_space_proximity)(all_banks[i], all_banks[j]) for i in range(50) for j in range(i, 50))
-    #   )
-    #
-    # for stat in real_results:
-    #     results[stat[0]][stat[1]] = (stat[2], stat[3], stat[4], stat[5])
-    #     results[stat[1]][stat[0]] = (stat[3], stat[2], stat[4], stat[5])
-    #
-    # with open("backup.txt", "w") as f:
-    #     f.write(str(results))
-    # wb = openpyxl.load_workbook("Proximity.xlsx")
-    # ws = wb.create_sheet("Vector_Space_Proximity")
-    # for i in range(50):
-    #     ws.cell(1, i + 2).value = all_banks[i]
-    #     ws.cell(i + 2, 1).value = all_banks[i]
-    #     for j in range(50):
-    #         ws.cell(i + 2, j + 2).value = str(results[all_banks[i]][all_banks[j]])
-    # wb.save("Proximity.xlsx")
-
-    # gf1 = (args.feature1, args.value1)
-    # tabulize(gf1)
-    # gf2 = (args.feature2, args.value2)
-    # if gf2[0] is not None and gf2[1] is not None:
-    #     tabulize_pair(gf1, gf2)
