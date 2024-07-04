@@ -292,7 +292,7 @@ def from_reldep_to_csv(rel_dep_matching_grammar_feature):
                     res = line.split(" ")
                     reldep = res[1][:-1]
                     number = res[2]
-                    vec_coordinates[reldep] = number
+                    vec_coordinates[reldep] = int(number)
                     total_values += int(number)
                     fieldnames.add(reldep)
                 vec_coordinates["Total"] = total_values
