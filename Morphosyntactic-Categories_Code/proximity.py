@@ -1,5 +1,6 @@
 import math
 import joblib
+import itertools
 import openpyxl
 import openpyxl.styles
 import pandas
@@ -748,7 +749,7 @@ def tabulize_angle_pair_csv(gf1, gf2):
 
 
 def compute_distances_csv():
-    for c1, c2 in tqdm(zip(gf, gf), colour="#7d1dd3"):
+    for c1, c2 in tqdm(itertools.product(gf, gf), colour="#7d1dd3", desc="Computing Vector-Vector Distances", total=len(gf)**2):
         try:
             with open(f"Proximities/Distances_{c1}_{c2}.csv") :
                 pass
@@ -769,11 +770,12 @@ gf = ["Nom", "Acc", "Dat", "Gen", "Voc", "Loc", "Abl", "Abs", "Erg"]
 
 if __name__ == "__main__":
     # tabulize_pair_csv(("Case", "Nom"), ("Case", "Acc"))
-    for g1, g2 in tqdm(zip(gf, gf), colour="#7d1dd3"):
-        tabulize_angle_pair_csv(["Case", g1], ["Case", g2])
+    #    for g1, g2 in tqdm(itertools.product(gf, gf), colour="#7d1dd3", desc="Computing Vector-Vector Angles", total=len(gf)**2):
+    #       tabulize_angle_pair_csv(["Case", g1], ["Case", g2])
     # for g in gf:
     #   tabulize_csv(("Case", g))
     # compute_distances_xl()
     # compute_vector_case_space_angles_xl()
     # print(case_space_case_angle_csv("hu_szeged-ud-dev", ["sah_yktdt-ud-test", "Acc"]))
-    compute_angles_csv()
+    # compute_angles_csv()
+    compute_distances_csv()
