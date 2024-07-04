@@ -23,10 +23,14 @@ def angle(vector, vector_space):
     return np.dot(vector, projection) / norms if norms else np.nan
 
 
-def distance(v1, v2):
+def dict_distance(v1, v2):
     v = {}
     for k in v1:
         v[k] = v.get(k, 0.) + v1[k]
     for k in v2:
         v[k] = v.get(k, 0.) - v2[k]
     return npl.norm(np.array([v[t] for t in v]))
+
+
+def distance(v1, v2):
+    return npl.norm(v1 - v2)

@@ -12,7 +12,7 @@ import os
 import contextlib
 import argparse
 
-from linalg import project, angle, distance, is_in_cone, manhattan_normalizer
+from linalg import project, angle, distance, dict_distance, is_in_cone, manhattan_normalizer
 
 UDDIR = "ud-treebanks-v2.14"
 
@@ -404,7 +404,7 @@ def compute_distances_xl():
                         for current_writing_row in range(2, len(case2_sheet[treebank2]) - 1):
                             value = np.nan_to_num(case2_sheet[treebank2][current_writing_row])
                             v2[case2_sheet["Treebank"][current_writing_row]] = value / manhattan_norm
-                    return treebank1 + f"_Case={case1}", treebank2 + f"_Case={case2}", distance(v1, v2)
+                    return treebank1 + f"_Case={case1}", treebank2 + f"_Case={case2}", dict_distance(v1, v2)
 
                 distances = list(
                     joblib.Parallel(n_jobs=8, verbose=100)(
@@ -522,7 +522,7 @@ def overall_basis_csv():
     basis = set()
     for csv in filter(lambda t: t[-4:] == ".csv", os.listdir("RelDep_Matches")):
         with open(f"RelDep_Matches/{csv}", "r") as csv_file:
-            attributes = csv_file[0].rstrip().split(",")[4:]
+            attributes = next(csv_file).rstrip().split(",")[4:]
         basis |= set(attributes)
     return basis
 
@@ -614,37 +614,40 @@ def compute_angles_csv():
         for csv in filter(lambda t: t[-4:] == ".csv", os.listdir("RelDep_Matches")):
             with open(f"RelDep_Matches/{csv}", "r") as csv_file:
                 attributes = next(csv_file).rstrip().split(",")[4:]
-                for tree in filter(lambda t: t[0] == corpus, csv_file):
-                    case = tree.rstrip().split(",")
-                    coordinates = dict(zip(attributes, map(void_to_zero, case[4:])))
-                    coordinates["Total"] = void_to_zero(case[3])
-            case_space.append(coordinates)
+                for tree in csv_file:
+                    parsed_tree = tree.rstrip().split(",")
+                    if parsed_tree[0] == corpus:
+                        case_coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
+                        case_coordinates["Total"] = void_to_zero(parsed_tree[3])
+
+            case_space.append(case_coordinates)
 
         matrix = np.array([[0. for _ in case_space] for _ in basis])
         for row, b in enumerate(basis):
             for column, case_vec in enumerate(case_space):
                 matrix[row, column] = case_vec.get(b, 0.) / case_vec["Total"] if case_vec["Total"] != 0. else 0.
 
-        def get_angle(treebank, case_space_matrix, vector_filename):
+        def get_angle(case_space_matrix, vector_filename):
             with open(f"RelDep_Matches/RelDep_matching_Case={vector_filename[1]}.csv", "r") as csvfile:
                 vec_attr = next(csvfile).rstrip().split(",")[4:]
-                for treebank_vector in filter(lambda t: t[0] == vector_filename[0], csvfile):
-                    vec = treebank_vector.rstrip().split(",")
-                    case_dict = dict(zip(vec_attr, map(void_to_zero, vec[4:])))
-                    case_dict["Total"] = void_to_zero(vec[3])
+                for frequencies in csvfile:
+                    parsed_vector = frequencies.rstrip().split(",")
+                    if parsed_vector[0] == corpus:
+                        case_dict = dict(zip(vec_attr, map(void_to_zero, parsed_vector[4:])))
+                        case_dict["Total"] = void_to_zero(parsed_vector[3])
 
             vector = [0. for _ in basis]
             for coordinate, base_vector in enumerate(basis):
                 vector[coordinate] = case_dict.get(base_vector, 0.) / case_vec["Total"] if case_vec[
                                                                                                "Total"] != 0. else 0.
 
-            dimension = scipy.linalg.orth(case_space_matrix)
-            if dimension.shape[1]:
-                a = angle(vector, dimension)
+            if case_space_matrix.shape[1]:
+                a = angle(vector, case_space_matrix)
             else:
                 a = np.nan
-            return treebank, vector_filename[0] + f"_Case={vector_filename[1]}", a
+            return vector_filename[0] + f"_Case={vector_filename[1]}", a
 
+        dimension = scipy.linalg.orth(matrix)
         with tqdm_joblib(
                 tqdm(
                     desc=f"Angles for {corpus}", leave=False, colour="#ffe500", position=1,
@@ -654,7 +657,7 @@ def compute_angles_csv():
             angles.append(
                 dict(
                     joblib.Parallel(n_jobs=8, verbose=0)(
-                        joblib.delayed(get_angle)(corpus, matrix, [all_banks[j], c]) for j in range(len(all_banks))
+                        joblib.delayed(get_angle)(dimension, [all_banks[j], c]) for j in range(len(all_banks))
                         for c in gf
                     )
                 )
@@ -662,9 +665,49 @@ def compute_angles_csv():
         pandas.DataFrame(angles).to_csv(f"Proximities/Vector_Angle_Proximity.csv", index=False)
 
 
-def tabulize_csv(grammar_feature):
+def euclidean_reldep_matrix_csv(grammar_feature):
+    basis = overall_basis_csv()
+    treebanks = []
+    with open(f"RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.csv") as f:
+        header = next(f).split(",")[4:]
+        lines = f.readlines()
+        mat = np.array([[0. for _ in lines] for _ in basis])
+        for row, line in enumerate(lines):
+            reldep_frequencies = line.rstrip().split(",")
+            treebanks.append(f"{reldep_frequencies[0]}_{grammar_feature[0]}={grammar_feature[1]}")
+            coordinate_dict = dict(zip(header, map(void_to_zero, reldep_frequencies[4:])))
+            for index, koln in enumerate(basis):
+                mat[index, row] = coordinate_dict.get(koln, 0.)
+    for i in range(len(mat[0])):
+        euclid = npl.norm(mat[:, i])
+        if euclid != 0.:
+            mat[:, i] /= euclid
+
+    return treebanks, mat
+
+
+def manhattan_reldep_matrix_csv(grammar_feature):
+    basis = overall_basis_csv()
+    treebanks = []
+    with open(f"RelDep_Matches/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.csv") as f:
+        header = next(f).split(",")[4:]
+        lines = f.readlines()
+        mat = np.array([[0. for _ in lines] for _ in basis])
+        for row, line in enumerate(lines):
+            reldep_frequencies = line.rstrip().split(",")
+            treebanks.append(f"{reldep_frequencies[0]}_{grammar_feature[0]}={grammar_feature[1]}")
+            coordinate_dict = dict(zip(header, map(void_to_zero, reldep_frequencies[4:])))
+            total = void_to_zero(reldep_frequencies[3])
+            if total != 0.:
+                for index, koln in enumerate(basis):
+                    mat[index, row] = coordinate_dict.get(koln, 0.) / total
+
+    return treebanks, mat
+
+
+def tabulize_angles_csv(grammar_feature):
     try:
-        with open(f"Proximities/Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}"):
+        with open(f"Proximities/Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}.csv"):
             pass
     except FileNotFoundError:
         print(f"Tabulizing for {grammar_feature[0]}={grammar_feature[1]}")
@@ -680,7 +723,6 @@ def tabulize_csv(grammar_feature):
                 total = void_to_zero(reldep_frequencies[3])
                 if total != 0.:
                     mat[:, row] = coordinates / total
-
         for i in range(len(mat[0])):
             euclidean_norm = npl.norm(mat[:, i])
             if euclidean_norm != 0:
@@ -689,14 +731,49 @@ def tabulize_csv(grammar_feature):
         dot_mat = np.matmul(np.transpose(mat), mat)
         pandas.DataFrame(data=dot_mat, columns=treebanks).to_csv(
             f"Proximities/Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}.csv"
+        )
+
+
+def tabulize_angle_pair_csv(gf1, gf2):
+    try:
+        with open(f"Proximities/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv"):
+            pass
+    except FileNotFoundError:
+        treebanks1, mat1 = euclidean_reldep_matrix_csv(gf1)
+        treebanks2, mat2 = euclidean_reldep_matrix_csv(gf2)
+        dot_mat = mat1.T.dot(mat2)
+        pandas.DataFrame(data=dot_mat, columns=treebanks1).to_csv(
+            f"Proximities/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv"
+            )
+
+
+def compute_distances_csv():
+    for c1, c2 in tqdm(zip(gf, gf), colour="#7d1dd3"):
+        try:
+            with open(f"Proximities/Distances_{c1}_{c2}.csv") :
+                pass
+        except FileNotFoundError:
+            treebanks1, mat1 = manhattan_reldep_matrix_csv(("Case", c1))
+            treebanks2, mat2 = manhattan_reldep_matrix_csv(("Case", c2))
+            shape = np.shape(mat1)
+            distance_mat = np.array([[0. for _ in range(shape[1])] for _ in range(shape[0])])
+            for column, v1 in enumerate(mat1):
+                for row, v2 in enumerate(mat2):
+                    distance_mat[row, column] = distance(v1, v2)
+            pandas.DataFrame(data=distance_mat, columns=treebanks1).to_csv(
+                f"Proximities/Distances_{c1}_{c2}.csv"
             )
 
 
 gf = ["Nom", "Acc", "Dat", "Gen", "Voc", "Loc", "Abl", "Abs", "Erg"]
 
 if __name__ == "__main__":
-    for g in gf:
-        tabulize_csv(("Case", g))
+    # tabulize_pair_csv(("Case", "Nom"), ("Case", "Acc"))
+    for g1, g2 in tqdm(zip(gf, gf), colour="#7d1dd3"):
+        tabulize_angle_pair_csv(["Case", g1], ["Case", g2])
+    # for g in gf:
+    #   tabulize_csv(("Case", g))
     # compute_distances_xl()
     # compute_vector_case_space_angles_xl()
     # print(case_space_case_angle_csv("hu_szeged-ud-dev", ["sah_yktdt-ud-test", "Acc"]))
+    compute_angles_csv()
