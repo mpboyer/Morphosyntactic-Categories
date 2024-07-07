@@ -528,6 +528,12 @@ def overall_basis_csv():
     return basis
 
 
+def void_to_zero(s):
+    if s == '':
+        return 0.
+    return float(s)
+
+
 def get_vector_csv(treebank, case):
     with open(f"RelDep_Matches/RelDep_matching_Case={case}.csv", "r") as csv_file:
         attributes = csv_file[0].split(",")[4:]
@@ -539,26 +545,25 @@ def get_vector_csv(treebank, case):
 def get_matrix_csv(treebank):
     basis = set()
     case_space = []
-    for csv in filter(lambda t: t[-4:] == ".csv", os.listdir("RelDep_Matches")):
+    for csv in sorted(filter(lambda t: t[-4:] == ".csv" and t[16:20] == "Case", os.listdir("RelDep_Matches"))):
         with open(f"RelDep_Matches/{csv}", "r") as csv_file:
             attributes = next(csv_file).rstrip().split(",")[4:]
-            for tree in filter(lambda t: t[0] == treebank, csv_file):
-                coordinates = tree.rstrip().split(",")[4:]
-        case_space.append(dict(zip(attributes, coordinates)))
+            for tree in csv_file:
+                parsed_tree = tree.rstrip().split(",")
+                if parsed_tree[0] == treebank:
+                    coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
+                    coordinates["Total"] = void_to_zero(parsed_tree[3])
+        case_space.append(coordinates)
         basis |= set(attributes)
 
     matrix = np.array([[0. for _ in case_space] for _ in basis])
     for row, b in enumerate(basis):
         for column, vector in enumerate(case_space):
-            matrix[row, column] = vector.get(b, 0.)
+            total = vector["Total"]
+            if total != 0.:
+                matrix[row, column] = vector.get(b, 0.) / total
 
     return matrix
-
-
-def void_to_zero(s):
-    if s == '':
-        return 0.
-    return float(s)
 
 
 def enhanced_get_matrix_csv(treebank, treebank_case):
@@ -745,19 +750,21 @@ def tabulize_angle_pair_csv(gf1, gf2):
         dot_mat = mat1.T.dot(mat2)
         pandas.DataFrame(data=dot_mat, columns=treebanks1).to_csv(
             f"Proximities/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv"
-            )
+        )
 
 
 def compute_distances_csv():
-    for c1, c2 in tqdm(itertools.product(gf, gf), colour="#7d1dd3", desc="Computing Vector-Vector Distances", total=len(gf)**2):
+    for c1, c2 in tqdm(
+            itertools.product(gf, gf), colour="#7d1dd3", desc="Computing Vector-Vector Distances", total=len(gf) ** 2
+    ):
         try:
-            with open(f"Proximities/Distances_{c1}_{c2}.csv") :
+            with open(f"Proximities/Distances_{c1}_{c2}.csv"):
                 pass
         except FileNotFoundError:
             treebanks1, mat1 = manhattan_reldep_matrix_csv(("Case", c1))
             treebanks2, mat2 = manhattan_reldep_matrix_csv(("Case", c2))
             shape = np.shape(mat1)
-            distance_mat = np.array([[0. for _ in range(shape[1])] for _ in range(shape[0])])
+            distance_mat = np.array([[0. for _ in range(shape[1])] for _ in range(shape[1])])
             for column, v1 in enumerate(mat1):
                 for row, v2 in enumerate(mat2):
                     distance_mat[row, column] = distance(v1, v2)
@@ -766,10 +773,34 @@ def compute_distances_csv():
             )
 
 
+def closest(treebank1, treebank2):
+    matrix1, matrix2 = get_matrix_csv(treebank1), get_matrix_csv(treebank2)
+    m1_dicts = {}
+    m2_dicts = {}
+    all_cases = sorted(filter(lambda t: t[-4:] == ".csv" and t[16:20] == "Case", os.listdir("RelDep_Matches")))
+    for col, csv in filter(lambda n: np.any(matrix1[:, n[0]]), enumerate(all_cases)):
+        m1_dicts[csv[-7:-4]] = dict(
+            [(c[-7:-4], distance(matrix1[:, col], matrix2[:, i])) for i, c in
+             filter(lambda n: np.any(matrix2[:, n[0]]), enumerate(all_cases))]
+            )
+    for col, csv in filter(lambda n: np.any(matrix2[:, n[0]]), enumerate(all_cases)):
+        m2_dicts[csv[-7:-4]] = dict(
+            [(c[-7:-4], distance(matrix2[:, col], matrix1[:, i])) for i, c in
+             filter(lambda n: np.any(matrix1[:, n[0]]), enumerate(all_cases))]
+            )
+    for m in m1_dicts:
+        mk = min(m1_dicts[m], key=m1_dicts[m].get)
+        m1_dicts[m] = mk, m1_dicts[m][mk]
+    for m in m2_dicts:
+        mk = min(m2_dicts[m], key=m2_dicts[m].get)
+        m2_dicts[m] = mk, m2_dicts[m][mk]
+    return treebank1, m1_dicts, treebank2, m2_dicts
+
+
 gf = ["Nom", "Acc", "Dat", "Gen", "Voc", "Loc", "Abl", "Abs", "Erg"]
 
 if __name__ == "__main__":
-    # tabulize_pair_csv(("Case", "Nom"), ("Case", "Acc"))
+    tabulize_angle_pair_csv(("Case", "Nom"), ("Case", "Acc"))
     #    for g1, g2 in tqdm(itertools.product(gf, gf), colour="#7d1dd3", desc="Computing Vector-Vector Angles", total=len(gf)**2):
     #       tabulize_angle_pair_csv(["Case", g1], ["Case", g2])
     # for g in gf:
@@ -778,4 +809,12 @@ if __name__ == "__main__":
     # compute_vector_case_space_angles_xl()
     # print(case_space_case_angle_csv("hu_szeged-ud-dev", ["sah_yktdt-ud-test", "Acc"]))
     # compute_angles_csv()
-    compute_distances_csv()
+    # compute_distances_csv()
+
+    # t1, m1, t2, m2 = closest("ru_gsd-ud-train", "cs_cac-ud-dev")
+    # print(f"Proximities for {t1} to {t2}")
+    # for k, v in m1.items():
+    #     print(f"{k} : {v}")
+    # print(f"Proxmities for {t2} to {t1}")
+    # for k, v in m2.items():
+    #     print(f"{k} : {v}")
