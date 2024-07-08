@@ -12,3 +12,4 @@ Administratif/*
 */.idea/*
 *.idea/*
 *__pycache*
+!/Morphosyntactic-Categories_Code/Proximities_Case/

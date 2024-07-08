@@ -75,6 +75,7 @@ def get_vector_csv(treebank, case):
 def get_matrix_csv(treebank):
     basis = overall_basis_csv()
     case_space = []
+    cases = []
     for csv in sorted(filter(lambda t: t[-4:] == ".csv" and t[16:20] == "Case", os.listdir(f"{VECTOR_DIR}"))):
         with open(f"{VECTOR_DIR}/{csv}", "r") as csv_file:
             attributes = next(csv_file).rstrip().split(",")[4:]
@@ -83,10 +84,8 @@ def get_matrix_csv(treebank):
                 if parsed_tree[0] == treebank:
                     coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
                     coordinates["Total"] = void_to_zero(parsed_tree[3])
-        try:
-            case_space.append(coordinates)
-        except UnboundLocalError:
-            pass
+                    case_space.append(coordinates)
+                    cases.append(csv[-7:-4])
 
     matrix = np.array([[0. for _ in case_space] for _ in basis])
     for row, b in enumerate(basis):
@@ -95,7 +94,7 @@ def get_matrix_csv(treebank):
             if total != 0.:
                 matrix[row, column] = vector.get(b, 0.) / total
 
-    return matrix
+    return cases, matrix
 
 
 def enhanced_get_matrix_csv(treebank, treebank_case):
@@ -116,11 +115,7 @@ def enhanced_get_matrix_csv(treebank, treebank_case):
                 if parsed_tree[0] == treebank:
                     case_coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
                     case_coordinates["Total"] = void_to_zero(parsed_tree[3])
-
-        try:
-            case_space_vectors.append(case_coordinates)
-        except UnboundLocalError:
-            pass
+                    case_space_vectors.append(case_coordinates)
 
     case_space_matrix = np.array([[0. for _ in case_space_vectors] for _ in basis])
     case_vector = np.array([0. for _ in basis])
@@ -170,10 +165,7 @@ def compute_angles_csv():
                     if parsed_tree[0] == corpus:
                         case_coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
                         case_coordinates["Total"] = void_to_zero(parsed_tree[3])
-            try:
-                case_space.append(case_coordinates)
-            except UnboundLocalError:
-                pass
+                        case_space.append(case_coordinates)
 
         matrix = np.array([[0. for _ in case_space] for _ in basis])
         for row, b in enumerate(basis):
@@ -339,20 +331,21 @@ def compute_distances_csv():
 
 
 def closest(treebank1, treebank2):
-    matrix1, matrix2 = get_matrix_csv(treebank1), get_matrix_csv(treebank2)
+    case1, matrix1 = get_matrix_csv(treebank1)
+    case2, matrix2 = get_matrix_csv(treebank2)
     m1_dicts = {}
     m2_dicts = {}
-    all_cases = get_all_cases()
-    for col, csv in filter(lambda n: np.any(matrix1[:, n[0]]), enumerate(all_cases)):
-        m1_dicts[csv[-7:-4]] = dict(
-            [(c[-7:-4], distance(matrix1[:, col], matrix2[:, i])) for i, c in
-             filter(lambda n: np.any(matrix2[:, n[0]]), enumerate(all_cases))]
+
+    for col, case in enumerate(case1):
+        m1_dicts[case] = dict(
+            [(c, distance(matrix1[:, col], matrix2[:, i])) for i, c in enumerate(case2)]
         )
-    for col, csv in filter(lambda n: np.any(matrix2[:, n[0]]), enumerate(all_cases)):
-        m2_dicts[csv[-7:-4]] = dict(
-            [(c[-7:-4], distance(matrix2[:, col], matrix1[:, i])) for i, c in
-             filter(lambda n: np.any(matrix1[:, n[0]]), enumerate(all_cases))]
+
+    for col, case in enumerate(case2):
+        m2_dicts[case] = dict(
+            [(c, distance(matrix2[:, col], matrix1[:, i])) for i, c in enumerate(case1)]
         )
+
     for m in m1_dicts:
         mk = min(m1_dicts[m], key=m1_dicts[m].get)
         m1_dicts[m] = mk, m1_dicts[m][mk]
@@ -362,7 +355,17 @@ def closest(treebank1, treebank2):
     return treebank1, m1_dicts, treebank2, m2_dicts
 
 
+def format_dict(d):
+    for key, value in d.items():
+        print('{} : {}'.format(key, value))
+
+
 if __name__ == "__main__":
     # compute_angles_csv()
     # compute_distances_csv()
-    tabulize_angle_pairs_csv()
+    # tabulize_angle_pairs_csv()
+    t1, d1, t2, d2 = closest("ru_gsd-ud-dev", "cs_cltt-ud-dev")
+    print(f"Distances for {t1}")
+    format_dict(d1)
+    print(f"Distances for {t2}")
+    format_dict(d2)
