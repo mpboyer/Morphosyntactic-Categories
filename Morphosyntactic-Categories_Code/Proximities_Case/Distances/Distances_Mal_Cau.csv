@@ -1,0 +1,10 @@
+,Treebank,am_att-ud-test_Case=Mal
+0,hu_szeged-ud-dev_Case=Cau,15.663971399361019
+1,hu_szeged-ud-test_Case=Cau,21.29225211197726
+2,hu_szeged-ud-train_Case=Cau,19.70685160039523
+3,egy_ujaen-ud-test_Case=Cau,0.6
+4,mdf_jr-ud-test_Case=Cau,0.6
+5,wbp_ufal-ud-test_Case=Cau,0.6
+6,eu_bdt-ud-train_Case=Cau,0.6
+7,eu_bdt-ud-test_Case=Cau,0.6
+8,eu_bdt-ud-dev_Case=Cau,0.6

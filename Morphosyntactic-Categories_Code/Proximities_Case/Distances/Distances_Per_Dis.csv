@@ -1,0 +1,4 @@
+,Treebank,ess_sli-ud-test_Case=Per,tpn_tudet-ud-test_Case=Per,wbp_ufal-ud-test_Case=Per
+0,hu_szeged-ud-dev_Case=Dis,1.5456030825826172,0.7071067811865476,0.7071067811865476
+1,hu_szeged-ud-test_Case=Dis,1.3743685418725535,0.0,0.0
+2,hu_szeged-ud-train_Case=Dis,1.3743685418725535,0.0,0.0

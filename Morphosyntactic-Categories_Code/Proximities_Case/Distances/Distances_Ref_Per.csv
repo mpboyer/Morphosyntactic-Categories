@@ -1,0 +1,4 @@
+,Treebank,gub_tudet-ud-test_Case=Ref,tpn_tudet-ud-test_Case=Ref,gn_oldtudet-ud-test_Case=Ref,eme_tudet-ud-test_Case=Ref
+0,ess_sli-ud-test_Case=Per,0.4714045207910317,1.3743685418725535,1.3743685418725535,1.3743685418725535
+1,tpn_tudet-ud-test_Case=Per,1.3743685418725535,0.0,0.0,0.0
+2,wbp_ufal-ud-test_Case=Per,1.3743685418725535,0.0,0.0,0.0

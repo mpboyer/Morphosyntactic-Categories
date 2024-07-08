@@ -1,0 +1,4 @@
+,Treebank,sah_yktdt-ud-test_Case=Cmp,ml_ufal-ud-test_Case=Cmp,egy_ujaen-ud-test_Case=Cmp,mdf_jr-ud-test_Case=Cmp,myv_jr-ud-test_Case=Cmp,myv_jr-ud-train_Case=Cmp,kpv_lattice-ud-test_Case=Cmp,sjo_xdt-ud-test_Case=Cmp,koi_uh-ud-train_Case=Cmp,gu_gujtb-ud-test_Case=Cmp
+0,hu_szeged-ud-dev_Case=Dis,1.224744871391589,2.345207879911715,0.7071067811865476,0.7071067811865476,0.7071067811865476,12.864680330268607,0.7071067811865476,10.653637876331258,0.7071067811865476,1.224744871391589
+1,hu_szeged-ud-test_Case=Dis,1.0,2.23606797749979,0.0,0.0,0.0,12.84523257866513,0.0,10.63014581273465,0.0,1.0
+2,hu_szeged-ud-train_Case=Dis,1.0,2.23606797749979,0.0,0.0,0.0,12.84523257866513,0.0,10.63014581273465,0.0,1.0

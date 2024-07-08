@@ -1,0 +1,4 @@
+,Treebank,hu_szeged-ud-dev_Case=Sbl,hu_szeged-ud-test_Case=Sbl,hu_szeged-ud-train_Case=Sbl
+0,hu_szeged-ud-dev_Case=Dis,1.4387834968626447,1.3791511070288835,1.404577372973326
+1,hu_szeged-ud-test_Case=Dis,1.2622811750152136,1.1840852064015472,1.2136052062629963
+2,hu_szeged-ud-train_Case=Dis,1.2622811750152136,1.1840852064015472,1.2136052062629963

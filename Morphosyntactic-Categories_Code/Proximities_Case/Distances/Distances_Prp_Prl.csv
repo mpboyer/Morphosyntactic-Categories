@@ -1,0 +1,7 @@
+,Treebank,kpv_ikdp-ud-test_Case=Prp,kpv_lattice-ud-test_Case=Prp
+0,mdf_jr-ud-test_Case=Prl,0.5651941652604391,20.330259330476935
+1,myv_jr-ud-test_Case=Prl,0.8244316223920575,20.135284639160183
+2,myv_jr-ud-train_Case=Prl,0.8006241061929585,20.167740903556
+3,kpv_ikdp-ud-test_Case=Prl,1.0,21.494185260204677
+4,kpv_lattice-ud-test_Case=Prl,1.4361406616345072,19.7753002505651
+5,koi_uh-ud-test_Case=Prl,0.0,20.71231517720798

@@ -6,7 +6,7 @@ from tqdm import tqdm
 import get_case_conllu
 
 UDDIR = "ud-treebanks-v2.14"
-
+SAVE_DIR = "RelDep_Matches_Case"
 
 def empacker(filename):
     files = filename.split("/")
@@ -18,14 +18,14 @@ def empacker(filename):
         pass
 
     try:
-        os.mkdir(out + '/RelDep_Matches_Case')
+        os.mkdir(out + f'/{SAVE_DIR}')
     except FileExistsError:
         pass
 
     case_vectors = get_case_conllu.vectorize(f"{UDDIR}/{filename}")
 
     for c, vector in case_vectors:
-        with open(f"{out}/RelDep_Matches_Case/RelDep_matching_Case={c}.txt", "w") as f:
+        with open(f"{out}/{SAVE_DIR}/RelDep_matching_Case={c}.txt", "w") as f:
             f.write(vector)
 
 
@@ -46,9 +46,9 @@ def get_all_cases():
         content = os.listdir(f"{UDDIR}/{treebank}")
         for corpus in list(filter(lambda t: t[-7:] == ".conllu", content)):
             present_cases = list(
-                filter(lambda t: t[16:20] == "Case", os.listdir(f"{treebank}/{corpus}/RelDep_Matches_Case"))
+                    filter(lambda t: t[16:20] == "Case", os.listdir(f"{UDDIR}/{treebank}/{corpus[:-7]}/{SAVE_DIR}"))
             )
-            cases |= set(present_cases)
+            cases |= set([t[21:24] for t in present_cases])
     return cases
 
 
@@ -57,7 +57,7 @@ def from_vectors_to_csvs():
     for case in cases:
         rel_dep_matching_grammar_feature = f'RelDep_matching_Case={case}'
         try:
-            open(f"RelDep_Matches_Case/{rel_dep_matching_grammar_feature}.csv", "r")
+            open(f"{SAVE_DIR}/{rel_dep_matching_grammar_feature}.csv", "r")
         except FileNotFoundError:
             print(f"Tabulating Case")
             value_dicts = []
@@ -73,20 +73,21 @@ def from_vectors_to_csvs():
                     )
                     , colour="#7d1dd3"
             )):
-                vec_coordinates = {}
+
                 treebanks, treebank = c
                 treebank = treebank[:-7]
                 pbar.set_description(f"Tabulating {treebanks}/{treebank}")
-                vec_coordinates["Treebank"] = treebank
                 try:
                     with open(
-                            f"{UDDIR}/{treebanks}/{treebank}/RelDep_Matches_Case/{rel_dep_matching_grammar_feature}.txt"
+                            f"{UDDIR}/{treebanks}/{treebank}/{SAVE_DIR}/{rel_dep_matching_grammar_feature}.txt"
                     ) as f:
                         results = f.readlines()
                     results[0] = results[0].split(" ")
 
-                    vec_coordinates["Number of Sentences"] = results[0][3]
-                    vec_coordinates["Failures"] = results[0][8]
+                    vec_coordinates = {
+                        "Treebank": treebank,
+                        "Number of Sentences": results[0][3],
+                        "Failures": results[0][8]}
                     total_values = 0
                     for line in results[2:]:
                         res = line.split(" ")
@@ -96,16 +97,17 @@ def from_vectors_to_csvs():
                         total_values += int(number)
                         fieldnames.add(reldep)
                     vec_coordinates["Total"] = total_values
+                    value_dicts.append(vec_coordinates)
                 except FileNotFoundError:
                     pass
-                value_dicts.append(vec_coordinates)
+
             pbar.set_description("Tabulating Treebanks Done")
             pbar.close()
             pandas.DataFrame(value_dicts).to_csv(
-                f"RelDep_Matches_Case/{rel_dep_matching_grammar_feature}.csv", index=False
+                f"{SAVE_DIR}/{rel_dep_matching_grammar_feature}.csv", index=False
             )
 
 
 if __name__ == "__main__":
-    process_all_banks()
+    # process_all_banks()
     from_vectors_to_csvs()

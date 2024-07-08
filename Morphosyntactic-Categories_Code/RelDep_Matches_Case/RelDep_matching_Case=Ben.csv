@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,obl,Total,case,obj,nsubj,det,amod,conj,aux,flat,nmod,orphan,cop,mark
+ml_ufal-ud-test,218,0,2.0,2,,,,,,,,,,,,
+egy_ujaen-ud-test,721,0,,147,146.0,1.0,,,,,,,,,,
+si_stb-ud-test,100,0,,1,,,1.0,,,,,,,,,
+ta_mwtt-ud-test,534,0,4.0,4,,,,,,,,,,,,
+eu_bdt-ud-train,5396,0,63.0,79,,,,3.0,4.0,2.0,1.0,5.0,1.0,,,
+eu_bdt-ud-test,1799,0,18.0,28,,,,2.0,1.0,,2.0,2.0,2.0,1.0,,
+eu_bdt-ud-dev,1798,0,17.0,24,,,,1.0,2.0,2.0,,,1.0,,1.0,
+am_att-ud-test,1074,0,,31,22.0,,,,,,,,,,,9.0
+ab_abnc-ud-test,263,0,2.0,2,,,,,,,,,,,,

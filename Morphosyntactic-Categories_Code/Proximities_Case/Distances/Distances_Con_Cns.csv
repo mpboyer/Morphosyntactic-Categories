@@ -1,0 +1,4 @@
+,Treebank,kmr_mg-ud-train_Case=Con,kmr_mg-ud-test_Case=Con
+0,si_stb-ud-test_Case=Cns,8.448372624357901,6.590246548178099
+1,kpv_lattice-ud-test_Case=Cns,11.973930014828047,9.907268912419791
+2,wbp_ufal-ud-test_Case=Cns,11.973930014828047,9.907268912419791

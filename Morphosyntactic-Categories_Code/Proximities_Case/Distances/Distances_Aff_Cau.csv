@@ -1,0 +1,10 @@
+,Treebank,urb_tudet-ud-test_Case=Aff,_Case=Aff
+0,hu_szeged-ud-dev_Case=Cau,27.09243436828813,15.652475842498529
+1,hu_szeged-ud-test_Case=Cau,30.56141357987225,21.283796653792763
+2,hu_szeged-ud-train_Case=Cau,29.614185789921695,19.697715603592208
+3,egy_ujaen-ud-test_Case=Cau,22.561028345356956,0.0
+4,mdf_jr-ud-test_Case=Cau,22.561028345356956,0.0
+5,wbp_ufal-ud-test_Case=Cau,22.561028345356956,0.0
+6,eu_bdt-ud-train_Case=Cau,22.561028345356956,0.0
+7,eu_bdt-ud-test_Case=Cau,22.561028345356956,0.0
+8,eu_bdt-ud-dev_Case=Cau,22.561028345356956,0.0

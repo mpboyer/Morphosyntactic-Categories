@@ -1,0 +1,18 @@
+Treebank,Number of Sentences,Failures,dep:infl,Total,obl,obj,case,amod,mark,advmod,nmod,advcl,obl:tmod,conj,nummod,parataxis:discourse,root,compound,flat,compound:redup,csubj,nmod:poss,discourse
+ess_sli-ud-test,309,0,3.0,3,,,,,,,,,,,,,,,,,,,
+gub_tudet-ud-test,1182,0,,8,7.0,1.0,,,,,,,,,,,,,,,,,
+egy_ujaen-ud-test,721,0,,42,,,34.0,5.0,3.0,,,,,,,,,,,,,,
+ky_ktmu-ud-test,701,0,,11,1.0,,,2.0,,3.0,4.0,1.0,,,,,,,,,,,
+tt_nmctt-ud-test,148,0,,9,5.0,,,,,,,4.0,,,,,,,,,,,
+tr_gb-ud-test,2880,0,,5,4.0,,,,,,,,1.0,,,,,,,,,,
+ota_boun-ud-train,114,0,,1,1.0,,,,,,,,,,,,,,,,,,
+ota_boun-ud-test,400,0,,3,3.0,,,,,,,,,,,,,,,,,,
+qtd_sagt-ud-test,805,0,,3,,,,,,,,2.0,,1.0,,,,,,,,,
+qtd_sagt-ud-dev,801,0,,10,5.0,,,,,,1.0,,,,1.0,2.0,1.0,,,,,,
+qtd_sagt-ud-train,578,0,,5,3.0,,,,,,1.0,,,,,1.0,,,,,,,
+tr_imst-ud-train,3435,0,,26,14.0,,,3.0,,1.0,5.0,1.0,,,,,,1.0,1.0,,,,
+tr_imst-ud-dev,1100,0,,5,1.0,1.0,,1.0,,,,1.0,,,,,,1.0,,,,,
+tr_imst-ud-test,1100,0,,7,4.0,,,,,,2.0,,,1.0,,,,,,,,,
+tr_boun-ud-dev,979,0,,5,2.0,,,1.0,,,,1.0,,,1.0,,,,,,,,
+tr_boun-ud-test,979,0,,8,2.0,,,1.0,,,1.0,2.0,,,,,,,1.0,1.0,,,
+tr_boun-ud-train,7803,0,,47,26.0,,,5.0,,,3.0,2.0,3.0,1.0,2.0,,1.0,,,,1.0,1.0,2.0

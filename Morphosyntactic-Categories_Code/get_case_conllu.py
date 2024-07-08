@@ -1,14 +1,5 @@
 import os
-import argparse
 import re
-
-parser = argparse.ArgumentParser()
-parser.add_argument("-fi", "--filename", help=".conllu file containing a UD-Treebank.", required=True)
-parser.add_argument("-v", "--verbose", required=False)
-parser.add_argument("-p", "--property", help="UD-RELDEP which we're studying.", required=False)
-parser.add_argument("-f", "--feature_type", help="Morphosyntactic category we want to study.", required=True)
-parser.add_argument("-val", "--value", help="Value of the studied feature", required=True)
-args = parser.parse_args()
 
 
 def is_prefix(s1: str, s2: str) -> bool:

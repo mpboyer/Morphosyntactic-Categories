@@ -1,0 +1,4 @@
+,Treebank,hu_szeged-ud-dev_Case=Sbl,hu_szeged-ud-test_Case=Sbl,hu_szeged-ud-train_Case=Sbl
+0,si_stb-ud-test_Case=Cns,3.539963031010609,3.599784542644546,3.5769804047801053
+1,kpv_lattice-ud-test_Case=Cns,1.2622811750152136,1.1840852064015472,1.2136052062629963
+2,wbp_ufal-ud-test_Case=Cns,1.2622811750152136,1.1840852064015472,1.2136052062629963

@@ -1,0 +1,6 @@
+,Treebank,am_att-ud-test_Case=Mal
+0,kpv_ikdp-ud-test_Case=Egr,4.621688003316537
+1,kpv_lattice-ud-test_Case=Egr,10.385566907973777
+2,kpv_lattice-ud-train_Case=Egr,0.6
+3,koi_uh-ud-train_Case=Egr,0.6
+4,koi_uh-ud-test_Case=Egr,0.6

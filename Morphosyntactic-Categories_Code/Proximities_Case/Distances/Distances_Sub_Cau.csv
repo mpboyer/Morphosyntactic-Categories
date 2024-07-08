@@ -1,0 +1,10 @@
+,Treebank,egy_ujaen-ud-test_Case=Sub
+0,hu_szeged-ud-dev_Case=Cau,15.678010077812809
+1,hu_szeged-ud-test_Case=Cau,21.302582003128165
+2,hu_szeged-ud-train_Case=Cau,19.677398201998148
+3,egy_ujaen-ud-test_Case=Cau,0.894427190999916
+4,mdf_jr-ud-test_Case=Cau,0.894427190999916
+5,wbp_ufal-ud-test_Case=Cau,0.894427190999916
+6,eu_bdt-ud-train_Case=Cau,0.894427190999916
+7,eu_bdt-ud-test_Case=Cau,0.894427190999916
+8,eu_bdt-ud-dev_Case=Cau,0.894427190999916

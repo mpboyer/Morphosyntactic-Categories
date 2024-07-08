@@ -1,0 +1,11 @@
+,Treebank,arr_tudet-ud-test_Case=Sim
+0,sah_yktdt-ud-test_Case=Cmp,1.0
+1,ml_ufal-ud-test_Case=Cmp,2.23606797749979
+2,egy_ujaen-ud-test_Case=Cmp,0.0
+3,mdf_jr-ud-test_Case=Cmp,0.0
+4,myv_jr-ud-test_Case=Cmp,0.0
+5,myv_jr-ud-train_Case=Cmp,12.84523257866513
+6,kpv_lattice-ud-test_Case=Cmp,0.0
+7,sjo_xdt-ud-test_Case=Cmp,10.63014581273465
+8,koi_uh-ud-train_Case=Cmp,0.0
+9,gu_gujtb-ud-test_Case=Cmp,1.0

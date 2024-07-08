@@ -1,0 +1,7 @@
+,Treebank,kpv_lattice-ud-test_Case=Apr,koi_uh-ud-test_Case=Apr
+0,et_ewt-ud-train_Case=Add,5.648228998302348,1.1031249959354035
+1,et_ewt-ud-test_Case=Add,5.641852790406113,1.0971739059265513
+2,et_ewt-ud-dev_Case=Add,5.646051827123792,1.1131093143438395
+3,et_edt-ud-dev_Case=Add,5.659874520856159,1.1993603737502958
+4,et_edt-ud-train_Case=Add,5.663816432834958,1.2279528687939976
+5,et_edt-ud-test_Case=Add,5.671441792768882,1.2709256503688648

@@ -1,0 +1,4 @@
+,Treebank,kmr_mg-ud-train_Case=Con,kmr_mg-ud-test_Case=Con
+0,hu_szeged-ud-dev_Case=Dis,11.994790535895156,9.932470855884734
+1,hu_szeged-ud-test_Case=Dis,11.973930014828047,9.907268912419791
+2,hu_szeged-ud-train_Case=Dis,11.973930014828047,9.907268912419791

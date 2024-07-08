@@ -1,0 +1,3 @@
+,Treebank,hu_szeged-ud-dev_Case=Del,hu_szeged-ud-test_Case=Del,hu_szeged-ud-train_Case=Del
+0,kpv_ikdp-ud-test_Case=Prp,0.2939723678960656,0.10649955403405117,0.28019779169211134
+1,kpv_lattice-ud-test_Case=Prp,20.50684920209662,20.64109542674223,20.517490092390883

@@ -1,0 +1,16 @@
+Treebank,Number of Sentences,Failures,obl,nmod:obl,flat:name,conj,Total,nmod,det,root,amod,advmod:deg,advmod:tmod,obl:lmod,case,advmod:lmod,obl:tmod,flat,appos,nummod,orphan,advcl,parataxis
+hu_szeged-ud-dev,441,0,9,1.0,2.0,1.0,13,,,,,,,,,,,,,,,,
+hu_szeged-ud-test,449,0,12,,,,12,,,,,,,,,,,,,,,,
+hu_szeged-ud-train,910,0,24,2.0,,1.0,27,,,,,,,,,,,,,,,,
+et_ewt-ud-train,5444,0,20,,,2.0,29,4.0,1.0,2.0,,,,,,,,,,,,,
+et_ewt-ud-test,913,0,4,,,,5,,,1.0,,,,,,,,,,,,,
+et_ewt-ud-dev,833,0,5,,,,6,1.0,,,,,,,,,,,,,,,
+olo_kkpp-ud-test,106,0,1,,,,2,,,,1.0,,,,,,,,,,,,
+vep_vwt-ud-test,103,0,2,,,,2,,,,,,,,,,,,,,,,
+kpv_ikdp-ud-test,214,0,1,,,,2,,,,,1.0,,,,,,,,,,,
+kpv_lattice-ud-test,643,0,7,,,1.0,23,1.0,,,,3.0,3.0,5.0,1.0,1.0,1.0,,,,,,
+et_edt-ud-dev,3128,0,43,,,1.0,50,3.0,,,,,,,,,,1.0,1.0,1.0,,,
+et_edt-ud-train,24615,0,309,,,18.0,379,32.0,,5.0,,,,,,,,1.0,,4.0,5.0,1.0,4.0
+et_edt-ud-test,3214,0,41,,,2.0,51,7.0,,1.0,,,,,,,,,,,,,
+ab_abnc-ud-test,263,0,1,,,,1,,,,,,,,,,,,,,,,
+gu_gujtb-ud-test,187,0,1,,,,1,,,,,,,,,,,,,,,,
