@@ -2,6 +2,10 @@ import os
 import re
 
 
+forbidden_reldeps = []
+forbidden_pos = []
+
+
 def is_prefix(s1: str, s2: str) -> bool:
     """
     Looks at len(s1) first chars in b to check if s1 is a prefix of s2.
@@ -75,13 +79,16 @@ def vectorize(filename):
                         attributes["predecessor"] = str(word + offset)
                     if features == "_":
                         pass
+                    elif annotations[3] in forbidden_pos:
+                        pass
                     else:
                         features = features.split("|")
                         for feature in features:
                             feature = feature.split("=")
                             if feature[0] == 'Case':
-                                attributes[feature[0]] = feature[1]
-                                cases.add(feature[1])
+                                if feature[1] not in forbidden_reldeps:
+                                    attributes[feature[0]] = feature[1]
+                                    cases.add(feature[1])
                     sentence_dict[attributes["position"]] = attributes
 
             except IndexError:

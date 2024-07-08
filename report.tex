@@ -47,19 +47,19 @@
     \subsection{Avec la distance Cosinus}
     On trouve par exemple les résultats suivants:
 
-    \input{\codedir/DuoProximity/Case=Acc_Proximity}
+    \input{\codedir/DuoProximity_Recent/Case=Acc_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Dat_Proximity}
+    \input{\codedir/DuoProximity_Recent/Case=Dat_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Gen_Proximity}
+    \input{\codedir/DuoProximity_Recent/Case=Gen_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Loc_Proximity}
+    \input{\codedir/DuoProximity_Recent/Case=Loc_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Nom_Proximity}
+    \input{\codedir/DuoProximity_Recent/Case=Nom_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Voc_Proximity}
+    \input{\codedir/DuoProximity_Recent/Case=Voc_Proximity}
 
-    \input{\codedir/DuoProximity/Case=Abl_Proximity}
+    \input{\codedir/DuoProximity_Recent/Case=Abl_Proximity}
 
     \subsection{Avec l'algorithme de \textsc{Zassenhaus}}
     On considère les espaces vectoriels engendrés par la représentation vectorielle du système de cas d'une langue, que l'on appellera \textit{espaces de cas}.
@@ -73,7 +73,8 @@
     Ici intervient le premier résultat tangible de ce rapport: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $10^{-16}$.
     En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
     En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)
-    \textit{ای}\footnote{Translit=āī} est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
+    % \textit{ای}\footnote{Translit=āī}
+    est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
     Ce lemme agit donc en réalité plus comme une apposition.
     Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.
     Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, et que par ailleurs, les corpus UD ne sont pas faits pour ce genre de traitement.
@@ -81,9 +82,16 @@
     \subsection{Distance Euclidienne}
     On considère cette fois la distance euclidienne entre tous deux vecteurs.
     Exemple Czech - Russe:
-    \begin{tabular}[cccc]
-        Gen RU & Gen CZ & Dat RU & Dat CZ\\
-
+    \begin{tabular}{>{\tt}rcccc}
+        &Dat RU & Gen CZ & Gen RU & Dat CZ\\
+        Total & 1711 & 2631 & 2070 & 277\\
+        obl & 450 & 208 & 219 & 48\\
+        iobj & 340 & 0 & 0 & 0\\
+        amod & 243 & 736 & 475 & 54\\
+        nmod & 300 & 1000 & 980 & 24\\
+        conj & 112 & 225 & 84 & 21\\
+        case & 0 & 340 & 1 & 87\\
+        det & 34 & 80 & 79 & 3
     \end{tabular}
     On enlève ensuite \texttt{amod, conj, det} puisque ces reldep démontrent l'accord vers la tête, et donc des doublons dans les données.
     On enlève aussi case, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus.

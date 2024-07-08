@@ -8,6 +8,7 @@ import get_case_conllu
 UDDIR = "ud-treebanks-v2.14"
 SAVE_DIR = "RelDep_Matches_Case"
 
+
 def empacker(filename):
     files = filename.split("/")
     pwd = f"{UDDIR}/{files[0]}"
@@ -109,5 +110,5 @@ def from_vectors_to_csvs():
 
 
 if __name__ == "__main__":
-    # process_all_banks()
+    process_all_banks()
     from_vectors_to_csvs()
