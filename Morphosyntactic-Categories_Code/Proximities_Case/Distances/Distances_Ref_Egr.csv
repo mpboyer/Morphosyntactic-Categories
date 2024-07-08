@@ -1,6 +1,0 @@
-,Treebank,gub_tudet-ud-test_Case=Ref,tpn_tudet-ud-test_Case=Ref,gn_oldtudet-ud-test_Case=Ref,eme_tudet-ud-test_Case=Ref
-0,kpv_ikdp-ud-test_Case=Egr,3.4960294939005054,4.58257569495584,4.58257569495584,4.58257569495584
-1,kpv_lattice-ud-test_Case=Egr,9.168181692983378,10.36822067666386,10.36822067666386,10.36822067666386
-2,kpv_lattice-ud-train_Case=Egr,1.3743685418725535,0.0,0.0,0.0
-3,koi_uh-ud-train_Case=Egr,1.3743685418725535,0.0,0.0,0.0
-4,koi_uh-ud-test_Case=Egr,1.3743685418725535,0.0,0.0,0.0

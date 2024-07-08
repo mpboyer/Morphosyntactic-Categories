@@ -1,6 +1,0 @@
-,Treebank,hu_szeged-ud-dev_Case=Dis,hu_szeged-ud-test_Case=Dis,hu_szeged-ud-train_Case=Dis
-0,kpv_ikdp-ud-test_Case=Egr,4.636809247747852,4.58257569495584,4.58257569495584
-1,kpv_lattice-ud-test_Case=Egr,10.392304845413264,10.36822067666386,10.36822067666386
-2,kpv_lattice-ud-train_Case=Egr,0.7071067811865476,0.0,0.0
-3,koi_uh-ud-train_Case=Egr,0.7071067811865476,0.0,0.0
-4,koi_uh-ud-test_Case=Egr,0.7071067811865476,0.0,0.0

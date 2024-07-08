@@ -1,7 +1,0 @@
-,Treebank,kmr_mg-ud-train_Case=Con,kmr_mg-ud-test_Case=Con
-0,et_ewt-ud-train_Case=Add,10.958989940420297,8.895513028473962
-1,et_ewt-ud-test_Case=Add,10.960859200603872,8.896729088872268
-2,et_ewt-ud-dev_Case=Add,10.943928357826296,8.880515146059054
-3,et_edt-ud-dev_Case=Add,10.857612583823764,8.786663539985435
-4,et_edt-ud-train_Case=Add,10.832524641852636,8.763248771268943
-5,et_edt-ud-test_Case=Add,10.792188521789571,8.7222029613047
