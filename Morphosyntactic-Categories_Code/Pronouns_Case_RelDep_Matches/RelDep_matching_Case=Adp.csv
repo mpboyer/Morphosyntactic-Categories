@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,det,obj,obl,obl:cau,root
+kpv_ikdp-ud-test,214,0,4,,,,,3,1.0,
+kpv_lattice-ud-test,643,0,15,1.0,1.0,1.0,1.0,10,,1.0

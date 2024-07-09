@@ -5,8 +5,9 @@ from tqdm import tqdm
 
 import get_case_conllu
 
+MODE = "Pronouns"
 UDDIR = "ud-treebanks-v2.14"
-SAVE_DIR = "Case_RelDep_Matches"
+SAVE_DIR = f"{MODE}_Case_RelDep_Matches"
 
 
 def empacker(filename):

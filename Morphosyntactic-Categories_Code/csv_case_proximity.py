@@ -12,16 +12,16 @@ import graphviz
 from linalg import angle, distance
 
 UDDIR = "ud-treebanks-v2.14"
-NOUNS_ONLY = False
-VECTOR_DIR = "Nouns_Case_RelDep_Matches" if NOUNS_ONLY else "Case_RelDep_Matches"
-SAVE_DIR = "Nouns_Case_Proximities" if NOUNS_ONLY else "Case_Proximities"
+MODE = "Pronouns"
+VECTOR_DIR = f"{MODE}_Case_RelDep_Matches"
+SAVE_DIR = f"{MODE}_Case_Proximities"
 
 import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--f1")
 parser.add_argument("--f2")
-parser.add_argument("-nouns", "--nouns", type=bool)
+parser.add_argument("-mode", "--mode")
 files = parser.parse_args()
 
 
@@ -388,10 +388,10 @@ def closest_graph(treebank1, treebank2):
     for (k, v) in edge2.items():
         graphical.edge(f"{corpus2}_{k}", f"{corpus1}_{v[0]}", label=f"{v[1]:.3f}")
 
-    if NOUNS_ONLY:
-        graphical.render(f"Figures/gnn_{corpus1}_{corpus2}_Nouns_Only", format="pdf")
+    if MODE:
+        graphical.render(f"Figures/gnn_{corpus1}_{corpus2}_{MODE}_Only", format="pdf")
         try:
-            os.remove(f"Figures/gnn_{corpus1}_{corpus2}_Nouns_Only")
+            os.remove(f"Figures/gnn_{corpus1}_{corpus2}_{MODE}_Only")
         except FileNotFoundError:
             pass
     else:
@@ -417,5 +417,5 @@ if __name__ == "__main__":
     # format_dict(d1)
     # print(f"Distances for {t2}")
     # format_dict(d2)
-    NOUNS_ONLY = files.nouns
+    MODE = files.nouns
     closest_graph(files.f1, files.f2)

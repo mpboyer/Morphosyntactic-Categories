@@ -2,7 +2,7 @@ import re
 
 
 forbidden_reldeps = ["det", "conj", "case"]
-allowed_pos = ["NOUN"]
+allowed_pos = ["PRON"]
 
 
 def is_prefix(s1: str, s2: str) -> bool:
