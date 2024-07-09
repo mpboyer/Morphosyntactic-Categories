@@ -78,8 +78,8 @@ def vectorize(filename):
                         attributes["predecessor"] = str(word + offset)
                     if features == "_":
                         pass
-                    elif annotations[3] not in allowed_pos:
-                        pass
+                    # elif annotations[3] not in allowed_pos:
+                    #     pass
                     else:
                         features = features.split("|")
                         for feature in features:

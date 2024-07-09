@@ -7,18 +7,21 @@ import numpy as np
 import numpy.linalg as npl
 import os
 import contextlib
+import graphviz
 
 from linalg import angle, distance
 
 UDDIR = "ud-treebanks-v2.14"
-VECTOR_DIR = "Nouns_Case_RelDep_Matches"
-SAVE_DIR = "Nouns_Case_Proximities"
+NOUNS_ONLY = False
+VECTOR_DIR = "Nouns_Case_RelDep_Matches" if NOUNS_ONLY else "Case_RelDep_Matches"
+SAVE_DIR = "Nouns_Case_Proximities" if NOUNS_ONLY else "Case_Proximities"
 
 import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--f1")
 parser.add_argument("--f2")
+parser.add_argument("-nouns", "--nouns", type=bool)
 files = parser.parse_args()
 
 
@@ -190,7 +193,8 @@ def compute_angles_csv():
 
             vector = [0. for _ in basis]
             for coordinate, base_vector in enumerate(basis):
-                vector[coordinate] = case_dict.get(base_vector, 0.) / case_dict["Total"] if case_dict["Total"] != 0. else 0.
+                vector[coordinate] = case_dict.get(base_vector, 0.) / case_dict["Total"] if case_dict[
+                                                                                                "Total"] != 0. else 0.
 
             if case_space_matrix.shape[1]:
                 a = angle(vector, case_space_matrix)
@@ -213,7 +217,9 @@ def compute_angles_csv():
             for_corpus["Treebank"] = corpus
             angles.append(for_corpus)
 
-    pandas.DataFrame(angles, columns=sorted(for_corpus, key=lambda t: "" if t == "Treebank" else t)).to_csv(f"{SAVE_DIR}/Vector_Angle_Proximity.csv", index=False)
+    pandas.DataFrame(angles, columns=sorted(for_corpus, key=lambda t: "" if t == "Treebank" else t)).to_csv(
+        f"{SAVE_DIR}/Vector_Angle_Proximity.csv", index=False
+        )
 
 
 def euclidean_reldep_matrix_csv(grammar_feature):
@@ -301,7 +307,7 @@ def tabulize_angle_pairs_csv():
             treebanks2, mat2 = euclidean_reldep_matrix_csv(gf2)
             dot_mat = mat1.T.dot(mat2)
             result_dicts = [{
-                                "Treebank": f"{bank}_{c1}"} for bank in treebanks1]
+                "Treebank": f"{bank}_{c1}"} for bank in treebanks1]
             for column, bank1 in enumerate(treebanks1):
                 for row, bank2 in enumerate(treebanks2):
                     result_dicts[column][bank2] = dot_mat[column, row]
@@ -323,7 +329,7 @@ def compute_distances_csv():
             treebanks1, mat1 = manhattan_reldep_matrix_csv(("Case", c1))
             treebanks2, mat2 = manhattan_reldep_matrix_csv(("Case", c2))
             distance_dicts = [{
-                                  "Treebank": c} for c in treebanks2]
+                "Treebank": c} for c in treebanks2]
             for column, treebank in enumerate(treebanks1):
                 for row in range(len(treebanks2)):
                     v1 = mat1[:, column]
@@ -346,10 +352,10 @@ def closest(treebank1, treebank2):
     for row in range(len(case1)):
         for col in range(len(case2)):
             distance_matrix[row][col] = str(distance(matrix1[:, row], matrix2[:, col]))[:5]
-    print(str.join("\t", tuple(case1)))
-    print(str.join("\t", tuple(case2)))
-    for d in distance_matrix:
-        print(str.join("\t", tuple(d)))
+    # print(str.join("\t", tuple(case1)))
+    # print(str.join("\t", tuple(case2)))
+    # for d in distance_matrix:
+    #     print(str.join("\t", tuple(d)))
 
     for col, case in enumerate(case1):
         m1_dicts[case] = dict(
@@ -370,6 +376,32 @@ def closest(treebank1, treebank2):
     return treebank1, m1_dicts, treebank2, m2_dicts
 
 
+def closest_graph(treebank1, treebank2):
+    node1, edge1, node2, edge2 = closest(treebank1, treebank2)
+    corpus1 = treebank1.split("-")[0]
+    corpus2 = treebank2.split("-")[0]
+    graphical = graphviz.Digraph(
+        f"Graph of Nearest Neighbours for Noun Cases in {corpus1}, {corpus2}"
+        ) if NOUNS_ONLY else graphviz.Digraph(f"Graph of Nearest Neighbours for Cases in {corpus1}, {corpus2}")
+    for (k, v) in edge1.items():
+        graphical.edge(f"{corpus1}_{k}", f"{corpus2}_{v[0]}", label=f"{v[1]:.3f}")
+    for (k, v) in edge2.items():
+        graphical.edge(f"{corpus2}_{k}", f"{corpus1}_{v[0]}", label=f"{v[1]:.3f}")
+
+    if NOUNS_ONLY:
+        graphical.render(f"Figures/gnn_{corpus1}_{corpus2}_Nouns_Only", format="pdf")
+        try:
+            os.remove(f"Figures/gnn_{corpus1}_{corpus2}_Nouns_Only")
+        except FileNotFoundError:
+            pass
+    else:
+        graphical.render(f"Figures/gnn_{corpus1}_{corpus2}", format="pdf")
+        try:
+            os.remove(f"Figures/gnn_{corpus1}_{corpus2}")
+        except FileNotFoundError:
+            pass
+
+
 def format_dict(d):
     for key, value in d.items():
         print(f'{key} : {value[0]}, Distance = {value[1]:.5f}')
@@ -380,8 +412,10 @@ if __name__ == "__main__":
     # compute_distances_csv()
     # tabulize_angle_pairs_csv()
     # print(len(get_all_cases()), len(overall_basis_csv()))
-    t1, d1, t2, d2 = closest(files.f1, files.f2)
-    print(f"Distances for {t1}")
-    format_dict(d1)
-    print(f"Distances for {t2}")
-    format_dict(d2)
+    # t1, d1, t2, d2 = closest(files.f1, files.f2)
+    # print(f"Distances for {t1}")
+    # format_dict(d1)
+    # print(f"Distances for {t2}")
+    # format_dict(d2)
+    NOUNS_ONLY = files.nouns
+    closest_graph(files.f1, files.f2)

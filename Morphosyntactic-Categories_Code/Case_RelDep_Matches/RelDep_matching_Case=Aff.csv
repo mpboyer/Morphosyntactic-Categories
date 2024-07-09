@@ -1,2 +1,2 @@
-Treebank,Number of Sentences,Failures,Total,amod,nmod,nsubj,obj
-urb_tudet-ud-test,83,0,20,2,2,2,14
+Treebank,Number of Sentences,Failures,Total,amod,iobj,nmod,nsubj,obj,obl
+urb_tudet-ud-test,83,0,36,2,1,2,10,20,1

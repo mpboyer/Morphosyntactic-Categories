@@ -1,2 +1,3 @@
-Treebank,Number of Sentences,Failures,Total,conj,nmod,obl,obl:lmod,obl:tmod
-kpv_lattice-ud-test,643,0,15,2,1,2,9,1
+Treebank,Number of Sentences,Failures,Total,advmod:lmod,conj,nmod,obl,obl:lmod,obl:tmod
+kpv_lattice-ud-test,643,0,21,2.0,3.0,1.0,3.0,10,2.0
+koi_uh-ud-test,94,0,2,,,,,2,

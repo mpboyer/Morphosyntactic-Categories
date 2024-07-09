@@ -26,8 +26,7 @@
     \end{quote}
     {\flushright
     {\textit{Martin Haspelmath}, \textsc{How comparative concepts and descriptive linguistic categories are different}}}
-    Selon Haspelmath, il est possible que la manière de décrire les langues en linguistique soit basée sur des envies de comparaison, parfois mal placées
-.
+    Selon Haspelmath, il est possible que la manière de décrire les langues en linguistique soit basée sur des envies de comparaison, parfois mal placées.
     Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et
     comparer les descriptions dans différents langages de catégories linguistiques comparatives.\\
     Pour ce faire, nous allons considérer que les relations de dépendances (\textit{reldep}
@@ -85,7 +84,7 @@
     \subsection{Distance Euclidienne}
     On considère cette fois la distance euclidienne entre tous deux vecteurs, qu'on aura au préalable normalisés pour qu'ils représentent des distributions de probabilité.
     On utilise ces données pour déterminer, entre deux corpus (ici le Czech-CLTT et le Russian-GSD), quel cas de l'autre langage est le plus proche d'un cas du premier.
-    On obtient qu'ici, le datif russe est plus proche du génitif tchèque que du datif tchèque. 
+    On obtient qu'ici, le datif russe est plus proche du génitif tchèque que du datif tchèque.
     \begin{table}[H]
 	    \centering
     \begin{tabular}{>{\tt}r|cccc}
@@ -105,10 +104,27 @@
 	\caption{Extraits des Vecteurs de Reldep pour le Russe et le Tchèque}
     \end{table}
 
-    En considérant le graphe orienté des plus proches voisins, celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$.
-    On enlève ensuite \texttt{amod, conj, det} puisque ces reldep démontrent l'accord vers la tête, et donc des doublons dans les données.
-    On enlève aussi case, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus.
-
+    En considérant le graphe orienté des plus proches voisins, on remarque que celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$ et décrit des relations de proximité minimale.
+    On obtient alors le graphe suivant pour le tchèque et le russe:
+    \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=\textwidth]{\codedir/Figures/gnn_ru_gsd_cs_cltt.pdf}
+    \end{figure}
+    \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=\textwidth]{\codedir/Figures/gnn_fi_ftb_et_ewt.pdf}
+    \end{figure}
+    On enlève ensuite \texttt{conj, det} puisque ces reldep démontrent l'accord vers la tête, et donc des doublons dans les données et on se restreint aux mots de nature \textit{Nom}. Ceci permet d'éviter la variance liée aux adjectifs, pronoms et dans de rares cas (ceux-ci restant majoritairement au cas absolu) aux adverbes.
+    On enlève aussi case, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus, et de l'usage dans les grammaires du langage.\\
+    On obtient alors le graphe suivant pour le tchèque et le russe:
+    \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=\textwidth]{\codedir/Figures/gnn_ru_gsd_cs_cltt_Nouns_Only.pdf}
+    \end{figure}
+    \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=\textwidth]{\codedir/Figures/gnn_fi_ftb_et_ewt_Nouns_Only.pdf}
+    \end{figure}
 
 
 
