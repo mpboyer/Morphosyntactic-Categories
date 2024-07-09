@@ -17,9 +17,8 @@
     \end{abstract}
 
 
-    \section{Why ?}\label{sec:why-?}
-    Martin Haspelmath sur la différence entre une catégorie linguistique descriptive dans un langage et une catégorie
-    linguistique comparative dans le méta-langage:
+    \section{Pourquoi?}\label{sec:Pourquoi?}
+    Cette citation de Martin Haspelmath sur la différence entre une catégorie linguistique descriptive dans un langage et une catégorie linguistique comparative dans le méta-langage est le point de départ de notre étude.
     \begin{quote}
         There is a fundamental distinction between language-particular categories of languages (which descriptive
         linguists must describe by descriptive categories of their descriptions) and comparative concepts (which
@@ -27,63 +26,72 @@
     \end{quote}
     {\flushright
     {\textit{Martin Haspelmath}, \textsc{How comparative concepts and descriptive linguistic categories are different}}}
+    Selon Haspelmath, il est possible que la manière de décrire les langues en linguistique soit basée sur des envies de comparaison, parfois mal placées
+.
     Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et
-    comparer les descriptions dans différents langages de catégories linguistiques comparatives.
+    comparer les descriptions dans différents langages de catégories linguistiques comparatives.\\
     Pour ce faire, nous allons considérer que les relations de dépendances (\textit{reldep}
     ) décrites par les annotations de \textsc{Universal Dependencies} (UD)
     sont une manière de représenter des catégories comparatives.
 
 
     \section{Première Approche.}\label{sec:premiere-approche.}
-    Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs
-    \textit{reldep} ne peuvent instancier une même catégorie comparative.
-    En comptant le nombre d'instances de chaque \textit{reldep}
-    pour un mot vérifiant une propriété grammaticale de la langue (i.e.\
-    une catégorie descriptive, que l'on représente par une \textit{feature}
-    d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories
-    descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
+    Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs \textit{reldep} ne peuvent instancier une même catégorie comparative.
+    En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une \textit{feature} d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
     Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, accessibles en ligne.
 
     \subsection{Avec la distance Cosinus}
-    On trouve par exemple les résultats suivants:
+    On mesure en utilisant la distance Cosinus entre deux vecteurs\footnote{$d_{\cos}(v_{1},v_{2}) = \frac{\scalar{v_{1}\mid v_{2}}}{\norm{v_{1}}\norm{v_{2}}}$}, la proximité entre ceux ci. On obtient alors les résultats suivants pour quelques cas:
 
-    \input{\codedir/DuoProximity_Recent/Case=Acc_Proximity}
 
-    \input{\codedir/DuoProximity_Recent/Case=Dat_Proximity}
+    \input{\codedir/Old Sources/DuoProximity_Recent/Case=Acc_Proximity}
 
-    \input{\codedir/DuoProximity_Recent/Case=Gen_Proximity}
+    \input{\codedir/Old Sources/DuoProximity_Recent/Case=Dat_Proximity}
 
-    \input{\codedir/DuoProximity_Recent/Case=Loc_Proximity}
+    \input{\codedir/Old Sources/DuoProximity_Recent/Case=Gen_Proximity}
 
-    \input{\codedir/DuoProximity_Recent/Case=Nom_Proximity}
+    \input{\codedir/Old Sources/DuoProximity_Recent/Case=Loc_Proximity}
 
-    \input{\codedir/DuoProximity_Recent/Case=Voc_Proximity}
+    \input{\codedir/Old Sources/DuoProximity_Recent/Case=Nom_Proximity}
 
-    \input{\codedir/DuoProximity_Recent/Case=Abl_Proximity}
+    \input{\codedir/Old Sources/DuoProximity_Recent/Case=Voc_Proximity}
+
+    \input{\codedir/Old Sources/DuoProximity_Recent/Case=Abl_Proximity}
+
+    Toutefois, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus. Par ailleurs, les résultats donnés ici sont à pondérer par la présence de nombreux corpus/langages ne possédant pas au moins l'un des cas ci-dessus, ce qui amène à une représentation trop brouillée des informations.
 
     \subsection{Avec l'algorithme de \textsc{Zassenhaus}}
     On considère les espaces vectoriels engendrés par la représentation vectorielle du système de cas d'une langue, que l'on appellera \textit{espaces de cas}.
     Ceux-ci sont d'une certaine dimension finie.
     On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus, permettant de générer une base de l'espace somme et de l'espace intersection.
-    Toutefois, la grande variance au niveau des coordonnées, et la trop faible dimension (au plus 9) dans un grand espace (dimension 218), rend l'intersection toujours nulle numériquement.
+    Toutefois, la grande variance au niveau des coordonnées, et la trop faible dimension (au plus 45, mais souvent de l'odrdre de 5) dans un grand espace (dimension 228), rend l'intersection toujours nulle numériquement.
+    Par ailleurs, cet algorithme est très lent à exécuter car il demande de nombreux appels mémoire pour obtenir la matrice de l'espace de cas de chaque paire de cas, et demande de trouver une base de l'espace de colonne, ce qui est non-trivialement la matrice.
 
     \subsection{Angle entre Cas et Système de Cas}
     On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
     Ceci est fait en considérant le projeté orthogonal d'un vecteur sur un espace de cas et en mesurant l'angle entre les deux (ou la distance cosinus).
-    Ici intervient le premier résultat tangible de ce rapport: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $10^{-16}$.
+    En observant les données de plus près, on trouve une anomalie: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $10^{-16}$.
     En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
     En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)
     % \textit{ای}\footnote{Translit=āī}
     est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
     Ce lemme agit donc en réalité plus comme une apposition.
     Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.
-    Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, et que par ailleurs, les corpus UD ne sont pas faits pour ce genre de traitement.
+    Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, du moins sur le système de cas.
+    Il semble toutefois bon de noter qu'il y a sans doute de nombreuses autres anomalies du style dans les corpus.
+
+    Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une apposition (cf. supra).
 
     \subsection{Distance Euclidienne}
-    On considère cette fois la distance euclidienne entre tous deux vecteurs.
-    Exemple Czech - Russe:
-    \begin{tabular}{>{\tt}rcccc}
+    On considère cette fois la distance euclidienne entre tous deux vecteurs, qu'on aura au préalable normalisés pour qu'ils représentent des distributions de probabilité.
+    On utilise ces données pour déterminer, entre deux corpus (ici le Czech-CLTT et le Russian-GSD), quel cas de l'autre langage est le plus proche d'un cas du premier.
+    On obtient qu'ici, le datif russe est plus proche du génitif tchèque que du datif tchèque. 
+    \begin{table}[H]
+	    \centering
+    \begin{tabular}{>{\tt}r|cccc}
+        \toprule
         &Dat RU & Gen CZ & Gen RU & Dat CZ\\
+        \midrule
         Total & 1711 & 2631 & 2070 & 277\\
         obl & 450 & 208 & 219 & 48\\
         iobj & 340 & 0 & 0 & 0\\
@@ -91,8 +99,17 @@
         nmod & 300 & 1000 & 980 & 24\\
         conj & 112 & 225 & 84 & 21\\
         case & 0 & 340 & 1 & 87\\
-        det & 34 & 80 & 79 & 3
+        det & 34 & 80 & 79 & 3\\
+        \bottomrule
     \end{tabular}
+	\caption{Extraits des Vecteurs de Reldep pour le Russe et le Tchèque}
+    \end{table}
+
+    En considérant le graphe orienté des plus proches voisins, celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$.
     On enlève ensuite \texttt{amod, conj, det} puisque ces reldep démontrent l'accord vers la tête, et donc des doublons dans les données.
     On enlève aussi case, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus.
+
+
+
+
 \end{document}

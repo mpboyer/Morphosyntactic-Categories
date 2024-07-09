@@ -11,8 +11,15 @@ import contextlib
 from linalg import angle, distance
 
 UDDIR = "ud-treebanks-v2.14"
-VECTOR_DIR = "RelDep_Matches_Case"
-SAVE_DIR = "Proximities_Case"
+VECTOR_DIR = "Nouns_Case_RelDep_Matches"
+SAVE_DIR = "Nouns_Case_Proximities"
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--f1")
+parser.add_argument("--f2")
+files = parser.parse_args()
 
 
 @contextlib.contextmanager
@@ -183,8 +190,7 @@ def compute_angles_csv():
 
             vector = [0. for _ in basis]
             for coordinate, base_vector in enumerate(basis):
-                vector[coordinate] = case_dict.get(base_vector, 0.) / case_dict["Total"] if case_dict[
-                                                                                                "Total"] != 0. else 0.
+                vector[coordinate] = case_dict.get(base_vector, 0.) / case_dict["Total"] if case_dict["Total"] != 0. else 0.
 
             if case_space_matrix.shape[1]:
                 a = angle(vector, case_space_matrix)
@@ -207,9 +213,7 @@ def compute_angles_csv():
             for_corpus["Treebank"] = corpus
             angles.append(for_corpus)
 
-    pandas.DataFrame(angles, columns=sorted(for_corpus, key=lambda t: "" if t == "Treebank" else t)).to_csv(
-        f"{SAVE_DIR}/Vector_Angle_Proximity.csv", index=False
-        )
+    pandas.DataFrame(angles, columns=sorted(for_corpus, key=lambda t: "" if t == "Treebank" else t)).to_csv(f"{SAVE_DIR}/Vector_Angle_Proximity.csv", index=False)
 
 
 def euclidean_reldep_matrix_csv(grammar_feature):
@@ -277,7 +281,7 @@ def tabulize_angles_csv(grammar_feature):
 
         dot_mat = np.matmul(np.transpose(mat), mat)
         pandas.DataFrame(data=dot_mat, columns=treebanks).to_csv(
-            f"{SAVE_DIR}/Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}.csv"
+            f"{SAVE_DIR}/Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}.csv", index=False
         )
 
 
@@ -302,7 +306,7 @@ def tabulize_angle_pairs_csv():
                 for row, bank2 in enumerate(treebanks2):
                     result_dicts[column][bank2] = dot_mat[column, row]
             pandas.DataFrame(data=result_dicts, columns=treebanks1).to_csv(
-                f"{SAVE_DIR}/Angles/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv"
+                f"{SAVE_DIR}/Angles/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv", index=False
             )
 
 
@@ -326,15 +330,26 @@ def compute_distances_csv():
                     v2 = mat2[:, row]
                     distance_dicts[row][treebank] = distance(v1, v2)
             pandas.DataFrame(distance_dicts).to_csv(
-                f"{SAVE_DIR}/Distances/Distances_{c1}_{c2}.csv"
+                f"{SAVE_DIR}/Distances/Distances_{c1}_{c2}.csv", index=False
             )
 
 
 def closest(treebank1, treebank2):
     case1, matrix1 = get_matrix_csv(treebank1)
+    # print(case1)
+    # print(matrix1.sum(axis=0))
     case2, matrix2 = get_matrix_csv(treebank2)
     m1_dicts = {}
     m2_dicts = {}
+
+    distance_matrix = [["" for _ in case2] for _ in case1]
+    for row in range(len(case1)):
+        for col in range(len(case2)):
+            distance_matrix[row][col] = str(distance(matrix1[:, row], matrix2[:, col]))[:5]
+    print(str.join("\t", tuple(case1)))
+    print(str.join("\t", tuple(case2)))
+    for d in distance_matrix:
+        print(str.join("\t", tuple(d)))
 
     for col, case in enumerate(case1):
         m1_dicts[case] = dict(
@@ -348,23 +363,24 @@ def closest(treebank1, treebank2):
 
     for m in m1_dicts:
         mk = min(m1_dicts[m], key=m1_dicts[m].get)
-        m1_dicts[m] = mk, m1_dicts[m][mk]
+        m1_dicts[m] = mk, float(m1_dicts[m][mk])
     for m in m2_dicts:
         mk = min(m2_dicts[m], key=m2_dicts[m].get)
-        m2_dicts[m] = mk, m2_dicts[m][mk]
+        m2_dicts[m] = mk, float(m2_dicts[m][mk])
     return treebank1, m1_dicts, treebank2, m2_dicts
 
 
 def format_dict(d):
     for key, value in d.items():
-        print('{} : {}'.format(key, value))
+        print(f'{key} : {value[0]}, Distance = {value[1]:.5f}')
 
 
 if __name__ == "__main__":
     # compute_angles_csv()
     # compute_distances_csv()
     # tabulize_angle_pairs_csv()
-    t1, d1, t2, d2 = closest("ru_gsd-ud-dev", "cs_cltt-ud-dev")
+    # print(len(get_all_cases()), len(overall_basis_csv()))
+    t1, d1, t2, d2 = closest(files.f1, files.f2)
     print(f"Distances for {t1}")
     format_dict(d1)
     print(f"Distances for {t2}")

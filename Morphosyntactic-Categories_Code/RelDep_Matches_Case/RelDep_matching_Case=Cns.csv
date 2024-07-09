@@ -1,4 +1,0 @@
-Treebank,Number of Sentences,Failures,flat,nsubj,obj,Total,obl
-si_stb-ud-test,100,0,1.0,1.0,2.0,4,
-kpv_lattice-ud-test,643,0,,,,3,3.0
-wbp_ufal-ud-test,55,0,,,,1,1.0

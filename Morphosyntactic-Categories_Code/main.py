@@ -6,7 +6,7 @@ from tqdm import tqdm
 import get_case_conllu
 
 UDDIR = "ud-treebanks-v2.14"
-SAVE_DIR = "RelDep_Matches_Case"
+SAVE_DIR = "Case_RelDep_Matches"
 
 
 def empacker(filename):
@@ -60,9 +60,10 @@ def from_vectors_to_csvs():
         try:
             open(f"{SAVE_DIR}/{rel_dep_matching_grammar_feature}.csv", "r")
         except FileNotFoundError:
-            print(f"Tabulating Case")
+            print("Tabulating Case")
             value_dicts = []
-            fieldnames = set()
+            fieldnames = ["Treebank", "Number of Sentences", "Failures", "Total"]
+            fields = set()
 
             for c in (pbar := tqdm(
                     list(
@@ -96,7 +97,7 @@ def from_vectors_to_csvs():
                         number = res[2]
                         vec_coordinates[reldep] = int(number)
                         total_values += int(number)
-                        fieldnames.add(reldep)
+                        fields.add(reldep)
                     vec_coordinates["Total"] = total_values
                     value_dicts.append(vec_coordinates)
                 except FileNotFoundError:
@@ -104,7 +105,7 @@ def from_vectors_to_csvs():
 
             pbar.set_description("Tabulating Treebanks Done")
             pbar.close()
-            pandas.DataFrame(value_dicts).to_csv(
+            pandas.DataFrame(value_dicts, columns=fieldnames + sorted(fields)).to_csv(
                 f"{SAVE_DIR}/{rel_dep_matching_grammar_feature}.csv", index=False
             )
 

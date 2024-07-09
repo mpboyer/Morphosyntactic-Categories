@@ -1,5 +1,6 @@
 Administratif/*
 *.fdb_latexmk
+*.synctex.gz
 *.toc
 *.log
 *.out
@@ -12,5 +13,5 @@ Administratif/*
 */.idea/*
 *.idea/*
 *__pycache*
-!/Morphosyntactic-Categories_Code/Proximities_Case/
-!/Morphosyntactic-Categories_Code/Old\ Sources/
+Morphosyntactic-Categories_Code/*Proximities/
+Morphosyntactic-Categories_Code/Old\ Sources/
