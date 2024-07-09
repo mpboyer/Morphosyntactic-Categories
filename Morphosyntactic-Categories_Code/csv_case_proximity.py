@@ -21,7 +21,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--f1")
 parser.add_argument("--f2")
-parser.add_argument("-mode", "--mode")
+parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
 
@@ -381,8 +381,8 @@ def closest_graph(treebank1, treebank2):
     corpus1 = treebank1.split("-")[0]
     corpus2 = treebank2.split("-")[0]
     graphical = graphviz.Digraph(
-        f"Graph of Nearest Neighbours for Noun Cases in {corpus1}, {corpus2}"
-        ) if NOUNS_ONLY else graphviz.Digraph(f"Graph of Nearest Neighbours for Cases in {corpus1}, {corpus2}")
+        f"Graph of Nearest Neighbours for {MODE} Cases in {corpus1}, {corpus2}" if MODE else f"Graph of Nearest Neighbours for Cases in {corpus1}, {corpus2}"
+        )
     for (k, v) in edge1.items():
         graphical.edge(f"{corpus1}_{k}", f"{corpus2}_{v[0]}", label=f"{v[1]:.3f}")
     for (k, v) in edge2.items():
@@ -417,5 +417,5 @@ if __name__ == "__main__":
     # format_dict(d1)
     # print(f"Distances for {t2}")
     # format_dict(d2)
-    MODE = files.nouns
+    MODE = files.mode
     closest_graph(files.f1, files.f2)
