@@ -408,14 +408,14 @@ def format_dict(d):
 
 
 if __name__ == "__main__":
-    # compute_angles_csv()
-    # compute_distances_csv()
-    # tabulize_angle_pairs_csv()
+    MODE = files.mode
+    compute_angles_csv()
+    compute_distances_csv()
+    tabulize_angle_pairs_csv()
     # print(len(get_all_cases()), len(overall_basis_csv()))
     # t1, d1, t2, d2 = closest(files.f1, files.f2)
     # print(f"Distances for {t1}")
     # format_dict(d1)
     # print(f"Distances for {t2}")
     # format_dict(d2)
-    MODE = files.mode
-    closest_graph(files.f1, files.f2)
+    #closest_graph(files.f1, files.f2)
