@@ -11,10 +11,7 @@ import graphviz
 
 from linalg import angle, distance
 
-UDDIR = "ud-treebanks-v2.14"
-MODE = "Pronouns"
-VECTOR_DIR = f"{MODE}_Case_RelDep_Matches"
-SAVE_DIR = f"{MODE}_Case_Proximities"
+
 
 import argparse
 
@@ -23,6 +20,11 @@ parser.add_argument("--f1")
 parser.add_argument("--f2")
 parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
+
+UDDIR = "ud-treebanks-v2.14"
+MODE = ""
+VECTOR_DIR = f"{MODE}_Case_RelDep_Matches" if MODE else "Case_RelDep_Matches"
+SAVE_DIR = f"{MODE}_Case_Proximities" if MODE else "Case_Proximities"
 
 
 @contextlib.contextmanager
