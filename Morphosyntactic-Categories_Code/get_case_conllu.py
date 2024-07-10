@@ -2,7 +2,7 @@ import re
 
 
 forbidden_reldeps = ["det", "conj", "case"]
-allowed_pos = ["PRON"]
+allowed_pos = ['NOUN']
 
 
 def is_prefix(s1: str, s2: str) -> bool:
@@ -78,8 +78,8 @@ def vectorize(filename):
                         attributes["predecessor"] = str(word + offset)
                     if features == "_":
                         pass
-                    # elif annotations[3] not in allowed_pos:
-                    #     pass
+                    elif annotations[3] not in allowed_pos:
+                        pass
                     else:
                         features = features.split("|")
                         for feature in features:

@@ -354,10 +354,10 @@ def closest(treebank1, treebank2):
     for row in range(len(case1)):
         for col in range(len(case2)):
             distance_matrix[row][col] = str(distance(matrix1[:, row], matrix2[:, col]))[:5]
-    # print(str.join("\t", tuple(case1)))
-    # print(str.join("\t", tuple(case2)))
-    # for d in distance_matrix:
-    #     print(str.join("\t", tuple(d)))
+    print(str.join("\t", tuple(case1)))
+    print(str.join("\t", tuple(case2)))
+    for d in distance_matrix:
+        print(str.join("\t", tuple(d)))
 
     for col, case in enumerate(case1):
         m1_dicts[case] = dict(
@@ -411,13 +411,15 @@ def format_dict(d):
 
 if __name__ == "__main__":
     MODE = files.mode
-    compute_angles_csv()
-    compute_distances_csv()
-    tabulize_angle_pairs_csv()
+    VECTOR_DIR = f"{MODE}_Case_RelDep_Matches" if MODE else "Case_RelDep_Matches"
+    SAVE_DIR = f"{MODE}_Case_Proximities" if MODE else "Case_Proximities"
+    # compute_angles_csv()
+    # compute_distances_csv()
+    # tabulize_angle_pairs_csv()
     # print(len(get_all_cases()), len(overall_basis_csv()))
     # t1, d1, t2, d2 = closest(files.f1, files.f2)
     # print(f"Distances for {t1}")
     # format_dict(d1)
     # print(f"Distances for {t2}")
     # format_dict(d2)
-    #closest_graph(files.f1, files.f2)
+    closest_graph(files.f1, files.f2)
