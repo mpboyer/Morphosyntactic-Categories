@@ -62,7 +62,7 @@ def get_all_banks():
 
 
 def get_all_cases():
-    cases = os.listdir(VECTOR_DIR)
+    cases = list(filter(lambda t: t[0] == "R", os.listdir(VECTOR_DIR)))
     return [c[-7:-4] for c in cases]
 
 
@@ -309,11 +309,11 @@ def tabulize_angle_pairs_csv():
             treebanks2, mat2 = euclidean_reldep_matrix_csv(gf2)
             dot_mat = mat1.T.dot(mat2)
             result_dicts = [{
-                "Treebank": f"{bank}_{c1}"} for bank in treebanks1]
+                "Treebank": f"{bank}_{c1}"} for bank in treebanks2]
             for column, bank1 in enumerate(treebanks1):
                 for row, bank2 in enumerate(treebanks2):
-                    result_dicts[column][bank2] = dot_mat[column, row]
-            pandas.DataFrame(data=result_dicts, columns=treebanks1).to_csv(
+                    result_dicts[row][bank1] = dot_mat[column, row]
+            pandas.DataFrame(data=result_dicts).to_csv(
                 f"{SAVE_DIR}/Angles/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv", index=False
             )
 
@@ -354,10 +354,10 @@ def closest(treebank1, treebank2):
     for row in range(len(case1)):
         for col in range(len(case2)):
             distance_matrix[row][col] = str(distance(matrix1[:, row], matrix2[:, col]))[:5]
-    print(str.join("\t", tuple(case1)))
-    print(str.join("\t", tuple(case2)))
-    for d in distance_matrix:
-        print(str.join("\t", tuple(d)))
+    # print(str.join("\t", tuple(case1)))
+    # print(str.join("\t", tuple(case2)))
+    # for d in distance_matrix:
+    #     print(str.join("\t", tuple(d)))
 
     for col, case in enumerate(case1):
         m1_dicts[case] = dict(
@@ -391,22 +391,40 @@ def closest_graph(treebank1, treebank2):
         graphical.edge(f"{corpus2}_{k}", f"{corpus1}_{v[0]}", label=f"{v[1]:.3f}")
 
     if MODE:
-        graphical.render(f"Figures/gnn_{corpus1}_{corpus2}_{MODE}_Only", format="pdf")
+        graphical.render(f"Figures/GNN/gnn_{corpus1}_{corpus2}_{MODE}_Only", format="pdf")
         try:
-            os.remove(f"Figures/gnn_{corpus1}_{corpus2}_{MODE}_Only")
+            os.remove(f"Figures/GNN/gnn_{corpus1}_{corpus2}_{MODE}_Only")
         except FileNotFoundError:
             pass
     else:
-        graphical.render(f"Figures/gnn_{corpus1}_{corpus2}", format="pdf")
+        graphical.render(f"Figures/GNN/gnn_{corpus1}_{corpus2}", format="pdf")
         try:
-            os.remove(f"Figures/gnn_{corpus1}_{corpus2}")
+            os.remove(f"Figures/GNN/gnn_{corpus1}_{corpus2}")
         except FileNotFoundError:
             pass
+
+
+def format_tuple_dict(d):
+    for key, value in d.items():
+        print(f'{key} : {value[0]}, Distance = {value[1]:.5f}')
 
 
 def format_dict(d):
     for key, value in d.items():
-        print(f'{key} : {value[0]}, Distance = {value[1]:.5f}')
+        print(f'{key} : {value}')
+
+
+
+def sample_size(treebank):
+    sample_size = {}
+    for csv in filter(lambda t: t[-4:] == ".csv", os.listdir(f"{VECTOR_DIR}")):
+        with open(f"{VECTOR_DIR}/{csv}", "r") as csv_file:
+            for tree in csv_file:
+                parsed_tree = tree.rstrip().split(",")
+                if parsed_tree[0] == treebank:
+                    sample_size[csv[-7:-4]] = int(parsed_tree[3])
+    return sample_size
+
 
 
 if __name__ == "__main__":
@@ -419,7 +437,13 @@ if __name__ == "__main__":
     # print(len(get_all_cases()), len(overall_basis_csv()))
     # t1, d1, t2, d2 = closest(files.f1, files.f2)
     # print(f"Distances for {t1}")
-    # format_dict(d1)
+    # format_tuple_dict(d1)
     # print(f"Distances for {t2}")
+    # format_tuple_dict(d2)
+    # d1 = sample_size(files.f1)
+    # print(f"Sample Sizes for {files.f1}")
+    # format_dict(d1)
+    # d2 = sample_size(files.f2)
+    # print(f"Sample Sizes for {files.f2}")
     # format_dict(d2)
-    closest_graph(files.f1, files.f2)
+    # closest_graph(files.f1, files.f2)
