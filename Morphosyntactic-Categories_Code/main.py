@@ -10,6 +10,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
+MODE = files.mode
+UDDIR = "ud-treebanks-v2.14"
+SAVE_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
 
 
 def empacker(filename):
@@ -114,8 +117,5 @@ def from_vectors_to_csvs():
 
 
 if __name__ == "__main__":
-    MODE = files.mode
-    UDDIR = "ud-treebanks-v2.14"
-    SAVE_DIR = f"{MODE}_Case_RelDep_Matches" if MODE else "Case_RelDep_Matches"
     process_all_banks()
     from_vectors_to_csvs()

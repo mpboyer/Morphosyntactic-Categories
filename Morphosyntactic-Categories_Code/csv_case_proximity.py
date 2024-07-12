@@ -11,8 +11,6 @@ import graphviz
 
 from linalg import angle, distance
 
-
-
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -22,9 +20,9 @@ parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
 UDDIR = "ud-treebanks-v2.14"
-MODE = ""
-VECTOR_DIR = f"{MODE}_Case_RelDep_Matches" if MODE else "Case_RelDep_Matches"
-SAVE_DIR = f"{MODE}_Case_Proximities" if MODE else "Case_Proximities"
+MODE = files.mode
+VECTOR_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
+SAVE_DIR = f"../{MODE}_Case_Proximities" if MODE else "../Case_Proximities"
 
 
 @contextlib.contextmanager
@@ -221,7 +219,7 @@ def compute_angles_csv():
 
     pandas.DataFrame(angles, columns=sorted(for_corpus, key=lambda t: "" if t == "Treebank" else t)).to_csv(
         f"{SAVE_DIR}/Vector_Angle_Proximity.csv", index=False
-        )
+    )
 
 
 def euclidean_reldep_matrix_csv(grammar_feature):
@@ -384,7 +382,7 @@ def closest_graph(treebank1, treebank2):
     corpus2 = treebank2.split("-")[0]
     graphical = graphviz.Digraph(
         f"Graph of Nearest Neighbours for {MODE} Cases in {corpus1}, {corpus2}" if MODE else f"Graph of Nearest Neighbours for Cases in {corpus1}, {corpus2}"
-        )
+    )
     for (k, v) in edge1.items():
         graphical.edge(f"{corpus1}_{k}", f"{corpus2}_{v[0]}", label=f"{v[1]:.3f}")
     for (k, v) in edge2.items():
@@ -414,7 +412,6 @@ def format_dict(d):
         print(f'{key} : {value}')
 
 
-
 def sample_size(treebank):
     sample_size = {}
     for csv in filter(lambda t: t[-4:] == ".csv", os.listdir(f"{VECTOR_DIR}")):
@@ -426,11 +423,8 @@ def sample_size(treebank):
     return sample_size
 
 
-
 if __name__ == "__main__":
-    MODE = files.mode
-    VECTOR_DIR = f"{MODE}_Case_RelDep_Matches" if MODE else "Case_RelDep_Matches"
-    SAVE_DIR = f"{MODE}_Case_Proximities" if MODE else "Case_Proximities"
+    print("Il s'agirait d'appeler une fonction")
     # compute_angles_csv()
     # compute_distances_csv()
     # tabulize_angle_pairs_csv()

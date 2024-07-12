@@ -13,5 +13,5 @@ Administratif/*
 */.idea/*
 *.idea/*
 *__pycache*
-Morphosyntactic-Categories_Code/*Proximities/
-Morphosyntactic-Categories_Code/Old\ Sources/
+*Proximities/
+Old_Sources/
