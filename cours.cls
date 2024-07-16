@@ -2,7 +2,7 @@
 \ProvidesClass{cours}
 
 \LoadClassWithOptions{article}
-\RequirePackage[a4paper,margin=3cm]{geometry}
+\RequirePackage[a4paper, margin=2cm]{geometry}
 \RequirePackage{cmap}
 \RequirePackage{lmodern}
 \RequirePackage[utf8]{inputenc}
@@ -142,7 +142,7 @@
 \definecolor{yulm}{HTML}{ffe500}
 
 \hypersetup{
-    linkbordercolor=vulm, 
+    linkbordercolor=vulm,
     citebordercolor=vulm,
     menubordercolor=yulm
 }

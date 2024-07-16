@@ -3,14 +3,14 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
-from gudhi.clustering.tomato import Tomato
-from gudhi.datasets.remote import fetch_spiral_2d
 
+import os
 import contextlib
 import joblib
 import argparse
 import matplotlib.pyplot as plt
 import matplotlib as matplotlib
+import itertools
 # import plotly.express as px
 
 parser = argparse.ArgumentParser()
@@ -20,10 +20,10 @@ parser.add_argument("-i", "--interactive")
 parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
-# if not files.interactive:
-#     matplotlib.use("pgf")
-#     preamble = r"\usepackage{xcolor}\definecolor{vulm}{HTML}{7d1dd3}\definecolor{yulm}{HTML}{ffe500}"
-#     matplotlib.rc("pgf", texsystem="pdflatex", preamble=preamble)
+if not files.interactive:
+    matplotlib.use("pgf")
+    preamble = r"\usepackage{xcolor}\definecolor{vulm}{HTML}{7d1dd3}\definecolor{yulm}{HTML}{ffe500}"
+    matplotlib.rc("pgf", texsystem="pdflatex", preamble=preamble)
 
 
 UDDIR = "ud-treebanks-v2.14"
@@ -66,6 +66,13 @@ def is_prefix(s1: str, s2: str) -> bool:
     return True
 
 
+def fronce(s):
+    match s:
+        case("Nouns"): return "Noms"
+        case("Pronouns"): return "Pronoms"
+        case(_): raise ValueError("Calice!")
+
+
 def get_data_set(case1, case2):
     case1_data_set = pd.read_csv(f"{VECTOR_DIR}/RelDep_matching_Case={case1}.csv")
     case1_data_set.insert(1, "Case", case1, True)
@@ -96,6 +103,8 @@ def pca(case1, case2):
     pca_case = PCA(n_components=2)
     principal_components_case = pca_case.fit_transform(feature_data)
     principal_case_df = pd.DataFrame(data=principal_components_case, columns=['Component 1', 'Component 2'])
+
+    print(pca_case.explained_variance_, pca_case.explained_variance_ratio_)
 
     fig, ax = plt.subplots()
     plt.xticks(fontsize=12)
@@ -169,11 +178,7 @@ def pca(case1, case2):
         plt.savefig(save_path)
 
 
-def fronce(s):
-    match s:
-        case("Pronouns"): return "Pronoms"
-        case("Nouns"): return "Noms"
-        case(_): raise ValueError("C'est pas correc'")
+# pca(files.f1, files.f2)
 
 
 def tsne(case1, case2):
@@ -289,37 +294,100 @@ def tsne(case1, case2):
         plt.savefig(save_path)
 
 
-def plot_tomato(tomat):
-    l = tomat.max_weight_per_cc_.min()
-    r = tomat.max_weight_per_cc_.max()
-    if tomat.diagram_.size > 0:
-        plt.plot(tomat.diagram_[:, 0], tomat.diagram_[:, 1], "o", color="#7d1dd3")
-        l = min(l, tomat.diagram_[:, 1].min())
-        r = max(r, tomat.diagram_[:, 0].max())
-    if l == r:
-        if l > 0:
-            l, r = 0.9 * l, 1.1 * r
-        elif l < 0:
-            l, r = 1.1 * l, 0.9 * r
-        else:
-            l, r = -1.0, 1.0
-    plt.plot([l, r], [l, r])
-    plt.plot(
-        tomat.max_weight_per_cc_, np.full(tomat.max_weight_per_cc_.shape, 1.1 * l - 0.1 * r), "o", color="#ffe500"
-    )
-    
+def tsne_lang_list(allowed_languages):
+    cases = get_cases(allowed_languages)
+    case1 = cases[0]
+    case_data_set = pd.read_csv(f"{VECTOR_DIR}/RelDep_matching_Case={case1}.csv")
+    case_data_set.insert(1, "Case", case1, True)
+    case_data_set["Treebank"].map(lambda n: n + f"_{case1}")
 
-def clustering(case1, case2):
-    case_data_set = get_data_set(case1, case2).values
-    data = case_data_set[:, 5:].copy()
-    for i in range(len(data)):
-        data[i] /= case_data_set[i][4]
-    t = Tomato()
-    t.fit(data)
-    plot_tomato(t)
-    t.n_clusters_ = 2
-    # plt.scatter(data[:,0], data[:, 1], marker='.', s=1, c=t.labels_)
-    plt.show()
-    
+    for case in cases[1:]:
+        case_set = pd.read_csv(f"{VECTOR_DIR}/RelDep_matching_Case={case}.csv")
+        case_set['Treebank'].map(lambda n: n + f"_{case}")
+        case_set.insert(1, "Case", case, True)
+        case_data_set = case_data_set._append(case_set, ignore_index=True)
 
-clustering("Acc", "Nom")
+    for column in case_data_set.columns:
+        case_data_set.replace(
+            {
+                column: np.nan}, 0., inplace=True
+        )
+        
+    # print(case_data_set.head)
+    drop_indices = [i for i, c in enumerate(case_data_set["Treebank"]) if c.split("_")[0] not in allowed_languages]
+    # print(drop_indices)
+    case_data_set.drop(index=drop_indices, axis=0, inplace=True)
+    case_data_set.reset_index(inplace=True)
+    # print(case_data_set.head)
+
+    languages = set([c.split("_")[0] for c in case_data_set["Treebank"]])
+    
+    
+    features = np.array(sorted(case_data_set.columns[5:]))
+    feature_data = case_data_set.loc[:, features].values
+    feature_data = StandardScaler().fit_transform(feature_data)
+
+    shapes = ['2', '+', 'x', '|', '_', '*', '.', '^']
+    # colours = ['#7d1dd3', '#ffe500', '#a45a2a', '#da291c', "#007a33", "#e89cae", "#10069f", "#00a3e0", "#6eceb2"][:len(cases)]
+    cases_indices = dict([(c, i) for i, c in enumerate(cases)])
+
+    tsne_case = TSNE(n_components=2, random_state=42)
+    principal_components_case = tsne_case.fit_transform(feature_data)
+    principal_case_df = pd.DataFrame(data=principal_components_case, columns=['Component 1', 'Component 2'])
+
+    # perplexity = np.arange(5, 700, 5)
+    # divergence = []
+
+    # for i in perplexity:
+    #     model = TSNE(n_components=2, init="pca", perplexity=i)
+    #     reduced = model.fit_transform(feature_data)
+    #     divergence.append(model.kl_divergence_)
+    # fig = px.line(x=perplexity, y=divergence, markers=True)
+    # fig.update_layout(xaxis_title="Perplexity Values", yaxis_title="Divergence")
+    # fig.update_traces(line_color="red", line_width=1)
+    # fig.show()
+
+    fig, ax = plt.subplots()
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=14)
+    plt.xlabel('Composante 1', fontsize=10)
+    plt.ylabel('Composante 2', fontsize=10)
+
+    title = f"Analyse t-SNE à deux Composantes sur les {fronce(MODE)} pour\nles cas de " + " ".join(allowed_languages) if MODE else "Analyse t-SNE à deux Composantes pour\nles cas de " + " ".join(allowed_languages)
+    plt.title(title, fontsize=20)
+    targets = cases
+    
+    for target, shape in zip(allowed_languages, shapes):
+        keep_indices = [i for i, c in enumerate(case_data_set["Treebank"]) if c.split("_")[0] == target]
+        # print(target, keep_indices)
+        colour_indices = [cases_indices[c] for c in case_data_set.loc[keep_indices, 'Case']]
+        # color_indices = [0]
+
+        sc = plt.scatter(
+            principal_case_df.loc[keep_indices, 'Component 1'],
+            principal_case_df.loc[keep_indices, 'Component 2'], c=colour_indices, s=50, marker=shape, cmap='jet')
+
+    
+    save_path = f"{SAVE_DIR}/tsne_cases_{MODE}_{allowed_languages}.pdf" if MODE else f"{SAVE_DIR}/tsne_cases_{allowed_languages}.pdf"
+    plt.savefig(save_path)
+
+
+def get_cases(languages):
+    cases = list(filter(lambda t: t[0] == "R", os.listdir(VECTOR_DIR)))
+    res = []
+    for c in cases:
+        with open(f"{VECTOR_DIR}/{c}", 'r') as csv_file: 
+            for tree in csv_file:
+                if tree.split(',')[0].split('_')[0] in languages:
+                    res.append(c[-7:-4])
+                    break
+    return res
+
+
+studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
+# print(case_list)
+tsne_list(studied_languages)    
+
+
+# TODO: Comparer langues très différents (gnn + t-SNE)
+

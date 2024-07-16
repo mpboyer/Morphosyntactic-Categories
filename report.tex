@@ -31,40 +31,30 @@
     comparer les descriptions dans différents langages de catégories linguistiques comparatives.
 
     \section{Données et \emph{Universal Dependencies}}
-    Pour étudier la thèse d'Haspelmath, nous allons considérer que les relations de dépendances (\textit{reldep}) décrites par les annotations de \textsc{Universal Dependencies} (UD, version 2 décrite dans \cite{deMar21}) sont une manière de représenter des catégories comparatives.
+    Pour étudier la thèse d'Haspelmath, nous allons considérer que les relations de dépendances (\textit{reldep}) décrites par les annotations de \textsc{Universal Dependencies} (UD, version 2 décrite dans \cite{UDv2}) sont une manière de représenter des catégories comparatives.
     Une relation de dépendance est une manière de décrire les relations syntaxiques dans une phrase.
     Elles se déduisent de la construction par une grammaire de dépendance ou contextuelle de la phrase.
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{\codedir/Figures/Visualisations/simplified_ud_annotation.png}
-        \caption{Représentation d'une phrase et de ses relations de dépendances en anglais, source:\cite{deMar21}}
+        \caption{Représentation d'une phrase et de ses relations de dépendances en anglais, source:\cite{UDv2}}
     \end{figure}
-    Il existe 37 relations de dépendances de base, mais les personnes annotant les corpus ont la possibilité d'en créer de nouvelles, sous la syntaxe \texttt{str1:str2:\dots} où \texttt{str1} doit être une relation de dépendance décrite comme relation basique dans la table 3 de \cite{deMar21}.\\
+    Il existe 37 relations de dépendances de base, mais les personnes annotant les corpus ont la possibilité d'en créer de nouvelles, sous la syntaxe \texttt{str1:str2:\dots} où \texttt{str1} doit être une relation de dépendance décrite comme relation basique dans la table 3 de \cite{UDv2}.\\
     Par ailleurs, les mots sont annotés avec les propriétés morphologiques qu'ils possèdent, par exemple leur temps ou leur aspect pour un verbe ou leur cas et leur genre pour un nom.
-    Les propriétés morphologiques universelles utilisées par UD sont décrites table 2 dans \cite{deMar21}.\\
-    Enfin, les mots sont annotés avec leur nature grammaticale (e.g. Nom, Verbe, Pronom\dots) comme décrits table 1 dans \cite{deMar21}.
+    Les propriétés morphologiques universelles utilisées par UD sont décrites table 2 dans \cite{UDv2}.\\
+    Enfin, les mots sont annotés avec leur nature grammaticale (e.g. Nom, Verbe, Pronom\dots) comme décrits table 1 dans \cite{UDv2}.
 
     \section{Première Approche}
     Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs \textit{reldep} ne peuvent instancier une même catégorie comparative.
     En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une \textit{feature} d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
-    Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, version 2.14 décrite dans \cite{Zem24}.
+    Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, version 2.14 décrite dans \cite{UD214}.
 
     \section{Avec la distance Cosinus}
     On mesure en utilisant la distance Cosinus entre deux vecteurs la proximité entre ceux ci: \begin{equation}d_{\cos}(v_{1},v_{2}) = \frac{\scalar{v_{1}\mid v_{2}}}{\norm{v_{1}}\norm{v_{2}}}\end{equation}
 
     On obtient alors les résultats suivants pour quelques cas:
 
-    \input{\codedir/Figures/Visualisations/Angles_Case=Abl_Proximity}
-
-    \input{\codedir/Figures/Visualisations/Angles_Case=Acc_Proximity}
-
-    \input{\codedir/Figures/Visualisations/Angles_Case=Dat_Proximity}
-
     \input{\codedir/Figures/Visualisations/Angles_Case=Gen_Proximity}
-
-    \input{\codedir/Figures/Visualisations/Angles_Case=Ins_Proximity}
-
-    \input{\codedir/Figures/Visualisations/Angles_Case=Loc_Proximity}
 
     \input{\codedir/Figures/Visualisations/Angles_Case=Nom_Proximity}
 
@@ -85,7 +75,7 @@
     \section{Angle entre Cas et Système de Cas}
     On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
     Ceci est fait en considérant le projeté orthogonal d'un vecteur sur un espace de cas et en mesurant l'angle entre les deux (ou la distance cosinus).
-    En observant les données de plus près, on trouve une anomalie: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $10^{-16}$.
+    En observant les données de plus près, on trouve une anomalie: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $\arccos{10^{-16}}$.
     En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
     En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)
     % \textit{ای}\footnote{Translit=āī}
@@ -162,7 +152,7 @@
 			    \midrule
 			    Acc & 2807 & 5960\\
 			    \midrule
-			    Dat & 1029 & 0861\\
+			    Dat & 1029 & 861\\
 			    \midrule
 			    Gen & 7616 & 4378\\
 			    \midrule
@@ -229,18 +219,18 @@ On commence par appliquer une analyse en deux composantes principales (PCA) aux 
 
 \begin{figure}[H]
     \begin{center}
-        \begin{minipage}{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
             \begin{center}
                 \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/pca_Gen_Nom.pdf}
             \end{center}
         \end{minipage}
     \end{center}
-    \begin{minipage}{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
         \begin{center}
             \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/pca_Gen_Nom_Nouns.pdf}
         \end{center}
     \end{minipage}
-    \begin{minipage}{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
         \begin{center}
             \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/pca_Gen_Nom_Pronouns.pdf}
         \end{center}
@@ -248,24 +238,149 @@ On commence par appliquer une analyse en deux composantes principales (PCA) aux 
     \caption{Représentations de l'Analyse en deux Composantes Principales sur le Génitif et le Nominatif}
 \end{figure}
 
+En regardant de plus près, les composantes déterminées par l'algorithme de PCA sont en fait des langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
 
-\subsection{t-SNE}
-On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans \cite{Maa08}
+\subsection{Clustering avec ToMATo}
+L'algorithme est présenté dans \cite{ToMATo}.
 \begin{figure}[H]
     \begin{center}
-        \begin{minipage}{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/tomato_Nom_Gen_Nouns.pdf}
+            \end{center}
+        \end{minipage}
+    \end{center}
+
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/tomato_Nom_Acc_Nouns.pdf}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/tomato_Acc_Gen_Nouns.pdf}
+        \end{center}
+    \end{minipage}
+    \caption{Représentations des clusters trouvés par l'algorithme ToMATo sur les paires de $\{\tt Acc,Nom,Gen\}$}
+\end{figure}
+
+\subsection{Analyse Topologique des Données}
+Pour l'implémentation de ce qui suit, on utilise les biblothèques Python \texttt{Gudhi}, \texttt{POT} et \texttt{Hera}, dont les implémentations sont décrites dans \cite{Gudhi},\cite{PythonPOT}, \cite{Hera}
+\begin{figure}[H]
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/cc_Abl.pdf}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/cc_Acc.pdf}
+        \end{center}
+    \end{minipage}
+    \caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Abl,Acc\}$}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/cc_Loc.pdf}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/cc_Nom.pdf}
+        \end{center}
+    \end{minipage}
+    \caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Loc,Nom\}$}
+\end{figure}
+
+On utilise un complexe cubique pour essayer de représenter au mieux les groupes d'homologie (cf.  pour les détails) de la variété triangulée par les points de chaque cas.
+On remarque qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
+Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes, on obtient le tableau suivant:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|ccccc}
+		\toprule
+		Cas & Abl & Acc & Dat & Loc & Gen\\
+		\midrule
+		Abl & 0.00 & 2.45 & 3.11 & 1.94 & 3.85\\
+		Acc & 2.45 & 0.00 & 1.33 & 1.25 & 1.79\\
+		Dat & 3.11 & 1.33 & 0.00 & 1.63 & 1.27\\
+		Loc & 1.94 & 1.25 & 1.63 & 0.00 & 2.26\\
+		Gen & 3.85 & 1.79 & 1.27 & 2.26 & 0.00\\
+		\bottomrule
+	\end{tabular}
+	\caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes Cubiques pour quelques Cas}
+\end{table}
+Les distances étant assez faibles, on obtient bien le résultat suggéré par les figures, il semble y avoir une structure générale de la notion topologique de variété engendrée par un cas.
+Pour vérifier cette hypothèse, on teste de même en créant le complexe de Rips
+Toutefois, les diagrammes restant très brouillons, il est difficile de trouver une variété plus abstraite avec la même homologie.
+
+\begin{figure}[H]
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/rc_Abl.pdf}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/rc_Acc.pdf}
+        \end{center}
+    \end{minipage}
+    \caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Abl,Acc\}$}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/rc_Loc.pdf}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/rc_Nom.pdf}
+        \end{center}
+    \end{minipage}
+    \caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Loc,Nom\}$}
+\end{figure}
+
+On remarque à nouveau qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
+Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes pour quelques cas, on obtient le tableau suivant:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|cccccc}
+		\toprule
+		Cas & Abl & Acc & Dat & Gen & Loc & Nom\\
+		\midrule
+		Abl & 0.00 & 0.89 & 1.27 & 0.82 & 1.09 & 0.94\\
+		Acc & 0.89 & 0.00 & 1.01 & 0.42 & 1.03 & 0.91\\
+		Dat & 1.27 & 1.01 & 0.00 & 0.87 & 1.47 & 0.76\\
+		Gen & 0.82 & 0.42 & 0.87 & 0.00 & 0.84 & 0.87\\
+		Loc & 1.09 & 1.03 & 1.47 & 0.84 & 0.00 & 1.48\\
+		Nom & 0.94 & 0.91 & 0.76 & 0.87 & 1.48 & 0.00\\
+		\bottomrule
+	\end{tabular}
+	\caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes de Rips pour quelques Cas}
+\end{table}
+
+
+\subsection{t-SNE}
+On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans \cite{tSNE}
+\begin{figure}[H]
+    \begin{center}
+        \begin{minipage}{.5\textwidth}
             \begin{center}
                 \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/tsne_Gen_Nom.pdf}
             \end{center}
         \end{minipage}
     \end{center}
-    
+
     \begin{minipage}{.5\textwidth}
         \begin{center}
             \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/tsne_Gen_Nom_Nouns.pdf}
         \end{center}
     \end{minipage}
-    \begin{minipage}{.q5\textwidth}
+    \begin{minipage}{.5\textwidth}
         \begin{center}
             \includegraphics[width=\linewidth]{\codedir/Figures/Visualisations/tsne_Gen_Nom_Pronouns.pdf}
         \end{center}
@@ -273,10 +388,18 @@ On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans \cite{Maa08
     \caption{Représentations de l'Analyse t-SNE à deux Composantes sur le Génitif et le Nominatif}
 \end{figure}
 
+
+
+\newpage
 \appendix
 
 \bibliography{report.bib}
 \bibliographystyle{alpha-fr}
 
+\newpage
+\appendix
+\tableofcontents
+\listoftables
+\listoffigures
 
 \end{document}

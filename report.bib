@@ -10,7 +10,7 @@
     doi = {10.1515/9783110607963-004}
 }
 
-@article{Maa08,
+@article{tSNE,
     author = {van der Maaten, Laurens and Hinton, Geoffrey},
     year = {2008},
     month = {11},
@@ -21,7 +21,7 @@
     journal = {Journal of Machine Learning Research}
 }
 
-@article{deMar21,
+@article{UDv2,
     author = {de Marneffe, Marie-Catherine and Manning, Christopher D. and Nivre, Joakim and Zeman, Daniel},
     title = "{Universal Dependencies}",
     journal = {Computational Linguistics},
@@ -37,13 +37,85 @@
     eprint = {https://direct.mit.edu/coli/article-pdf/47/2/255/1938138/coli\_a\_00402.pdf},
 }
 
-@misc{Zem24,
+@misc{UD214,
     title = {Universal Dependencies 2.14},
     author = {Zeman, Daniel and others},
     url = {http://hdl.handle.net/11234/1-5502},
     note = {{LINDAT}/{CLARIAH}-{CZ} digital library at the Institute of Formal and Applied Linguistics ({{\'U}FAL}), Faculty of Mathematics and Physics, Charles University},
     copyright = {Licence Universal Dependencies v2.14},
-    year = {2024} 
+    year = {2024}
 }
 
 
+
+@article{SimplexTree,
+  author = {Jean{-}Daniel Boissonnat and Cl{\'{e}}ment Maria},
+  title = {The Simplex Tree: an Efficient Data Structure for General Simplicial Complexes},
+  journal = {CoRR},
+  volume = {abs/2001.02581},
+  year = {2020},
+  url = {http://arxiv.org/abs/2001.02581},
+  eprinttype = {arXiv},
+  eprint = {2001.02581},
+  timestamp = {Mon, 13 Jan 2020 12:40:17 +0100},
+  biburl = {https://dblp.org/rec/journals/corr/abs-2001-02581.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{ToMATo,
+author = {Chazal, Frédéric and Guibas, Leonidas and Oudot, Steve and Skraba, Primoz},
+year = {2011},
+month = {06},
+pages = {},
+title = {Persistence-Based Clustering in Riemannian Manifolds},
+volume = {60},
+journal = {Journal of the ACM},
+doi = {10.1145/1998196.1998212}
+}
+
+@article{Hera,
+author = {Kerber, Michael and Morozov, Dmitriy and Nigmetov, Arnur},
+title = {Geometry Helps to Compare Persistence Diagrams},
+year = {2017},
+issue_date = {2017},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {22},
+issn = {1084-6654},
+url = {https://doi.org/10.1145/3064175},
+doi = {10.1145/3064175},
+abstract = {Exploiting geometric structure to improve the asymptotic complexity of discrete assignment problems is a well-studied subject. In contrast, the practical advantages of using geometry for such problems have not been explored. We implement geometric variants of the Hopcroft-Karp algorithm for bottleneck matching (based on previous work by Efrat el al.) and of the auction algorithm by Bertsekas for Wasserstein distance computation. Both implementations use k-d trees to replace a linear scan with a geometric proximity query. Our interest in this problem stems from the desire to compute distances between persistence diagrams, a problem that comes up frequently in topological data analysis. We show that our geometric matching algorithms lead to a substantial performance gain, both in running time and in memory consumption, over their purely combinatorial counterparts. Moreover, our implementation significantly outperforms the only other implementation available for comparing persistence diagrams.},
+journal = {ACM J. Exp. Algorithmics},
+month = {sep},
+articleno = {1.4},
+numpages = {20},
+keywords = {persistent homology, k-d tree, bipartite matching, Assignment problems}
+}
+
+@article{PythonPOT,
+  author  = {R{\'e}mi Flamary and Nicolas Courty and others},
+  title   = {POT: Python Optimal Transport},
+  journal = {Journal of Machine Learning Research},
+  year    = {2021},
+  volume  = {22},
+  number  = {78},
+  pages   = {1-8},
+  url     = {http://jmlr.org/papers/v22/20-451.html}
+}
+
+@InProceedings{Gudhi,
+author="Maria, Cl{\'e}ment
+and Boissonnat, Jean-Daniel
+and Glisse, Marc
+and Yvinec, Mariette",
+editor="Hong, Hoon
+and Yap, Chee",
+title="The Gudhi Library: Simplicial Complexes and Persistent Homology",
+booktitle="Mathematical Software -- ICMS 2014",
+year="2014",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="167--174",
+abstract="We present the main algorithmic and design choices that have been made to represent complexes and compute persistent homology in the Gudhi library. The Gudhi library (Geometric Understanding in Higher Dimensions) is a generic C++ library for computational topology. Its goal is to provide robust, efficient, flexible and easy to use implementations of state-of-the-art algorithms and data structures for computational topology. We present the different components of the software, their interaction and the user interface. We justify the algorithmic and design decisions made in Gudhi and provide benchmarks for the code. The software, which has been developped by the first author, will be available soon at project.inria.fr/gudhi/software/.",
+isbn="978-3-662-44199-2"
+}
