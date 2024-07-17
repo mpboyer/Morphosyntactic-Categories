@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
-UDDIR = "ud-treebanks-v2.14"
+UDDIR = "../ud-treebanks-v2.14"
 MODE = ""
 VECTOR_DIR = f"{MODE}_Case_RelDep_Matches" if MODE else "Case_RelDep_Matches"
 SAVE_DIR = f"{MODE}_Case_Proximities" if MODE else "Case_Proximities"

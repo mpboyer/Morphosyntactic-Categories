@@ -19,7 +19,7 @@ parser.add_argument("--f2")
 parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
-UDDIR = "ud-treebanks-v2.14"
+UDDIR = "../ud-treebanks-v2.14"
 MODE = files.mode
 VECTOR_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
 SAVE_DIR = f"../{MODE}_Case_Proximities" if MODE else "../Case_Proximities"
@@ -423,8 +423,11 @@ def sample_size(treebank):
     return sample_size
 
 
+studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
+
 if __name__ == "__main__":
-    print("Il s'agirait d'appeler une fonction")
+    for l1, l2 in itertools.product(studied_languages, studied_languages):
+        closest_graph(l1, l2)
     # compute_angles_csv()
     # compute_distances_csv()
     # tabulize_angle_pairs_csv()

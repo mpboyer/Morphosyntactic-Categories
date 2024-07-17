@@ -9,7 +9,7 @@ Administratif/*
 *.tgz
 */deep/*
 */Sentence_Graphs*
-*/ud-*/*
+*ud-*/*
 */.idea/*
 *.idea/*
 *__pycache*

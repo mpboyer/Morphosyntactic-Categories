@@ -1,21 +1,17 @@
-import math
-import joblib
+import contextlib
 import itertools
-import openpyxl
-import openpyxl.styles
-import pandas
-import scipy.linalg
-from tqdm import tqdm, trange
+import os
+
+import joblib
 import numpy as np
 import numpy.linalg as npl
-from sympy import Matrix
-import os
-import contextlib
-import argparse
+import pandas
+import scipy.linalg
+from tqdm import tqdm
 
-from linalg import project, angle, distance, dict_distance, is_in_cone, manhattan_normalizer
+from linalg import angle, distance
 
-UDDIR = "ud-treebanks-v2.14"
+UDDIR = "../ud-treebanks-v2.14"
 VECTOR_DIR = "RelDep_Matches"
 
 

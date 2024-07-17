@@ -1,17 +1,17 @@
+import argparse
+import contextlib
+import os
+
+import joblib
+import matplotlib as matplotlib
+import matplotlib.lines as mlines
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
+from sklearn.preprocessing import StandardScaler
 
-import os
-import contextlib
-import joblib
-import argparse
-import matplotlib.pyplot as plt
-import matplotlib as matplotlib
-import itertools
-# import plotly.express as px
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--f1")
@@ -25,8 +25,7 @@ if not files.interactive:
     preamble = r"\usepackage{xcolor}\definecolor{vulm}{HTML}{7d1dd3}\definecolor{yulm}{HTML}{ffe500}"
     matplotlib.rc("pgf", texsystem="pdflatex", preamble=preamble)
 
-
-UDDIR = "ud-treebanks-v2.14"
+UDDIR = "../ud-treebanks-v2.14"
 MODE = files.mode
 VECTOR_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
 SAVE_DIR = "Figures/Visualisations"
@@ -68,9 +67,12 @@ def is_prefix(s1: str, s2: str) -> bool:
 
 def fronce(s):
     match s:
-        case("Nouns"): return "Noms"
-        case("Pronouns"): return "Pronoms"
-        case(_): raise ValueError("Calice!")
+        case ("Nouns"):
+            return "Noms"
+        case ("Pronouns"):
+            return "Pronoms"
+        case (_):
+            raise ValueError("Calice!")
 
 
 def get_data_set(case1, case2):
@@ -120,17 +122,21 @@ def pca(case1, case2):
     keep_indices = case_data_set['Case'] == case1
     sc1 = plt.scatter(
         principal_case_df.loc[keep_indices, 'Component 1'],
-        principal_case_df.loc[keep_indices, 'Component 2'], c='#7d1dd3', s=50)
+        principal_case_df.loc[keep_indices, 'Component 2'], c='#7d1dd3', s=50
+    )
 
     keep_indices = case_data_set['Case'] == case2
     sc2 = plt.scatter(
         principal_case_df.loc[keep_indices, 'Component 1'],
-        principal_case_df.loc[keep_indices, 'Component 2'], c='#ffe500', s=50)
+        principal_case_df.loc[keep_indices, 'Component 2'], c='#ffe500', s=50
+    )
 
     names = case_data_set["Treebank"]
-    annot = ax.annotate("", xy=(0, 0), xytext=(20, 20), textcoords="offset points",
-                        bbox=dict(boxstyle="round", fc="w"),
-                        arrowprops=dict(arrowstyle="->"))
+    annot = ax.annotate(
+        "", xy=(0, 0), xytext=(20, 20), textcoords="offset points",
+        bbox=dict(boxstyle="round", fc="w"),
+        arrowprops=dict(arrowstyle="->")
+        )
     annot.set_visible(False)
 
     def update_annot1(ind):
@@ -169,7 +175,10 @@ def pca(case1, case2):
                     annot.set_visible(False)
                     fig.canvas.draw_idle()
 
-    plt.legend(targets, prop={'size': 15})
+    plt.legend(
+        targets, prop={
+            'size': 15}
+        )
     if files.interactive:
         fig.canvas.mpl_connect("motion_notify_event", hover)
         plt.show()
@@ -235,17 +244,21 @@ def tsne(case1, case2):
     keep_indices = case_data_set['Case'] == case1
     sc1 = plt.scatter(
         principal_case_df.loc[keep_indices, 'Component 1'],
-        principal_case_df.loc[keep_indices, 'Component 2'], c='#7d1dd3', s=50)
+        principal_case_df.loc[keep_indices, 'Component 2'], c='#7d1dd3', s=50
+    )
 
     keep_indices = case_data_set['Case'] == case2
     sc2 = plt.scatter(
         principal_case_df.loc[keep_indices, 'Component 1'],
-        principal_case_df.loc[keep_indices, 'Component 2'], c='#ffe500', s=50)
+        principal_case_df.loc[keep_indices, 'Component 2'], c='#ffe500', s=50
+    )
 
     names = case_data_set["Treebank"]
-    annot = ax.annotate("", xy=(0, 0), xytext=(20, 20), textcoords="offset points",
-                        bbox=dict(boxstyle="round", fc="w"),
-                        arrowprops=dict(arrowstyle="->"))
+    annot = ax.annotate(
+        "", xy=(0, 0), xytext=(20, 20), textcoords="offset points",
+        bbox=dict(boxstyle="round", fc="w"),
+        arrowprops=dict(arrowstyle="->")
+        )
     annot.set_visible(False)
 
     def update_annot1(ind):
@@ -284,7 +297,10 @@ def tsne(case1, case2):
                     annot.set_visible(False)
                     fig.canvas.draw_idle()
 
-    plt.legend(targets, prop={'size': 15})
+    plt.legend(
+        targets, prop={
+            'size': 15}
+        )
 
     if files.interactive:
         fig.canvas.mpl_connect("motion_notify_event", hover)
@@ -312,8 +328,14 @@ def tsne_lang_list(allowed_languages):
             {
                 column: np.nan}, 0., inplace=True
         )
-        
-    # print(case_data_set.head)
+
+    for row in case_data_set.index:
+        for column in case_data_set.columns[5:]:
+            d = case_data_set.loc[row, 'Total']
+            case_data_set.loc[row, column] /= d
+
+    case_data_set.divide(case_data_set['Total'])
+
     drop_indices = [i for i, c in enumerate(case_data_set["Treebank"]) if c.split("_")[0] not in allowed_languages]
     # print(drop_indices)
     case_data_set.drop(index=drop_indices, axis=0, inplace=True)
@@ -321,14 +343,46 @@ def tsne_lang_list(allowed_languages):
     # print(case_data_set.head)
 
     languages = set([c.split("_")[0] for c in case_data_set["Treebank"]])
-    
-    
+
     features = np.array(sorted(case_data_set.columns[5:]))
     feature_data = case_data_set.loc[:, features].values
     feature_data = StandardScaler().fit_transform(feature_data)
 
     shapes = ['2', '+', 'x', '|', '_', '*', '.', '^']
-    # colours = ['#7d1dd3', '#ffe500', '#a45a2a', '#da291c', "#007a33", "#e89cae", "#10069f", "#00a3e0", "#6eceb2"][:len(cases)]
+    colours = tuple(
+        ['black',
+         'lightgray',
+         'lightcoral',
+         'brown',
+         "darkred",
+         "red",
+         "peru",
+         "darkorange",
+         "gold",
+         "yellow",
+         "chartreuse",
+         "honeydew",
+         "moccasin",
+         "darkseagreen",
+         "limegreen",
+         "springgreen",
+         "turquoise",
+         "aquamarine",
+         "darkslategrey",
+         "aqua",
+         "cadetblue",
+         "deepskyblue",
+         "royalblue",
+         "blueviolet",
+         "purple",
+         "deeppink",
+         "palevioletred",
+         "slategrey",
+         "crimson",
+         "thistle",
+         ]
+    )
+    colour_map = matplotlib.colors.LinearSegmentedColormap.from_list('cmap', colours)
     cases_indices = dict([(c, i) for i, c in enumerate(cases)])
 
     tsne_case = TSNE(n_components=2, random_state=42)
@@ -347,27 +401,41 @@ def tsne_lang_list(allowed_languages):
     # fig.update_traces(line_color="red", line_width=1)
     # fig.show()
 
-    fig, ax = plt.subplots()
-    plt.xticks(fontsize=12)
+    fig = plt.figure(figsize=(10, 10))
+    ax = plt.subplot(111)
+    plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
-    plt.xlabel('Composante 1', fontsize=10)
-    plt.ylabel('Composante 2', fontsize=10)
+    # plt.xlabel('Composante 1', fontsize=10)
+    # plt.ylabel('Composante 2', fontsize=10)
 
-    title = f"Analyse t-SNE à deux Composantes sur les {fronce(MODE)} pour\nles cas de " + " ".join(allowed_languages) if MODE else "Analyse t-SNE à deux Composantes pour\nles cas de " + " ".join(allowed_languages)
+    title = f"Analyse t-SNE à deux Composantes sur les {fronce(MODE)} pour\nles cas de " + " ".join(
+        allowed_languages
+    ) if MODE else "Analyse t-SNE à deux Composantes pour\nles cas de " + " ".join(allowed_languages)
     plt.title(title, fontsize=20)
-    targets = cases
-    
+
     for target, shape in zip(allowed_languages, shapes):
         keep_indices = [i for i, c in enumerate(case_data_set["Treebank"]) if c.split("_")[0] == target]
         # print(target, keep_indices)
         colour_indices = [cases_indices[c] for c in case_data_set.loc[keep_indices, 'Case']]
-        # color_indices = [0]
+        # print(colour_indices)
+        # colour_indices = [0]
 
         sc = plt.scatter(
             principal_case_df.loc[keep_indices, 'Component 1'],
-            principal_case_df.loc[keep_indices, 'Component 2'], c=colour_indices, s=50, marker=shape, cmap='jet')
+            principal_case_df.loc[keep_indices, 'Component 2'], c=colour_indices, s=50, marker=shape, cmap=colour_map
+        )
 
-    
+    language_legends = fig.legend(labels=allowed_languages, loc='center left', bbox_to_anchor=(0, .5), fancybox=True, prop={'size': 15})
+    fig.add_artist(language_legends)
+    handlers = [
+        mlines.Line2D([], [], color=colours[cases_indices[c]], label=c, marker='.', linestyle='None', markersize=8) for
+        c in cases]
+    case_legends = fig.legend(
+        handles=handlers, prop={
+            'size': 15}, bbox_to_anchor=(0, 0), loc='lower left', ncol=7, fancybox=True
+    )
+    fig.add_artist(case_legends)
+
     save_path = f"{SAVE_DIR}/tsne_cases_{MODE}_{allowed_languages}.pdf" if MODE else f"{SAVE_DIR}/tsne_cases_{allowed_languages}.pdf"
     plt.savefig(save_path)
 
@@ -376,7 +444,7 @@ def get_cases(languages):
     cases = list(filter(lambda t: t[0] == "R", os.listdir(VECTOR_DIR)))
     res = []
     for c in cases:
-        with open(f"{VECTOR_DIR}/{c}", 'r') as csv_file: 
+        with open(f"{VECTOR_DIR}/{c}", 'r') as csv_file:
             for tree in csv_file:
                 if tree.split(',')[0].split('_')[0] in languages:
                     res.append(c[-7:-4])
@@ -385,9 +453,6 @@ def get_cases(languages):
 
 
 studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
-# print(case_list)
-tsne_list(studied_languages)    
-
+tsne_lang_list(studied_languages)
 
 # TODO: Comparer langues très différents (gnn + t-SNE)
-

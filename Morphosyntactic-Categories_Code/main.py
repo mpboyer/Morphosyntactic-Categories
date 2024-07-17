@@ -11,7 +11,7 @@ parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
 MODE = files.mode
-UDDIR = "ud-treebanks-v2.14"
+UDDIR = "../ud-treebanks-v2.14"
 SAVE_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
 
 
