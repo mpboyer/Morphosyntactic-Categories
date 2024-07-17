@@ -1,7 +1,5 @@
-for i in `ls ud-treebanks-v2.14`;
+for i in `ls ../ud-treebanks-v2.14`;
   do
-	  \rm -r ./ud-treebanks-v2.14/"$i"/*-ud-*/;
+	  \rm -r ../ud-treebanks-v2.14/"$i"/*-ud-*/AllFeatures*;
   echo "$i";
   done;
-\rm *Case_RelDep_Matches/*;
-\rm *Case_Proximities/*
