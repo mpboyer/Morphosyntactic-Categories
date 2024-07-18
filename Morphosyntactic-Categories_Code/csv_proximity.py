@@ -1,18 +1,26 @@
-import contextlib
-import itertools
-import os
-
 import joblib
-import numpy as np
-import numpy.linalg as npl
+import itertools
 import pandas
-import scipy.linalg
 from tqdm import tqdm
+import numpy as np
+from operator import itemgetter
+import os
+import contextlib
+import graphviz
+from linalg import distance
+import argparse
+import matplotlib.pyplot as plt
 
-from linalg import angle, distance
+parser = argparse.ArgumentParser()
+parser.add_argument("--f1")
+parser.add_argument("--f2")
+parser.add_argument("-mode", "--mode", default="")
+files = parser.parse_args()
 
 UDDIR = "../ud-treebanks-v2.14"
-VECTOR_DIR = "RelDep_Matches"
+MODE = files.mode
+VECTOR_DIR = f"../{MODE}_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
+SAVE_DIR = f"../{MODE}_Proximities" if MODE else "../Case_Proximities"
 
 
 @contextlib.contextmanager
@@ -49,6 +57,11 @@ def get_all_banks():
     return abank
 
 
+def get_all_features():
+    cases = list(filter(lambda t: t[-4:] == ".csv", os.listdir(VECTOR_DIR)))
+    return [(lambda t: tuple(t.split('_')[-1].split('.')[0].split('=')))(c) for c in cases]
+
+
 def overall_basis_csv():
     basis = set()
     for csv in filter(lambda t: t[-4:] == ".csv", os.listdir(f"{VECTOR_DIR}")):
@@ -58,18 +71,11 @@ def overall_basis_csv():
     return basis
 
 
-def get_vector_csv(treebank, case):
-    with open(f"{VECTOR_DIR}/RelDep_matching_Case={case}.csv", "r") as csv_file:
-        attributes = csv_file[0].split(",")[4:]
-        for tree in filter(lambda t: t[0] == treebank, csv_file):
-            coordinates = next(csv_file).rstrip().split(",")[4:]
-    return dict(zip(attributes, coordinates))
-
-
 def get_matrix_csv(treebank):
-    basis = set()
+    basis = overall_basis_csv()
     case_space = []
-    for csv in sorted(filter(lambda t: t[-4:] == ".csv" and t[16:20] == "Case", os.listdir(f"{VECTOR_DIR}"))):
+    features = []
+    for csv in sorted(filter(lambda t: t[-4:] == ".csv", os.listdir(f"{VECTOR_DIR}"))):
         with open(f"{VECTOR_DIR}/{csv}", "r") as csv_file:
             attributes = next(csv_file).rstrip().split(",")[4:]
             for tree in csv_file:
@@ -77,8 +83,8 @@ def get_matrix_csv(treebank):
                 if parsed_tree[0] == treebank:
                     coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
                     coordinates["Total"] = void_to_zero(parsed_tree[3])
-        case_space.append(coordinates)
-        basis |= set(attributes)
+                    case_space.append(coordinates)
+                    features.append((lambda t: tuple(t.split('_')[-1].split('.')[0].split('=')))(csv))
 
     matrix = np.array([[0. for _ in case_space] for _ in basis])
     for row, b in enumerate(basis):
@@ -86,246 +92,141 @@ def get_matrix_csv(treebank):
             total = vector["Total"]
             if total != 0.:
                 matrix[row, column] = vector.get(b, 0.) / total
-
-    return matrix
-
-
-def enhanced_get_matrix_csv(treebank, treebank_case):
-    basis = set()
-    case_space_vectors = []
-    case_dict = {}
-    for csv in sorted(filter(lambda t: t[-4:] == ".csv" and t[16:20] == "Case", os.listdir(f"{VECTOR_DIR}"))):
-        case_coordinates = {
-            "Total": 0.}
-        with open(f"{VECTOR_DIR}/{csv}", "r") as csv_file:
-            attributes = next(csv_file).rstrip().split(",")[4:]
-
-            for tree in csv_file:
-                parsed_tree = tree.rstrip().split(",")
-                if csv[-7:-4] == treebank_case[1]:
-                    if parsed_tree[0] == treebank_case[0]:
-                        case_dict = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
-                        case_dict["Total"] = void_to_zero(parsed_tree[3])
-
-                if parsed_tree[0] == treebank:
-                    case_coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
-                    case_coordinates["Total"] = void_to_zero(parsed_tree[3])
-
-        case_space_vectors.append(case_coordinates)
-        basis |= set(attributes)
-
-    case_space_matrix = np.array([[0. for _ in case_space_vectors] for _ in basis])
-    case_vector = np.array([0. for _ in basis])
-
-    for row, b in enumerate(basis):
-        case_vector[row] = case_dict.get(b, 0.) / case_dict["Total"] if case_dict["Total"] != 0. else 0.
-        for column, vector in enumerate(case_space_vectors):
-            case_space_matrix[row, column] = vector.get(b, 0.) / vector["Total"] if vector["Total"] != 0. else 0.
-
-    return case_space_matrix, case_vector
-
-
-def case_space_case_angle_csv(treebank, treebank_case):
-    case_space_matrix, case_vector = enhanced_get_matrix_csv(treebank, treebank_case)
-    dimension = scipy.linalg.orth(case_space_matrix)
-    if dimension.shape[1]:
-        a = angle(case_vector, dimension)
-    else:
-        a = np.nan
-    return treebank, treebank_case[0] + f"_Case={treebank_case[1]}", a
-
-
-def compute_angles_csv():
-    all_banks = get_all_banks()
-    basis = overall_basis_csv()
-    angles = []
-    for corpus in tqdm(all_banks, colour="#7d1dd3", leave=True, desc="Computing Angles"):
-        case_space = []
-        for csv in filter(lambda t: t[-4:] == ".csv", os.listdir(f"{VECTOR_DIR}")):
-            with open(f"{VECTOR_DIR}/{csv}", "r") as csv_file:
-                attributes = next(csv_file).rstrip().split(",")[4:]
-                for tree in csv_file:
-                    parsed_tree = tree.rstrip().split(",")
-                    if parsed_tree[0] == corpus:
-                        case_coordinates = dict(zip(attributes, map(void_to_zero, parsed_tree[4:])))
-                        case_coordinates["Total"] = void_to_zero(parsed_tree[3])
-
-            case_space.append(case_coordinates)
-
-        matrix = np.array([[0. for _ in case_space] for _ in basis])
-        for row, b in enumerate(basis):
-            for column, case_vec in enumerate(case_space):
-                matrix[row, column] = case_vec.get(b, 0.) / case_vec["Total"] if case_vec["Total"] != 0. else 0.
-
-        def get_angle(case_space_matrix, vector_filename):
-            with open(f"{VECTOR_DIR}/RelDep_matching_Case={vector_filename[1]}.csv", "r") as csvfile:
-                vec_attr = next(csvfile).rstrip().split(",")[4:]
-                for frequencies in csvfile:
-                    parsed_vector = frequencies.rstrip().split(",")
-                    if parsed_vector[0] == corpus:
-                        case_dict = dict(zip(vec_attr, map(void_to_zero, parsed_vector[4:])))
-                        case_dict["Total"] = void_to_zero(parsed_vector[3])
-
-            vector = [0. for _ in basis]
-            for coordinate, base_vector in enumerate(basis):
-                vector[coordinate] = case_dict.get(base_vector, 0.) / case_vec["Total"] if case_vec[
-                                                                                               "Total"] != 0. else 0.
-
-            if case_space_matrix.shape[1]:
-                a = angle(vector, case_space_matrix)
-            else:
-                a = np.nan
-            return vector_filename[0] + f"_Case={vector_filename[1]}", a
-
-        dimension = scipy.linalg.orth(matrix)
-        with tqdm_joblib(
-                tqdm(
-                    desc=f"Angles for {corpus}", leave=False, colour="#ffe500", position=1,
-                    total=len(all_banks) * len(gf)
-                )
-        ) as progress_bar:
-            angles.append(
-                dict(
-                    joblib.Parallel(n_jobs=8, verbose=0)(
-                        joblib.delayed(get_angle)(dimension, [all_banks[j], c]) for j in range(len(all_banks))
-                        for c in gf
-                    )
-                )
-            )
-        pandas.DataFrame(angles).to_csv(f"Proximities/Vector_Angle_Proximity.csv", index=False)
-
-
-def euclidean_reldep_matrix_csv(grammar_feature):
-    basis = overall_basis_csv()
-    treebanks = []
-    with open(f"{VECTOR_DIR}/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.csv") as f:
-        header = next(f).split(",")[4:]
-        lines = f.readlines()
-        mat = np.array([[0. for _ in lines] for _ in basis])
-        for row, line in enumerate(lines):
-            reldep_frequencies = line.rstrip().split(",")
-            treebanks.append(f"{reldep_frequencies[0]}_{grammar_feature[0]}={grammar_feature[1]}")
-            coordinate_dict = dict(zip(header, map(void_to_zero, reldep_frequencies[4:])))
-            for index, koln in enumerate(basis):
-                mat[index, row] = coordinate_dict.get(koln, 0.)
-    for i in range(len(mat[0])):
-        euclid = npl.norm(mat[:, i])
-        if euclid != 0.:
-            mat[:, i] /= euclid
-
-    return treebanks, mat
-
-
-def manhattan_reldep_matrix_csv(grammar_feature):
-    basis = overall_basis_csv()
-    treebanks = []
-    with open(f"{VECTOR_DIR}/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.csv") as f:
-        header = next(f).split(",")[4:]
-        lines = f.readlines()
-        mat = np.array([[0. for _ in lines] for _ in basis])
-        for row, line in enumerate(lines):
-            reldep_frequencies = line.rstrip().split(",")
-            treebanks.append(f"{reldep_frequencies[0]}_{grammar_feature[0]}={grammar_feature[1]}")
-            coordinate_dict = dict(zip(header, map(void_to_zero, reldep_frequencies[4:])))
-            total = void_to_zero(reldep_frequencies[3])
-            if total != 0.:
-                for index, koln in enumerate(basis):
-                    mat[index, row] = coordinate_dict.get(koln, 0.) / total
-
-    return treebanks, mat
-
-
-def tabulize_angles_csv(grammar_feature):
-    try:
-        with open(f"Proximities/Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}.csv"):
-            pass
-    except FileNotFoundError:
-        print(f"Tabulizing for {grammar_feature[0]}={grammar_feature[1]}")
-        treebanks = []
-        with open(f"{VECTOR_DIR}/RelDep_matching_{grammar_feature[0]}={grammar_feature[1]}.csv") as f:
-            header = next(f).split(",")[4:]
-            lines = f.readlines()
-            mat = np.array([[0. for _ in lines] for _ in header])
-            for row, line in enumerate(lines):
-                reldep_frequencies = line.rstrip().split(",")
-                treebanks.append(reldep_frequencies[0])
-                coordinates = np.array(list(map(void_to_zero, reldep_frequencies[4:])))
-                total = void_to_zero(reldep_frequencies[3])
-                if total != 0.:
-                    mat[:, row] = coordinates / total
-        for i in range(len(mat[0])):
-            euclidean_norm = npl.norm(mat[:, i])
-            if euclidean_norm != 0:
-                mat[:, i] /= euclidean_norm
-
-        dot_mat = np.matmul(np.transpose(mat), mat)
-        pandas.DataFrame(data=dot_mat, columns=treebanks).to_csv(
-            f"Proximities/Proximity_Stats_for_{grammar_feature[0]}={grammar_feature[1]}.csv"
-        )
-
-
-def tabulize_angle_pair_csv(gf1, gf2):
-    try:
-        with open(f"Proximities/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv"):
-            pass
-    except FileNotFoundError:
-        treebanks1, mat1 = euclidean_reldep_matrix_csv(gf1)
-        treebanks2, mat2 = euclidean_reldep_matrix_csv(gf2)
-        dot_mat = mat1.T.dot(mat2)
-        pandas.DataFrame(data=dot_mat, columns=treebanks1).to_csv(
-            f"Proximities/DuoProximity_for_{gf1[1]}_and_{gf2[1]}.csv"
-        )
-
-
-def compute_distances_csv():
-    for c1, c2 in tqdm(
-            itertools.product(gf, gf), colour="#7d1dd3", desc="Computing Vector-Vector Distances", total=len(gf) ** 2
-    ):
-        try:
-            with open(f"Proximities/Distances_{c1}_{c2}.csv"):
-                pass
-        except FileNotFoundError:
-            treebanks1, mat1 = manhattan_reldep_matrix_csv(("Case", c1))
-            treebanks2, mat2 = manhattan_reldep_matrix_csv(("Case", c2))
-            shape = np.shape(mat1)
-            distance_mat = np.array([[0. for _ in range(shape[1])] for _ in range(shape[1])])
-            for column, v1 in enumerate(mat1):
-                for row, v2 in enumerate(mat2):
-                    distance_mat[row, column] = distance(v1, v2)
-            pandas.DataFrame(data=distance_mat, columns=treebanks1).to_csv(
-                f"Proximities/Distances_{c1}_{c2}.csv"
-            )
+    return features, matrix
 
 
 def closest(treebank1, treebank2):
-    matrix1, matrix2 = get_matrix_csv(treebank1), get_matrix_csv(treebank2)
+    case1, matrix1 = get_matrix_csv(treebank1)
+    case2, matrix2 = get_matrix_csv(treebank2)
     m1_dicts = {}
     m2_dicts = {}
-    all_cases = sorted(filter(lambda t: t[-4:] == ".csv" and t[16:20] == "Case", os.listdir(f"{VECTOR_DIR}")))
-    for col, csv in filter(lambda n: np.any(matrix1[:, n[0]]), enumerate(all_cases)):
-        m1_dicts[csv[-7:-4]] = dict(
-            [(c[-7:-4], distance(matrix1[:, col], matrix2[:, i])) for i, c in
-             filter(lambda n: np.any(matrix2[:, n[0]]), enumerate(all_cases))]
-            )
-    for col, csv in filter(lambda n: np.any(matrix2[:, n[0]]), enumerate(all_cases)):
-        m2_dicts[csv[-7:-4]] = dict(
-            [(c[-7:-4], distance(matrix2[:, col], matrix1[:, i])) for i, c in
-             filter(lambda n: np.any(matrix1[:, n[0]]), enumerate(all_cases))]
-            )
+
+    distance_matrix = [["" for _ in case2] for _ in case1]
+    for row in range(len(case1)):
+        for col in range(len(case2)):
+            distance_matrix[row][col] = str(distance(matrix1[:, row], matrix2[:, col]))[:5]
+    # print(str.join("\t", tuple(case1)))
+    # print(str.join("\t", tuple(case2)))
+    # for d in distance_matrix:
+    #     print(str.join("\t", tuple(d)))
+
+    for col, case in enumerate(case1):
+        m1_dicts[case] = dict(
+            [(c, distance(matrix1[:, col], matrix2[:, i])) for i, c in enumerate(case2)]
+        )
+
+    for col, case in enumerate(case2):
+        m2_dicts[case] = dict(
+            [(c, distance(matrix2[:, col], matrix1[:, i])) for i, c in enumerate(case1)]
+        )
+
     for m in m1_dicts:
         mk = min(m1_dicts[m], key=m1_dicts[m].get)
-        m1_dicts[m] = mk, m1_dicts[m][mk]
+        m1_dicts[m] = mk, float(m1_dicts[m][mk])
     for m in m2_dicts:
         mk = min(m2_dicts[m], key=m2_dicts[m].get)
-        m2_dicts[m] = mk, m2_dicts[m][mk]
+        m2_dicts[m] = mk, float(m2_dicts[m][mk])
     return treebank1, m1_dicts, treebank2, m2_dicts
 
 
+thresh = 3
 
 
+def closest_list(treebanks):
+    matrices = list(get_matrix_csv(t) for t in treebanks)
+    result = []
+    for (i1, m1), (i2, m2) in tqdm(
+            itertools.combinations(enumerate(matrices), 2), desc="Computing Distances", colour="#7d1dd3",
+            total=len(matrices) * (len(matrices) - 1) / 2
+            ):
+
+        distances = np.array([[0. for _ in m2[0]] for _ in m1[0]])
+        t1 = treebanks[i1]
+        t2 = treebanks[i2]
+        for i in range(len(m1[0])):
+            for j in range(len(m2[0])):
+                distances[i, j] = distance(m1[1][:, i], m2[1][:, j])
+
+        pair_result_dict = {}
+        for row, c in enumerate(m1[0]):
+            d = min(enumerate(distances[row, :]), key=itemgetter(1))
+            pair_result_dict[c] = m2[0][d[0]], d[1]
+        result.append((t1, t2, pair_result_dict))
+
+        pair_result_dict = {}
+        for column, c in enumerate(m2[0]):
+            d = min(enumerate(distances[:, column]), key=itemgetter(1))
+            pair_result_dict[c] = m1[0][d[0]], d[1]
+        result.append((t2, t1, pair_result_dict))
+
+    return result
 
 
+def closest_graph_list(treebanks):
+    edges = closest_list(treebanks)
+    graphical = graphviz.Digraph(
+        f"Graph of Nearest Neighbours for {MODE} in " + ",".join(
+            treebanks
+        ) if MODE else f"Graph of Nearest Neighbours for {MODE} in " + ",".join(treebanks)
+    )
+    # graphical.graph_attr['ratio'] = '0.1'
+    graphical.graph_attr['engine'] = 'circo'
+    for treebank1, treebank2, distances in tqdm(edges, desc="Reporting Edges to the Graph"):
+        treebank1 = treebank1.split("-")[0]
+        treebank2 = treebank2.split("-")[0]
+        for n1, (n2, length) in distances.items():
+            cbar = ['plum', 'purple', 'orangered', 'orange', 'goldenrod', 'lawngreen', 'forestgreen', 'springgreen', 'turquoise', 'deepskyblue']
+            c = str(cbar[-int(np.floor(5*length))])
+            graphical.edge(f"{treebank1}_{n1}", f"{treebank2}_{n2}", label=f"{length:.3}", color=c, penwidth='2.0')
+
+    # graphical = graphical.unflatten(stagger=3)
+    if MODE:
+        graphical.render(f"Figures/GNN/gnn_{MODE}_Only_" + "_".join(treebanks), format="pdf")
+    else:
+        graphical.render("Figures/GNN/gnn_" + "_".join(treebanks), format="pdf")
 
 
+def format_tuple_dict(d):
+    for key, value in d.items():
+        print(f'{key} : {value[0]}, Distance = {value[1]:.5f}')
 
 
+def format_dict(d):
+    for key, value in d.items():
+        print(f'{key} : {value}')
+
+
+def sample_size(treebank):
+    samples = {}
+    for csv in filter(lambda t: t[-4:] == ".csv", os.listdir(f"{VECTOR_DIR}")):
+        with open(f"{VECTOR_DIR}/{csv}", "r") as csv_file:
+            for tree in csv_file:
+                parsed_tree = tree.rstrip().split(",")
+                if parsed_tree[0] == treebank:
+                    samples[csv[-7:-4]] = int(parsed_tree[3])
+    return samples
+
+
+studied_languages = ['tr_boun-ud-train', 'sk_snk-ud-train', 'ab_abnc-ud-test', 'eu_bdt-ud-train', 'fi_ftb-ud-train',
+                     'hit_hittb-ud-test', 'ta_ttb-ud-train', 'wbp_ufal-ud-test']
+
+if __name__ == "__main__":
+    closest_graph_list(studied_languages[4:])
+    # for l1, l2 in itertools.product(studied_languages, studied_languages):
+    #     closest_graph_list([l1, l2])
+    # compute_angles_csv()
+    # compute_distances_csv()
+    # tabulize_angle_pairs_csv()
+    # print(len(get_all_cases()), len(overall_basis_csv()))
+    # t1, d1, t2, d2 = closest(files.f1, files.f2)
+    # print(f"Distances for {t1}")
+    # format_tuple_dict(d1)
+    # print(f"Distances for {t2}")
+    # format_tuple_dict(d2)
+    # d1 = sample_size(files.f1)
+    # print(f"Sample Sizes for {files.f1}")
+    # format_dict(d1)
+    # d2 = sample_size(files.f2)
+    # print(f"Sample Sizes for {files.f2}")
+    # format_dict(d2)
+    # closest_graph(files.f1, files.f2)

@@ -5,6 +5,7 @@ import scipy.linalg
 from tqdm import tqdm
 import numpy as np
 import numpy.linalg as npl
+from operator import itemgetter
 import os
 import contextlib
 import graphviz
@@ -423,11 +424,61 @@ def sample_size(treebank):
     return sample_size
 
 
+def closest_list(treebanks):
+    matrices = list(zip(*(get_matrix_csv(t) for t in treebanks)))
+    print(matrices)
+    result = []
+    for i1, m1, i2, m2 in itertools.product(enumerate(matrices), enumerate(matrices)):
+        distances = np.array([[0. for _ in m2[0]] for _ in m1[0]])
+        for i in range(len(m1[0])):
+            for j in range(len(m2[0])):
+                distances[i, j] = distance(m1[1][:, i], m2[1][:, j])
+        pair_result_dict = {}
+        for row, c in enumerate(m1[0]):
+            d = min(enumerate(distances[row, :]), key=itemgetter(1))
+            pair_result_dict[c] = m2[0][d[0]], d[1]
+        for column, c in enumerate(m2[0]):
+            d = min(enumerate(distances[:, column]), key=itemgetter(1))
+            pair_result_dict[c] = m1[0][d[0]], d[1]
+        result.append((treebanks[i1], treebanks[i2], pair_result_dict))
+
+    return result
+
+
+def closest_graph_list(treebanks):
+    edges = closest_list(treebanks)
+    graphical = graphviz.Digraph(
+        f"Graph of Nearest Neighbours for {MODE} Features in " + ",".join(
+            treebanks
+        ) if MODE else f"Graph of Nearest Neighbours for {MODE} Features in " + ",".join(treebanks)
+    )
+    for treebank1, treebank2, distances in edges:
+        treebank1 = treebank1.split("-")[0]
+        treebank2 = treebank2.split("-")[0]
+        for n1, (n2, length) in distances.items():
+            graphical.edge(f"{treebank1}_{n1}", f"{treebank2}_{n2}", label=f"{length:.3}")
+    if MODE:
+        graphical.render(f"Figures/GNN/gnn_{MODE}_Only_" + "_".join(treebanks), format="pdf")
+        try:
+            os.remove(f"Figures/GNN/gnn_{MODE}_Only_" + "_".join(treebanks))
+        except FileNotFoundError:
+            pass
+    else:
+        graphical.render(f"Figures/GNN/gnn_" + "_".join(treebanks), format="pdf")
+        try:
+            os.remove(f"Figures/GNN/gnn_" + "_".join(treebanks))
+        except FileNotFoundError:
+            pass
+
+
 studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
 
 if __name__ == "__main__":
-    for l1, l2 in itertools.product(studied_languages, studied_languages):
-        closest_graph(l1, l2)
+    closest_graph_list(['tr', 'sk'])
+    # for l1, l2 in tqdm(
+    #         itertools.product(studied_languages, studied_languages), colour="#7d1dd3", total=len(studied_languages) ** 2
+    #         ):
+    #     closest_graph_list([l1, l2])
     # compute_angles_csv()
     # compute_distances_csv()
     # tabulize_angle_pairs_csv()
