@@ -1,0 +1,18 @@
+digraph "Graph of Nearest Neighbours for Case in tr_boun-ud-train,ta_ttb-ud-train" {
+	graph [engine=circo]
+	"tr_boun_('Case', 'Abl')" -> "ta_ttb_('Case', 'Ins')" [label=0.232 color=deepskyblue penwidth=2.0]
+	"tr_boun_('Case', 'Acc')" -> "ta_ttb_('Case', 'Acc')" [label=0.145 color=plum penwidth=2.0]
+	"tr_boun_('Case', 'Dat')" -> "ta_ttb_('Case', 'Ins')" [label=0.265 color=deepskyblue penwidth=2.0]
+	"tr_boun_('Case', 'Equ')" -> "ta_ttb_('Case', 'Ins')" [label=0.263 color=deepskyblue penwidth=2.0]
+	"tr_boun_('Case', 'Gen')" -> "ta_ttb_('Case', 'Nom')" [label=0.796 color=springgreen penwidth=2.0]
+	"tr_boun_('Case', 'Ins')" -> "ta_ttb_('Case', 'Loc')" [label=0.225 color=deepskyblue penwidth=2.0]
+	"tr_boun_('Case', 'Loc')" -> "ta_ttb_('Case', 'Loc')" [label=0.166 color=plum penwidth=2.0]
+	"tr_boun_('Case', 'Nom')" -> "ta_ttb_('Case', 'Nom')" [label=0.556 color=turquoise penwidth=2.0]
+	"ta_ttb_('Case', 'Acc')" -> "tr_boun_('Case', 'Acc')" [label=0.145 color=plum penwidth=2.0]
+	"ta_ttb_('Case', 'Com')" -> "tr_boun_('Case', 'Loc')" [label=0.257 color=deepskyblue penwidth=2.0]
+	"ta_ttb_('Case', 'Dat')" -> "tr_boun_('Case', 'Equ')" [label=0.477 color=turquoise penwidth=2.0]
+	"ta_ttb_('Case', 'Gen')" -> "tr_boun_('Case', 'Nom')" [label=0.948 color=forestgreen penwidth=2.0]
+	"ta_ttb_('Case', 'Ins')" -> "tr_boun_('Case', 'Abl')" [label=0.232 color=deepskyblue penwidth=2.0]
+	"ta_ttb_('Case', 'Loc')" -> "tr_boun_('Case', 'Loc')" [label=0.166 color=plum penwidth=2.0]
+	"ta_ttb_('Case', 'Nom')" -> "tr_boun_('Case', 'Nom')" [label=0.556 color=turquoise penwidth=2.0]
+}

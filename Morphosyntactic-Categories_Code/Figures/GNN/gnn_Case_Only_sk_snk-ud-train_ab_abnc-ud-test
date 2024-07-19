@@ -1,0 +1,18 @@
+digraph "Graph of Nearest Neighbours for Case in sk_snk-ud-train,ab_abnc-ud-test" {
+	graph [engine=circo]
+	"sk_snk_('Case', 'Acc')" -> "ab_abnc_('Case', 'Ess')" [label=0.809 color=forestgreen penwidth=2.0]
+	"sk_snk_('Case', 'Dat')" -> "ab_abnc_('Case', 'Ess')" [label=0.876 color=forestgreen penwidth=2.0]
+	"sk_snk_('Case', 'Gen')" -> "ab_abnc_('Case', 'Ess')" [label=0.749 color=springgreen penwidth=2.0]
+	"sk_snk_('Case', 'Ins')" -> "ab_abnc_('Case', 'Ess')" [label=0.671 color=springgreen penwidth=2.0]
+	"sk_snk_('Case', 'Loc')" -> "ab_abnc_('Case', 'Ess')" [label=0.673 color=springgreen penwidth=2.0]
+	"sk_snk_('Case', 'Nom')" -> "ab_abnc_('Case', 'Ess')" [label=0.894 color=forestgreen penwidth=2.0]
+	"sk_snk_('Case', 'Voc')" -> "ab_abnc_('Case', 'Ess')" [label=1.09 color=lawngreen penwidth=2.0]
+	"ab_abnc_('Case', 'Abe')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+	"ab_abnc_('Case', 'Ben')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+	"ab_abnc_('Case', 'Ess')" -> "sk_snk_('Case', 'Ins')" [label=0.671 color=springgreen penwidth=2.0]
+	"ab_abnc_('Case', 'Ine')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+	"ab_abnc_('Case', 'Ins')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+	"ab_abnc_('Case', 'Lat')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+	"ab_abnc_('Case', 'Loc')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+	"ab_abnc_('Case', 'Ter')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+}

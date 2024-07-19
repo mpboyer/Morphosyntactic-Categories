@@ -1,11 +1,3 @@
-\documentclass{cours}
-
-\title{\textsc{Etude Computationnelle de la Stabilité Interlangue des Catégories Morphosyntaxiques}\\
-{\small Rapport de Stage de L3} }
-\author{Matthieu Boyer}
-
-\newcommand{\codedir}{Morphosyntactic-Categories_Code}
-\usepackage{nicematrix}
 
 \begin{document}
 
@@ -208,7 +200,7 @@
     \end{figure}
     Ici, on ne considère plus le corpus \texttt{cs\_fictree} mais le \texttt{cs\_cltt}, bien plus petit (467 phrases contre 10160).
     Même si la forme du graphe ne semble que peu changer, la variance dans le corpus joue énormément.\\
-    Par ailleurs, cette méthode n'est que peu applicable, puisqu'elle nécessite d'étudier toutes les langues par paire.
+    Par ailleurs, cette méthode n'est que peu applicable, puisqu'elle nécessite d'étudier toutes les langues par paire, ce que j'ai partiellement fait: %TODO: Faire l'aggrégation de quoi est loin de quoi
 
 \section{Visualisation des Données}
 Les résultats précédemment obtenus ne permettent d'observer les données ou bien à une échelle très importante, ce qui brouille les résultats, ou bien à une échelle trop faible pour qu'on puisse généraliser un résultat.
@@ -391,6 +383,17 @@ On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans \cite{tSNE}
 
 
 \newpage
+\section{Barycentrisation}
+On a cherché jusque là à comparer les cas. On essaie de les prototyper et de mesurer l'écart au prototype, pour vérifier si c'est une bonne idée pour l'apprentissage.
+
+Prototypes Théoriques:
+- Nom = Subj d'un verbe
+- Acc = Obj d'un verbe
+- Abs = Subj d'un verbe sans obj, ou obj d'un verbe
+- Abs = Subj d'un verbe avec obj
+- Gen = nmod
+- Dat = iobj dans les langues où il y en a
+
 \appendix
 
 \bibliography{report.bib}

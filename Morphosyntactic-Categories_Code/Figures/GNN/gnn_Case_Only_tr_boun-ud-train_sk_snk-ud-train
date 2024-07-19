@@ -1,0 +1,18 @@
+digraph "Graph of Nearest Neighbours for Case in tr_boun-ud-train,sk_snk-ud-train" {
+	graph [engine=circo]
+	"tr_boun_('Case', 'Abl')" -> "sk_snk_('Case', 'Ins')" [label=0.558 color=turquoise penwidth=2.0]
+	"tr_boun_('Case', 'Acc')" -> "sk_snk_('Case', 'Acc')" [label=0.422 color=turquoise penwidth=2.0]
+	"tr_boun_('Case', 'Dat')" -> "sk_snk_('Case', 'Ins')" [label=0.532 color=turquoise penwidth=2.0]
+	"tr_boun_('Case', 'Equ')" -> "sk_snk_('Case', 'Ins')" [label=0.482 color=turquoise penwidth=2.0]
+	"tr_boun_('Case', 'Gen')" -> "sk_snk_('Case', 'Nom')" [label=0.682 color=springgreen penwidth=2.0]
+	"tr_boun_('Case', 'Ins')" -> "sk_snk_('Case', 'Loc')" [label=0.611 color=springgreen penwidth=2.0]
+	"tr_boun_('Case', 'Loc')" -> "sk_snk_('Case', 'Loc')" [label=0.641 color=springgreen penwidth=2.0]
+	"tr_boun_('Case', 'Nom')" -> "sk_snk_('Case', 'Nom')" [label=0.398 color=deepskyblue penwidth=2.0]
+	"sk_snk_('Case', 'Acc')" -> "tr_boun_('Case', 'Acc')" [label=0.422 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Dat')" -> "tr_boun_('Case', 'Nom')" [label=0.699 color=springgreen penwidth=2.0]
+	"sk_snk_('Case', 'Gen')" -> "tr_boun_('Case', 'Nom')" [label=0.54 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Ins')" -> "tr_boun_('Case', 'Equ')" [label=0.482 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Loc')" -> "tr_boun_('Case', 'Equ')" [label=0.511 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Nom')" -> "tr_boun_('Case', 'Nom')" [label=0.398 color=deepskyblue penwidth=2.0]
+	"sk_snk_('Case', 'Voc')" -> "tr_boun_('Case', 'Nom')" [label=0.886 color=forestgreen penwidth=2.0]
+}

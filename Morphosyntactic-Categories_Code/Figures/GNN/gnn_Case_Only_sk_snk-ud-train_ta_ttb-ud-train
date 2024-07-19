@@ -1,0 +1,17 @@
+digraph "Graph of Nearest Neighbours for Case in sk_snk-ud-train,ta_ttb-ud-train" {
+	graph [engine=circo]
+	"sk_snk_('Case', 'Acc')" -> "ta_ttb_('Case', 'Acc')" [label=0.47 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Dat')" -> "ta_ttb_('Case', 'Dat')" [label=0.369 color=deepskyblue penwidth=2.0]
+	"sk_snk_('Case', 'Gen')" -> "ta_ttb_('Case', 'Nom')" [label=0.407 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Ins')" -> "ta_ttb_('Case', 'Dat')" [label=0.504 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Loc')" -> "ta_ttb_('Case', 'Ins')" [label=0.571 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Nom')" -> "ta_ttb_('Case', 'Nom')" [label=0.595 color=turquoise penwidth=2.0]
+	"sk_snk_('Case', 'Voc')" -> "ta_ttb_('Case', 'Nom')" [label=0.954 color=forestgreen penwidth=2.0]
+	"ta_ttb_('Case', 'Acc')" -> "sk_snk_('Case', 'Acc')" [label=0.47 color=turquoise penwidth=2.0]
+	"ta_ttb_('Case', 'Com')" -> "sk_snk_('Case', 'Loc')" [label=0.837 color=forestgreen penwidth=2.0]
+	"ta_ttb_('Case', 'Dat')" -> "sk_snk_('Case', 'Dat')" [label=0.369 color=deepskyblue penwidth=2.0]
+	"ta_ttb_('Case', 'Gen')" -> "sk_snk_('Case', 'Gen')" [label=0.624 color=springgreen penwidth=2.0]
+	"ta_ttb_('Case', 'Ins')" -> "sk_snk_('Case', 'Ins')" [label=0.557 color=turquoise penwidth=2.0]
+	"ta_ttb_('Case', 'Loc')" -> "sk_snk_('Case', 'Loc')" [label=0.752 color=springgreen penwidth=2.0]
+	"ta_ttb_('Case', 'Nom')" -> "sk_snk_('Case', 'Gen')" [label=0.407 color=turquoise penwidth=2.0]
+}

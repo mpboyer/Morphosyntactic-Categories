@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import os
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
@@ -14,6 +15,11 @@ import argparse
 import matplotlib.pyplot as plt
 import matplotlib as matplotlib
 import itertools
+
+import csv_proximity
+from visualise import get_data_set
+from csv_proximity import get_matrix_csv
+
 # import plotly.express as px
 
 parser = argparse.ArgumentParser()
@@ -27,7 +33,6 @@ if not files.interactive:
     matplotlib.use("pgf")
     preamble = r"\usepackage{xcolor}\definecolor{vulm}{HTML}{7d1dd3}\definecolor{yulm}{HTML}{ffe500}"
     matplotlib.rc("pgf", texsystem="pdflatex", preamble=preamble)
-
 
 UDDIR = "ud-treebanks-v2.14"
 MODE = files.mode
@@ -71,9 +76,12 @@ def is_prefix(s1: str, s2: str) -> bool:
 
 def fronce(s):
     match s:
-        case("Nouns"): return "Noms"
-        case("Pronouns"): return "Pronoms"
-        case(_): raise ValueError("Calice!")
+        case ("Nouns"):
+            return "Noms"
+        case ("Pronouns"):
+            return "Pronoms"
+        case (_):
+            raise ValueError("Calice!")
 
 
 def plot_tomato(tomat):
@@ -105,7 +113,9 @@ def tomato(case1, case2):
     t.fit(data)
     plot_tomato(t)
     # plt.scatter(data[:,0], data[:, 1], marker='.', s=1, c=t.labels_)
-    plt.title(r"\Large Tomato Algorithm Clusters for \textcolor{vulm}{" + case1 + r"}, \textcolor{yulm!80!black}{" + case2 + "}")
+    plt.title(
+        r"\Large Tomato Algorithm Clusters for \textcolor{vulm}{" + case1 + r"}, \textcolor{yulm!80!black}{" + case2 + "}"
+    )
     savepath = f"{SAVE_DIR}/tomato_{case1}_{case2}.pdf" if not MODE else f"{SAVE_DIR}/tomato_{case1}_{case2}_{MODE}.pdf"
     plt.savefig(savepath)
 
@@ -225,4 +235,50 @@ def lagrange_barycenter(case_list):
     gudhi.persistence_graphical_tools.plot_persistence_diagram(bary)
     plt.show()
 
-# TODO: TDA du manifold d'une langue/d'une famille de langue?
+
+def get_matrix_list(treebanks):
+    basis = csv_proximity.overall_basis_csv()
+    case_space = []
+    for csv in sorted(filter(lambda t: t[-4:] == ".csv", os.listdir(f"{VECTOR_DIR}"))):
+        with open(f"{VECTOR_DIR}/{csv}", "r") as csv_file:
+            attributes = next(csv_file).rstrip().split(",")[4:]
+            for tree in csv_file:
+                parsed_tree = tree.rstrip().split(",")
+                if parsed_tree[0] in treebanks:
+                    coordinates = dict(zip(attributes, map(csv_proximity.void_to_zero, parsed_tree[4:])))
+                    coordinates["Total"] = csv_proximity.void_to_zero(parsed_tree[3])
+                    case_space.append(coordinates)
+
+    matrix = np.array([[0. for _ in case_space] for _ in basis])
+    for row, b in enumerate(basis):
+        for column, vector in enumerate(case_space):
+            total = vector["Total"]
+            if total != 0.:
+                matrix[row, column] = vector.get(b, 0.) / total
+    return matrix
+
+
+def cc_manifold_bank_list(treebanks):
+    points = get_matrix_list(treebanks)
+    cc = gudhi.cubical_complex.CubicalComplex(top_dimensional_cells=points)
+    diag = cc.persistence()
+    cc.compute_persistence()
+    print(cc.betti_numbers())
+    gudhi.persistence_graphical_tools.plot_persistence_diagram(diag)
+    plt.title(
+        r"\Large Persistent Homology Diagram for Cubical Complex on" + "\n" + r"\textcolor{vulm}{" + " ".join(
+            treebanks
+            ) + "}"
+        )
+    savepath = f"{SAVE_DIR}/cc_" + "_".join(treebanks) + ".pdf" if not MODE else f"{SAVE_DIR}/cc_" + "_".join(
+        treebanks
+        ) + f"_{MODE}.pdf"
+    plt.savefig(savepath)
+
+
+studied_languages = ['tr_boun-ud-train', 'sk_snk-ud-train', 'ab_abnc-ud-test', 'eu_bdt-ud-train', 'fi_ftb-ud-train',
+                     'hit_hittb-ud-test', 'ta_ttb-ud-train', 'wbp_ufal-ud-test']
+
+if __name__ == '__main__':
+    for s in studied_languages:
+        cc_manifold_bank_list([s])

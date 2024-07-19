@@ -1,0 +1,18 @@
+digraph "Graph of Nearest Neighbours for Case in ab_abnc-ud-test,ta_ttb-ud-train" {
+	graph [engine=circo]
+	"ab_abnc_('Case', 'Abe')" -> "ta_ttb_('Case', 'Com')" [label=0.0 color=plum penwidth=2.0]
+	"ab_abnc_('Case', 'Ben')" -> "ta_ttb_('Case', 'Com')" [label=0.0 color=plum penwidth=2.0]
+	"ab_abnc_('Case', 'Ess')" -> "ta_ttb_('Case', 'Ins')" [label=0.469 color=turquoise penwidth=2.0]
+	"ab_abnc_('Case', 'Ine')" -> "ta_ttb_('Case', 'Com')" [label=0.0 color=plum penwidth=2.0]
+	"ab_abnc_('Case', 'Ins')" -> "ta_ttb_('Case', 'Com')" [label=0.0 color=plum penwidth=2.0]
+	"ab_abnc_('Case', 'Lat')" -> "ta_ttb_('Case', 'Com')" [label=0.0 color=plum penwidth=2.0]
+	"ab_abnc_('Case', 'Loc')" -> "ta_ttb_('Case', 'Com')" [label=0.0 color=plum penwidth=2.0]
+	"ab_abnc_('Case', 'Ter')" -> "ta_ttb_('Case', 'Com')" [label=0.0 color=plum penwidth=2.0]
+	"ta_ttb_('Case', 'Acc')" -> "ab_abnc_('Case', 'Ess')" [label=1.1 color=lawngreen penwidth=2.0]
+	"ta_ttb_('Case', 'Com')" -> "ab_abnc_('Case', 'Abe')" [label=0.0 color=plum penwidth=2.0]
+	"ta_ttb_('Case', 'Dat')" -> "ab_abnc_('Case', 'Ess')" [label=0.628 color=springgreen penwidth=2.0]
+	"ta_ttb_('Case', 'Gen')" -> "ab_abnc_('Case', 'Ess')" [label=1.13 color=lawngreen penwidth=2.0]
+	"ta_ttb_('Case', 'Ins')" -> "ab_abnc_('Case', 'Ess')" [label=0.469 color=turquoise penwidth=2.0]
+	"ta_ttb_('Case', 'Loc')" -> "ab_abnc_('Case', 'Abe')" [label=0.115 color=plum penwidth=2.0]
+	"ta_ttb_('Case', 'Nom')" -> "ab_abnc_('Case', 'Ess')" [label=0.882 color=forestgreen penwidth=2.0]
+}

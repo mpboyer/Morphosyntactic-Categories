@@ -211,9 +211,8 @@ studied_languages = ['tr_boun-ud-train', 'sk_snk-ud-train', 'ab_abnc-ud-test', '
                      'hit_hittb-ud-test', 'ta_ttb-ud-train', 'wbp_ufal-ud-test']
 
 if __name__ == "__main__":
-    closest_graph_list(studied_languages[4:])
-    # for l1, l2 in itertools.product(studied_languages, studied_languages):
-    #     closest_graph_list([l1, l2])
+    for l in itertools.combinations(studied_languages, 3):
+        closest_graph_list(list(l))
     # compute_angles_csv()
     # compute_distances_csv()
     # tabulize_angle_pairs_csv()
