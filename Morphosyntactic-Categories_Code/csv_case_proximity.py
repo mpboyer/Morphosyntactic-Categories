@@ -147,6 +147,16 @@ def has_case(treebank, c):
     return False
 
 
+def banks_with_case():
+    all_banks = set()
+    for case in filter(lambda t: t[-4:] == '.csv', os.listdir(VECTOR_DIR)):
+        with open(f"{VECTOR_DIR}/{case}") as csv:
+            _ = next(csv)
+            for line in csv:
+                all_banks.add(line.split(",")[0])
+    return all_banks
+
+
 def treebank_case_pairs():
     return list(filter(lambda tup: has_case(*tup), ((a, c) for a in get_all_banks() for c in get_all_cases())))
 
@@ -474,24 +484,13 @@ def closest_graph_list(treebanks):
 studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
 
 if __name__ == "__main__":
-    closest_graph_list(['tr', 'sk'])
-    # for l1, l2 in tqdm(
-    #         itertools.product(studied_languages, studied_languages), colour="#7d1dd3", total=len(studied_languages) ** 2
-    #         ):
-    #     closest_graph_list([l1, l2])
-    # compute_angles_csv()
-    # compute_distances_csv()
-    # tabulize_angle_pairs_csv()
-    # print(len(get_all_cases()), len(overall_basis_csv()))
-    # t1, d1, t2, d2 = closest(files.f1, files.f2)
-    # print(f"Distances for {t1}")
-    # format_tuple_dict(d1)
-    # print(f"Distances for {t2}")
-    # format_tuple_dict(d2)
-    # d1 = sample_size(files.f1)
-    # print(f"Sample Sizes for {files.f1}")
-    # format_dict(d1)
-    # d2 = sample_size(files.f2)
-    # print(f"Sample Sizes for {files.f2}")
-    # format_dict(d2)
-    # closest_graph(files.f1, files.f2)
+    results = []
+    banks = banks_with_case()
+    for bank1, bank2 in tqdm(itertools.combinations(banks, 2), total=len(banks)*(len(banks) - 1)/2):
+        t1, m1, t2, m2 = closest(bank1, bank2)
+        r = "\n".join(f"{c} in {t1} closest to {m1[c][0]} in {t2}" for c in m1 if c in m2 and m1[c][0] != c)
+        r += "\n"
+        r += "\n".join(f"{c} in {t2} closest to {m2[c][0]} in {t1}" for c in m2 if c in m1 and m2[c][0] != c)
+        results.append(r)
+    with open("diff.txt", 'w') as f:
+        f.write("\n\n".join(results))
