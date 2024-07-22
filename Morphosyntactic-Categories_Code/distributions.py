@@ -17,7 +17,7 @@ files = parser.parse_args()
 UDDIR = "../ud-treebanks-v2.14"
 MODE = files.mode
 VECTOR_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
-SAVE_DIR = f"../{MODE}_Case_Proximities" if MODE else "../Case_Proximities"
+SAVE_DIR = f"../{MODE}_Per_Case_Stats" if MODE else "../Per_Case_Stats"
 
 
 def get_data_set(case):
@@ -90,7 +90,7 @@ def distance_to_any(case, dist: Callable):
         energies[case_data_set.loc[j, 'Treebank']] = np.sum(np.array([distances[k] for k in distances]))
 
     results = "\n".join(f"Énergie pour {k} prototypique selon {dist.__name__} = {v:.3f}" for (k, v) in energies.items())
-    with open(f"{case}_energies_{dist.__name__}.txt", "w") as file:
+    with open(f"{SAVE_DIR}/{case}/{case}_energies_{dist.__name__}.txt", "w") as file:
         file.write(results)
         list_energy = [energies[k] for k in energies]
         file.write(f"\nMoyenne: {np.mean(list_energy):.3f}, Min: {np.min(list_energy):.3f}")
@@ -104,7 +104,7 @@ def distance_to_typical(case, dist: Callable, typical, name):
     distances = {case_data_set.loc[i, 'Treebank']: dist(typical, row) for (i, row) in enumerate(data)}
     e = np.sum(np.array([distances[k] for k in distances]) ** 2)
     res = "\n".join(f"Distance {k} - {name} = {v:.3f}" for (k, v) in distances.items())
-    with open(f"{case}_mean_to_barycenter_{dist.__name__}_{name}.txt", "w") as f:
+    with open(f"{SAVE_DIR}/{case}/{case}_mean_to_barycenter_{dist.__name__}_{name}.txt", "w") as f:
         f.write(res)
         f.write("\n")
         f.write(f"Énergie = {e:.3f}")
@@ -134,7 +134,7 @@ def wasserstein_barycenter_plot(case):
     ax2.set_title('Barycenters')
 
     plt.legend()
-    plt.savefig(f"Wasserstein Barycenter for Distributions on {case}.pdf")
+    plt.savefig(f"Figures/Visualisations/Wasserstein Barycenter for Distributions on {case}.pdf")
     return bary_wass
 
 
@@ -157,9 +157,9 @@ distance_functions = [wasserstein_distance, l2_distance, manhattan_distance, kl]
 
 studied_case = "Dat"
 print("Computing Barycenters")
-wasserstein_mean = wasserstein_barycenter(studied_case)
+wasserstein_mean = wasserstein_barycenter_plot(studied_case)
 uniform_mean = uniform_mean_distrib(studied_case)
-with open("barycenters.txt", "a") as file:
+with open("{SAVE_DIR}/barycenters.txt", "a") as file:
     file.write(f"{studied_case=}\n")
     file.write(f"[{", ".join(str(w) for w in wasserstein_mean)}]\n")
     file.write(f"[{", ".join(str(w) for w in uniform_mean)}]\n\n\n")
