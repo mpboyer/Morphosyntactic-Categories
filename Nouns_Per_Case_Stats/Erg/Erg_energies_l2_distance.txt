@@ -1,0 +1,10 @@
+Énergie pour mr_ufal-ud-dev prototypique selon l2_distance = 3.681
+Énergie pour mr_ufal-ud-test prototypique selon l2_distance = 0.533
+Énergie pour mr_ufal-ud-train prototypique selon l2_distance = 0.469
+Énergie pour wbp_ufal-ud-test prototypique selon l2_distance = 0.492
+Énergie pour ka_glc-ud-test prototypique selon l2_distance = 0.533
+Énergie pour eu_bdt-ud-train prototypique selon l2_distance = 0.468
+Énergie pour eu_bdt-ud-test prototypique selon l2_distance = 0.469
+Énergie pour eu_bdt-ud-dev prototypique selon l2_distance = 0.461
+Énergie pour gu_gujtb-ud-test prototypique selon l2_distance = 0.533
+Moyenne: 0.849, Min: 0.461

@@ -1,0 +1,10 @@
+Distance mr_ufal-ud-dev - Uniform_Barycenter = 0.362
+Distance mr_ufal-ud-test - Uniform_Barycenter = 0.012
+Distance mr_ufal-ud-train - Uniform_Barycenter = 0.005
+Distance wbp_ufal-ud-test - Uniform_Barycenter = 0.007
+Distance ka_glc-ud-test - Uniform_Barycenter = 0.012
+Distance eu_bdt-ud-train - Uniform_Barycenter = 0.005
+Distance eu_bdt-ud-test - Uniform_Barycenter = 0.005
+Distance eu_bdt-ud-dev - Uniform_Barycenter = 0.004
+Distance gu_gujtb-ud-test - Uniform_Barycenter = 0.012
+Énergie = 0.132

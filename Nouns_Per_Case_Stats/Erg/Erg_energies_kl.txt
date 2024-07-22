@@ -1,0 +1,10 @@
+Énergie pour mr_ufal-ud-dev prototypique selon kl = 4.038
+Énergie pour mr_ufal-ud-test prototypique selon kl = 1.022
+Énergie pour mr_ufal-ud-train prototypique selon kl = 0.789
+Énergie pour wbp_ufal-ud-test prototypique selon kl = 0.576
+Énergie pour ka_glc-ud-test prototypique selon kl = 1.022
+Énergie pour eu_bdt-ud-train prototypique selon kl = 0.190
+Énergie pour eu_bdt-ud-test prototypique selon kl = 0.305
+Énergie pour eu_bdt-ud-dev prototypique selon kl = 0.229
+Énergie pour gu_gujtb-ud-test prototypique selon kl = 1.022
+Moyenne: 1.021, Min: 0.190

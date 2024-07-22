@@ -1,0 +1,10 @@
+Énergie pour mr_ufal-ud-dev prototypique selon manhattan_distance = 7.930
+Énergie pour mr_ufal-ud-test prototypique selon manhattan_distance = 1.634
+Énergie pour mr_ufal-ud-train prototypique selon manhattan_distance = 1.683
+Énergie pour wbp_ufal-ud-test prototypique selon manhattan_distance = 1.848
+Énergie pour ka_glc-ud-test prototypique selon manhattan_distance = 1.634
+Énergie pour eu_bdt-ud-train prototypique selon manhattan_distance = 1.929
+Énergie pour eu_bdt-ud-test prototypique selon manhattan_distance = 1.813
+Énergie pour eu_bdt-ud-dev prototypique selon manhattan_distance = 1.887
+Énergie pour gu_gujtb-ud-test prototypique selon manhattan_distance = 1.634
+Moyenne: 2.444, Min: 1.634

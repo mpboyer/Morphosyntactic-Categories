@@ -1,0 +1,16 @@
+Distance hu_szeged-ud-dev - Uniform_Barycenter = 0.217
+Distance hu_szeged-ud-test - Uniform_Barycenter = -0.330
+Distance hu_szeged-ud-train - Uniform_Barycenter = -0.345
+Distance ess_sli-ud-test - Uniform_Barycenter = -0.210
+Distance hit_hittb-ud-test - Uniform_Barycenter = -0.234
+Distance mr_ufal-ud-dev - Uniform_Barycenter = -0.352
+Distance mr_ufal-ud-test - Uniform_Barycenter = -0.282
+Distance mr_ufal-ud-train - Uniform_Barycenter = -0.245
+Distance wbp_ufal-ud-test - Uniform_Barycenter = -0.224
+Distance nhi_itml-ud-test - Uniform_Barycenter = 0.271
+Distance azz_itml-ud-test - Uniform_Barycenter = 0.391
+Distance eu_bdt-ud-train - Uniform_Barycenter = 0.414
+Distance eu_bdt-ud-test - Uniform_Barycenter = 0.379
+Distance eu_bdt-ud-dev - Uniform_Barycenter = 0.346
+Distance gu_gujtb-ud-test - Uniform_Barycenter = -0.368
+Énergie = 1.485

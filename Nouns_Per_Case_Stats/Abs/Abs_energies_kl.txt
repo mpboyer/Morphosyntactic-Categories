@@ -1,0 +1,16 @@
+Énergie pour hu_szeged-ud-dev prototypique selon kl = 12.375
+Énergie pour hu_szeged-ud-test prototypique selon kl = 18.225
+Énergie pour hu_szeged-ud-train prototypique selon kl = 15.462
+Énergie pour ess_sli-ud-test prototypique selon kl = 3.339
+Énergie pour hit_hittb-ud-test prototypique selon kl = 2.610
+Énergie pour mr_ufal-ud-dev prototypique selon kl = 12.724
+Énergie pour mr_ufal-ud-test prototypique selon kl = 3.901
+Énergie pour mr_ufal-ud-train prototypique selon kl = 3.987
+Énergie pour wbp_ufal-ud-test prototypique selon kl = 4.846
+Énergie pour nhi_itml-ud-test prototypique selon kl = 0.474
+Énergie pour azz_itml-ud-test prototypique selon kl = 0.141
+Énergie pour eu_bdt-ud-train prototypique selon kl = -0.241
+Énergie pour eu_bdt-ud-test prototypique selon kl = -0.172
+Énergie pour eu_bdt-ud-dev prototypique selon kl = -0.239
+Énergie pour gu_gujtb-ud-test prototypique selon kl = 9.992
+Moyenne: 5.828, Min: -0.241
