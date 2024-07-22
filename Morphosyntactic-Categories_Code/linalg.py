@@ -34,3 +34,11 @@ def dict_distance(v1, v2):
 
 def distance(v1, v2):
     return npl.norm(v1 - v2)
+
+
+def l2_distance(v1, v2):
+    return distance(v1, v2) ** 2
+
+
+def manhattan_distance(v1, v2):
+    return np.sum(np.abs(v1 - v2))
