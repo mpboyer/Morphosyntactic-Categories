@@ -1,0 +1,16 @@
+Énergie pour hu_szeged-ud-dev prototypique selon l2_distance = 10.977
+Énergie pour hu_szeged-ud-test prototypique selon l2_distance = 14.233
+Énergie pour hu_szeged-ud-train prototypique selon l2_distance = 13.540
+Énergie pour ess_sli-ud-test prototypique selon l2_distance = 12.151
+Énergie pour hit_hittb-ud-test prototypique selon l2_distance = 7.337
+Énergie pour mr_ufal-ud-dev prototypique selon l2_distance = 9.050
+Énergie pour mr_ufal-ud-test prototypique selon l2_distance = 8.369
+Énergie pour mr_ufal-ud-train prototypique selon l2_distance = 9.062
+Énergie pour wbp_ufal-ud-test prototypique selon l2_distance = 8.454
+Énergie pour nhi_itml-ud-test prototypique selon l2_distance = 6.222
+Énergie pour azz_itml-ud-test prototypique selon l2_distance = 5.677
+Énergie pour eu_bdt-ud-train prototypique selon l2_distance = 5.181
+Énergie pour eu_bdt-ud-test prototypique selon l2_distance = 5.187
+Énergie pour eu_bdt-ud-dev prototypique selon l2_distance = 5.128
+Énergie pour gu_gujtb-ud-test prototypique selon l2_distance = 13.817
+Moyenne: 8.959, Min: 5.128

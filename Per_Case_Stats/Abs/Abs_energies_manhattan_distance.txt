@@ -1,0 +1,16 @@
+Énergie pour hu_szeged-ud-dev prototypique selon manhattan_distance = 22.850
+Énergie pour hu_szeged-ud-test prototypique selon manhattan_distance = 24.003
+Énergie pour hu_szeged-ud-train prototypique selon manhattan_distance = 23.357
+Énergie pour ess_sli-ud-test prototypique selon manhattan_distance = 23.236
+Énergie pour hit_hittb-ud-test prototypique selon manhattan_distance = 18.607
+Énergie pour mr_ufal-ud-dev prototypique selon manhattan_distance = 22.119
+Énergie pour mr_ufal-ud-test prototypique selon manhattan_distance = 20.016
+Énergie pour mr_ufal-ud-train prototypique selon manhattan_distance = 22.934
+Énergie pour wbp_ufal-ud-test prototypique selon manhattan_distance = 18.675
+Énergie pour nhi_itml-ud-test prototypique selon manhattan_distance = 18.655
+Énergie pour azz_itml-ud-test prototypique selon manhattan_distance = 19.351
+Énergie pour eu_bdt-ud-train prototypique selon manhattan_distance = 16.610
+Énergie pour eu_bdt-ud-test prototypique selon manhattan_distance = 16.614
+Énergie pour eu_bdt-ud-dev prototypique selon manhattan_distance = 16.567
+Énergie pour gu_gujtb-ud-test prototypique selon manhattan_distance = 22.194
+Moyenne: 20.386, Min: 16.567
