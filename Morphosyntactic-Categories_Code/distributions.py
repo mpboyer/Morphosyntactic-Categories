@@ -1,3 +1,4 @@
+import itertools
 import os
 from typing import Callable
 
@@ -20,6 +21,27 @@ UDDIR = "../ud-treebanks-v2.14"
 MODE = files.mode
 VECTOR_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
 SAVE_DIR = f"../{MODE}_Per_Case_Stats" if MODE else "../Per_Case_Stats"
+
+
+def get_basis(case):
+    return pandas.read_csv(f"{VECTOR_DIR}/RelDep_matching_Case={case}.csv").columns[5:]
+
+
+def overall_basis():
+    basis = set()
+    for case in filter(lambda t: t[16:20] == 'Case', os.listdir(VECTOR_DIR)):
+        basis |= set(get_basis(case.split('=')[1][:-4]))
+    return basis
+
+
+def cast_case_to_basis(case, vector):
+    basis = overall_basis()
+    case_basis = get_basis(case)
+    vector = {c: vector[i] for i, c in enumerate(case_basis)}
+    m = np.array([0. for _ in basis])
+    for i, b in enumerate(basis):
+        m[i] = vector.get(b, 0.)
+    return m
 
 
 def get_data_set(case):
@@ -95,7 +117,9 @@ def distance_to_any(case, dist: Callable):
     with open(f"{SAVE_DIR}/{case}/{case}_energies_{dist.__name__}.txt", "w") as file:
         file.write(results)
         list_energy = [energies[k] for k in energies]
-        file.write(f"\nMoyenne: {np.mean(list_energy):.3f}, Min: {np.min(list_energy):.3f}, Max: {np.max(list_energy):.3f}")
+        file.write(
+            f"\nMoyenne: {np.mean(list_energy):.3f}, Min: {np.min(list_energy):.3f}, Max: {np.max(list_energy):.3f}"
+        )
 
 
 def distance_to_typical(case, dist: Callable, typical, name):
@@ -140,9 +164,9 @@ def wasserstein_barycenter_plot(case):
         ax1.scatter(x, row, marker='.', color="#ffe500")
     ax1.set_title('Distributions')
 
-    ax2.bar(x - 1/4, bary_l2, width=1/5, color='r', label='l2')
-    ax2.bar(x, bary_wass, width=1/5, color='#ffe500', label='Wasserstein')
-    ax2.bar(x + 1/4, frequencies, width=1/5, color="#7d1dd3", label='Apparition Frequency')
+    ax2.bar(x - 1 / 4, bary_l2, width=1 / 5, color='r', label='l2')
+    ax2.bar(x, bary_wass, width=1 / 5, color='#ffe500', label='Wasserstein')
+    ax2.bar(x + 1 / 4, frequencies, width=1 / 5, color="#7d1dd3", label='Apparition Frequency')
     ax2.set_title('Barycenters')
 
     plt.legend()
@@ -166,7 +190,7 @@ def wasserstein_barycenter(case):
     return bary_wass
 
 
-if __name__ == '__main__':
+def compute_barycenters():
     distance_functions = [wasserstein_distance]
     cases = ["Acc", "Dat", "Nom", "Gen", "Abs", "Erg", "Loc", "Ins", "Abl"]
 
@@ -183,9 +207,15 @@ if __name__ == '__main__':
             file.write(f"{studied_case=}\n")
             file.write(f"[{", ".join(str(w) for w in wasserstein_mean)}]\n")
             file.write(f"[{", ".join(str(w) for w in uniform_mean)}]\n\n\n")
+        savepath = f"{MODE}_barycenters.txt" if MODE else "barycenters.txt"
+        with open(savepath, "a") as file:
+            file.write(f"{studied_case=}\n")
+            file.write(f"[{", ".join(str(w) for w in wasserstein_mean)}]\n")
+            file.write(f"[{", ".join(str(w) for w in uniform_mean)}]\n\n\n")
         for dfunc in (pbar2 := tqdm(
-                      distance_functions, total=3 * len(distance_functions), colour="#ffe500", position=1, leave=False)
-                      ):
+                distance_functions, total=3 * len(distance_functions), colour="#ffe500", position=1, leave=False
+        )
+        ):
             try:
                 os.mkdir(f"{SAVE_DIR}/{studied_case}")
             except FileExistsError:
@@ -199,3 +229,36 @@ if __name__ == '__main__':
             pbar2.set_description("Distance to Wasserstein Barycenter")
             distance_to_typical(studied_case, dfunc, wasserstein_mean, name="Wasserstein_Barycenter")
         pbar2.update(1)
+
+
+def get_barycenters():
+    savepath = f"{MODE}_barycenters.txt" if MODE else "barycenters.txt"
+    with open(savepath, 'r') as f:
+        results = f.read()
+
+    barycenters = list(
+        map(
+            lambda tup: (
+                tup[0][-4:-1], (list(map(float, tup[1][1:-1].split(','))), list(map(float, tup[2][1:-1].split(','))))),
+            list(map(lambda t: tuple(t.split("\n")), results.split('\n\n\n')))[:-1]
+        )
+    )
+    return barycenters
+
+
+def barycenter_distances(dist: Callable):
+    r = get_barycenters()
+    wassies = [(k[0], np.array(k[1][1])) for k in r]
+    result = "\n".join(
+        f"Distance {b1[0]} - {b2[0]} = {dist(cast_case_to_basis(*b1), cast_case_to_basis(*b2)):.5f}"
+        for b1, b2 in itertools.combinations(wassies, 2)
+    )
+    save_path = f"{MODE}_uniform_barycenters_{dist.__name__}.txt" if MODE else f"uniform_barycenters_{dist.__name__}.txt"
+    with open(save_path, 'w') as f:
+        f.write(result)
+
+
+if __name__ == '__main__':
+    # compute_barycenters()
+    # barycenter_distances(wasserstein_distance)
+    pass
