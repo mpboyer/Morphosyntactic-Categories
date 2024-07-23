@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advmod,ccomp,cop,fixed,mark,mark:prt
+ga_idt-ud-train,4005,0,121,1.0,1.0,110,,5.0,4.0
+ga_idt-ud-test,454,0,28,,,26,,1.0,1.0
+ga_idt-ud-dev,451,0,27,,,24,2.0,1.0,
+ga_cadhan-ud-test,193,0,11,,,10,,,1.0

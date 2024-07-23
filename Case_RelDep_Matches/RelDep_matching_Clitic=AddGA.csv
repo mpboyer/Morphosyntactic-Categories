@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advmod:freq,det,dislocated,nsubj,obj,obl,obl:lmod,xcomp
+mdf_jr-ud-test,454,0,12,1.0,1.0,1.0,4.0,1.0,1.0,1,2.0
+mdf_jr-ud-train,20,0,1,,,,,,,1,

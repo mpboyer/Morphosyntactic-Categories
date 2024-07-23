@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,root
+ga_idt-ud-train,4005,0,10,3.0,1,6.0
+ga_idt-ud-dev,451,0,1,,1,

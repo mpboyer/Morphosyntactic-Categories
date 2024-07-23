@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,amod,appos,conj,csubj,nmod,nsubj,nsubj:cop,obj,obl,obl:agent,root,xcomp
+myv_jr-ud-test,921,0,23,3,,5,,1,,3,3,1.0,2,2,1.0,1.0,1
+myv_jr-ud-train,1217,0,32,10,1.0,6,1.0,4,1.0,2,3,,1,2,,,1

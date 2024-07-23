@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advcl:abs,advcl:cmp,advcl:pred,advcl:relcl,amod,ccomp,ccomp:relcl,ccomp:reported,conj,conj:expl,csubj,csubj:cleft,csubj:pass,csubj:relcl,csubj:reported,dislocated:csubj,flat:redup,nmod,nsubj,obj,obl,obl:agent,obl:arg,obl:lmod,orphan,parataxis,root,xcomp
+la_circse-ud-test,1263,0,607,51,28,40,10,7,24.0,1,2.0,6,3.0,,223,2,8,,1,5,,,2.0,,,1.0,,,,,,6.0,171,16
+la_udante-ud-train,926,0,745,36,59,83,9,80,22.0,2,,47,4.0,11.0,137,10,35,1.0,6,4,1.0,,,,2.0,,5.0,1.0,1.0,,,,151,38
+la_udante-ud-test,419,0,330,5,31,47,3,17,8.0,2,,23,,,49,4,8,1.0,3,2,,,,,,,2.0,,,,4.0,1.0,100,20
+la_udante-ud-dev,376,0,311,15,33,39,7,19,5.0,1,,15,1.0,3.0,65,6,10,1.0,1,1,1.0,,,,2.0,4.0,3.0,,1.0,,,,68,10
+la_ittb-ud-dev,2101,0,984,63,96,80,12,31,,7,,19,1.0,,80,4,85,,46,7,,1.0,,2.0,,,23.0,,,1.0,,2.0,375,49
+la_ittb-ud-test,2101,0,585,41,44,60,4,52,,7,,12,,,47,2,25,,10,3,,,,,,,4.0,,,,2.0,1.0,237,34
+la_ittb-ud-train,22775,0,9300,750,867,1146,101,318,3.0,78,,208,38.0,,691,38,454,1.0,222,118,,,,7.0,2.0,,103.0,,,,2.0,18.0,3767,368

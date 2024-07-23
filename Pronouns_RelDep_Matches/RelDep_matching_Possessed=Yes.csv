@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,appos,conj,nmod,nmod:poss,nsubj,nsubj:cop,obj,obl:lmod,root
+apu_ufpa-ud-test,161,0,43,1,1,2,1,14,5,11,2,6

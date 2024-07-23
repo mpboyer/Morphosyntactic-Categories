@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advmod
+qpm_philotis-ud-train,980,0,37,37
+qpm_philotis-ud-dev,635,0,27,27
+qpm_philotis-ud-test,635,0,29,29

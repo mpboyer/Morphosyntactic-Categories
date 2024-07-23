@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,ccomp,conj,csubj,nmod,nsubj,obj,obl,obl:arg,parataxis,root,xcomp
+grc_proiel-ud-test,1047,0,3,,,2.0,,,,,,,,,,,1.0
+grc_proiel-ud-train,15016,0,27,5.0,,9.0,1.0,3.0,,,,,,1.0,,7.0,1.0
+grc_proiel-ud-dev,1019,0,1,,,,1.0,,,,,,,,,,
+grc_ptnk-ud-train,727,0,144,1.0,17.0,21.0,25.0,43.0,,1.0,,,3.0,,8.0,19.0,6.0
+grc_ptnk-ud-dev,439,0,72,,11.0,9.0,9.0,24.0,1.0,,,1.0,1.0,,3.0,5.0,8.0
+grc_ptnk-ud-test,410,0,59,,6.0,8.0,8.0,21.0,,,2.0,,,,5.0,8.0,1.0
+yrl_complin-ud-test,1470,0,8,,,2.0,1.0,,,,,,,,2.0,3.0,

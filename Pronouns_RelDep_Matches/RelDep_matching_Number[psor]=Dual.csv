@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,appos,ccomp,dep:infl,det,nmod,nmod:poss,nsubj,obj,obl,xcomp
+sl_ssj-ud-test,1282,0,9,,,,9.0,,,,,,
+sl_ssj-ud-dev,1250,0,4,,,,4.0,,,,,,
+sl_ssj-ud-train,10903,0,45,,1.0,,44.0,,,,,,
+ess_sli-ud-test,309,0,2,,,2.0,,,,,,,
+hsb_ufal-ud-test,623,0,1,,,,1.0,,,,,,
+sme_giella-ud-train,2257,0,45,1.0,,,,2.0,7.0,2.0,10.0,22.0,1.0
+sme_giella-ud-test,865,0,1,,,,,,1.0,,,,
+sl_sst-ud-train,4558,0,3,,,,3.0,,,,,,
+sl_sst-ud-test,1041,0,1,,,,,,,,,1.0,

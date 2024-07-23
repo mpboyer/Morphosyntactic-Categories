@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,punct
+pl_pdb-ud-train,17722,0,26,26
+pl_pdb-ud-dev,2215,0,5,5
+pl_pud-ud-test,1000,0,1,1

@@ -1,7 +1,7 @@
 import re
 
 
-forbidden_reldeps = ["det", "conj", "case"]
+forbidden_reldeps = []
 # allowed_pos = ['PRON']
 
 
@@ -62,32 +62,33 @@ def vectorize(filename):
                 if re.search(c, annotations[0]):
                     word += 1
                     offset -= 1
-                else:
 
+                elif annotations[7] not in forbidden_reldeps:
                     attributes = {
                         "position": word + offset,
                         "grapheme": annotations[1],
                         "lemma": annotations[2],
                         "part_of_speech": annotations[3],
-                        "edge_type": annotations[7]}
+                        "edge_type": annotations[7]
+                    }
                     features = annotations[5]
 
                     if annotations[6] != "0":
                         attributes["predecessor"] = annotations[6]
                     else:
                         attributes["predecessor"] = str(word + offset)
+
                     if features == "_":
                         pass
                     # elif annotations[3] not in allowed_pos:
-                        # pass
+                    #     pass
                     else:
                         features = features.split("|")
                         for feature in features:
                             feature = feature.split("=")
                             if feature[0] == 'Case':
-                                if feature[1] not in forbidden_reldeps:
-                                    attributes[feature[0]] = feature[1]
-                                    cases.add(feature[1])
+                                attributes[feature[0]] = feature[1]
+                                cases.add(feature[1])
                     sentence_dict[attributes["position"]] = attributes
 
             except IndexError:
@@ -118,4 +119,4 @@ def vectorize(filename):
 
 
 if __name__ == "__main__":
-    pass
+    vectorize("../ud-treebanks-v2.14/UD_German-GSD/de_gsd-ud-train.conllu")

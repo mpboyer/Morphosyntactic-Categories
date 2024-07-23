@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,advmod,case,ccomp,conj,det,det:poss,mark,nsubj,obj,obj:lo,obl,root
+sl_ssj-ud-dev,1250,0,1,,,,,1.0,,,,,,,
+sl_ssj-ud-train,10903,0,1,,,,,1.0,,,,,,,
+de_pud-ud-test,1000,0,16,,,,,,16.0,,,,,,
+abq_atb-ud-test,98,0,3,,,1.0,,,,,,,,2.0,
+cs_fictree-ud-dev,1309,0,2,,,,,2.0,,,,,,,
+cs_fictree-ud-train,10160,0,9,,,,,9.0,,,,,,,
+cs_fictree-ud-test,1291,0,1,,,,,1.0,,,,,,,
+ab_abnc-ud-test,263,0,51,1.0,29.0,,1.0,,,2.0,4.0,1.0,1.0,4.0,8.0
+cs_poetry-ud-test,297,0,1,,,,,1.0,,,,,,,

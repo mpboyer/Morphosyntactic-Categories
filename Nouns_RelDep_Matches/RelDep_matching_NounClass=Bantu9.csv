@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,amod,case,conj,expl,iobj,mark,nmod,nsubj,nsubj:pass,obj,obl:lmod,orphan,root
+tn_popapolelo-ud-test,20,0,18,1,1,2,1,1,2,1,1,1,4,1,1,1

@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,obj,obl,root
+aqz_tudet-ud-test,343,0,16,1,2,7,1,5

@@ -16,6 +16,8 @@ import matplotlib.pyplot as plt
 import matplotlib as matplotlib
 import itertools
 
+from tqdm import tqdm
+
 import csv_proximity
 from visualise import get_data_set
 from csv_proximity import get_matrix_csv
@@ -276,9 +278,9 @@ def cc_manifold_bank_list(treebanks):
     plt.savefig(savepath)
 
 
-studied_languages = ['tr_boun-ud-train', 'sk_snk-ud-train', 'ab_abnc-ud-test', 'eu_bdt-ud-train', 'fi_ftb-ud-train',
-                     'hit_hittb-ud-test', 'ta_ttb-ud-train', 'wbp_ufal-ud-test']
-
 if __name__ == '__main__':
-    for s in studied_languages:
-        cc_manifold_bank_list([s])
+    for cas in tqdm(['Abl', 'Acc', 'Dat', 'Gen', 'Loc', 'Nom']):
+        rips_complex(cas)
+        cubical_complex(cas)
+    for cas1, cas2 in itertools.combinations(["Acc", "Nom", "Gen"], 2):
+        tomato(cas1, cas2)

@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,amod,nsubj,parataxis,root
+quc_iu-ud-test,1435,0,23,20,1,1,1

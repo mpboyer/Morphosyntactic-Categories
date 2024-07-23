@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advmod,appos,case,ccomp,conj,det,dislocated,fixed,iobj,nmod,nsubj,obj,obj:appl,obj:caus,obl,obl:appl,parataxis,root,xcomp
+wo_wtb-ud-dev,449,0,224,,,2.0,85,2,3,,7,48,8,,2,3.0,40,8,,1.0,6,,2.0,6,1.0
+wo_wtb-ud-test,470,0,200,,1.0,,72,1,5,2.0,2,46,10,1.0,3,1.0,31,17,,,3,,,5,
+wo_wtb-ud-train,1188,0,467,1.0,,1.0,175,4,2,5.0,10,70,24,1.0,1,,106,36,2.0,,15,1.0,4.0,8,1.0

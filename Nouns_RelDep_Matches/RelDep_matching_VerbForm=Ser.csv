@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,compound,compound:svc,root
+gun_dooley-ud-test,1046,0,187,,185.0,2.0
+gun_thomas-ud-test,98,0,10,,10.0,
+eme_tudet-ud-test,913,0,15,15.0,,

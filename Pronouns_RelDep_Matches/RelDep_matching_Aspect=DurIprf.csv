@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,aux,dep,parataxis,root
+myu_tudet-ud-test,158,0,25,2,1,1,11,10

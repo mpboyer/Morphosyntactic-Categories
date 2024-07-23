@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,advmod,appos,case,cc,ccomp,conj,dep,discourse,dislocated,iobj,mark,nmod,nmod:poss,nsubj,obj,obl,obl:subj,parataxis,root,vocative,xcomp
+gub_tudet-ud-test,1182,0,690,,3.0,,2.0,406.0,,8.0,6.0,,1.0,,22.0,1.0,92.0,,,25.0,73.0,19.0,1.0,31.0,,
+mpu_tudet-ud-test,37,0,9,,,,,,,,,,,,,,4.0,,1.0,1.0,,,,3.0,,
+tpn_tudet-ud-test,581,0,317,,41.0,,9.0,96.0,,4.0,10.0,2.0,1.0,,,,26.0,,13.0,18.0,43.0,,14.0,33.0,3.0,4.0
+myu_tudet-ud-test,158,0,24,,,,1.0,14.0,,,,,,,,1.0,3.0,,1.0,,4.0,,,,,
+gn_oldtudet-ud-test,59,0,20,,1.0,,,6.0,,,,,,,1.0,,3.0,,,1.0,3.0,,,5.0,,
+yrl_complin-ud-test,1470,0,372,7.0,3.0,,3.0,100.0,,2.0,4.0,,,1.0,2.0,2.0,3.0,11.0,55.0,59.0,58.0,,4.0,32.0,23.0,3.0
+urb_tudet-ud-test,83,0,5,,,,,1.0,,,,,,,,,,,,4.0,,,,,,
+eme_tudet-ud-test,913,0,157,,9.0,1.0,,54.0,1.0,1.0,,,1.0,,,,13.0,,6.0,11.0,32.0,,3.0,22.0,,3.0
+aqz_tudet-ud-test,343,0,19,,,,1.0,,,,,,,,,,1.0,,,4.0,1.0,,,12.0,,

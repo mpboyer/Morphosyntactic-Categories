@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,aux,dislocated
+wo_wtb-ud-dev,449,0,91,91,
+wo_wtb-ud-test,470,0,119,116,3.0
+wo_wtb-ud-train,1188,0,255,250,5.0

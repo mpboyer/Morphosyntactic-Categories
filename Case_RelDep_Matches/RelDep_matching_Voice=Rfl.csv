@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,case,ccomp,compound,conj,csubj,csubj:cop,dep:repeat,nmod,nmod:poss,nsubj,obj,obl,parataxis,parataxis:trans,root
+tr_atis-ud-test,586,0,2,,,2.0,,,,,,,,,,,,,,
+tr_kenet-ud-dev,1646,0,4,,,,,1.0,,,,,,,,,,1.0,,2.0
+tr_kenet-ud-test,1643,0,3,,,,,1.0,,,,,,,,,,1.0,,1.0
+tr_kenet-ud-train,15398,0,33,3.0,2.0,,1.0,,,,,,,,,,1.0,7.0,,19.0
+tr_framenet-ud-dev,205,0,1,,,,,,,,,,,,,,,,,1.0
+abq_atb-ud-test,98,0,4,,2.0,,,,,,,1.0,,,,,,,,1.0
+tr_gb-ud-test,2880,0,10,,,,,,,,1.0,,,,,,,,,9.0
+qtd_sagt-ud-test,805,0,6,,,,1.0,,,,,,,,,,,3.0,1.0,1.0
+qtd_sagt-ud-dev,801,0,1,,1.0,,,,,,,,,,,,,,,
+tr_tourism-ud-train,15473,0,10,,1.0,1.0,1.0,,,,,,,,,,,,,7.0
+tr_tourism-ud-dev,2166,0,5,,,,,,,,,,,,,,,2.0,,3.0
+tr_boun-ud-dev,979,0,3,1.0,,,,,,,,,,,,,,,,2.0
+tr_boun-ud-train,7803,0,110,16.0,12.0,,4.0,2.0,25.0,1.0,,,2.0,7.0,1.0,1.0,1.0,,,38.0
+tr_penn-ud-train,14850,0,15,,,,,,,,,,,,,1.0,,1.0,,13.0

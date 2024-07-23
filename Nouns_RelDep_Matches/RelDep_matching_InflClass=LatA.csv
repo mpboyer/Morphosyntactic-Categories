@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advcl:abs,advcl:cmp,advcl:pred,advcl:relcl,amod,appos,aux,aux:pass,ccomp,ccomp:relcl,ccomp:reported,conj,conj:expl,cop,cop:outer,csubj,csubj:cleft,csubj:outer,csubj:pass,csubj:relcl,csubj:reported,det,dislocated:ccomp,dislocated:csubj,dislocated:obl,fixed,flat,flat:redup,nmod,nsubj,nsubj:outer,nsubj:pass,obj,obl,obl:agent,obl:arg,obl:cmp,obl:lmod,orphan,parataxis,parataxis:reporting,root,vocative,xcomp
+la_circse-ud-test,1263,0,1757,87,54,107,17,12,34.0,5,2.0,,3,47,29,7,2.0,423,4,208,,27,,,3,5,,8.0,,3.0,,1.0,,3.0,8,32,,1.0,80,44,3.0,56,,5.0,3,9.0,3.0,362,9.0,51
+la_udante-ud-train,926,0,3061,100,148,207,30,58,25.0,14,,,39,288,74,6,33.0,250,29,971,19.0,62,1.0,1.0,20,9,4.0,2.0,1.0,2.0,1.0,9.0,4.0,1.0,17,63,,2.0,91,119,3.0,55,1.0,2.0,7,,1.0,201,,91
+la_udante-ud-test,419,0,1346,46,57,105,11,25,31.0,12,,,9,164,50,3,,134,3,336,4.0,38,1.0,,16,5,1.0,,,2.0,,7.0,,,9,20,,1.0,14,31,1.0,25,,,5,,,104,,76
+la_udante-ud-dev,376,0,1129,77,52,85,16,26,40.0,1,,,5,70,25,5,1.0,114,4,189,7.0,13,,,6,9,,2.0,,1.0,,8.0,,,22,35,,4.0,73,59,,30,,,5,,1.0,106,,38
+la_ittb-ud-dev,2101,0,3229,117,142,139,14,38,,10,,,54,227,48,6,,88,4,1390,4.0,121,,,32,25,,,,,,,,,33,13,1.0,2.0,38,122,3.0,30,,,1,4.0,,370,,153
+la_ittb-ud-test,2101,0,3349,144,141,162,19,39,,12,,,63,252,40,13,,155,1,1254,3.0,112,,,28,35,,,,,,,,,61,23,,,102,83,4.0,38,,,2,5.0,,424,,134
+la_ittb-ud-train,22775,0,36424,2273,1705,1949,242,243,4.0,189,,1.0,438,3206,572,70,2.0,1529,49,14078,40.0,1095,1.0,,378,232,,1.0,,,,4.0,1.0,,273,217,3.0,18.0,585,997,40.0,500,,,19,26.0,,4045,,1399

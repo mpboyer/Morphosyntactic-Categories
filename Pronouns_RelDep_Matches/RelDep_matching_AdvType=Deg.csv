@@ -1,0 +1,20 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,advmod:cmp,advmod:deg,advmod:tmod,amod,case,ccomp,compound,conj,dep,flat:vv,mark,nmod,nsubj,obj,parataxis,root
+hi_hdtb-ud-train,13306,0,314,,314.0,,,,,,,,,,,,,,,,
+hi_hdtb-ud-dev,1659,0,32,,32.0,,,,,,,,,,,,,,,,
+hi_hdtb-ud-test,1684,0,26,,26.0,,,,,,,,,,,,,,,,
+vi_tuecl-ud-test,100,0,13,,13.0,,,,,,,,,,,,,,,,
+mdf_jr-ud-test,454,0,33,,3.0,1.0,29.0,,,,,,,,,,,,,,
+mdf_jr-ud-train,20,0,1,,,,1.0,,,,,,,,,,,,,,
+myv_jr-ud-test,921,0,46,,11.0,,33.0,1.0,,,,,,,,,,,,,1.0
+myv_jr-ud-train,1217,0,35,,20.0,,14.0,,,,,,,1.0,,,,,,,
+bho_bhtb-ud-test,357,0,2,,1.0,,,,,,,1.0,,,,,,,,,
+kpv_lattice-ud-test,643,0,6,,,,6.0,,,,,,,,,,,,,,
+koi_uh-ud-test,94,0,4,,3.0,,1.0,,,,,,,,,,,,,,
+ka_glc-ud-test,151,0,9,1.0,8.0,,,,,,,,,,,,,,,,
+ur_udtb-ud-train,4043,0,119,,109.0,,,,,6.0,,,,,,2.0,1.0,1.0,,,
+ur_udtb-ud-dev,552,0,11,,9.0,,,,,1.0,,,,,,,,,1.0,,
+ur_udtb-ud-test,535,0,15,,13.0,,,,,1.0,,1.0,,,,,,,,,
+lzh_kyoto-ud-dev,6102,0,26,,25.0,,,,1.0,,,,,,,,,,,,
+lzh_kyoto-ud-train,74609,0,169,,145.0,,,,14.0,,1.0,,1.0,,1.0,,,1.0,1.0,3.0,2.0
+lzh_kyoto-ud-test,5528,0,15,,10.0,,,,1.0,,,,3.0,,,,,,,,1.0
+yrl_complin-ud-test,1470,0,123,,123.0,,,,,,,,,,,,,,,,

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,conj,expl:impers,expl:pass,expl:pv,fixed,mark,nmod,xcomp
+ro_nonstandard-ud-test,1052,0,344,,,,1,46,297,,
+ro_nonstandard-ud-dev,1052,0,243,,,,2,34,207,,
+ro_nonstandard-ud-train,24121,0,10299,1.0,2.0,7.0,108,931,9247,2.0,1.0

@@ -1,0 +1,12 @@
+Distance hi_pud-ud-test - Wasserstein_Barycenter = 2.000
+Distance ess_sli-ud-test - Wasserstein_Barycenter = 0.000
+Distance mr_ufal-ud-dev - Wasserstein_Barycenter = 0.000
+Distance mr_ufal-ud-test - Wasserstein_Barycenter = 0.000
+Distance mr_ufal-ud-train - Wasserstein_Barycenter = 0.000
+Distance wbp_ufal-ud-test - Wasserstein_Barycenter = 0.000
+Distance ka_glc-ud-test - Wasserstein_Barycenter = 0.615
+Distance eu_bdt-ud-train - Wasserstein_Barycenter = 0.000
+Distance eu_bdt-ud-test - Wasserstein_Barycenter = 0.286
+Distance eu_bdt-ud-dev - Wasserstein_Barycenter = 0.000
+Distance gu_gujtb-ud-test - Wasserstein_Barycenter = 0.333
+Énergie = 4.571

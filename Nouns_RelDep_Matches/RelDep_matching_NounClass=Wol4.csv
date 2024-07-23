@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,case,det,fixed,iobj,nsubj,obj,obj:appl,obj:caus,obl,obl:appl
+wo_wtb-ud-dev,449,0,45,,23,1.0,,15,5,,,1,
+wo_wtb-ud-test,470,0,65,3.0,35,,1.0,18,5,,1.0,1,1.0
+wo_wtb-ud-train,1188,0,95,1.0,52,1.0,1.0,22,12,1.0,,3,2.0

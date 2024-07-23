@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advcl:cond,advcl:conv,advcl:quote,conj,nsubj,root,xcomp
+abq_atb-ud-test,98,0,8,4.0,,,,2.0,1.0,,1.0
+ka_glc-ud-test,151,0,1,,,,,,,1.0,
+ab_abnc-ud-test,263,0,11,,1.0,1.0,3.0,2.0,,4.0,

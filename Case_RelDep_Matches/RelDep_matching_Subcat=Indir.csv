@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,compound,compound:svc,conj,csubj,obj,parataxis,parataxis:rep,root,xcomp
+gun_dooley-ud-test,1046,0,70,,31.0,1.0,,6.0,,1.0,2.0,1,12.0,16,
+gun_thomas-ud-test,98,0,7,,,,1.0,,,,,1,,5,
+ka_glc-ud-test,151,0,24,1.0,1.0,6.0,,,4.0,,,1,,10,1.0

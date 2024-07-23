@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,conj,nmod,nsubj:pass,obl
+grc_ptnk-ud-train,727,0,6,1.0,5,,,
+grc_ptnk-ud-dev,439,0,5,,2,,1.0,2.0
+grc_ptnk-ud-test,410,0,4,,1,1.0,2.0,

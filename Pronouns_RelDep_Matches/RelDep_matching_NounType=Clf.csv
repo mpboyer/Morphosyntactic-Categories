@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,advcl,amod,appos,case,ccomp,clf,clf:det,compound,compound:redup,compound:vo,conj,dislocated,flat,nmod,nsubj,nsubj:periph,obj,obj:periph,obl,obl:tmod,parataxis,reparandum,root
+lzh_tuecl-ud-test,100,0,11,,,,,2.0,1,,,,,,1.0,,,,,4.0,,,,,,3.0
+vi_tuecl-ud-test,100,0,1,,,,,,1,,,,,,,,,,,,,,,,,
+quc_iu-ud-test,1435,0,49,,,,,,49,,,,,,,,,,,,,,,,,
+yue_hk-ud-test,1004,0,479,,1.0,3.0,2.0,,209,109.0,4.0,,1.0,13.0,,,3.0,20.0,3.0,37.0,4.0,20.0,19.0,1.0,4.0,26.0
+zh_hk-ud-test,1004,0,270,3.0,1.0,4.0,,,117,,6.0,,,9.0,1.0,2.0,6.0,22.0,,30.0,6.0,16.0,17.0,7.0,1.0,22.0
+lzh_kyoto-ud-dev,6102,0,58,,,,,,40,,,,,3.0,,3.0,10.0,,,1.0,,,,,,1.0
+lzh_kyoto-ud-train,74609,0,796,,,,,1.0,659,,,1.0,,25.0,,7.0,41.0,9.0,,32.0,,5.0,,1.0,,15.0
+lzh_kyoto-ud-test,5528,0,59,,,,,,51,,,,,,,,5.0,2.0,,1.0,,,,,,

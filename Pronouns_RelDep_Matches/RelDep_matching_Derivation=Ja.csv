@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,amod,appos,ccomp,compound:nn,conj,csubj,flat:name,nmod,nmod:gobj,nmod:gsubj,nmod:poss,nsubj,nsubj:cop,obj,obl,orphan,parataxis,root,vocative,xcomp,xcomp:ds
+fi_ood-ud-test,2122,0,109,1.0,,2,,3.0,1.0,1,8,,,5,,1.0,13,25,5,9,23,,,9,1.0,2.0,
+fi_tdt-ud-train,12217,0,1504,,5.0,11,1.0,17.0,5.0,139,127,1.0,1.0,83,14.0,33.0,203,302,57,133,226,4.0,,94,7.0,25.0,16.0
+fi_tdt-ud-test,1555,0,200,,1.0,5,,2.0,,19,16,,,9,1.0,1.0,23,55,9,11,30,2.0,,16,,,
+fi_tdt-ud-dev,1364,0,137,,1.0,2,,,5.0,11,11,,,7,,,10,35,6,7,30,,,11,,,1.0
+fi_pud-ud-test,1000,0,157,,1.0,1,,1.0,2.0,21,7,,,9,1.0,1.0,11,49,3,15,22,1.0,1.0,4,,2.0,5.0

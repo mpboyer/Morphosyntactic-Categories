@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,case,ccomp,conj,det,mark:prt,nmod,nsubj,obj,obl:tmod,parataxis,root
+ga_idt-ud-train,4005,0,61,3.0,3.0,1.0,3.0,3.0,30,1.0,2.0,7,3.0,1.0,,4
+ga_idt-ud-test,454,0,15,1.0,,1.0,,1.0,8,1.0,,1,,,,2
+ga_idt-ud-dev,451,0,7,,1.0,,,,2,,,2,,,1.0,1

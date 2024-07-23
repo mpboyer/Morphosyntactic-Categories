@@ -8,13 +8,13 @@ import conllu_case_parser
 import conllu_parser
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-mode", "--mode", default="AllFeatures")
+parser.add_argument("-mode", "--mode", default="")
 files = parser.parse_args()
 
 MODE = files.mode
 UDDIR = "../ud-treebanks-v2.14"
-SAVE_DIR = f"{MODE}_RelDep_Matches" if MODE else "Case_RelDep_Matches"
-VECTOR_DIR = f"../{MODE}_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
+SAVE_DIR = f"{MODE}_Case_RelDep_Matches" if MODE else "Case_RelDep_Matches"
+VECTOR_DIR = f"../{MODE}_Case_RelDep_Matches" if MODE else "../Case_RelDep_Matches"
 
 
 def case_empacker(filename):
@@ -99,7 +99,6 @@ def get_all_features():
         content = os.listdir(f"{UDDIR}/{treebank}")
         for corpus in list(filter(lambda t: t[-7:] == ".conllu", content)):
             present_features = list(map(lambda t: tuple(t.split('_')[-1].split('.')[0].split('=')), os.listdir(f"{UDDIR}/{treebank}/{corpus[:-7]}/{SAVE_DIR}")))
-            print(present_features)
             cases |= set(present_features)
     return cases
 
@@ -219,5 +218,9 @@ def from_vectors_to_csvs():
 
 
 if __name__ == "__main__":
-    process_all_banks()
-    from_vectors_to_csvs()
+    try:
+        os.mkdir(VECTOR_DIR)
+    except FileExistsError:
+        pass
+    case_process_all_banks()
+    from_case_vectors_to_csvs()

@@ -1,0 +1,21 @@
+Treebank,Number of Sentences,Failures,Total,punct
+el_gud-ud-train,1071,0,836,836
+el_gud-ud-test,736,0,588,588
+pl_pdb-ud-test,2215,0,277,277
+pl_pdb-ud-train,17722,0,2259,2259
+pl_pdb-ud-dev,2215,0,296,296
+uk_iu-ud-dev,673,0,362,362
+uk_iu-ud-train,5521,0,1477,1477
+uk_iu-ud-test,898,0,303,303
+es_ancora-ud-train,14287,0,7560,7560
+es_ancora-ud-test,1721,0,921,921
+es_ancora-ud-dev,1654,0,922,922
+ca_ancora-ud-dev,1709,0,808,808
+ca_ancora-ud-test,1846,0,947,947
+ca_ancora-ud-train,13123,0,6467,6467
+ka_glc-ud-test,151,0,16,16
+pl_pud-ud-test,1000,0,222,222
+pl_lfg-ud-test,1727,0,10,10
+pl_lfg-ud-train,13774,0,106,106
+pl_lfg-ud-dev,1745,0,7,7
+es_coser-ud-test,539,0,36,36

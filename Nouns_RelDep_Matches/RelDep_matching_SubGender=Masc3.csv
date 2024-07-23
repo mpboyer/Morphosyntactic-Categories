@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,amod,appos,aux,aux:pass,ccomp,ccomp:obj,conj,cop,cop:locat,csubj,det,flat,iobj,nmod,nmod:poss,nsubj,nsubj:pass,nummod,obj,obl,obl:agent,root,vocative,xcomp
+pl_lfg-ud-test,1727,0,1333,18,2,3,196,2,3,6,2,1,50,2,1.0,1.0,99,2,7,53,48,160,10,32,130,404,,94,1.0,6
+pl_lfg-ud-train,13774,0,10389,202,3,21,1519,26,32,44,26,9,380,35,8.0,2.0,735,22,31,530,361,1190,60,242,1169,3068,11.0,621,2.0,40
+pl_lfg-ud-dev,1745,0,1278,14,2,3,190,4,7,5,3,1,51,3,,,100,8,6,57,48,139,4,30,147,376,2.0,69,,9

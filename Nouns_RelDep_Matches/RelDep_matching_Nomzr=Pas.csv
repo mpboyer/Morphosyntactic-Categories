@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,appos,ccomp,conj,iobj,nmod,nsubj,obj,obl,root
+gub_tudet-ud-test,1182,0,12,,1.0,,1.0,1.0,,3.0,6,
+tpn_tudet-ud-test,581,0,12,2.0,,3.0,,2.0,1.0,,1,3.0
+gn_oldtudet-ud-test,59,0,1,,,,,,,,1,

@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,aux,case,conj,dep,mark,nmod,obj,obl,parataxis,root,xcomp
+tpn_tudet-ud-test,581,0,31,2.0,,,4.0,,,1.0,6,11.0,2.0,2.0,3.0
+arr_tudet-ud-test,674,0,60,,15.0,4.0,1.0,6.0,4.0,11.0,3,2.0,,13.0,1.0
+gn_oldtudet-ud-test,59,0,1,,,,,,,,1,,,,
+eme_tudet-ud-test,913,0,35,,,,,,,1.0,21,11.0,,2.0,

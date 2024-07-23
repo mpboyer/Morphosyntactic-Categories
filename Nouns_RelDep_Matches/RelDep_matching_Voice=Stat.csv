@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,ccomp,conj,obl:arg,root,xcomp
+ha_southernautogramm-ud-test,1918,0,12,3.0,1.0,1,,,7,
+ha_northernautogramm-ud-test,400,0,19,,,1,7.0,1.0,6,4.0

@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,aux,conj,obj,parataxis,root,xcomp
+nhi_itml-ud-test,909,0,12,,,2.0,,4.0,5.0,1.0
+eu_bdt-ud-train,5396,0,32,,29.0,1.0,,,2.0,
+eu_bdt-ud-test,1799,0,10,1.0,9.0,,,,,
+eu_bdt-ud-dev,1798,0,9,,8.0,,1.0,,,

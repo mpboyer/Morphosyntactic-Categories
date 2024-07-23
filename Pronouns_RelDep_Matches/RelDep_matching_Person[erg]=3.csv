@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,aux,ccomp,conj,cop,csubj,dep,dep:repeat,dislocated,iobj,nsubj,obj,obl,parataxis,root,xcomp
+abq_atb-ud-test,98,0,59,1,5,,,4,17,,,,1.0,1.0,,,,,6.0,23,1.0
+eu_bdt-ud-train,5396,0,3962,92,69,5.0,3172.0,57,101,46.0,3.0,1.0,,,2.0,7.0,,1.0,,406,
+eu_bdt-ud-test,1799,0,1325,38,25,1.0,1081.0,14,38,13.0,,,,,,1.0,1.0,1.0,,112,
+eu_bdt-ud-dev,1798,0,1292,28,16,2.0,1027.0,18,37,29.0,2.0,1.0,,,,1.0,1.0,,,130,

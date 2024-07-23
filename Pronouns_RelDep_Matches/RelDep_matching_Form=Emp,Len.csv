@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,conj,nmod,nsubj,obj,obl,root,xcomp:pred
+gv_cadhan-ud-test,1164,0,3,,,,,1.0,,1.0,,1.0
+gv_cadhan-ud-train,1172,0,3,,,1.0,,,1.0,,1.0,
+ga_idt-ud-train,4005,0,6,2.0,,,1.0,,,2.0,1.0,
+ga_idt-ud-test,454,0,1,,1.0,,,,,,,
+ga_idt-ud-dev,451,0,2,,,1.0,,1.0,,,,
+ga_cadhan-ud-test,193,0,2,,,,,,1.0,,1.0,

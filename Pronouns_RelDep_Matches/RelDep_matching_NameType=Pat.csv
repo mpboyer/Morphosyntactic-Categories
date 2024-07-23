@@ -1,0 +1,24 @@
+Treebank,Number of Sentences,Failures,Total,amod,appos,conj,dep,flat,flat:name,iobj,nmod,nsubj,obl,orphan,root,vocative
+uk_iu-ud-dev,673,0,2,,,,,,2,,,,,,,
+uk_iu-ud-train,5521,0,39,,,,,,39,,,,,,,
+uk_iu-ud-test,898,0,20,,,,,,20,,,,,,,
+orv_rnc-ud-dev,943,0,66,,,,,,66,,,,,,,
+orv_rnc-ud-train,1868,0,333,,2.0,,,,330,,1.0,,,,,
+orv_rnc-ud-test,717,0,196,,,1.0,,,193,,2.0,,,,,
+be_hse-ud-train,22853,0,53,,,,,,50,1.0,,2.0,,,,
+be_hse-ud-dev,1301,0,26,,,,,,26,,,,,,,
+be_hse-ud-test,1077,0,6,,,,,,6,,,,,,,
+orv_ruthenian-ud-test,390,0,18,,,,,,18,,,,,,,
+orv_ruthenian-ud-train,2789,0,996,,30.0,16.0,,,934,3.0,9.0,3.0,,,1.0,
+orv_ruthenian-ud-dev,344,0,43,,,2.0,,,41,,,,,,,
+mdf_jr-ud-test,454,0,7,,,,,,5,,1.0,,,,,1.0
+myv_jr-ud-train,1217,0,1,,,,,,1,,,,,,,
+ru_taiga-ud-train,16045,0,134,,3.0,1.0,,1.0,126,,,1.0,,,1.0,1.0
+ru_taiga-ud-dev,946,0,3,,,,,,3,,,,,,,
+ru_taiga-ud-test,881,0,3,,,,,,3,,,,,,,
+orv_birchbark-ud-train,1045,0,32,1.0,2.0,4.0,3.0,,13,,,,1.0,2.0,6.0,
+orv_birchbark-ud-dev,1062,0,32,1.0,1.0,1.0,,,15,,,2.0,3.0,1.0,8.0,
+orv_birchbark-ud-test,1007,0,30,,,3.0,,,20,1.0,,1.0,1.0,,4.0,
+ru_poetry-ud-test,728,0,9,,,,,,9,,,,,,,
+ru_poetry-ud-dev,789,0,3,,,,,,3,,,,,,,
+ru_poetry-ud-train,3569,0,10,,,,,,9,,,,,,,1.0

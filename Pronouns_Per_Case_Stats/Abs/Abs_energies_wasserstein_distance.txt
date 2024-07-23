@@ -1,0 +1,8 @@
+Énergie pour ess_sli-ud-test prototypique selon wasserstein_distance = 0.074
+Énergie pour mr_ufal-ud-train prototypique selon wasserstein_distance = 0.083
+Énergie pour wbp_ufal-ud-test prototypique selon wasserstein_distance = 0.051
+Énergie pour azz_itml-ud-test prototypique selon wasserstein_distance = 0.068
+Énergie pour eu_bdt-ud-train prototypique selon wasserstein_distance = 0.046
+Énergie pour eu_bdt-ud-test prototypique selon wasserstein_distance = 0.053
+Énergie pour eu_bdt-ud-dev prototypique selon wasserstein_distance = 0.060
+Moyenne: 0.062, Min: 0.046, Max: 0.083

@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,conj,dep,parataxis,root
+akk_riao-ud-test,1874,0,281,133,25,71,25,1,26

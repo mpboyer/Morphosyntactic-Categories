@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,aux,ccomp,conj,cop,csubj,dep,nsubj,obj,root,xcomp
+xav_xdt-ud-test,171,0,3,,,,1.0,,,,,,,2,
+abq_atb-ud-test,98,0,31,1.0,9.0,,3.0,10.0,,1.0,,1.0,,5,1.0
+eu_bdt-ud-train,5396,0,242,2.0,9.0,138.0,6.0,10.0,39.0,,2.0,1.0,,35,
+eu_bdt-ud-test,1799,0,89,2.0,2.0,50.0,3.0,2.0,18.0,,,,1.0,11,
+eu_bdt-ud-dev,1798,0,86,1.0,2.0,51.0,,3.0,14.0,,,,,15,

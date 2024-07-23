@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,cop,nsubj,obl,parataxis,root,xcomp
+tpn_tudet-ud-test,581,0,4,1.0,,,,,1.0,,2.0,
+myu_tudet-ud-test,158,0,1,,,,,1.0,,,,
+yrl_complin-ud-test,1470,0,30,1.0,29.0,,,,,,,
+eme_tudet-ud-test,913,0,35,7.0,1.0,1.0,1.0,,,3.0,20.0,2.0

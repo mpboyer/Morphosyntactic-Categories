@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,ccomp,conj,dep,nmod,nmod:poss,nsubj,nummod,obj,obl,root
+akk_riao-ud-test,1874,0,2642,1,9,1090,4,180,1,89,389,21,1,193,567,97

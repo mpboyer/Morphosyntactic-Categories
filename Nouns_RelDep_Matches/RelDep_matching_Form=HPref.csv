@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,advmod,amod,ccomp,conj,det,fixed,flat,flat:name,nmod,nsubj,nummod,obj,obl,obl:prep,obl:tmod,orphan,parataxis,root,xcomp,xcomp:pred
+gv_cadhan-ud-test,1164,0,11,,,,,,1.0,,1.0,,,3,,,4,1.0,,,,,,,1.0
+gv_cadhan-ud-train,1172,0,6,,,,,,,,1.0,,,2,1.0,,2,,,,,,,,
+ga_idt-ud-train,4005,0,734,3.0,1.0,85.0,2.0,3.0,46.0,8.0,52.0,1.0,7.0,260,43.0,4.0,30,139.0,,6.0,1.0,3.0,16.0,15.0,9.0
+ga_idt-ud-test,454,0,69,,,6.0,,,4.0,,3.0,,3.0,26,4.0,1.0,5,8.0,1.0,,,1.0,4.0,2.0,1.0
+ga_idt-ud-dev,451,0,57,,,8.0,1.0,,,2.0,1.0,,3.0,18,4.0,,4,12.0,,3.0,,,1.0,,
+ga_cadhan-ud-test,193,0,35,1.0,1.0,2.0,,,,,,,,5,5.0,,6,10.0,,,,1.0,1.0,,3.0

@@ -1,0 +1,17 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,aux,ccomp,compound,conj,cop,csubj,discourse,fixed,obj,obl,parataxis,root
+tr_pud-ud-test,1000,0,14,,10.0,,,,,4.0,,,,,,,
+tr_atis-ud-train,4274,0,1,,,,1.0,,,,,,,,,,
+tr_atis-ud-test,586,0,1,,1.0,,,,,,,,,,,,
+tr_kenet-ud-dev,1646,0,30,,27.0,,,,1.0,,,,,,2.0,,
+tr_kenet-ud-test,1643,0,36,,30.0,,,2.0,,,,1.0,,1.0,,1.0,1.0
+tr_kenet-ud-train,15398,0,200,1.0,173.0,,3.0,11.0,2.0,,1.0,1.0,,,1.0,4.0,3.0
+tr_framenet-ud-test,205,0,1,,1.0,,,,,,,,,,,,
+tr_framenet-ud-train,2288,0,25,,19.0,,1.0,4.0,,,,1.0,,,,,
+tr_framenet-ud-dev,205,0,2,,2.0,,,,,,,,,,,,
+tr_gb-ud-test,2880,0,48,,33.0,10.0,,,,3.0,,,2.0,,,,
+tr_tourism-ud-train,15473,0,56,,46.0,,3.0,,1.0,,,,,,1.0,4.0,1.0
+tr_tourism-ud-dev,2166,0,5,,4.0,,,,,,,,,,,1.0,
+tr_tourism-ud-test,2191,0,8,,6.0,,,,,,,,,,,,2.0
+tr_penn-ud-dev,622,0,3,,3.0,,,,,,,,,,,,
+tr_penn-ud-test,924,0,8,,8.0,,,,,,,,,,,,
+tr_penn-ud-train,14850,0,113,1.0,93.0,,1.0,7.0,2.0,,,,1.0,,,1.0,7.0

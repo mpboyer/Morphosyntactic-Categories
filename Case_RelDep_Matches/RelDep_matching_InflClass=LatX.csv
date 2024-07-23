@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advcl:abs,advcl:cmp,advcl:pred,advcl:relcl,amod,appos,ccomp,ccomp:relcl,ccomp:reported,conj,conj:expl,csubj,csubj:cleft,csubj:outer,csubj:pass,csubj:relcl,csubj:reported,discourse,dislocated:ccomp,dislocated:csubj,dislocated:obj,dislocated:obl,flat,flat:redup,nmod,nsubj,nsubj:pass,obj,obl,obl:agent,obl:arg,obl:cmp,obl:lmod,orphan,parataxis,parataxis:reporting,root,vocative,xcomp,xcomp:relcl
+la_circse-ud-test,1263,0,1533,201,55,79,52,11,83.0,7,4.0,1.0,27,9,2.0,464,6,30,,,8,6,,,,1.0,,,,1.0,2,8.0,2.0,10.0,3,,3.0,1.0,,1.0,5.0,,393,,57,1.0
+la_udante-ud-train,926,0,1726,156,167,219,49,62,62.0,9,,,92,3,31.0,285,27,76,2.0,1.0,15,14,1.0,2.0,1.0,2.0,2.0,1.0,2.0,,26,12.0,2.0,5.0,41,3.0,7.0,,1.0,4.0,,3.0,234,,107,
+la_udante-ud-test,419,0,668,32,79,85,5,41,29.0,11,,,39,6,3.0,108,2,19,2.0,,20,9,,,,1.0,,,,,4,2.0,,1.0,13,,2.0,,,4.0,,,106,,45,
+la_udante-ud-dev,376,0,607,36,49,82,12,19,39.0,4,,,34,1,2.0,116,9,19,1.0,,5,13,2.0,,,1.0,,,,,16,3.0,,3.0,4,,2.0,,,1.0,,,103,1.0,29,1.0
+la_ittb-ud-dev,2101,0,1622,180,185,180,39,81,,13,,,31,8,,78,2,108,,,19,23,,,,1.0,,,,,3,1.0,,,59,,,,,1.0,1.0,,479,,130,
+la_ittb-ud-test,2101,0,1936,197,141,210,48,119,,30,,,50,11,,133,2,142,,,34,32,,,,,,,,,11,,,,89,,,,,,3.0,,546,,138,
+la_ittb-ud-train,22775,0,23894,3056,2378,3013,326,978,3.0,246,,,676,67,1.0,1767,70,1485,4.0,,508,431,1.0,,1.0,,,,,,49,2.0,,1.0,791,,1.0,,,33.0,44.0,,6339,,1623,

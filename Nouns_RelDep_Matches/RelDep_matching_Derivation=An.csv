@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advcl:lcl,conj,nmod,parataxis,root
+kpv_lattice-ud-test,643,0,36,20,4,1,6,1,1,3

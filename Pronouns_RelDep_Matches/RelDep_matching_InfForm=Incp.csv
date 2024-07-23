@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,root,xcomp
+mr_ufal-ud-dev,46,0,5,,5
+mr_ufal-ud-train,373,0,16,4.0,12

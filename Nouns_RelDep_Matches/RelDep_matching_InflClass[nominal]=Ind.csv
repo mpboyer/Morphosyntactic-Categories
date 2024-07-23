@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advcl:abs,advcl:cmp,advcl:pred,amod,appos,aux:pass,ccomp,ccomp:relcl,conj,conj:expl,cop,csubj,csubj:pass,nmod,nsubj,nsubj:pass,obj,obl,obl:arg,obl:cmp,orphan,parataxis,root,vocative,xcomp,xcomp:relcl
+la_circse-ud-test,1263,0,1139,378,3,37,100,5,161,10,1,3,40,1,105,1,6,40,4,6,8,2,19,7,9,1,2,1,40,2,146,1

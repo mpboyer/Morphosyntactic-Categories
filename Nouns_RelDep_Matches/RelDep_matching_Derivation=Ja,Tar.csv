@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,compound:nn,nsubj,root
+fi_tdt-ud-train,12217,0,3,,2.0,1.0
+fi_pud-ud-test,1000,0,1,1.0,,

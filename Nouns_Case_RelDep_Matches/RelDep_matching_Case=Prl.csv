@@ -1,7 +1,7 @@
-Treebank,Number of Sentences,Failures,Total,appos,case,conj,nmod,obl,obl:lmod,obl:tmod,root
-mdf_jr-ud-test,454,0,28,,2.0,,,2.0,23.0,,1.0
-myv_jr-ud-test,921,0,52,2.0,,3.0,,5.0,40.0,1.0,1.0
-myv_jr-ud-train,1217,0,71,,,2.0,,6.0,59.0,4.0,
-kpv_ikdp-ud-test,214,0,1,,,,,1.0,,,
-kpv_lattice-ud-test,643,0,6,,,,1.0,2.0,3.0,,
-koi_uh-ud-test,94,0,1,,,,,,1.0,,
+Treebank,Number of Sentences,Failures,Total,appos,nmod,obl,obl:lmod,obl:tmod,root
+mdf_jr-ud-test,454,0,26,,,2.0,23.0,,1.0
+myv_jr-ud-test,921,0,49,2.0,,5.0,40.0,1.0,1.0
+myv_jr-ud-train,1217,0,69,,,6.0,59.0,4.0,
+kpv_ikdp-ud-test,214,0,1,,,1.0,,,
+kpv_lattice-ud-test,643,0,6,,1.0,2.0,3.0,,
+koi_uh-ud-test,94,0,1,,,,1.0,,

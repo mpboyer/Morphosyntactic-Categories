@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,amod,appos,aux,conj,cop,dep
+ko_pud-ud-test,1000,0,1118,606,158,1,68,9,182,94

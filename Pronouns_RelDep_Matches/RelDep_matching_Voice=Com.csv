@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,conj,nmod,obj,obl,obl:subj,parataxis,root
+gub_tudet-ud-test,1182,0,63,2.0,8.0,4.0,2.0,7.0,1.0,2.0,2.0,35
+gn_oldtudet-ud-test,59,0,3,,,,,,,,,3

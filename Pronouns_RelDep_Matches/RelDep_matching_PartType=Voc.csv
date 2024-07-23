@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,case:voc
+sga_dipsgg-ud-test,64,0,5,5
+ga_idt-ud-train,4005,0,30,30
+ga_idt-ud-test,454,0,11,11
+ga_idt-ud-dev,451,0,15,15
+gd_arcosg-ud-test,545,0,13,13
+gd_arcosg-ud-train,3541,0,42,42
+gd_arcosg-ud-dev,655,0,20,20
+ga_cadhan-ud-test,193,0,17,17

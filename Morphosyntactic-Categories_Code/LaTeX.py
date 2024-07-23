@@ -161,4 +161,5 @@ def csv_figurifier_distances():
             f.write(result_string)
 
 
-csv_figurifier_distances()
+if __name__ == '__main__':
+    csv_figurifier_distances()

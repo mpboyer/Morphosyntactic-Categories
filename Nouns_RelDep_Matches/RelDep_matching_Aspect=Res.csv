@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,advmod,ccomp,compound,conj,parataxis,reparandum,root
+say_autogramm-ud-test,1864,0,191,5,26,1,11,32,3,40,1,72

@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advcl:pred,conj,det,nmod,nsubj,nsubj:pass,nummod,obl,obl:arg,root
+ar_padt-ud-dev,909,0,3,,,,,,,,3.0,,,
+ar_padt-ud-train,6075,0,25,,,,,,,,24.0,1.0,,
+ar_padt-ud-test,680,0,1,,,,,,,,1.0,,,
+la_llct-ud-dev,850,0,10,1.0,,,3.0,6.0,,,,,,
+la_llct-ud-test,884,0,9,,,,7.0,2.0,,,,,,
+la_llct-ud-train,7289,0,74,,1.0,1.0,56.0,14.0,2.0,,,,,
+la_udante-ud-train,926,0,6,,,,2.0,,2.0,,,1.0,1.0,
+la_ittb-ud-dev,2101,0,1,,,,1.0,,,,,,,
+la_ittb-ud-train,22775,0,6,,,1.0,,1.0,2.0,1.0,,,,1.0

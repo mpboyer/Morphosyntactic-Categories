@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,compound:svc,conj,csubj,parataxis,root
+mr_ufal-ud-dev,46,0,4,,1.0,,1.0,,,2
+mr_ufal-ud-test,47,0,3,,,,,1.0,1.0,1
+mr_ufal-ud-train,373,0,10,6.0,,1.0,1.0,,,2

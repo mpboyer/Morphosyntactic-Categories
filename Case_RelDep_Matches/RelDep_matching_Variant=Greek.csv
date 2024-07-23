@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advcl:cmp,advcl:pred,amod,appos,conj,conj:expl,flat,flat:redup,nmod,nsubj,nsubj:pass,obj,obl,orphan,root,vocative,xcomp
+la_circse-ud-test,1263,0,154,,1.0,4.0,2.0,18.0,1.0,,1.0,2.0,76.0,4.0,27.0,,2.0,1.0,15.0,
+la_udante-ud-train,926,0,18,,,2.0,,3.0,,1.0,,3.0,2.0,,6.0,1.0,,,,
+la_udante-ud-test,419,0,3,2.0,,,,1.0,,,,,,,,,,,,
+la_udante-ud-dev,376,0,4,,,,,,,,,1.0,,,1.0,1.0,,,,1.0
+la_ittb-ud-dev,2101,0,1,,,,,,,,,,1.0,,,,,,,
+la_ittb-ud-test,2101,0,1,,,,,,,,,,1.0,,,,,,,
+la_ittb-ud-train,22775,0,38,,,,,4.0,,,,4.0,22.0,3.0,1.0,,,2.0,,2.0

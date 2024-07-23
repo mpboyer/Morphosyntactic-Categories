@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,ccomp,conj,csubj:cleft,csubj:cop,dislocated,fixed,mark,mark:prt,nsubj,obj,obl,obl:tmod,root,xcomp,xcomp:pred
+ga_idt-ud-train,4005,0,1900,,365,17,1.0,9.0,53,2.0,1.0,1.0,2.0,482,612,325,18,8.0,3.0,,1.0
+ga_idt-ud-test,454,0,243,,20,4,,1.0,11,,,,,92,77,29,1,5.0,2.0,1.0,
+ga_idt-ud-dev,451,0,212,1.0,18,4,1.0,1.0,4,,,,,81,65,31,4,2.0,,,
+ga_cadhan-ud-test,193,0,67,,5,2,,,1,,,2.0,,22,25,9,1,,,,

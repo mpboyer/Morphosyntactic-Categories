@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,advmod,conj,fixed,mark,mark:prt,obl
+gv_cadhan-ud-test,1164,0,20,,,,20.0,,
+gv_cadhan-ud-train,1172,0,21,,,,21.0,,
+ga_idt-ud-train,4005,0,128,2.0,1.0,4.0,,121.0,
+ga_idt-ud-test,454,0,26,,,,,26.0,
+ga_idt-ud-dev,451,0,19,,,2.0,,16.0,1.0
+gd_arcosg-ud-test,545,0,13,,,3.0,,10.0,
+gd_arcosg-ud-train,3541,0,159,,,48.0,,111.0,
+gd_arcosg-ud-dev,655,0,12,,,3.0,,9.0,
+ga_cadhan-ud-test,193,0,4,,,1.0,,3.0,

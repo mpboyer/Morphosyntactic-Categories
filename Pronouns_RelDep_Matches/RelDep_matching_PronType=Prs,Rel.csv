@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,case,case:det,cc:nc,ccomp,conj,csubj,det,dislocated,mark,nmod,nsubj,nsubj:obj,obj,obl,root,xcomp
+fro_profiterole-ud-dev,2085,0,372,1.0,1.0,1.0,,1.0,3.0,,,1.0,,17,3,219,,83,42,,
+fro_profiterole-ud-train,15503,0,2978,2.0,4.0,,1.0,9.0,27.0,8.0,2.0,,2.0,137,36,1514,,703,522,3.0,8.0
+fro_profiterole-ud-test,2177,0,347,,,,1.0,,,1.0,,,,18,4,207,1.0,62,53,,

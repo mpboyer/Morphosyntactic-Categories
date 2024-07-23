@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,_,acl:relcl,advcl,amod,appos,ccomp,conj,csubj,dep,flat,iobj,nmod,nsubj,nsubj:pass,obj,obl,obl:arg,orphan,root,xcomp
+cs_pdt-ud-test,10146,0,91,,,1.0,,1,1.0,10,,,12,,21,21,2.0,4,5,10,,3,
+cs_pdt-ud-dev,9270,0,78,,,,,2,,10,,1.0,13,,20,23,,4,2,2,,1,
+cs_pdt-ud-train,68491,0,863,4.0,1.0,9.0,8.0,6,1.0,90,1.0,11.0,95,1.0,191,266,6.0,39,31,74,5.0,22,2.0

@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,amod,conj,nmod,nsubj,obj,obl
+mdf_jr-ud-test,454,0,1,,,,,1,,
+myv_jr-ud-test,921,0,11,,,2.0,2.0,4,,3.0
+myv_jr-ud-train,1217,0,1,,,,,1,,
+tt_nmctt-ud-test,148,0,21,4.0,2.0,1.0,3.0,5,2.0,4.0

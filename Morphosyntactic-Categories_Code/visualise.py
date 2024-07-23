@@ -1,5 +1,6 @@
 import argparse
 import contextlib
+import itertools
 import os
 
 import joblib
@@ -452,7 +453,10 @@ def get_cases(languages):
     return res
 
 
-studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
-tsne_lang_list(studied_languages)
+if __name__ == '__main__':
+    studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
+    tsne_lang_list(studied_languages)
 
-# TODO: Comparer langues très différents (gnn + t-SNE)
+    pca("Gen", 'Nom')
+    for cas1, cas2 in itertools.combinations(['Acc', 'Gen', 'Nom'], 2):
+        tsne(cas1, cas2)

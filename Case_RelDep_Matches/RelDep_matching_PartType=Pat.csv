@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advmod,appos,case,conj,flat,flat:name,mark:prt,nmod,nsubj,obj,obl,parataxis,root
+ga_idt-ud-train,4005,0,162,1.0,1.0,1.0,2.0,7.0,120,1.0,11.0,12.0,1.0,3.0,,2.0
+ga_idt-ud-test,454,0,32,,1.0,,,4.0,24,,3.0,,,,,
+ga_idt-ud-dev,451,0,46,,,,1.0,6.0,35,,,1.0,,1.0,1.0,1.0
+gd_arcosg-ud-test,545,0,16,,,,2.0,,4,,1.0,7.0,,1.0,,1.0
+gd_arcosg-ud-train,3541,0,65,,2.0,,1.0,,47,,3.0,8.0,2.0,1.0,,1.0
+gd_arcosg-ud-dev,655,0,2,,,,,,2,,,,,,,
+ga_cadhan-ud-test,193,0,11,,,,1.0,,7,,1.0,2.0,,,,

@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,compound,compound:lvc,conj,parataxis,root
+tr_kenet-ud-dev,1646,0,1,,,,,,,1.0
+tr_kenet-ud-test,1643,0,1,,,,,,,1.0
+tr_kenet-ud-train,15398,0,7,,1.0,,,1.0,3.0,2.0
+tr_gb-ud-test,2880,0,2,,,,,,,2.0
+tr_imst-ud-train,3435,0,8,1.0,1.0,,2.0,,,4.0
+tr_imst-ud-dev,1100,0,1,,,,,,,1.0
+tr_imst-ud-test,1100,0,2,,,1.0,,1.0,,

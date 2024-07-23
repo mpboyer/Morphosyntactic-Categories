@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,advmod,appos,case,ccomp,conj,dep,det,discourse,dislocated,nmod,nsubj,nsubj:pass,obj,obl,obl:agent,obl:arg,obl:mod,obl:subj,parataxis,root
+xav_xdt-ud-test,171,0,57,,,,,,,,7.0,1.0,26.0,,1.0,19.0,,2.0,,,,,,,1.0
+gub_tudet-ud-test,1182,0,221,,4.0,15.0,,2.0,10.0,3.0,,5.0,29.0,,16.0,,,9.0,21.0,,,,24.0,2.0,81.0
+fr_gsd-ud-test,416,0,21,1.0,,,,,,1.0,,,,1.0,4.0,,,1.0,,,5.0,8.0,,,
+fr_gsd-ud-train,14450,0,420,,1.0,,1.0,,1.0,17.0,,,,5.0,100.0,8.0,5.0,3.0,,3.0,65.0,200.0,,3.0,8.0
+fr_gsd-ud-dev,1476,0,25,,,,,,,,,,,,4.0,,1.0,,,1.0,,18.0,,,1.0
+tpn_tudet-ud-test,581,0,2,,,,,,,,,,,,,,,,,,,,,,2.0
+gn_oldtudet-ud-test,59,0,6,,,4.0,,,,,,,,,,,,,,,,,2.0,,
+eme_tudet-ud-test,913,0,25,,1.0,1.0,,,,,,1.0,1.0,,,,,1.0,4.0,,,,,3.0,13.0

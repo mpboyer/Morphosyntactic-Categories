@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,appos,aux,aux:neg,ccomp,compound,conj,cop,csubj,dep,dep:infl,nsubj,obj,parataxis,root,xcomp
+ess_sli-ud-test,309,0,29,,,,,,,,,,,,,29.0,,,,,
+jaa_jarawara-ud-test,20,0,1,,,,,,,,,,,,,,,1.0,,,
+apu_ufpa-ud-test,161,0,5,,,1.0,,,,,,1.0,1.0,,,,,,,2.0,
+mdf_jr-ud-test,454,0,33,,,1.0,,,,3.0,,9.0,,,,,,,1.0,19.0,
+bor_bdt-ud-test,881,0,10,,,,,,,,,,,,,,,2.0,,8.0,
+myv_jr-ud-test,921,0,53,,,,,,2.0,,1.0,22.0,,,,,,,1.0,26.0,1.0
+myv_jr-ud-train,1217,0,66,,2.0,1.0,1.0,,3.0,,,15.0,,,,,,,5.0,39.0,
+quc_iu-ud-test,1435,0,36,,,5.0,,,,2.0,,,,2.0,,,,,2.0,24.0,1.0
+wbp_ufal-ud-test,55,0,1,,,,,1.0,,,,,,,,,,,,,
+nhi_itml-ud-test,909,0,88,2.0,1.0,13.0,,,,3.0,,20.0,,1.0,,,,,9.0,37.0,2.0
+ka_glc-ud-test,151,0,1,,,,,,,1.0,,,,,,,,,,,
+azz_itml-ud-test,1260,0,26,,4.0,1.0,,,,,,4.0,,1.0,1.0,,,,2.0,13.0,
+eme_tudet-ud-test,913,0,8,,,,,,,2.0,,,,,,,1.0,,,5.0,
+ab_abnc-ud-test,263,0,6,,1.0,,,,,,,2.0,,,,,1.0,,,2.0,

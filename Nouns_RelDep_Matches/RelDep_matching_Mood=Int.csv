@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,advcl:quote,aux,ccomp:obj,ccomp:quote,compound,conj,cop,dep:infl,parataxis,reparandum,root
+ess_sli-ud-test,309,0,54,,,,,,,,54.0,,,
+ga_idt-ud-train,4005,0,31,,,,,,,31.0,,,,
+ga_idt-ud-test,454,0,4,,,,,,,4.0,,,,
+ga_idt-ud-dev,451,0,7,,,,,,,7.0,,,,
+mk_mtb-ud-test,155,0,1,,,,,,,,,,,1.0
+zh_pud-ud-test,1000,0,2,,2.0,,,,,,,,,
+gd_arcosg-ud-test,545,0,2,,,,,,,2.0,,,,
+gd_arcosg-ud-train,3541,0,47,,,,,,,45.0,,,1.0,1.0
+gd_arcosg-ud-dev,655,0,12,,,,,,,12.0,,,,
+ug_udt-ud-test,900,0,2,,,,,2.0,,,,,,
+ga_cadhan-ud-test,193,0,2,,,,,,,2.0,,,,
+ab_abnc-ud-test,263,0,31,4.0,,1.0,2.0,,3.0,2.0,,1.0,,18.0

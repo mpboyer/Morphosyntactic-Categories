@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,appos,ccomp,compound:lvc,conj,dislocated,parataxis,root
+tr_pud-ud-test,1000,0,2,,,,,1.0,,1
+tr_kenet-ud-train,15398,0,8,,,,,,,8
+tr_framenet-ud-train,2288,0,1,,,,,,,1
+tr_gb-ud-test,2880,0,1,,,,,,,1
+tr_imst-ud-train,3435,0,5,,,,,,,5
+tr_boun-ud-train,7803,0,7,,,1.0,,,,6
+tr_penn-ud-dev,622,0,1,,,,,,,1
+tr_penn-ud-test,924,0,2,,,,,,,2
+tr_penn-ud-train,14850,0,46,1.0,1.0,,4.0,,1.0,39

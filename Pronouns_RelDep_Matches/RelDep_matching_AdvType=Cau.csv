@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advmod,amod,nsubj,obj,root
+lzh_tuecl-ud-test,100,0,3,3,,,,
+vi_tuecl-ud-test,100,0,2,1,,,,1.0
+lzh_kyoto-ud-dev,6102,0,38,38,,,,
+lzh_kyoto-ud-train,74609,0,562,542,11.0,1.0,8.0,
+lzh_kyoto-ud-test,5528,0,50,48,2.0,,,
+yrl_complin-ud-test,1470,0,36,36,,,,

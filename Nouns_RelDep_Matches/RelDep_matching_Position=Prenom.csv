@@ -1,0 +1,12 @@
+Treebank,Number of Sentences,Failures,Total,advmod,amod,appos,conj,det,fixed,iobj,nmod,nsubj,obl,obl:pmod,root,xcomp
+ro_nonstandard-ud-test,1052,0,34,,,,,33,,,1.0,,,,,
+ro_nonstandard-ud-dev,1052,0,47,,,,,47,,,,,,,,
+ro_nonstandard-ud-train,24121,0,1532,1.0,,,2.0,1523,,,3.0,,1.0,1.0,,1.0
+ro_simonero-ud-test,491,0,86,,,,,82,2.0,1.0,1.0,,,,,
+ro_simonero-ud-train,3747,0,993,,,1.0,1.0,954,23.0,,7.0,3.0,4.0,,,
+ro_simonero-ud-dev,443,0,132,,,,1.0,123,8.0,,,,,,,
+ro_tuecl-ud-test,210,0,21,,,,,21,,,,,,,,
+ro_art-ud-test,50,0,2,,,,,2,,,,,,,,
+ro_rrt-ud-test,729,0,137,,,,,128,5.0,,3.0,,1.0,,,
+ro_rrt-ud-train,8043,0,1530,,3.0,,3.0,1472,30.0,,15.0,,6.0,,1.0,
+ro_rrt-ud-dev,752,0,130,,,,1.0,123,4.0,,1.0,,1.0,,,

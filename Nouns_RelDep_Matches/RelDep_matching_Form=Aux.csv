@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,aux,ccomp,compound,conj,cop,dep,obl,root
+ko_pud-ud-test,1000,0,210,57,56,11,3,3,6,5,12,1,56

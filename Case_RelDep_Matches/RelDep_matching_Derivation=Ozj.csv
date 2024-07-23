@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advcl:tcl,appos,ccomp,compound,conj,fixed,nsubj,obj,obl,orphan,parataxis,root,xcomp
+mdf_jr-ud-test,454,0,8,,,5,,,,,,,,,,,,3,
+myv_jr-ud-test,921,0,147,51.0,6.0,56,1.0,1.0,2.0,1.0,3.0,1.0,2.0,1.0,,1.0,3.0,16,2.0
+myv_jr-ud-train,1217,0,90,12.0,1.0,46,2.0,1.0,3.0,1.0,7.0,,,,1.0,,,15,1.0

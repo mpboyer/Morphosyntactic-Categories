@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,case,conj,nmod,nsubj,obl
+tpn_tudet-ud-test,581,0,4,1.0,,2.0,,1.0,
+gn_oldtudet-ud-test,59,0,4,,1.0,,1.0,,2.0

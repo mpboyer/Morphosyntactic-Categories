@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,conj,discourse,root
+tr_pud-ud-test,1000,0,1,,,,,1.0
+tr_atis-ud-test,586,0,1,,,,1.0,
+tr_kenet-ud-train,15398,0,2,,2.0,,,
+tr_gb-ud-test,2880,0,5,1.0,2.0,,,2.0
+tr_imst-ud-train,3435,0,3,,3.0,,,
+tr_imst-ud-dev,1100,0,1,,,,,1.0
+tr_imst-ud-test,1100,0,1,,1.0,,,
+tr_penn-ud-train,14850,0,1,,,1.0,,

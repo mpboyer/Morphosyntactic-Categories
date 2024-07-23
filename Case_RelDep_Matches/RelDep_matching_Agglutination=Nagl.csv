@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,ccomp:obj,conj,csubj,root
+pl_lfg-ud-test,1727,0,11,,2.0,,2,,7
+pl_lfg-ud-train,13774,0,112,3.0,6.0,2.0,12,1.0,88
+pl_lfg-ud-dev,1745,0,9,1.0,,,2,1.0,5

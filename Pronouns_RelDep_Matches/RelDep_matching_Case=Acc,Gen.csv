@@ -1,0 +1,14 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,advmod,amod,appos,case,conj,det,flat:name,iobj,mark,nmod,nmod:poss,nsubj,nsubj:pass,obj,obl,root
+hi_hdtb-ud-train,13306,0,2241,1.0,2.0,1.0,,,18.0,10.0,,,2.0,3.0,1444.0,,85.0,7.0,11.0,651.0,6.0
+hi_hdtb-ud-dev,1659,0,327,,,,,,2.0,1.0,,,1.0,,214.0,,15.0,,1.0,93.0,
+hi_hdtb-ud-test,1684,0,280,,,,,,2.0,,,,,,188.0,,13.0,2.0,3.0,71.0,1.0
+bho_bhtb-ud-test,357,0,8,,,,,,,,,,,,8.0,,,,,,
+ky_ktmu-ud-train,80,0,7,,,,,,,,,,,,3.0,2.0,2.0,,,,
+ky_ktmu-ud-test,701,0,30,,,,,,,,,,,,27.0,,1.0,,,2.0,
+orv_birchbark-ud-train,1045,0,3,,,,,,,2.0,,,,,,,,,,,1.0
+orv_birchbark-ud-dev,1062,0,7,,,,,1.0,,1.0,3.0,,,,,,,,1.0,1.0,
+orv_birchbark-ud-test,1007,0,14,,,,,,,2.0,1.0,2.0,,,,,,,4.0,5.0,
+xnr_kdtb-ud-test,288,0,11,,,,1.0,,,,,,,,9.0,,,,,1.0,
+ur_udtb-ud-train,4043,0,33,,,,,,,,1.0,,2.0,,16.0,,5.0,,,9.0,
+ur_udtb-ud-dev,552,0,1,,,,,,,,,,,,1.0,,,,,,
+ur_udtb-ud-test,535,0,1,,,,,,,,,,,,1.0,,,,,,

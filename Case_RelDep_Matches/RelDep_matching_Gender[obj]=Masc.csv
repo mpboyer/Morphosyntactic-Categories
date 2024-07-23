@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,cc,conj,csubj,root
+apu_ufpa-ud-test,161,0,59,1.0,1.0,3.0,4.0,12,1.0,37.0
+ab_abnc-ud-test,263,0,2,,,,,2,,

@@ -484,6 +484,9 @@ def closest_graph_list(treebanks):
 studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
 
 if __name__ == "__main__":
+    compute_distances_csv()
+    tabulize_angle_pairs_csv()
+    compute_angles_csv()
     results = []
     banks = banks_with_case()
     for bank1, bank2 in tqdm(itertools.combinations(banks, 2), total=len(banks)*(len(banks) - 1)/2):
@@ -492,5 +495,5 @@ if __name__ == "__main__":
         r += "\n"
         r += "\n".join(f"{c} in {t2} closest to {m2[c][0]} in {t1}" for c in m2 if c in m1 and m2[c][0] != c)
         results.append(r)
-    with open("diff.txt", 'w') as f:
+    with open(f"{SAVE_DIR}/diff.txt", 'w') as f:
         f.write("\n\n".join(results))

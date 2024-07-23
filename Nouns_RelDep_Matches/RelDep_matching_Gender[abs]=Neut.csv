@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,conj,csubj,dep:repeat,nsubj,reparandum,root,xcomp
+abq_atb-ud-test,98,0,60,12,2,16,2,1,1,1,23,2

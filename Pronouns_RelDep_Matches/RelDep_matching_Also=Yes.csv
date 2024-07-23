@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,case,dislocated,nsubj,obj,obl,parataxis,root,xcomp
+eme_tudet-ud-test,913,0,32,1,2,2,1,5,6,4,1,8,2

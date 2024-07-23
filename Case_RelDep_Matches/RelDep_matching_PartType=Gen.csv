@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,case,dep
+af_afribooms-ud-train,1315,0,114,113,1.0
+af_afribooms-ud-dev,194,0,33,32,1.0
+af_afribooms-ud-test,425,0,31,31,

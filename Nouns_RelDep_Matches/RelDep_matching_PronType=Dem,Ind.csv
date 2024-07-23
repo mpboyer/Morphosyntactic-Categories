@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,conj,dep,det:numgov,det:nummod,nsubj,nsubj:pass,obj,obl,obl:arg,orphan,root
+no_bokmaal-ud-train,15696,0,1,,,,,,,,,,1,,,
+cs_fictree-ud-train,10160,0,1,,,,,,,,,,1,,,
+cs_pdt-ud-test,10146,0,32,,1.0,,,8.0,3.0,2.0,,10.0,7,,,1.0
+cs_pdt-ud-dev,9270,0,22,1.0,,,1.0,8.0,1.0,1.0,1.0,5.0,2,,,2.0
+cs_pdt-ud-train,68491,0,183,,,10.0,2.0,90.0,9.0,8.0,1.0,24.0,28,4.0,2.0,5.0

@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,case,mark
+hy_bsut-ud-train,1226,0,15,15,
+hy_bsut-ud-test,595,0,2,2,
+hy_bsut-ud-dev,479,0,5,5,
+hyw_armtdp-ud-test,680,0,15,14,1.0
+hyw_armtdp-ud-dev,694,0,19,19,
+hyw_armtdp-ud-train,5282,0,112,111,1.0

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:adv,acl:relcl,advcl,advcl:pred,amod,appos,ccomp,compound,conj,csubj,det,discourse,dislocated,fixed,flat,flat:name,flat:range,flat:repeat,flat:sibl,flat:title,iobj,list,nmod,nsubj,nummod,nummod:gov,obj,obl,orphan,parataxis,parataxis:discourse,root,vocative,xcomp,xcomp:pred
+uk_iu-ud-dev,673,0,415,1.0,,,,,36,8,,38,8,,30,,1.0,,,12,10,,,54,,3,45,17,19,52,14,38,1,15,,13,,,
+uk_iu-ud-train,5521,0,2268,1.0,,1.0,2.0,1.0,212,58,2.0,134,113,,239,,1.0,3.0,4.0,85,66,1.0,,152,4.0,7,278,121,137,251,86,158,18,63,,63,2.0,1.0,4.0
+uk_iu-ud-test,898,0,829,,1.0,,,,92,17,,51,28,1.0,51,4.0,,,,26,13,,8.0,111,2.0,3,125,32,42,81,27,56,3,12,1.0,42,,,

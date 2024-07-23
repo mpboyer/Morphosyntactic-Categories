@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,aux,ccomp,conj,dep,iobj,mark,nmod,nsubj,obj,parataxis,root
+wbp_ufal-ud-test,55,0,6,,,,5.0,,,,,,,,,,1
+nhi_itml-ud-test,909,0,55,3.0,6.0,,,2.0,10.0,,,,,,,13.0,21
+eu_bdt-ud-train,5396,0,633,8.0,25.0,3.0,546.0,4.0,10.0,1.0,,,1.0,1.0,,,34
+eu_bdt-ud-test,1799,0,204,9.0,14.0,,171.0,,3.0,,,,,,,,7
+eu_bdt-ud-dev,1798,0,206,3.0,9.0,1.0,176.0,,3.0,1.0,1.0,1.0,,,1.0,,10

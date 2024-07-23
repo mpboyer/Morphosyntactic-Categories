@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,appos,compound:nn,conj,nmod:gobj,nmod:poss,nsubj,nsubj:cop,obj,obl
+fi_tdt-ud-train,12217,0,18,3.0,6.0,1.0,1.0,2.0,2.0,1.0,2.0,
+fi_tdt-ud-test,1555,0,1,,1.0,,,,,,,
+fi_pud-ud-test,1000,0,1,,,,,,,,,1.0

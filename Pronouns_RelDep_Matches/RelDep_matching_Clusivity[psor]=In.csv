@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,nsubj,obj,obl,parataxis:rep,vocative
+gun_dooley-ud-test,1046,0,8,,,1,4,1,2.0,
+gun_thomas-ud-test,98,0,12,2.0,1.0,4,3,1,,1.0

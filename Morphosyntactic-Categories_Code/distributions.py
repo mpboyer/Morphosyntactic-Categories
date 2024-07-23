@@ -89,13 +89,13 @@ def distance_to_any(case, dist: Callable):
     energies = {}
     for j, row in enumerate(data):
         distances = {case_data_set.loc[i, 'Treebank']: dist(row, other) for (i, other) in enumerate(data)}
-        energies[case_data_set.loc[j, 'Treebank']] = np.sum(np.array([distances[k] for k in distances]))
+        energies[case_data_set.loc[j, 'Treebank']] = np.mean(np.array([distances[k] for k in distances]))
 
     results = "\n".join(f"Énergie pour {k} prototypique selon {dist.__name__} = {v:.3f}" for (k, v) in energies.items())
     with open(f"{SAVE_DIR}/{case}/{case}_energies_{dist.__name__}.txt", "w") as file:
         file.write(results)
         list_energy = [energies[k] for k in energies]
-        file.write(f"\nMoyenne: {np.mean(list_energy):.3f}, Min: {np.min(list_energy):.3f}")
+        file.write(f"\nMoyenne: {np.mean(list_energy):.3f}, Min: {np.min(list_energy):.3f}, Max: {np.max(list_energy):.3f}")
 
 
 def distance_to_typical(case, dist: Callable, typical, name):
@@ -146,8 +146,8 @@ def wasserstein_barycenter_plot(case):
     ax2.set_title('Barycenters')
 
     plt.legend()
-
-    plt.savefig(f"Figures/Visualisations/Wasserstein_Barycenter_{case}.pdf")
+    savepath = f"Figures/Visualisations/{MODE}_Wasserstein_Barycenter_{case}.pdf" if MODE else f"Figures/Visualisations/Wasserstein_Barycenter_{case}.pdf"
+    plt.savefig(savepath)
     return bary_wass
 
 
@@ -166,35 +166,36 @@ def wasserstein_barycenter(case):
     return bary_wass
 
 
-distance_functions = [wasserstein_distance, l2_distance, manhattan_distance, kl]
-cases = ["Acc", "Dat", "Nom", "Gen", "Abs", "Erg", "Loc", "Ins", "Abl"]
+if __name__ == '__main__':
+    distance_functions = [wasserstein_distance]
+    cases = ["Acc", "Dat", "Nom", "Gen", "Abs", "Erg", "Loc", "Ins", "Abl"]
 
-try:
-    os.mkdir(SAVE_DIR)
-except FileExistsError:
-    pass
+    try:
+        os.mkdir(SAVE_DIR)
+    except FileExistsError:
+        pass
 
-for studied_case in (pbar1 := tqdm(cases, colour="#7d1dd3")):
-    pbar1.set_description(f"Computing Barycenters for {studied_case}")
-    wasserstein_mean = wasserstein_barycenter_plot(studied_case)
-    uniform_mean = uniform_mean_distrib(studied_case)
-    with open(f"{SAVE_DIR}/barycenters.txt", "a") as file:
-        file.write(f"{studied_case=}\n")
-        file.write(f"[{", ".join(str(w) for w in wasserstein_mean)}]\n")
-        file.write(f"[{", ".join(str(w) for w in uniform_mean)}]\n\n\n")
-    for dfunc in (pbar2 := tqdm(
-                  distance_functions, total=3 * len(distance_functions), colour="#ffe500", position=1, leave=False)
-                  ):
-        try:
-            os.mkdir(f"{SAVE_DIR}/{studied_case}")
-        except FileExistsError:
-            pass
-        pbar2.set_description("Distance to Any")
-        distance_to_any(studied_case, dfunc)
+    for studied_case in (pbar1 := tqdm(cases, colour="#7d1dd3")):
+        pbar1.set_description(f"Computing Barycenters for {studied_case}")
+        wasserstein_mean = wasserstein_barycenter_plot(studied_case)
+        uniform_mean = uniform_mean_distrib(studied_case)
+        with open(f"{SAVE_DIR}/barycenters.txt", "a") as file:
+            file.write(f"{studied_case=}\n")
+            file.write(f"[{", ".join(str(w) for w in wasserstein_mean)}]\n")
+            file.write(f"[{", ".join(str(w) for w in uniform_mean)}]\n\n\n")
+        for dfunc in (pbar2 := tqdm(
+                      distance_functions, total=3 * len(distance_functions), colour="#ffe500", position=1, leave=False)
+                      ):
+            try:
+                os.mkdir(f"{SAVE_DIR}/{studied_case}")
+            except FileExistsError:
+                pass
+            pbar2.set_description("Distance to Any")
+            distance_to_any(studied_case, dfunc)
+            pbar2.update(1)
+            pbar2.set_description("Distance to Uniform Barycenter")
+            distance_to_typical(studied_case, dfunc, uniform_mean, name="Uniform_Barycenter")
+            pbar2.update(1)
+            pbar2.set_description("Distance to Wasserstein Barycenter")
+            distance_to_typical(studied_case, dfunc, wasserstein_mean, name="Wasserstein_Barycenter")
         pbar2.update(1)
-        pbar2.set_description("Distance to Uniform Barycenter")
-        distance_to_typical(studied_case, dfunc, uniform_mean, name="Uniform_Barycenter")
-        pbar2.update(1)
-        pbar2.set_description("Distance to Wasserstein Barycenter")
-        distance_to_typical(studied_case, dfunc, wasserstein_mean, name="Wasserstein_Barycenter")
-    pbar2.update(1)

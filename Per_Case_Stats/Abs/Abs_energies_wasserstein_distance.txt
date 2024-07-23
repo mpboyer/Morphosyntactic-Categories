@@ -1,16 +1,16 @@
-Énergie pour hu_szeged-ud-dev prototypique selon wasserstein_distance = 0.250
-Énergie pour hu_szeged-ud-test prototypique selon wasserstein_distance = 0.304
-Énergie pour hu_szeged-ud-train prototypique selon wasserstein_distance = 0.287
-Énergie pour ess_sli-ud-test prototypique selon wasserstein_distance = 0.214
-Énergie pour hit_hittb-ud-test prototypique selon wasserstein_distance = 0.227
-Énergie pour mr_ufal-ud-dev prototypique selon wasserstein_distance = 0.240
-Énergie pour mr_ufal-ud-test prototypique selon wasserstein_distance = 0.219
-Énergie pour mr_ufal-ud-train prototypique selon wasserstein_distance = 0.238
-Énergie pour wbp_ufal-ud-test prototypique selon wasserstein_distance = 0.241
-Énergie pour nhi_itml-ud-test prototypique selon wasserstein_distance = 0.259
-Énergie pour azz_itml-ud-test prototypique selon wasserstein_distance = 0.371
-Énergie pour eu_bdt-ud-train prototypique selon wasserstein_distance = 0.298
-Énergie pour eu_bdt-ud-test prototypique selon wasserstein_distance = 0.297
-Énergie pour eu_bdt-ud-dev prototypique selon wasserstein_distance = 0.300
-Énergie pour gu_gujtb-ud-test prototypique selon wasserstein_distance = 0.354
-Moyenne: 0.273, Min: 0.214
+Énergie pour hu_szeged-ud-dev prototypique selon wasserstein_distance = 0.017
+Énergie pour hu_szeged-ud-test prototypique selon wasserstein_distance = 0.020
+Énergie pour hu_szeged-ud-train prototypique selon wasserstein_distance = 0.019
+Énergie pour ess_sli-ud-test prototypique selon wasserstein_distance = 0.014
+Énergie pour hit_hittb-ud-test prototypique selon wasserstein_distance = 0.015
+Énergie pour mr_ufal-ud-dev prototypique selon wasserstein_distance = 0.016
+Énergie pour mr_ufal-ud-test prototypique selon wasserstein_distance = 0.015
+Énergie pour mr_ufal-ud-train prototypique selon wasserstein_distance = 0.016
+Énergie pour wbp_ufal-ud-test prototypique selon wasserstein_distance = 0.016
+Énergie pour nhi_itml-ud-test prototypique selon wasserstein_distance = 0.017
+Énergie pour azz_itml-ud-test prototypique selon wasserstein_distance = 0.025
+Énergie pour eu_bdt-ud-train prototypique selon wasserstein_distance = 0.020
+Énergie pour eu_bdt-ud-test prototypique selon wasserstein_distance = 0.020
+Énergie pour eu_bdt-ud-dev prototypique selon wasserstein_distance = 0.020
+Énergie pour gu_gujtb-ud-test prototypique selon wasserstein_distance = 0.024
+Moyenne: 0.018, Min: 0.014, Max: 0.025

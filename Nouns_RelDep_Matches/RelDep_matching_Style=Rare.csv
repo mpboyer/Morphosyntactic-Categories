@@ -1,0 +1,14 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advcl:relcl,advmod,advmod:emph,amod,appos,aux,case,compound,compound:lvc,compound:redup,conj,csubj,det,fixed,flat,flat:name,iobj,mark,nmod,nmod:npmod,nmod:poss,nsubj,nsubj:pass,nummod,obj,obl,obl:arg,orphan,parataxis,root,xcomp
+cs_pud-ud-test,1000,0,13,,1.0,,,,,,,,,,,,,,,,4.0,,,,2.0,,,,,,1.0,1.0,,,,4.0,
+hy_bsut-ud-train,1226,0,14,,,,,,,2.0,,,,,,,1.0,,,,3.0,1.0,,,,,3.0,,,,,1.0,,,,3.0,
+hy_bsut-ud-test,595,0,1,,,,,,,1.0,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hy_bsut-ud-dev,479,0,9,1.0,,,,,,,,,,1.0,,,3.0,,,,,,,,,,,,,,2.0,1.0,,,,,1.0
+hy_armtdp-ud-train,1974,0,19,1.0,,,,,,2.0,1.0,,,,4.0,,,,,,,,,,,,,,,,,9.0,,,2.0,,
+hy_armtdp-ud-dev,249,0,2,,,,,1.0,,,,,,,,,,,,,,,,,,,,,,,1.0,,,,,,
+hy_armtdp-ud-test,277,0,4,,,,,,,,,,,1.0,,,,,,,,,,,,,,,,,,1.0,,,2.0,,
+hyw_armtdp-ud-test,680,0,12,,,,1.0,,,,,,,,2.0,1.0,1.0,,,,,,,,,,2.0,1.0,,,1.0,2.0,,,,1.0,
+hyw_armtdp-ud-dev,694,0,3,1.0,,,,,,,,,,,2.0,,,,,,,,,,,,,,,,,,,,,,
+hyw_armtdp-ud-train,5282,0,47,,,,,2.0,,,,,2.0,,12.0,,3.0,,,2.0,,,,,,1.0,11.0,1.0,,2.0,3.0,2.0,,,2.0,3.0,1.0
+cs_cac-ud-train,23478,0,43,,2.0,,,,,10.0,,,,,,,10.0,,,,,,1.0,,12.0,,,2.0,,,2.0,,3.0,1.0,,,
+yrl_complin-ud-test,1470,0,2,,,,,,,,,,,,,,,,,,,,,,,,,1.0,,,,,,,,1.0,
+cs_poetry-ud-test,297,0,63,,3.0,2.0,,5.0,1.0,8.0,1.0,1.0,5.0,,,,6.0,1.0,1.0,,,,,1.0,7.0,,,4.0,1.0,,3.0,6.0,1.0,,3.0,2.0,1.0

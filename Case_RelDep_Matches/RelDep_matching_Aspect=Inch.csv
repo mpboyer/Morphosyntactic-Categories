@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,advcl:abs,advcl:cmp,advcl:pred,advcl:relcl,aux:aspect,ccomp,ccomp:relcl,ccomp:reported,compound:prt,conj,conj:expl,csubj,csubj:pass,csubj:relcl,csubj:reported,nmod,nsubj,parataxis,root,xcomp
+la_circse-ud-test,1263,0,20,,1.0,4.0,2.0,1.0,1.0,,,,1.0,,,6.0,1.0,,,,,,,,3.0,
+say_autogramm-ud-test,1864,0,6,,,,,,,,,,,,6.0,,,,,,,,,,,
+myv_jr-ud-test,921,0,51,1.0,,2.0,,,,,39.0,,,,,3.0,,,,,,,,1.0,5.0,
+myv_jr-ud-train,1217,0,63,,,,,,,,63.0,,,,,,,,,,,,,,,
+la_udante-ud-train,926,0,29,1.0,2.0,3.0,,,,1.0,,3.0,,1.0,,7.0,,1.0,,,,,1.0,,2.0,7.0
+la_udante-ud-test,419,0,17,,2.0,3.0,,,2.0,,,1.0,,,,3.0,,,1.0,,,,,,1.0,4.0
+la_udante-ud-dev,376,0,39,1.0,1.0,9.0,1.0,1.0,1.0,,,,,,,11.0,1.0,1.0,,1.0,1.0,1.0,,,7.0,2.0

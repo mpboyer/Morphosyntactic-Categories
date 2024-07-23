@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,conj,cop,csubj,det,iobj,nsubj,obj,obj:appl,obj:caus,obl,parataxis,root,vocative
+wo_wtb-ud-dev,449,0,88,,,,,,38.0,1.0,,42.0,3.0,3.0,1.0,,,
+wo_wtb-ud-test,470,0,74,,,,,,40.0,1.0,,29.0,3.0,1.0,,,,
+wo_wtb-ud-train,1188,0,212,,,,,,81.0,3.0,,121.0,3.0,4.0,,,,
+nds_lsdc-ud-train,500,0,30,1.0,1.0,3.0,1.0,,,1.0,13.0,1.0,,,2.0,2.0,5.0,
+nds_lsdc-ud-test,500,0,8,,1.0,,1.0,1.0,,,3.0,,,,,,1.0,1.0

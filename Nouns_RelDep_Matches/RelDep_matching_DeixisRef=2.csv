@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,amod,appos,ccomp,conj,dep,det,dislocated,fixed,iobj,nmod,nmod:tmod,nsubj,nummod,obj,obl,obl:arg,obl:lmod,obl:tmod,orphan,parataxis,root,vocative
+qpm_philotis-ud-train,980,0,181,,33,23.0,1.0,2.0,10.0,,18,,1.0,,2.0,3.0,23,3.0,35,12,,3.0,7.0,3.0,1.0,1.0,
+qpm_philotis-ud-dev,635,0,119,1.0,22,7.0,,,,9.0,23,,,7.0,5.0,,13,3.0,22,6,,,,,,1.0,
+qpm_philotis-ud-test,635,0,89,,20,6.0,,1.0,3.0,,5,,,,1.0,2.0,14,,23,4,1.0,2.0,2.0,,1.0,3.0,1.0
+wo_wtb-ud-dev,449,0,98,,17,,,,,,41,7.0,,,,,17,,8,8,,,,,,,
+wo_wtb-ud-test,470,0,84,,13,,,,,,31,7.0,,,,,12,,13,8,,,,,,,
+wo_wtb-ud-train,1188,0,222,,37,,,,,,107,15.0,,3.0,,,35,,14,10,,,,,,1.0,

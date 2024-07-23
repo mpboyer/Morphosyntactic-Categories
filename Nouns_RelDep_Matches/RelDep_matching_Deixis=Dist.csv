@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advmod,det,nmod,nsubj,obl,parataxis
+aqz_tudet-ud-test,343,0,17,1,1,7,5,1,2

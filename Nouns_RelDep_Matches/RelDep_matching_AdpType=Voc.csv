@@ -1,0 +1,18 @@
+Treebank,Number of Sentences,Failures,Total,_,case,fixed,mark,obl
+sk_snk-ud-dev,1060,0,63,,63,,,
+sk_snk-ud-test,1061,0,64,,61,3.0,,
+sk_snk-ud-train,8483,0,329,,326,3.0,,
+cs_pud-ud-test,1000,0,149,,148,1.0,,
+cs_cltt-ud-dev,316,0,98,,98,,,
+cs_cltt-ud-train,467,0,129,,128,1.0,,
+cs_cltt-ud-test,338,0,111,,111,,,
+cs_fictree-ud-dev,1309,0,110,,110,,,
+cs_fictree-ud-train,10160,0,797,,792,4.0,1.0,
+cs_fictree-ud-test,1291,0,94,,94,,,
+cs_pdt-ud-test,10146,0,1257,1.0,1237,19.0,,
+cs_pdt-ud-dev,9270,0,1212,1.0,1183,28.0,,
+cs_pdt-ud-train,68491,0,8678,,8542,136.0,,
+cs_cac-ud-dev,603,0,83,,83,,,
+cs_cac-ud-train,23478,0,3642,,3573,68.0,,1.0
+cs_cac-ud-test,628,0,107,,107,,,
+cs_poetry-ud-test,297,0,34,,34,,,

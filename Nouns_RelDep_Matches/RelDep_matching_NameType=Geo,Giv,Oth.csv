@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,amod,conj,dep,flat,nmod,nsubj,obj,obl,obl:arg,root
+cs_pdt-ud-test,10146,0,6,,,,2.0,2,1,,,,1
+cs_pdt-ud-dev,9270,0,5,,,,,2,2,,,,1
+cs_pdt-ud-train,68491,0,96,1.0,6.0,4.0,7.0,38,22,4.0,6.0,4.0,4

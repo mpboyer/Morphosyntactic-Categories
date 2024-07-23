@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,ccomp,compound,conj,det,discourse,dislocated,flat,iobj,nmod,nsubj,nsubj:pass,obj,obl,parataxis,root
+wo_wtb-ud-dev,449,0,21,1.0,1.0,,,,,2,,,,1.0,1.0,11,,4,,,
+wo_wtb-ud-test,470,0,13,,,,,,,2,,2.0,,,,5,,3,1.0,,
+wo_wtb-ud-train,1188,0,61,,3.0,1.0,,,3.0,3,,1.0,,,,26,,18,6.0,,
+lv_lvtb-ud-test,2412,0,65,,1.0,,1.0,,6.0,18,,,,2.0,,16,1.0,17,,,3.0
+lv_lvtb-ud-train,14358,0,318,,3.0,,2.0,2.0,6.0,117,1.0,,1.0,14.0,,94,5.0,52,17.0,1.0,3.0
+lv_lvtb-ud-dev,2080,0,53,,1.0,,,,,27,,,,2.0,,13,,8,,,2.0

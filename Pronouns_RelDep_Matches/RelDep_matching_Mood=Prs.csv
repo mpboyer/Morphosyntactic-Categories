@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,conj,parataxis,parataxis:discourse,root
+qtd_sagt-ud-test,805,0,2,,1.0,,1.0
+qtd_sagt-ud-dev,801,0,3,1.0,1.0,1.0,
+tr_imst-ud-train,3435,0,1,1.0,,,
+tr_imst-ud-dev,1100,0,1,,,,1.0

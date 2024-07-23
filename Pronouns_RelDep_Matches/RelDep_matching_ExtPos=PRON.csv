@@ -1,0 +1,16 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,conj,dislocated,iobj,nmod,nmod:poss,nsubj,nsubj:pass,obj,obj:lvc,obl,obl:agent,obl:arg,obl:mod,orphan,parataxis,parataxis:insert,reparandum,root,xcomp
+fr_fqb-ud-test,2289,0,3,,,,,,,,2.0,1.0,,,,,,,,,,,,
+fr_gsd-ud-test,416,0,21,,,1.0,,,3.0,,1.0,1.0,6.0,,,,2.0,4.0,,1.0,,,2.0,
+fr_gsd-ud-train,14450,0,381,1.0,3.0,26.0,,,46.0,,35.0,16.0,129.0,,,3.0,11.0,99.0,1.0,4.0,,,7.0,
+fr_gsd-ud-dev,1476,0,39,,,2.0,,,2.0,,4.0,2.0,14.0,,,,,13.0,,,,,2.0,
+fr_rhapsodie-ud-train,1288,0,13,,,,,,,,1.0,,10.0,1.0,,,,1.0,,,,,,
+fr_rhapsodie-ud-dev,1081,0,10,,,,,,,,1.0,,3.0,1.0,,,1.0,,,,,,2.0,2.0
+fr_rhapsodie-ud-test,840,0,5,,,,,,,,1.0,,3.0,,,,,,,,,1.0,,
+fr_parisstories-ud-train,1387,0,2,,,,,,,,,,2.0,,,,,,,,,,,
+en_ewt-ud-test,2077,0,1,,,,,,,,,,1.0,,,,,,,,,,,
+en_ewt-ud-train,12544,0,16,,,,,,1.0,1.0,,,8.0,,6.0,,,,,,,,,
+ha_southernautogramm-ud-test,1918,0,3,,,,1.0,,,,1.0,,1.0,,,,,,,,,,,
+ha_northernautogramm-ud-test,400,0,8,,,,4.0,,1.0,,,,,,2.0,,,,,,,,1.0,
+fr_sequoia-ud-test,456,0,12,,,1.0,,,,,,2.0,6.0,,,,,2.0,,,,,1.0,
+fr_sequoia-ud-train,2231,0,56,,2.0,2.0,,1.0,7.0,,,2.0,20.0,,,,7.0,13.0,,,1.0,,1.0,
+fr_sequoia-ud-dev,412,0,11,,1.0,,,,1.0,,,1.0,1.0,,,,3.0,4.0,,,,,,

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl:relcl,advcl,advcl:cond,advcl:conv,advcl:quote,amod,case,ccomp,ccomp:obj,ccomp:quote,conj,cop,csubj,dep:repeat,parataxis,reparandum,root,xcomp:lo
+abq_atb-ud-test,98,0,73,,16.0,,,,1.0,8.0,4.0,,,18.0,,1.0,1.0,,1.0,23,
+ka_glc-ud-test,151,0,5,,,,,,,,2.0,,,,,,,2.0,,1,
+ab_abnc-ud-test,263,0,66,1.0,2.0,2.0,8.0,4.0,,,,4.0,1.0,9.0,14.0,3.0,,1.0,,15,2.0

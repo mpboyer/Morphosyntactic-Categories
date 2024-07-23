@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,case,compound,expl,nsubj,obl,orphan,root
+tn_popapolelo-ud-test,20,0,36,5,2,11,15,1,1,1

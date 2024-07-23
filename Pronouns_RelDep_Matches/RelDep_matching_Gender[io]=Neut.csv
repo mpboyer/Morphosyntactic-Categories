@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advcl:conv,advcl:quote,amod,case,ccomp,ccomp:obj,conj,cop,csubj,dep:repeat,reparandum,root,xcomp:lo
+abq_atb-ud-test,98,0,38,9,,,1.0,7.0,2.0,,7,,1,1.0,1.0,9,
+ab_abnc-ud-test,263,0,36,1,7.0,1.0,,,,1.0,5,9.0,2,,,8,2.0

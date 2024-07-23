@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,aux:neg,conj,root
+mdf_jr-ud-test,454,0,3,1.0,,2
+mdf_jr-ud-train,20,0,1,,,1
+myv_jr-ud-test,921,0,4,,,4
+myv_jr-ud-train,1217,0,10,,1.0,9
+akk_riao-ud-test,1874,0,77,,38.0,39

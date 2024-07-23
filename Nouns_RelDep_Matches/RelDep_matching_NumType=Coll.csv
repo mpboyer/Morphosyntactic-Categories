@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,appos,conj,nmod:poss,nsubj,nummod,obj,obl,root
+mdf_jr-ud-test,454,0,1,,,,,1.0,,,
+sme_giella-ud-train,2257,0,26,,,,14.0,,4.0,5.0,3.0
+sme_giella-ud-test,865,0,14,1.0,1.0,,10.0,,,2.0,
+kk_ktb-ud-test,1047,0,6,1.0,,1.0,4.0,,,,
+kk_ktb-ud-train,31,0,4,,,2.0,2.0,,,,

@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,appos,conj,dislocated,nmod,nmod:poss,nsubj,nsubj:cop,obj,obl,root
+mdf_jr-ud-test,454,0,6,,,1.0,,1.0,,1.0,,,,3.0
+myv_jr-ud-test,921,0,1,,,,,1.0,,,,,,
+myv_jr-ud-train,1217,0,1,,,,,1.0,,,,,,
+kpv_ikdp-ud-test,214,0,2,,,,,,,2.0,,,,
+kpv_lattice-ud-test,643,0,37,18.0,2.0,5.0,1.0,2.0,2.0,2.0,1.0,2.0,1.0,1.0

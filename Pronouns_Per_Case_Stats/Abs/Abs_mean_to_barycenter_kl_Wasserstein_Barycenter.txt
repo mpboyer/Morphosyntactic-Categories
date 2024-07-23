@@ -1,0 +1,16 @@
+Distance hu_szeged-ud-dev - Wasserstein_Barycenter = 0.726
+Distance hu_szeged-ud-test - Wasserstein_Barycenter = -0.267
+Distance hu_szeged-ud-train - Wasserstein_Barycenter = -0.300
+Distance ess_sli-ud-test - Wasserstein_Barycenter = 0.043
+Distance hit_hittb-ud-test - Wasserstein_Barycenter = -0.077
+Distance mr_ufal-ud-dev - Wasserstein_Barycenter = 0.205
+Distance mr_ufal-ud-test - Wasserstein_Barycenter = 0.911
+Distance mr_ufal-ud-train - Wasserstein_Barycenter = 0.000
+Distance wbp_ufal-ud-test - Wasserstein_Barycenter = -0.042
+Distance nhi_itml-ud-test - Wasserstein_Barycenter = 0.308
+Distance azz_itml-ud-test - Wasserstein_Barycenter = -0.360
+Distance eu_bdt-ud-train - Wasserstein_Barycenter = 0.048
+Distance eu_bdt-ud-test - Wasserstein_Barycenter = 0.028
+Distance eu_bdt-ud-dev - Wasserstein_Barycenter = 0.104
+Distance gu_gujtb-ud-test - Wasserstein_Barycenter = -0.347
+Énergie = 1.930

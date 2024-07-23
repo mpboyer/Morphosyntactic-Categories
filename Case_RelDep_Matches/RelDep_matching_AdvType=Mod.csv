@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,advmod:eval,advmod:mmod,discourse,root
+vi_tuecl-ud-test,100,0,17,,17.0,,,,
+mdf_jr-ud-test,454,0,5,,,5.0,,,
+bor_bdt-ud-test,881,0,1,,,,,,1.0
+hsb_ufal-ud-test,623,0,4,1.0,,,,,3.0
+myv_jr-ud-test,921,0,9,,,9.0,,,
+myv_jr-ud-train,1217,0,12,,1.0,8.0,1.0,2.0,
+yrl_complin-ud-test,1470,0,6,,6.0,,,,

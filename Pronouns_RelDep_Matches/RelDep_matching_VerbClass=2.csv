@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,ccomp,compound:svc,dep:comp,dep:conj,dep:redup,dislocated:mod,nmod,nsubj,obj,obl:mod,parataxis,root
+bej_nsc-ud-test,380,0,369,3,12,49,4,1,72,47,4,5,1,1,1,1,58,110

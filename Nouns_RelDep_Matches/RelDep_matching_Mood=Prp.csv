@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advcl:purp,ccomp,ccomp:obj,ccomp:purp,conj,parataxis,root,xcomp,xcomp:lo
+gub_tudet-ud-test,1182,0,4,,,3.0,,,1.0,,,,
+nhi_itml-ud-test,909,0,73,7.0,,3.0,,,22.0,6.0,30.0,5.0,
+azz_itml-ud-test,1260,0,12,2.0,,,,,1.0,1.0,8.0,,
+ab_abnc-ud-test,263,0,10,1.0,2.0,,3.0,2.0,,,,,2.0

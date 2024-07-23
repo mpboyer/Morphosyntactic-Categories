@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advmod,appos,conj,fixed,orphan,parataxis,root
+fi_ood-ud-test,2122,0,181,170,,3,,6.0,1.0,1.0
+fi_tdt-ud-train,12217,0,1365,1317,1.0,34,1.0,6.0,,6.0
+fi_tdt-ud-test,1555,0,205,198,,5,,1.0,,1.0
+fi_tdt-ud-dev,1364,0,150,143,,5,,1.0,,1.0
+fi_pud-ud-test,1000,0,112,110,,2,,,,

@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,nsubj,obj,parataxis
+tpn_tudet-ud-test,581,0,10,2,3,1,1,3

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,compound:redup,nmod,nmod:poss,nsubj,obj,obl,root
+tr_boun-ud-dev,979,0,3,,,,,,3,
+tr_boun-ud-test,979,0,1,,,,,,1,
+tr_boun-ud-train,7803,0,120,1.0,4.0,2.0,3.0,2.0,105,3.0

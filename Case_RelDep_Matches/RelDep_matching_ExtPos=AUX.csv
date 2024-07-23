@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,advcl,amod,appos,aux,ccomp,conj,csubj,nmod,obl,parataxis,root,xcomp
+pt_gsd-ud-dev,1204,0,13,,2,2,,,,1,1,,,,,5,2
+pt_gsd-ud-test,1200,0,30,,3,2,,,,2,9,,,,1.0,12,1
+pt_gsd-ud-train,9616,0,199,4.0,23,22,,,,6,43,,,,5.0,90,6
+pt_bosque-ud-dev,1172,0,63,2.0,17,2,,,,4,8,2.0,,1.0,2.0,19,6
+pt_bosque-ud-test,1167,0,65,,18,5,,,,2,8,2.0,,,3.0,24,3
+pt_bosque-ud-train,7018,0,438,13.0,62,37,1.0,1.0,1.0,42,43,7.0,2.0,1.0,15.0,176,37

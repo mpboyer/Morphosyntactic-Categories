@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,case,cc,conj,csubj,dep,flat,nmod
+pl_pdb-ud-test,2215,0,1,,,,,1.0,,,,,
+pl_pdb-ud-train,17722,0,2,,,,,2.0,,,,,
+pl_pdb-ud-dev,2215,0,1,,,,,1.0,,,,,
+sk_snk-ud-dev,1060,0,1,,,,,,,,,1.0,
+sk_snk-ud-train,8483,0,1,,,,,,,,,1.0,
+ar_padt-ud-train,6075,0,4,,,,,,,,4.0,,
+ar_padt-ud-test,680,0,1,,,,,,,,1.0,,
+cs_fictree-ud-test,1291,0,1,,,,,1.0,,,,,
+cs_pdt-ud-test,10146,0,28,,,,,10.0,,1.0,,12.0,5.0
+cs_pdt-ud-dev,9270,0,24,2.0,2.0,,1.0,10.0,,,,2.0,7.0
+cs_pdt-ud-train,68491,0,148,,14.0,1.0,8.0,62.0,11.0,,4.0,7.0,41.0
+cs_cac-ud-train,23478,0,2,,1.0,,,,,,,,1.0

@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,aux,ccomp,cop,dep,nsubj,obj,obl,parataxis,reparandum,root
+say_autogramm-ud-test,1864,0,41,,8.0,31.0,,,,,,,,2.0,
+bor_bdt-ud-test,881,0,5,,,,1.0,,1.0,1.0,,,,,2.0
+quc_iu-ud-test,1435,0,10,,,10.0,,,,,,,,,
+tt_nmctt-ud-test,148,0,6,1.0,,1.0,,,,,,,,,4.0
+tpn_tudet-ud-test,581,0,1,1.0,,,,,,,,,,,
+eme_tudet-ud-test,913,0,21,,6.0,,,3.0,1.0,4.0,2.0,1.0,1.0,,3.0
+jv_csui-ud-test,1000,0,8,,,,,,,,,,,,8.0

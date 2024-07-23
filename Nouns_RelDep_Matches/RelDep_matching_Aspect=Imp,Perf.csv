@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,acl:relcl,advcl,amod,appos,ccomp,conj,csubj,csubj:pass,dep,iobj,obj,orphan,parataxis,root,xcomp
+sk_snk-ud-dev,1060,0,35,,,7,,,,1.0,4,1,,,,,,,20,2
+sk_snk-ud-test,1061,0,41,,4.0,1,2.0,,,,8,2,,,,,,1.0,19,4
+sk_snk-ud-train,8483,0,216,,4.0,19,17.0,,,8.0,26,4,,1.0,,,,,115,22
+cs_pdt-ud-test,10146,0,314,2.0,17.0,26,9.0,4.0,7.0,13.0,39,12,,3.0,,,1.0,5.0,131,45
+cs_pdt-ud-dev,9270,0,318,,20.0,28,13.0,3.0,1.0,16.0,55,23,,1.0,,,,3.0,109,46
+cs_pdt-ud-train,68491,0,2255,20.0,112.0,165,88.0,45.0,13.0,120.0,282,117,6.0,4.0,1.0,3.0,3.0,34.0,919,323

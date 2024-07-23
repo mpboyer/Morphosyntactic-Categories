@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nsubj,obj
+fi_tdt-ud-test,1555,0,1,,1
+fi_ftb-ud-test,1867,0,3,2.0,1

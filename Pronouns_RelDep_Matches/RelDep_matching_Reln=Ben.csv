@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advcl:conv,advcl:seq,ccomp:quote,conj,csubj,parataxis,root,xcomp:lo
+ab_abnc-ud-test,263,0,25,1,2,2,2,5,3,2,7,1

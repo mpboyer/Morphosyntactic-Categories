@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,aux:pass
+af_afribooms-ud-train,1315,0,669,669
+af_afribooms-ud-dev,194,0,90,90
+af_afribooms-ud-test,425,0,96,96

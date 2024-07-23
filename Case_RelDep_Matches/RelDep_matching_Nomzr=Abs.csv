@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,iobj,nmod,obj,obl,obl:subj,root
+gub_tudet-ud-test,1182,0,16,1,1,2,9,1,1,1

@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,acl:relcl,appos,ccomp,compound,conj,det,discourse,dislocated,iobj,nmod,nmod:poss,nsubj,obj,obl,obl:subj,parataxis,root,vocative
+gub_tudet-ud-test,1182,0,60,,,3.0,1.0,,,1.0,,,,12.0,,,11.0,7,21.0,,1.0,3.0
+tpn_tudet-ud-test,581,0,6,,,,,,,,,,,,,,5.0,1,,,,
+gn_oldtudet-ud-test,59,0,2,,,,,,,,,,,,,,,1,,,1.0,
+yrl_complin-ud-test,1470,0,117,1.0,1.0,,1.0,1.0,1.0,,,,1.0,,11.0,20.0,41.0,33,,1.0,4.0,1.0
+eme_tudet-ud-test,913,0,19,,,,,,,,1.0,1.0,,1.0,,1.0,7.0,3,,,5.0,

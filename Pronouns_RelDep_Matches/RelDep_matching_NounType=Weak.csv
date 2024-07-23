@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,amod,appos,compound,conj,flat:foreign,nmod,obj,obl,obl:tmod
+ga_idt-ud-train,4005,0,678,44.0,1.0,,23,,576,17,16,1.0
+ga_idt-ud-test,454,0,48,2.0,,1.0,4,1.0,37,1,2,
+ga_idt-ud-dev,451,0,35,2.0,,1.0,1,,29,1,1,
+ga_cadhan-ud-test,193,0,28,,1.0,,2,,21,3,1,
