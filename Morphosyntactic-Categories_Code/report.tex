@@ -1,464 +1,497 @@
 \documentclass{cours}
 \usepackage{nicematrix}
 \title{Sur la Stabilité Interlangue des Catégories Morphosyntaxiques\\ \small Rapport de Stage de L3}
-\author{Matthieu Boyer}
+\author{MatthieuBoyer}
 \date{}
 
 \begin{document}
 
-    \begin{abstract}
-        Dans ce rapport, nous nous intéressons à la stabilité interlangue des catégories morphosyntaxiques.
-        Nous avons quantifié la manière dont différentes catégories descriptives d'un langage ont différentes
-        significations dans différents langages,
-        et particulièrement la manière dont un concept est matérialisé dans différents langages.
-    \end{abstract}
+\begin{abstract}
+Dans ce rapport, nous nous intéressons à la stabilité interlangue des catégories morphosyntaxiques.
+Nous avons quantifié la manière dont différentes catégories descriptives d'un langage ont différentes significations dans différents langages, et particulièrement la manière dont un concept est matérialisé dans différents langages.
+\end{abstract}
+
+\section{Introduction}
+\subsection{Pourquoi?}
+Cette citation de Martin Haspelmath sur la différence entre une catégorie linguistique descriptive dans un langage et une catégorie linguistique comparative dans le méta-langage est le point de départ de notre étude.
+
+	\begin{quote}
+	There is a fundamental distinction between language-particular categories of languages (which descriptive linguists must describe by descriptive categories of their descriptions) and comparative concepts (which comparative linguists may use to compare languages).
+	{\flushright {\textit{Martin Haspelmath} \cite{Has18}}}
+	\end{quote}
+
+Selon Haspelmath, il est possible que la manière de décrire les langues en linguistique soit basée sur des envies de comparaison, parfois mal placées.
+Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et comparer les descriptions dans différents langages de catégories linguistiques comparatives.
+
+\subsection{Données et \emph{Universal Dependencies}}
+Pour étudier la thèse d'Haspelmath, nous allons considérer que les relations de dépendances (\textit{reldep}) décrites par les annotations de \textsc{Universal Dependencies} (UD, version 2 décrite dans \cite{UDv2}) sont une manière de représenter des catégories comparatives.
+Une relation de dépendance est une manière de décrire les relations syntaxiques dans une phrase.
+Elles se déduisent de la construction par une grammaire de dépendance ou contextuelle de la phrase.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/Visualisations/simplified_ud_annotation}
+	\caption{Représentation d'une phrase et de ses relations de dépendances en anglais, source:\cite{UDv2}}
+\end{figure}
+
+Il existe 37 relations de dépendances de base, mais les personnes annotant les corpus ont la possibilité d'en créer de nouvelles, sous la syntaxe \texttt{str1:str2:\dots} où \texttt{str1} doit être une relation de dépendance décrite comme relation basique dans la table 3 de \cite{UDv2}.\\
+Par ailleurs, les mots sont annotés avec les propriétés morphologiques qu'ils possèdent, par exemple leur temps ou leur aspect pour un verbe ou leur cas et leur genre pour un nom.
+Les propriétés morphologiques universelles utilisées par UD sont décrites table 2 dans \cite{UDv2}.\\
+Enfin, les mots sont annotés avec leur nature grammaticale (e.g. Nom, Verbe, Pronom\dots) comme décrits table 1 dans \cite{UDv2}.
+
+\subsection{Méthode}
+Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs \textit{reldep} ne peuvent instancier une même catégorie comparative.
+En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une \textit{feature} d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
+Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, version 2.14 décrite dans \cite{UD214}.
+
+\section{Approche Géométrique}
+
+\subsection{Avec la distance Cosinus}
+On mesure en utilisant la distance Cosinus entre deux vecteurs la proximité entre ceux ci:
+
+\begin{equation}
+	d_{\cos}(v_{1},v_{2}) = \frac{\scalar{v_{1}\mid v_{2}}}{\norm{v_{1}}\norm{v_{2}}}
+\end{equation}
+
+On obtient alors les résultats suivants pour quelques cas:
+
+\input{Figures/Visualisations/Angles_Case=Gen_Proximity}
+
+\input{Figures/Visualisations/Angles_Case=Nom_Proximity}
+
+\input{Figures/Visualisations/Angles_Case=Voc_Proximity}
+
+On obtient notamment le fait que le nominatif comme le vocatif ont des directions très particulières, et sont très différents de tous les autres cas. Pour le reste, les résultats sont assez flous, et il semble difficile de tirer
+
+Toutefois, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus. Par ailleurs, les résultats donnés ici sont à pondérer par la présence de nombreux corpus/langages ne possédant pas au moins l'un des cas ci-dessus, ce qui amène à une représentation trop brouillée des informations.
 
 
-    \section{Pourquoi?}
-    Cette citation de Martin Haspelmath sur la différence entre une catégorie linguistique descriptive dans un langage et une catégorie linguistique comparative dans le méta-langage est le point de départ de notre étude.
-    \begin{quote}
-        There is a fundamental distinction between language-particular categories of languages (which descriptive
-        linguists must describe by descriptive categories of their descriptions) and comparative concepts (which
-        comparative linguists may use to compare languages).
-        {\flushright
-    {\textit{Martin Haspelmath} \cite{Has18}}}
-    \end{quote}
-    Selon Haspelmath, il est possible que la manière de décrire les langues en linguistique soit basée sur des envies de comparaison, parfois mal placées.
-    Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et
-    comparer les descriptions dans différents langages de catégories linguistiques comparatives.
+\subsection{Avec l'algorithme de \textsc{Zassenhaus}}
+On considère les espaces vectoriels engendrés par la représentation vectorielle du système de cas d'une langue, que l'on appellera \textit{espaces de cas}.
+Ceux-ci sont d'une certaine dimension finie.
+On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus, permettant de générer une base de l'espace somme et de l'espace intersubsection.
+Toutefois, la grande variance au niveau des coordonnées, et la trop faible dimension (au plus 45, mais souvent de l'odrdre de 5) dans un grand espace (dimension 228), rend l'intersubsection toujours nulle numériquement.
+Par ailleurs, cet algorithme est très lent à exécuter car il demande de nombreux appels mémoire pour obtenir la matrice de l'espace de cas de chaque paire de cas, et demande de trouver une base de l'espace de colonne, ce qui est non-trivialement la matrice.
 
-    \section{Données et \emph{Universal Dependencies}}
-    Pour étudier la thèse d'Haspelmath, nous allons considérer que les relations de dépendances (\textit{reldep}) décrites par les annotations de \textsc{Universal Dependencies} (UD, version 2 décrite dans \cite{UDv2}) sont une manière de représenter des catégories comparatives.
-    Une relation de dépendance est une manière de décrire les relations syntaxiques dans une phrase.
-    Elles se déduisent de la construction par une grammaire de dépendance ou contextuelle de la phrase.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\textwidth]{Figures/Visualisations/simplified_ud_annotation}
-        \caption{Représentation d'une phrase et de ses relations de dépendances en anglais, source:\cite{UDv2}}
-    \end{figure}
-    Il existe 37 relations de dépendances de base, mais les personnes annotant les corpus ont la possibilité d'en créer de nouvelles, sous la syntaxe \texttt{str1:str2:\dots} où \texttt{str1} doit être une relation de dépendance décrite comme relation basique dans la table 3 de \cite{UDv2}.\\
-    Par ailleurs, les mots sont annotés avec les propriétés morphologiques qu'ils possèdent, par exemple leur temps ou leur aspect pour un verbe ou leur cas et leur genre pour un nom.
-    Les propriétés morphologiques universelles utilisées par UD sont décrites table 2 dans \cite{UDv2}.\\
-    Enfin, les mots sont annotés avec leur nature grammaticale (e.g. Nom, Verbe, Pronom\dots) comme décrits table 1 dans \cite{UDv2}.
+\subsection{Angle entre Cas et Système de Cas}
+On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
+Ceci est fait en considérant le projeté orthogonal d'un vecteur sur un espace de cas et en mesurant l'angle entre les deux (ou la distance cosinus).
+En observant les données de plus près, on trouve une anomalie: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $\arccos{10^{-16}}$.
+En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
+En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)
+% \textit{ای}\footnote{Translit=āī}
+est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
+Ce lemme agit donc en réalité plus comme une apposition.
+Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.
+Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, du moins sur le système de cas.
+Il semble toutefois bon de noter qu'il y a sans doute de nombreuses autres anomalies du style dans les corpus.
 
-    \section{Méthode}
-    Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs \textit{reldep} ne peuvent instancier une même catégorie comparative.
-    En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une \textit{feature} d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
-    Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, version 2.14 décrite dans \cite{UD214}.
+Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une apposition (cf. supra).
 
-    \part{Approche Géométrique}
+\subsection{Distance Euclidienne}
+On considère cette fois la distance euclidienne entre tous deux vecteurs, qu'on aura au préalable normalisés pour qu'ils représentent des distributions de probabilité.
 
-    \section{Avec la distance Cosinus}
-    On mesure en utilisant la distance Cosinus entre deux vecteurs la proximité entre ceux ci:
-    \begin{equation}
-        d_{\cos}(v_{1},v_{2}) = \frac{\scalar{v_{1}\mid v_{2}}}{\norm{v_{1}}\norm{v_{2}}}
-    \end{equation}
+\input{Figures/Visualisations/Distances_Case=Acc_Proximity}
 
-    On obtient alors les résultats suivants pour quelques cas:
+On utilise ces données pour déterminer, entre deux corpus (ici le Czech-CLTT et le Russian-GSD), quel cas de l'autre langage est le plus proche d'un cas du premier.
+On obtient qu'ici, le datif russe est plus proche du génitif tchèque que du datif tchèque.
 
-    \input{Figures/Visualisations/Angles_Case=Gen_Proximity}
-
-    \input{Figures/Visualisations/Angles_Case=Nom_Proximity}
-
-    \input{Figures/Visualisations/Angles_Case=Voc_Proximity}
-
-    On obtient notamment le fait que le nominatif comme le vocatif ont des directions très particulières, et sont très différents de tous les autres cas. Pour le reste, les résultats sont assez flous, et il semble difficile de tirer
-
-    Toutefois, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus. Par ailleurs, les résultats donnés ici sont à pondérer par la présence de nombreux corpus/langages ne possédant pas au moins l'un des cas ci-dessus, ce qui amène à une représentation trop brouillée des informations.
-
-
-    \section{Avec l'algorithme de \textsc{Zassenhaus}}
-    On considère les espaces vectoriels engendrés par la représentation vectorielle du système de cas d'une langue, que l'on appellera \textit{espaces de cas}.
-    Ceux-ci sont d'une certaine dimension finie.
-    On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus, permettant de générer une base de l'espace somme et de l'espace intersection.
-    Toutefois, la grande variance au niveau des coordonnées, et la trop faible dimension (au plus 45, mais souvent de l'odrdre de 5) dans un grand espace (dimension 228), rend l'intersection toujours nulle numériquement.
-    Par ailleurs, cet algorithme est très lent à exécuter car il demande de nombreux appels mémoire pour obtenir la matrice de l'espace de cas de chaque paire de cas, et demande de trouver une base de l'espace de colonne, ce qui est non-trivialement la matrice.
-
-    \section{Angle entre Cas et Système de Cas}
-    On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
-    Ceci est fait en considérant le projeté orthogonal d'un vecteur sur un espace de cas et en mesurant l'angle entre les deux (ou la distance cosinus).
-    En observant les données de plus près, on trouve une anomalie: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $\arccos{10^{-16}}$.
-    En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
-    En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)
-    % \textit{ای}\footnote{Translit=āī}
-    est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
-    Ce lemme agit donc en réalité plus comme une apposition.
-    Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.
-    Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, du moins sur le système de cas.
-    Il semble toutefois bon de noter qu'il y a sans doute de nombreuses autres anomalies du style dans les corpus.
-
-    Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une apposition (cf. supra).
-
-    \section{Distance Euclidienne}
-    On considère cette fois la distance euclidienne entre tous deux vecteurs, qu'on aura au préalable normalisés pour qu'ils représentent des distributions de probabilité.
-
-    \input{Figures/Visualisations/Distances_Case=Acc_Proximity}
-
-    On utilise ces données pour déterminer, entre deux corpus (ici le Czech-CLTT et le Russian-GSD), quel cas de l'autre langage est le plus proche d'un cas du premier.
-    On obtient qu'ici, le datif russe est plus proche du génitif tchèque que du datif tchèque.
-    \begin{table}[H]
-	    \centering
-    \begin{tabular}{>{\tt}r|cccc}
-        \toprule
-        &Dat RU & Gen CZ & Gen RU & Dat CZ\\
-        \midrule
-        Total & 1711 & 2631 & 2070 & 277\\
-        obl & 450 & 208 & 219 & 48\\
-        iobj & 340 & 0 & 0 & 0\\
-        amod & 243 & 736 & 475 & 54\\
-        nmod & 300 & 1000 & 980 & 24\\
-        conj & 112 & 225 & 84 & 21\\
-        case & 0 & 340 & 1 & 87\\
-        det & 34 & 80 & 79 & 3\\
-        \bottomrule
-    \end{tabular}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{>{\tt}r|cccc}
+		\toprule
+		&Dat RU & Gen CZ & Gen RU & Dat CZ\\
+		\midrule
+		Total & 1711 & 2631 & 2070 & 277\\
+		obl & 450 & 208 & 219 & 48\\
+		iobj & 340 & 0 & 0 & 0\\
+		amod & 243 & 736 & 475 & 54\\
+		nmod & 300 & 1000 & 980 & 24\\
+		conj & 112 & 225 & 84 & 21\\
+		case & 0 & 340 & 1 & 87\\
+		det & 34 & 80 & 79 & 3\\
+		\bottomrule
+	\end{tabular}
 	\caption{Extraits des Vecteurs de Reldep pour le Russe et le Tchèque}
-    \end{table}
-    On enlève ensuite \texttt{conj, det} puisque ces reldep démontrent l'accord vers la tête, et donc des doublons dans les données, ceci permet d'éviter de compter comme plusieurs instances d'un même cas un groupe nominal de la forme \emph{Alice, le boulanger, la laitière et Bob}, qui remplit un usage sémantique uniforme dans la phrase.
-    On enlève aussi case, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus, et de l'usage dans les grammaires du langage.\\
-    En considérant le graphe orienté des plus proches voisins, on remarque que celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$ et décrit des relations de proximité minimale.
-    On obtient alors le graphe suivant pour le tchèque et le russe:
-    \begin{figure}[H]
-	    \centering
-	    \includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_fictree}
-	    \caption{Graphes des Plus Proches Voisins Russe-Tchèque.}
-    \end{figure}
-    Pour éviter encore plus d'avoir des redites, on décide de ne se concentrer que sur des mots de même nature.
-    Ceci permet par exemple d'éviter qu'un groupe nominal ayant la même fonction sémantique (e.g. objet direct du verbe) apporte plusieurs instances d'un même cas (e.g. avec un adjectif et un nom à l'accusatif).
-    On obtient alors le graphe suivant pour le tchèque et le russe en ne considérant que les noms:
-    \begin{figure}[H]
-	    \centering
-	    \includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_fictree_Nouns_Only}
-	    \caption{Graphes des Plus Proches Voisins Russe-Tchèque pour les Noms uniquement.}
-    \end{figure}
-    On observe notamment que pour les noms, la structure du graphe reste la même.
-    Le vocatif russe et le vocatif tchèque, peu utilisées et le partitif russe n'ayant pas d'équivalent en tchèque, ils sont bien plus éloignés des autres cas.
-    On retrouve par ailleurs un bloc datif -- génitif qui était déjà présent auparavant, à variance dans le corpus près.
-    Par ailleurs, on observe également que les paires accusatif -- accusatif et nominatif -- nominatif restent stables et plus proches que toutes les autres paires de cas.\\
-    En ne considérant que les pronoms, on obtient le graphe suivant:
-    \begin{figure}[H]
-	    \centering
-	    \includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_fictree_Pronouns_Only}
-	    \caption{Graphes des Plus Proches Voisins Russe-Tchèque pour les Pronoms uniquement.}
-    \end{figure}
-    Cette fois ci, il y a une variance bien plus forte dans les distances, sans doute due à la variance dans les données. En effet, à part au nominatif et à l'accusatif les échantillons de données sont bien plus faibles.
-    \begin{table}[H]
-	    \centering
-	    \framebox{\begin{minipage}{.45\textwidth}
-		    \begin{center}
-			    \emph{Échantillons pour les noms:}
-		    \medskip
-		    \begin{tabular}{ccc}
-			    \toprule
-			    Cas & Russe & Tchèque\\
-			    \midrule
-			    Acc & 2807 & 5960\\
-			    \midrule
-			    Dat & 1029 & 861\\
-			    \midrule
-			    Gen & 7616 & 4378\\
-			    \midrule
-			    Ins & 1642 & 2100\\
-			    \midrule
-			    Loc & 2809 & 2583\\
-			    \midrule
-			    Nom & 4571 & 5970\\
-			    \midrule
-			    Par & 1 & 0\\
-			    \midrule
-			    Voc & 1 & 203\\
-			    \bottomrule
-		    \end{tabular}
-	    \end{center}
-	    \end{minipage}}
-	    \framebox{
-	    \begin{minipage}{.45\textwidth}
-		    \begin{center}
-			    \emph{Échantillons pour les pronoms:}
-		    \medskip
-	    \begin{tabular}{ccc}
-		    \toprule
-		    Cas & Russe & Tchèque\\
-		    \midrule
-		    Acc & 206 & 5960\\
-		    \midrule
-		    Dat & 129 & 2743\\
-		    \midrule
-		    Gen & 241 & 448\\
-		    \midrule
-		    Ins & 151 & 400\\
-		    \midrule
-		    Loc & 128 & 221\\
-		    \midrule
-		    Nom & 631 & 1427\\
-		    \midrule
-		    Par & 1 & 0\\
-		    \midrule
-		    Voc & 1 & 8\\
-		    \bottomrule
-	    \end{tabular}
-    \end{center}
-    \end{minipage}}
-	    \caption{Taille d'Échantillons sur les cas en Russe et en Tchèque.}
-    \end{table}
-    Finalement, il semble que considérer les pronoms fait perdre en information car ceux-ci sont bien moins usités en général. Toutefois, on remarque également qu'une structure générale de la langue semble transparaitre de ces graphes.
-    Il faut cependant noter que les graphes dépendent très fortement du corpus proposé:
-    \begin{figure}[H]
-	    \centering
-	    \includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_cltt}
-	    \caption{Graphe des Plus Proches Voisins Russe-Tchèque}
-    \end{figure}
-    Ici, on ne considère plus le corpus \texttt{cs\_fictree} mais le \texttt{cs\_cltt}, bien plus petit (467 phrases contre 10160).
-    Même si la forme du graphe ne semble que peu changer, la variance dans le corpus joue énormément.\\
-    Par ailleurs, cette méthode n'est que peu applicable, puisqu'elle nécessite d'étudier toutes les langues par paire, ce que j'ai partiellement fait: %TODO: Faire l'aggrégation de quoi est loin de quoi
+\end{table}
 
-\section{Visualisation des Données}
-    Les résultats précédemment obtenus ne permettent d'observer les données ou bien à une échelle très importante, ce qui brouille les résultats, ou bien à une échelle trop faible pour qu'on puisse généraliser un résultat.
-    Dans la suite, on propose donc des méthodes pour regrouper les vecteurs de cas dans différentes langues, afin d'essayer de constater l'uniformité (ou non) de certains groupes de cas.
+On enlève ensuite \texttt{conj, det} puisque ces reldep démontrent l'accord vers la tête, et donc des doublons dans les données, ceci permet d'éviter de compter comme plusieurs instances d'un même cas un groupe nominal de la forme \emph{Alice, le boulanger, la laitière et Bob}, qui remplit un usage sémantique uniforme dans la phrase.
+On enlève aussi case, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus, et de l'usage dans les grammaires du langage.\\
+En considérant le graphe orienté des plus proches voisins, on remarque que celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$ et décrit des relations de proximité minimale.
+On obtient alors le graphe suivant pour le tchèque et le russe:
 
-    \subsection{PCA}
-    On commence par appliquer une analyse en deux composantes principales (PCA) aux vecteurs représentant deux cas différents.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_fictree}
+	\caption{Graphes des Plus Proches Voisins Russe-Tchèque.}
+\end{figure}
 
-    \begin{figure}[H]
-        \begin{center}
-            \begin{minipage}{.5\textwidth}
-                \begin{center}
-                    \includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom}
-                \end{center}
-            \end{minipage}
-        \end{center}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Nouns}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Pronouns}
-            \end{center}
-        \end{minipage}
-        \caption{Représentations de l'Analyse en deux Composantes Principales sur le Génitif et le Nominatif}
-    \end{figure}
+Pour éviter encore plus d'avoir des redites, on décide de ne se concentrer que sur des mots de même nature.
+Ceci permet par exemple d'éviter qu'un groupe nominal ayant la même fonction sémantique (e.g. objet direct du verbe) apporte plusieurs instances d'un même cas (e.g. avec un adjectif et un nom à l'accusatif).
+On obtient alors le graphe suivant pour le tchèque et le russe en ne considérant que les noms:
 
-    En regardant de plus près, les composantes déterminées par l'algorithme de PCA sont en fait basées sur deux langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_fictree_Nouns_Only}
+	\caption{Graphes des Plus Proches Voisins Russe-Tchèque pour les Noms uniquement.}
+\end{figure}
 
-    \subsection{Clustering avec ToMATo}
-    L'algorithme est présenté dans \cite{ToMATo}.
-    \begin{figure}[H]
-        \begin{center}
-            \begin{minipage}{.5\textwidth}
-                \begin{center}
-                    \includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Gen_Nouns}
-                \end{center}
-            \end{minipage}
-        \end{center}
+On observe notamment que pour les noms, la structure du graphe reste la même.
+Le vocatif russe et le vocatif tchèque, peu utilisées et le partitif russe n'ayant pas d'équivalent en tchèque, ils sont bien plus éloignés des autres cas.
+On retrouve par ailleurs un bloc datif -- génitif qui était déjà présent auparavant, à variance dans le corpus près.
+Par ailleurs, on observe également que les paires accusatif -- accusatif et nominatif -- nominatif restent stables et plus proches que toutes les autres paires de cas.\\
+En ne considérant que les pronoms, on obtient le graphe suivant:
 
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Acc_Nouns}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Acc_Gen_Nouns}
-            \end{center}
-        \end{minipage}
-        \caption{Représentations des clusters trouvés par l'algorithme ToMATo sur les paires de $\{\tt Acc,Nom,Gen\}$}
-    \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_fictree_Pronouns_Only}
+	\caption{Graphes des Plus Proches Voisins Russe-Tchèque pour les Pronoms uniquement.}
+\end{figure}
 
-\subsection{Analyse Topologique des Données}
-    Pour l'implémentation de ce qui suit, on utilise les biblothèques Python \texttt{Gudhi}, \texttt{POT} et \texttt{Hera}, dont les implémentations sont décrites dans~\cite{Gudhi},\cite{PythonPOT},~\cite{Hera}
-    \begin{figure}[H]
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/cc_Abl}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/cc_Acc}
-            \end{center}
-        \end{minipage}
-        \caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Abl,Acc\}$}
-    \end{figure}
+Cette fois ci, il y a une variance bien plus forte dans les distances, sans doute due à la variance dans les données. En effet, à part au nominatif et à l'accusatif les échantillons de données sont bien plus faibles.
 
-    \begin{figure}[H]
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/cc_Loc}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/cc_Nom}
-            \end{center}
-        \end{minipage}
-        \caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Loc,Nom\}$}
-    \end{figure}
+\begin{table}[H]
+	\centering
+	\framebox{\begin{minipage}{.45\textwidth}
+	\begin{center}
+	\emph{Échantillons pour les noms:}
+	\medskip
+	\begin{tabular}{ccc}
+		\toprule
+		Cas & Russe & Tchèque\\
+		\midrule
+		Acc & 2807 & 5960\\
+		\midrule
+		Dat & 1029 & 861\\
+		\midrule
+		Gen & 7616 & 4378\\
+		\midrule
+		Ins & 1642 & 2100\\
+		\midrule
+		Loc & 2809 & 2583\\
+		\midrule
+		Nom & 4571 & 5970\\
+		\midrule
+		Par & 1 & 0\\
+		\midrule
+		Voc & 1 & 203\\
+		\bottomrule
+	\end{tabular}
+	\end{center}
+	\end{minipage}}
 
-    On utilise un complexe cubique pour essayer de représenter au mieux les groupes d'homologie (cf.  pour les détails) de la variété triangulée par les points de chaque cas.
-    On remarque qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
-    Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes, on obtient le tableau suivant:
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{c|ccccc}
-            \toprule
-            Cas & Abl & Acc & Dat & Loc & Gen\\
-            \midrule
-            Abl & 0.00 & 2.45 & 3.11 & 1.94 & 3.85\\
-            Acc & 2.45 & 0.00 & 1.33 & 1.25 & 1.79\\
-            Dat & 3.11 & 1.33 & 0.00 & 1.63 & 1.27\\
-            Loc & 1.94 & 1.25 & 1.63 & 0.00 & 2.26\\
-            Gen & 3.85 & 1.79 & 1.27 & 2.26 & 0.00\\
-            \bottomrule
-        \end{tabular}
-        \caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes Cubiques pour quelques Cas}
-    \end{table}
-    Les distances étant assez faibles, on obtient bien le résultat suggéré par les figures, il semble y avoir une structure générale de la notion topologique de variété engendrée par un cas.
-    Pour vérifier cette hypothèse, on teste de même en créant le complexe de Rips.
-    Toutefois, les diagrammes restant très brouillons, il est difficile de trouver une variété plus abstraite avec la même homologie.
+	\framebox{
+	\begin{minipage}{.45\textwidth}
+	\begin{center}
+	\emph{Échantillons pour les pronoms:}
+	\medskip
+	\begin{tabular}{ccc}
+		\toprule
+		Cas & Russe & Tchèque\\
+		\midrule
+		Acc & 206 & 5960\\
+		\midrule
+		Dat & 129 & 2743\\
+		\midrule
+		Gen & 241 & 448\\
+		\midrule
+		Ins & 151 & 400\\
+		\midrule
+		Loc & 128 & 221\\
+		\midrule
+		Nom & 631 & 1427\\
+		\midrule
+		Par & 1 & 0\\
+		\midrule
+		Voc & 1 & 8\\
+		\bottomrule
+	\end{tabular}
+	\end{center}
+	\end{minipage}}
+	\caption{Taille d'Échantillons sur les cas en Russe et en Tchèque.}
+\end{table}
 
-    \begin{figure}[H]
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/rc_Abl.pdf}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/rc_Acc.pdf}
-            \end{center}
-        \end{minipage}
-        \caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Abl,Acc\}$}
-    \end{figure}
+Finalement, il semble que considérer les pronoms fait perdre en information car ceux-ci sont bien moins usités en général. Toutefois, on remarque également qu'une structure générale de la langue semble transparaitre de ces graphes.
+Il faut cependant noter que les graphes dépendent très fortement du corpus proposé:
 
-    \begin{figure}[H]
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/rc_Loc.pdf}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/rc_Nom.pdf}
-            \end{center}
-        \end{minipage}
-        \caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Loc,Nom\}$}
-    \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_cltt}
+	\caption{Graphe des Plus Proches Voisins Russe-Tchèque}
+\end{figure}
 
-    On remarque à nouveau qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
-    Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes pour quelques cas, on obtient le tableau suivant:
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{c|cccccc}
-            \toprule
-            Cas & Abl & Acc & Dat & Gen & Loc & Nom\\
-            \midrule
-            Abl & 0.00 & 0.89 & 1.27 & 0.82 & 1.09 & 0.94\\
-            Acc & 0.89 & 0.00 & 1.01 & 0.42 & 1.03 & 0.91\\
-            Dat & 1.27 & 1.01 & 0.00 & 0.87 & 1.47 & 0.76\\
-            Gen & 0.82 & 0.42 & 0.87 & 0.00 & 0.84 & 0.87\\
-            Loc & 1.09 & 1.03 & 1.47 & 0.84 & 0.00 & 1.48\\
-            Nom & 0.94 & 0.91 & 0.76 & 0.87 & 1.48 & 0.00\\
-            \bottomrule
-        \end{tabular}
-        \caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes de Rips pour quelques Cas}
-    \end{table}
+Ici, on ne considère plus le corpus \texttt{cs\_fictree} mais le \texttt{cs\_cltt}, bien plus petit (467 phrases contre 10160).
+Même si la forme du graphe ne semble que peu changer, la variance dans le corpus joue énormément.\\
+Par ailleurs, cette méthode n'est que peu applicable, puisqu'elle nécessite d'étudier toutes les langues par paire.
 
-    Cela signifie notamment que la représentation d'un cas comme variété topologique ne varie que peu d'un cas à l'autre.
-    En particulier, cela implique que si deux cas ont des \emph{directions} générales,
-\subsection{t-SNE}
-    On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}
-    \begin{figure}[H]
-        \begin{center}
-            \begin{minipage}{.5\textwidth}
-                \begin{center}
-                    \includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom.pdf}
-                \end{center}
-            \end{minipage}
-        \end{center}
+\subsection{Visualisation des Données}
+Les résultats précédemment obtenus ne permettent d'observer les données ou bien à une échelle très importante, ce qui brouille les résultats, ou bien à une échelle trop faible pour qu'on puisse généraliser un résultat.
+Dans la suite, on propose donc des méthodes pour regrouper les vecteurs de cas dans différentes langues, afin d'essayer de constater l'uniformité (ou non) de certains groupes de cas.
 
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Nouns.pdf}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{center}
-                \includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Pronouns.pdf}
-            \end{center}
-        \end{minipage}
-        \caption{Représentations de l'Analyse t-SNE à deux Composantes sur le Génitif et le Nominatif}
-    \end{figure}
+\subsubsection{PCA}
+On commence par appliquer une analyse en deux composantes principales (PCA) aux vecteurs représentant deux cas différents.
 
-    Il semble que deux clusters se dégagent, avec des frontières toutefois assez floues.
-    Il semblerait donc que syntaxiquement, le génitif et le nominatif aient des représentation assez différentes.
+\begin{figure}[H]
+	\begin{center}
+	\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom}
+	\end{center}
+	\end{minipage}
+	\end{center}
+	\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Nouns}
+	\end{center}
+	\end{minipage}
+	\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Pronouns}
+	\end{center}
+	\end{minipage}
+	\caption{Représentations de l'Analyse en deux Composantes Principales sur le Génitif et le Nominatif}
+\end{figure}
+
+En regardant de plus près, les composantes déterminées par l'algorithme de PCA sont en fait basées sur deux langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
+
+\subsubsection{Clustering avec ToMATo}
+L'algorithme est présenté dans \cite{ToMATo}.
+\begin{figure}[H]
+
+\begin{center}
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Gen_Nouns}
+	\end{center}
+\end{minipage}
+\end{center}
+
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Acc_Nouns}
+	\end{center}
+\end{minipage}
+
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Acc_Gen_Nouns}
+	\end{center}
+\end{minipage}
+
+\caption{Représentations des clusters trouvés par l'algorithme ToMATo sur les paires de $\{\tt Acc,Nom,Gen\}$}
+\end{figure}
+
+\subsubsection{AnalyseTopologique des Données}
+Pour l'implémentation de ce qui suit, on utilise les biblothèques Python \texttt{Gudhi}, \texttt{POT} et \texttt{Hera}, dont les implémentations sont décrites dans~\cite{Gudhi},\cite{PythonPOT},~\cite{Hera}
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/cc_Abl}
+	\end{center}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/cc_Acc}
+	\end{center}
+\end{minipage}
+\caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Abl,Acc\}$}
+\end{figure}
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/cc_Loc}
+	\end{center}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/cc_Nom}
+	\end{center}
+\end{minipage}
+\caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Loc,Nom\}$}
+\end{figure}
+
+On utilise un complexe cubique pour essayer de représenter au mieux les groupes d'homologie (cf.  pour les détails) de la variété triangulée par les points de chaque cas.
+On remarque qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
+Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes, on obtient le tableau suivant:
+\begin{table}[H]
+\centering
+\begin{tabular}{c|ccccc}
+	\toprule
+	Cas & Abl & Acc & Dat & Loc & Gen\\
+	\midrule
+	Abl & 0.00 & 2.45 & 3.11 & 1.94 & 3.85\\
+	Acc & 2.45 & 0.00 & 1.33 & 1.25 & 1.79\\
+	Dat & 3.11 & 1.33 & 0.00 & 1.63 & 1.27\\
+	Loc & 1.94 & 1.25 & 1.63 & 0.00 & 2.26\\
+	Gen & 3.85 & 1.79 & 1.27 & 2.26 & 0.00\\
+	\bottomrule
+\end{tabular}
+\caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes Cubiques pour quelques Cas}
+\end{table}
+
+Les distances étant assez faibles, on obtient bien le résultat suggéré par les figures, il semble y avoir une structure générale de la notion topologique de variété engendrée par un cas.
+Pour vérifier cette hypothèse, on teste de même en créant le complexe de Rips.
+Toutefois, les diagrammes restant très brouillons, il est difficile de trouver une variété plus abstraite avec la même homologie.
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/rc_Abl.pdf}
+	\end{center}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/rc_Acc.pdf}
+	\end{center}
+\end{minipage}
+\caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Abl,Acc\}$}
+\end{figure}
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/rc_Loc.pdf}
+	\end{center}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/rc_Nom.pdf}
+	\end{center}
+\end{minipage}
+\caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Loc,Nom\}$}
+\end{figure}
+
+On remarque à nouveau qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
+Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes pour quelques cas, on obtient le tableau suivant:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|cccccc}
+	\toprule
+	Cas & Abl & Acc & Dat & Gen & Loc & Nom\\
+	\midrule
+	Abl & 0.00 & 0.89 & 1.27 & 0.82 & 1.09 & 0.94\\
+	Acc & 0.89 & 0.00 & 1.01 & 0.42 & 1.03 & 0.91\\
+	Dat & 1.27 & 1.01 & 0.00 & 0.87 & 1.47 & 0.76\\
+	Gen & 0.82 & 0.42 & 0.87 & 0.00 & 0.84 & 0.87\\
+	Loc & 1.09 & 1.03 & 1.47 & 0.84 & 0.00 & 1.48\\
+	Nom & 0.94 & 0.91 & 0.76 & 0.87 & 1.48 & 0.00\\
+	\bottomrule
+\end{tabular}
+\caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes de Rips pour quelques Cas}
+\end{table}
+
+Cela signifie notamment que la représentation d'un cas comme variété topologique ne varie que peu d'un cas à l'autre.
+En particulier, cela implique que si deux cas ont des \emph{directions} générales,
+\subsubsection{t-SNE}
+On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}
+\begin{figure}[H]
+
+\begin{center}
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom.pdf}
+	\end{center}
+\end{minipage}
+\end{center}
+
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Nouns.pdf}
+	\end{center}
+\end{minipage}
+
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Pronouns.pdf}
+	\end{center}
+\end{minipage}
+\caption{Représentations de l'Analyse t-SNE à deux Composantes sur le Génitif et le Nominatif}
+\end{figure}
+
+Il semble que deux clusters se dégagent, avec des frontières toutefois assez floues.
+Il semblerait donc que syntaxiquement, le génitif et le nominatif aient des représentation assez différentes.
 
 \newpage
-\part{Approche Probabiliste}
-	On voit dorénavant le vecteur représentant un cas dans un corpus comme une mesure de probabilité sur les relations de dépendances des mots possédant ce cas.
-    On voit alors l'ensemble des données représentant un cas dans tous les corpus comme la mesure empirique de la variable aléatoire $Cas$.
+\section{Approche Probabiliste}
+On voit dorénavant le vecteur représentant un cas dans un corpus comme une mesure de probabilité sur les relations de dépendances des mots possédant ce cas.
+On voit alors l'ensemble des données représentant un cas dans tous les corpus comme la mesure empirique de la variable aléatoire $Cas$.
 
-\section{Barycentrisation}
-    On a cherché jusque-là à comparer les cas.
-    On va désormais essayer de les prototyper et de mesurer l'écart au prototype, afin de tirer une définition des cas.
-    Celle-ci devrait coller à la description théorique proposée ci-dessous:
+\subsection{Barycentrisation}
+On a cherché jusque-là à comparer les cas.
+On va désormais essayer de les prototyper et de mesurer l'écart au prototype, afin de tirer une définition des cas.
+Celle-ci devrait coller à la description théorique proposée ci-dessous:
 
-    \begin{multicols}{2}
-        \begin{description}
-            \item[Nom] \texttt{nsubj} d'un verbe
-            \item[Acc] \texttt{obj} d'un verbe
-            \item[Erg] \texttt{nsubj} d'un verbe sans \texttt{obj}, ou \texttt{obj} d'un verbe
-            \item[Abs] \texttt{nsubj} d'un verbe avec \texttt{obj}      
-            \item[Gen] \texttt{nmod}
-            \item[Dat] \texttt{iobj}
-        \end{description}
-    \end{multicols}
-    Pour calculer les prototypes, on procède comme suit.
-    On peut ainsi calculer son espérance (en considérant les mesures équiprobables), mais également le barycentre de ses réalisations pour la distance-$1$ de Wasserstein (ou Earth Mover's Distance, voir \cite{PythonPOT} pour plus de détails).
-    On rappelle par ailleurs que le barycentre de $n$ points pour une distance $d$ est le point qui minimise l'énergie associée
-    \begin{equation*}
-        P = \argmin_{x} \frac{1}{n}\sum_{i = 1}^{n} d(x, x_{i}) = \argmin_{x} E\left(x, \left(x_{i}\right)_{i \in \onen{n}}\right)
-    \end{equation*}
-    Ceci nous donne une forme de vecteur prototypique pour la distribution des relations de dépendance du cas.
-    On obtient la distribution ci-dessous, pour quelques \texttt{reldep}:
+\begin{multicols}{2}
+	\begin{description}
+		\item[Nom] \texttt{nsubj} d'un verbe
+		\item[Acc] \texttt{obj} d'un verbe
+		\item[Erg] \texttt{nsubj} d'un verbe sans \texttt{obj}, ou \texttt{obj} d'un verbe
+		\item[Abs] \texttt{nsubj} d'un verbe avec \texttt{obj}
+		\item[Gen] \texttt{nmod}
+		\item[Dat] \texttt{iobj}
+	\end{description}
+\end{multicols}
+Pour calculer les prototypes, on procède comme suit.
+On peut ainsi calculer son espérance (en considérant les mesures équiprobables), mais également le barycentre de ses réalisations pour la distance-$1$ de Wasserstein (ou Earth Mover's Distance, voir \cite{PythonPOT} pour plus de détails).
+On rappelle par ailleurs que le barycentre de $n$ points pour une distance $d$ est le point qui minimise l'énergie associée
 
-    \begin{table}[H]
-	    \centering
-        \renewcommand{\arraystretch}{1.3}
-	    \begin{NiceTabular}{llccccc}
-            \bf Cas & \bf Prototype &\tt iobj & \tt nmod & \tt nsubj & \tt obj & \tt obl\\
-            \multirow[c]{2}{*}{\bf\sc Abs}  & Uniforme    & 0.000 & 0.028 & 0.278 & 0.000 & 0.367\\
-                                            & Wasserstein & 0.000 & 0.016 & 0.286 & 0.000 & 0.522\\
-            \multirow[c]{2}{*}{\bf\sc Erg}  & Uniforme    & 0.000 & 0.002 & 0.005 & 0.924 & 0.005\\
-                                            & Wasserstein & 0.000 & 0.005 & 0.000 & 0.976 & 0.014\\
-            \multirow[c]{2}{*}{\bf\sc Nom}  & Uniforme    & 0.001 & 0.080 & 0.525 & 0.074 & 0.048\\
-                                            & Wasserstein & 0.000 & 0.049 & 0.628 & 0.093 & 0.038\\
-            \multirow[c]{2}{*}{\bf\sc Acc}  & Uniforme    & 0.000 & 0.085 & 0.038 & 0.625 & 0.205\\
-                                            & Wasserstein & 0.000 & 0.000 & 0.019 & 0.576 & 0.259\\
-            \multirow[c]{2}{*}{\bf\sc Gen}  & Uniforme    & 0.009 & 0.674 & 0.039 & 0.056 & 0.149\\
-                                            & Wasserstein & 0.000 & 0.729 & 0.031 & 0.045 & 0.179\\
-            \multirow[c]{2}{*}{\bf\sc Dat}  & Uniforme    & 0.144 & 0.149 & 0.019 & 0.000 & 0.572\\
-                                            & Wasserstein & 0.190 & 0.164 & 0.005 & 0.000 & 0.605\\
-            \multirow[c]{2}{*}{\bf\sc Loc}  & Uniforme    & 0.000 & 0.166 & 0.009 & 0.017 & 0.696\\
-                                            & Wasserstein & 0.000 & 0.188 & 0.000 & 0.000 & 0.762\\
-            \multirow[c]{2}{*}{\bf\sc Ins}  & Uniforme    & 0.000 & 0.172 & 0.014 & 0.000 & 0.660\\
-                                            & Wasserstein & 0.000 & 0.213 & 0.000 & 0.000 & 0.738\\
-            \multirow[c]{2}{*}{\bf\sc Abl}  & Uniforme    & 0.000 & 0.165 & 0.013 & 0.001 & 0.700\\
-                                            & Wasserstein & 0.000 & 0.172 & 0.000 & 0.000 & 0.785\\
-        \CodeAfter
-        \begin{tikzpicture}
-            \draw[vulm, double] (1|-1) -- (8|-1);
-            \foreach \i in {2, 4,...,20} {\draw[vulm] (1|-\i) -- (8|-\i);}
-            \foreach \i in {3, 5,...,19} {\draw[yulm!60!white] (2|-\i) -- (8|-\i);}
-            \draw[vulm] (2|-1) -- (2|-20);
-        \end{tikzpicture}
-	    \end{NiceTabular}
-        \caption{Représentation des Principales \textit{reldep} des Prototypes pour quelques Cas}
-    \end{table}
+\begin{equation*}
+	P = \argmin_{x} \frac{1}{n}\sum_{i = 1}^{n} d(x, x_{i}) = \argmin_{x} E\left(x, \left(x_{i}\right)_{i \in \onen{n}}\right)
+\end{equation*}
 
-    On retrouve bien la représentation attendue.
-    Par ailleurs, l'énergie associée au prototype obtenu en prenant la moyenne des réalisations est de l'ordre de celle du barycentre pour la distance-$1$ de Wasserstein. 
+Ceci nous donne une forme de vecteur prototypique pour la distribution des relations de dépendance du cas.
+On obtient la distribution ci-dessous, en ne considérant à nouveau que les noms, pour quelques \textit{reldep}:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{NiceTabular}{llccccc}
+	\bf Cas & \bf Prototype &\tt iobj & \tt nmod & \tt nsubj & \tt obj & \tt obl\\
+	\multirow[c]{2}{*}{\bf\sc Abs}  & Uniforme    & 0.000 & 0.028 & 0.278 & 0.000 & 0.367\\
+	& Wasserstein & 0.000 & 0.016 & 0.286 & 0.000 & 0.522\\
+	\multirow[c]{2}{*}{\bf\sc Erg}  & Uniforme    & 0.000 & 0.002 & 0.005 & 0.924 & 0.005\\
+	& Wasserstein & 0.000 & 0.005 & 0.000 & 0.976 & 0.014\\
+	\multirow[c]{2}{*}{\bf\sc Nom}  & Uniforme    & 0.001 & 0.080 & 0.525 & 0.074 & 0.048\\
+	& Wasserstein & 0.000 & 0.049 & 0.628 & 0.093 & 0.038\\
+	\multirow[c]{2}{*}{\bf\sc Acc}  & Uniforme    & 0.000 & 0.085 & 0.038 & 0.625 & 0.205\\
+	& Wasserstein & 0.000 & 0.000 & 0.019 & 0.576 & 0.259\\
+	\multirow[c]{2}{*}{\bf\sc Gen}  & Uniforme    & 0.009 & 0.674 & 0.039 & 0.056 & 0.149\\
+	& Wasserstein & 0.000 & 0.729 & 0.031 & 0.045 & 0.179\\
+	\multirow[c]{2}{*}{\bf\sc Dat}  & Uniforme    & 0.144 & 0.149 & 0.019 & 0.000 & 0.572\\
+	& Wasserstein & 0.190 & 0.164 & 0.005 & 0.000 & 0.605\\
+	\multirow[c]{2}{*}{\bf\sc Loc}  & Uniforme    & 0.000 & 0.166 & 0.009 & 0.017 & 0.696\\
+	& Wasserstein & 0.000 & 0.188 & 0.000 & 0.000 & 0.762\\
+	\multirow[c]{2}{*}{\bf\sc Ins}  & Uniforme    & 0.000 & 0.172 & 0.014 & 0.000 & 0.660\\
+	& Wasserstein & 0.000 & 0.213 & 0.000 & 0.000 & 0.738\\
+	\multirow[c]{2}{*}{\bf\sc Abl}  & Uniforme    & 0.000 & 0.165 & 0.013 & 0.001 & 0.700\\
+	& Wasserstein & 0.000 & 0.172 & 0.000 & 0.000 & 0.785\\
+	\CodeAfter
+	\begin{tikzpicture}
+		\draw[vulm, double] (1|-1) -- (8|-1);
+		\foreach \i in {2, 4,...,20} {\draw[vulm] (1|-\i) -- (8|-\i);}
+		\foreach \i in {3, 5,...,19} {\draw[yulm!60!white] (2|-\i) -- (8|-\i);}
+		\draw[vulm] (2|-1) -- (2|-20);
+	\end{tikzpicture}
+\end{NiceTabular}
+\caption{Représentation des Principales \textit{reldep} des Prototypes pour quelques Cas sur les noms}
+\end{table}
+
+On retrouve assez globalement la représentation attendue.
+Par ailleurs, l'énergie associée au prototype obtenu en prenant la moyenne des réalisations est de l'ordre de celle du barycentre pour la distance-$1$ de Wasserstein, ce qui justifie ce que l'on pouvait inférer du tableau ci-dessus, le barycentre pour la distance de Wasserstein présente un profil similaire à la moyenne des instances.
+Par exemple:
+
+\begin{figure}[H]
+\centering
+\includegraphics{Figures/Visualisations/Nouns_Wasserstein_Barycenter_Acc}
+\caption{Représentation des Données et des Prototypes proposés pour les noms à l'Accusatif}
+\end{figure}
+
+Sur la figure ci-dessus, l'axe des abscisses représente les différentes \textit{reldep} apparaissant pour des noms à l'accusatif.
+Onreprésente sur le graphe du haut en jaune la fréquence associée à une reldep pour chaque corpus.
+Legraphe du bas représente, en rouge, la moyenne uniforme des distributions, en jaune, le barycentre des distributions pour la distance de wasserstein, et violet la proportion des corpus pour lesquels la \textit{reldep} apparaît.
 
 \newpage
 \appendix
