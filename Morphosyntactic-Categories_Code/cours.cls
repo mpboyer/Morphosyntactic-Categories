@@ -50,11 +50,6 @@
     \tableofcontents}
 
 
-\titleformat{\paragraph}
-{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
-\titlespacing*{\paragraph}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
 \newtheorem{theorem}{Théorème}[subsection]
 \newtheorem{corollary}{Corollaire}[theorem]
 \newtheorem{lemma}[theorem]{Lemme}
@@ -99,6 +94,7 @@
 \DeclareMathOperator{\pgcd}{pgcd}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\argmin}{argmin}
 \DeclareMathOperator{\rg}{rg}
 \DeclareMathOperator{\ch}{ch}
 \DeclareMathOperator{\sh}{sh}

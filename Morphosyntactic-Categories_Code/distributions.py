@@ -2,16 +2,16 @@ import itertools
 import os
 from typing import Callable
 
-import matplotlib.gridspec
 import numpy as np
 import ot
 import pandas
 from scipy.stats import wasserstein_distance
 from tqdm import tqdm
-import random
 from linalg import distance, l2_distance, manhattan_distance
 import argparse
+from toolz.functoolz import curry
 import matplotlib.pyplot as plt
+from sklearn.neighbors import NearestNeighbors
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-mode", "--mode", default="")
@@ -205,13 +205,13 @@ def compute_barycenters():
         uniform_mean = uniform_mean_distrib(studied_case)
         with open(f"{SAVE_DIR}/barycenters.txt", "a") as file:
             file.write(f"{studied_case=}\n")
-            file.write(f"[{", ".join(str(w) for w in wasserstein_mean)}]\n")
-            file.write(f"[{", ".join(str(w) for w in uniform_mean)}]\n\n\n")
+            file.write(f"{", ".join(str(w) for w in wasserstein_mean)}\n")
+            file.write(f"{", ".join(str(w) for w in uniform_mean)}\n\n\n")
         savepath = f"{MODE}_barycenters.txt" if MODE else "barycenters.txt"
         with open(savepath, "a") as file:
             file.write(f"{studied_case=}\n")
-            file.write(f"[{", ".join(str(w) for w in wasserstein_mean)}]\n")
-            file.write(f"[{", ".join(str(w) for w in uniform_mean)}]\n\n\n")
+            file.write(f"{", ".join(str(w) for w in wasserstein_mean)}\n")
+            file.write(f"{", ".join(str(w) for w in uniform_mean)}\n\n\n")
         for dfunc in (pbar2 := tqdm(
                 distance_functions, total=3 * len(distance_functions), colour="#ffe500", position=1, leave=False
         )
@@ -239,11 +239,26 @@ def get_barycenters():
     barycenters = list(
         map(
             lambda tup: (
-                tup[0][-4:-1], (list(map(float, tup[1][1:-1].split(','))), list(map(float, tup[2][1:-1].split(','))))),
+                tup[0][-4:-1], (list(map(float, tup[1][:].split(','))), list(map(float, tup[2][1:-1].split(','))))),
             list(map(lambda t: tuple(t.split("\n")), results.split('\n\n\n')))[:-1]
         )
     )
     return barycenters
+
+
+def print_barycenters():
+    barycenters = get_barycenters()
+    features = [list(get_basis(b[0])) for b in barycenters]
+
+    format_float = lambda t: f"{t:.3f}"
+    savepath = f"{MODE}_barycenters_joli.csv" if MODE else "barycenters_joli.csv"
+    results = "\n\n\n".join(
+        f"{barycenters[i][0]},{",".join(f)}\nUniform,{",".join(map(format_float, barycenters[i][1][0]))}\nWasserstein,{",".join(map(format_float, barycenters[i][1][1]))}"
+        for (i, f) in enumerate(features)
+    )
+
+    with open(savepath, 'w') as csv:
+        csv.write(results)
 
 
 def barycenter_distances(dist: Callable):
@@ -258,7 +273,62 @@ def barycenter_distances(dist: Callable):
         f.write(result)
 
 
+@curry
+def nearest_barycenter(barycenters, dist: Callable, point):
+    distances = {
+        b[0]: dist(point, b[1][0]) for b in barycenters
+    }
+    b = min(distances, key=distances.get)
+    return b  # , distances.get(b)
+
+
+def bary_space_part(dist: Callable, case):
+    barycenters = get_barycenters()
+    compute = nearest_barycenter(barycenters, dist)
+    case_data_set = get_data_set(case)
+    data = case_data_set.values[:, 5:]
+    for i in range(len(data)):
+        data[i] /= case_data_set.values[i, 4]
+    return {case_data_set.loc[i, 'Treebank']: compute(p) for (i, p) in enumerate(data)}
+
+
+def knn(k, cases, dist: Callable):
+    case1 = cases[0]
+    case_data_set = pandas.read_csv(f"{VECTOR_DIR}/RelDep_matching_Case={case1}.csv")
+    case_data_set.insert(1, "Case", case1, True)
+    case_data_set["Treebank"].map(lambda n: n + f"_{case1}")
+
+    for case in cases[1:]:
+        case_set = pandas.read_csv(f"{VECTOR_DIR}/RelDep_matching_Case={case}.csv")
+        case_set['Treebank'].map(lambda n: n + f"_{case}")
+        case_set.insert(1, "Case", case, True)
+        case_data_set = case_data_set._append(case_set, ignore_index=True)
+
+    for column in case_data_set.columns:
+        case_data_set.replace(
+            {
+                column: np.nan}, 0., inplace=True
+        )
+
+    for row in case_data_set.index:
+        for column in case_data_set.columns[5:]:
+            d = case_data_set.loc[row, 'Total']
+            case_data_set.loc[row, column] /= d
+
+    points = case_data_set.values[:, 5:]
+    nbrs = NearestNeighbors(n_neighbors=k, metric=dist, n_jobs=-1).fit(points)
+    distances, indices = nbrs.kneighbors(points)
+    graph = nbrs.kneighbors_graph(points).toarray() - np.identity(len(points))
+    knn_wrapped = [
+        [(case_data_set.loc[index, 'Treebank'], case_data_set.loc[index, 'Case'], distances[i][j]) for (j, index) in
+         enumerate(row)] for i, row in enumerate(indices)]
+    result = "\n\n".join(["\n".join(str(t) for t in row) for row in knn_wrapped])
+    savepath = f"{MODE}_{k}nn_{dist.__name__}_{"_".join(cases)}.txt" if MODE else f"{k}nn_{dist.__name__}_{"_".join(cases)}.txt"
+
+
 if __name__ == '__main__':
     # compute_barycenters()
     # barycenter_distances(wasserstein_distance)
-    pass
+    # print(bary_space_part(wasserstein_distance, 'Acc'))
+    # print_barycenters()
+    knn(5, cases=["Acc", "Nom"], dist=wasserstein_distance)
