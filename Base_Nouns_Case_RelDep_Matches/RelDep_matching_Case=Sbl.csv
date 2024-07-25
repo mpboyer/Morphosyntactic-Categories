@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,compound,nmod,nsubj,obl,orphan,parataxis,root
+hu_szeged-ud-dev,441,0,128,,1,2.0,7,1.0,113,3.0,1.0,
+hu_szeged-ud-test,449,0,120,,2,,9,,109,,,
+hu_szeged-ud-train,910,0,169,1.0,1,4.0,8,,153,,,2.0

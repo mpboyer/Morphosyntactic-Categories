@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,det,nmod,nsubj,parataxis
+ess_sli-ud-test,309,0,1,,,1,
+mr_ufal-ud-dev,46,0,4,,,4,
+mr_ufal-ud-test,47,0,2,,,2,
+mr_ufal-ud-train,373,0,19,,,19,
+wbp_ufal-ud-test,55,0,7,,,7,
+ka_glc-ud-test,151,0,13,1.0,3.0,9,
+eu_bdt-ud-train,5396,0,22,,,22,
+eu_bdt-ud-test,1799,0,7,,,6,1.0
+eu_bdt-ud-dev,1798,0,8,,,8,

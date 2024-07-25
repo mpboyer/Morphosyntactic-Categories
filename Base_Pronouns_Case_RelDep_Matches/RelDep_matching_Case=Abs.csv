@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,appos,ccomp,nmod,nsubj,obj,obl,xcomp
+ess_sli-ud-test,309,0,5,2.0,,2.0,1,,,
+wbp_ufal-ud-test,55,0,9,,,,6,3.0,,
+azz_itml-ud-test,1260,0,12,,,1.0,11,,,
+eu_bdt-ud-train,5396,0,72,,,1.0,18,46.0,7.0,
+eu_bdt-ud-test,1799,0,28,,1.0,,8,15.0,3.0,1.0
+eu_bdt-ud-dev,1798,0,21,,2.0,,4,11.0,4.0,

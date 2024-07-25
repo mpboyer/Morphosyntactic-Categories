@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,aux,cop,mark,nmod,nsubj,obl,parataxis,root
+hu_szeged-ud-dev,441,0,12,,,,,,,2.0,,10.0,,
+hu_szeged-ud-test,449,0,16,,,,,,,1.0,,14.0,,1.0
+hu_szeged-ud-train,910,0,26,,,2.0,,,,4.0,,18.0,1.0,1.0
+egy_ujaen-ud-test,721,0,1,,,,,,1.0,,,,,
+mdf_jr-ud-test,454,0,6,2.0,1.0,,,,,,,3.0,,
+wbp_ufal-ud-test,55,0,1,,,,,,,,,1.0,,
+eu_bdt-ud-train,5396,0,54,17.0,,,2.0,3.0,,1.0,1.0,30.0,,
+eu_bdt-ud-test,1799,0,20,4.0,,,2.0,1.0,,,,13.0,,
+eu_bdt-ud-dev,1798,0,22,3.0,,,,1.0,,1.0,,17.0,,

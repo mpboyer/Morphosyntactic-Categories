@@ -1,8 +1,8 @@
 import re
 
 
-forbidden_reldeps = []
-# allowed_pos = ['PRON']
+forbidden_reldeps = ["det", "conj", "case", "amod"]
+allowed_pos = ['NOUN']
 
 
 def is_prefix(s1: str, s2: str) -> bool:
@@ -62,6 +62,7 @@ def vectorize(filename):
                 if re.search(c, annotations[0]):
                     word += 1
                     offset -= 1
+                    continue
 
                 elif annotations[7] not in forbidden_reldeps:
                     attributes = {
@@ -69,7 +70,7 @@ def vectorize(filename):
                         "grapheme": annotations[1],
                         "lemma": annotations[2],
                         "part_of_speech": annotations[3],
-                        "edge_type": annotations[7]
+                        "edge_type": annotations[7].split(":")[0]
                     }
                     features = annotations[5]
 
@@ -80,8 +81,8 @@ def vectorize(filename):
 
                     if features == "_":
                         pass
-                    # elif annotations[3] not in allowed_pos:
-                    #     pass
+                    elif annotations[3] not in allowed_pos:
+                        pass
                     else:
                         features = features.split("|")
                         for feature in features:
@@ -118,5 +119,97 @@ def vectorize(filename):
     return results
 
 
+def vectorize_appos(filename):
+    with open(filename, "r") as f:
+        lines = f.readlines()
+    sentences = []
+    tmp = []
+    number_of_studied_sentences = 0
+    number_of_cpt_sentences = 0
+    for l in lines:
+        if l == "\n":
+            sentences.append(tmp)
+            tmp = []
+            number_of_studied_sentences += 1
+        elif l[0] == "#":
+            pass
+        else:
+            tmp.append(l)
+
+    trees = []
+    appos = {}
+
+    for sentence in sentences:
+        to_check = []
+        sentence_dict = {}
+        word = 0
+        offset = 1
+        # Equal to the difference between the position of the word in the sentence (considered from the
+        # parsing, i.e. including `am = an dem` as two words) minus the index in the list of parsed words.
+        while word < len(sentence):
+            try:
+                annotations = sentence[word]
+                annotations = annotations.split("\t")
+                c = re.compile("-")
+                if re.search(c, annotations[0]):
+                    word += 1
+                    offset -= 1
+                    continue
+
+                else:
+                    attributes = {
+                        "position": word + offset,
+                        "grapheme": annotations[1],
+                        "lemma": annotations[2].replace('/', '|'),
+                        "part_of_speech": annotations[3],
+                        "edge_type": annotations[7].split(":")[0]
+                    }
+                    if annotations[6] != "0":
+                        attributes["predecessor"] = annotations[6]
+                    else:
+                        attributes["predecessor"] = str(word + offset)
+
+                    if attributes["part_of_speech"] == 'ADP':
+                        a = attributes["lemma"]
+                        appos[a] = appos.get(a, {})
+                        to_check.append((a, attributes["predecessor"]))
+
+                    sentence_dict[attributes["position"]] = attributes
+
+            except IndexError:
+                number_of_cpt_sentences += 1
+                print(number_of_cpt_sentences)
+            word += 1
+
+        for p, pred in to_check:
+            try :
+                pred_dict = sentence_dict[int(pred)]
+            except ValueError:
+                continue
+            if pred_dict["edge_type"] not in forbidden_reldeps:
+                appos[p][pred_dict["edge_type"]] = appos[p].get(pred_dict["edge_type"], 0) + 1
+
+        trees.append(sentence_dict)
+
+    results = []
+    for lemma in appos:
+        # print(lemma)
+        reldep_for_grammar_feature = ""
+        reldep_for_grammar_feature += (
+            f"We have studied {number_of_studied_sentences} sentences and failed on {number_of_cpt_sentences} in "
+            f"treebank `{filename}`.\n We get the following distribution "
+            f"of RelDep for appos matching `Lemma={lemma}`:\n")
+        res_dict = {}
+        for t in trees:
+            for w in t:
+                res_dict[t[w]["edge_type"]] = res_dict.get(t[w]["edge_type"], 0) + 1
+
+        for v in res_dict:
+            reldep_for_grammar_feature += f"RelDep {v}: {res_dict[v]}\n"
+
+        results.append((lemma, reldep_for_grammar_feature))
+    return results
+
+
 if __name__ == "__main__":
-    vectorize("../ud-treebanks-v2.14/UD_German-GSD/de_gsd-ud-train.conllu")
+    vectorize_appos("../ud-treebanks-v2.14/UD_Classical_Armenian-CAVaL/xcl_caval-ud-train.conllu")

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,ccomp,dep,discourse,dislocated,iobj,nmod,nsubj,obj,obl,parataxis,root,vocative,xcomp
+tpn_tudet-ud-test,581,0,367,6.0,26,2.0,2.0,1.0,1.0,1.0,81,50,94.0,67,11.0,17,1.0,7.0
+gn_oldtudet-ud-test,59,0,7,,1,,,,,,2,1,,1,,2,,
+eme_tudet-ud-test,913,0,71,3.0,2,,3.0,,,,6,16,10.0,10,1.0,20,,

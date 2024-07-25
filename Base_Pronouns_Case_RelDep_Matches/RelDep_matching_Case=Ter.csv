@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,root
+hu_szeged-ud-dev,441,0,1,,1,
+et_ewt-ud-train,5444,0,2,,2,
+et_ewt-ud-test,913,0,3,,2,1.0
+kpv_lattice-ud-test,643,0,1,,1,
+et_edt-ud-dev,3128,0,2,,2,
+et_edt-ud-train,24615,0,14,,14,
+et_edt-ud-test,3214,0,5,1.0,3,1.0

@@ -1,0 +1,27 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nsubj,parataxis,root,vocative
+pl_pdb-ud-dev,2215,0,2,,,,,2.0
+uk_iu-ud-train,5521,0,1,,,,,1.0
+uk_iu-ud-test,898,0,1,,,,1.0,
+sa_vedic-ud-test,2709,0,1,,,,,1.0
+sa_vedic-ud-train,21477,0,1,,,,,1.0
+sa_vedic-ud-dev,2996,0,4,,,,,4.0
+hr_set-ud-train,6914,0,1,,,,,1.0
+cpg_tuecl-ud-test,350,0,1,1.0,,,,
+la_circse-ud-test,1263,0,8,,,,,8.0
+grc_perseus-ud-dev,1137,0,1,,,,,1.0
+grc_perseus-ud-train,11476,0,2,,,,,2.0
+grc_perseus-ud-test,1306,0,3,,,,,3.0
+la_perseus-ud-test,939,0,1,,1.0,,,
+ess_sli-ud-test,309,0,1,,1.0,,,
+lt_alksnis-ud-test,684,0,1,,,1.0,,
+la_proiel-ud-train,16196,0,4,,,,,4.0
+cs_fictree-ud-dev,1309,0,2,1.0,,,1.0,
+cs_fictree-ud-train,10160,0,8,5.0,,,1.0,2.0
+cs_fictree-ud-test,1291,0,1,1.0,,,,
+la_udante-ud-dev,376,0,2,,1.0,,1.0,
+got_proiel-ud-dev,985,0,1,,,,,1.0
+got_proiel-ud-train,3387,0,1,,,,,1.0
+cs_pdt-ud-dev,9270,0,3,2.0,1.0,,,
+cs_pdt-ud-train,68491,0,2,2.0,,,,
+cs_cac-ud-train,23478,0,1,,,,,1.0
+bej_nsc-ud-test,380,0,2,,,,,2.0

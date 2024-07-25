@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,expl,nmod,obl,parataxis,root,xcomp
+hu_szeged-ud-dev,441,0,1,,,,,,1.0,,,
+et_ewt-ud-train,5444,0,24,1.0,,1.0,,1.0,16.0,2.0,2.0,1.0
+et_ewt-ud-test,913,0,6,,,1.0,,,3.0,,1.0,1.0
+et_ewt-ud-dev,833,0,6,,,,,,3.0,,,3.0
+fi_tdt-ud-train,12217,0,5,,,,,,1.0,1.0,,3.0
+myv_jr-ud-test,921,0,2,,1.0,,,,,,,1.0
+fi_pud-ud-test,1000,0,1,,,,,,,,,1.0
+et_edt-ud-dev,3128,0,18,,,,,,9.0,,1.0,8.0
+et_edt-ud-train,24615,0,175,4.0,2.0,,,9.0,101.0,4.0,15.0,40.0
+et_edt-ud-test,3214,0,24,,,1.0,,2.0,16.0,,1.0,4.0
+fi_ftb-ud-dev,1875,0,1,,,,1.0,,,,,
+fi_ftb-ud-train,14981,0,8,,,,,8.0,,,,

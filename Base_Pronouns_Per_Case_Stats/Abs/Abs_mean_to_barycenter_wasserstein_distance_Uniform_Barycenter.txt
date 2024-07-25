@@ -1,0 +1,7 @@
+Distance ess_sli-ud-test - Uniform_Barycenter = 0.051
+Distance wbp_ufal-ud-test - Uniform_Barycenter = 0.071
+Distance azz_itml-ud-test - Uniform_Barycenter = 0.142
+Distance eu_bdt-ud-train - Uniform_Barycenter = 0.067
+Distance eu_bdt-ud-test - Uniform_Barycenter = 0.040
+Distance eu_bdt-ud-dev - Uniform_Barycenter = 0.069
+Énergie = 0.039

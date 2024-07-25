@@ -1,0 +1,22 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,ccomp,nmod,nsubj,obj,obl,orphan,root
+es_gsd-ud-train,14187,0,8,,,,,2.0,,,5.0,,1.0
+es_ancora-ud-train,14287,0,8,,,,,1.0,,2.0,4.0,,1.0
+es_ancora-ud-test,1721,0,4,,,1.0,,,,,3.0,,
+es_ancora-ud-dev,1654,0,3,,,,,,,1.0,2.0,,
+sms_giellagas-ud-test,230,0,1,,,,,,,,1.0,,
+et_ewt-ud-train,5444,0,71,1.0,1.0,,1.0,1.0,,,63.0,1.0,3.0
+et_ewt-ud-test,913,0,14,,,,,,,,13.0,,1.0
+et_ewt-ud-dev,833,0,16,,,,,1.0,,,15.0,,
+ml_ufal-ud-test,218,0,1,,,,,,,,1.0,,
+es_pud-ud-test,1000,0,1,,,,,,,1.0,,,
+kpv_lattice-ud-test,643,0,9,,,,,1.0,1.0,,7.0,,
+et_edt-ud-dev,3128,0,43,,,,,3.0,,,40.0,,
+et_edt-ud-train,24615,0,311,1.0,1.0,,1.0,12.0,,,288.0,2.0,6.0
+et_edt-ud-test,3214,0,39,,1.0,,,2.0,,,35.0,1.0,
+koi_uh-ud-test,94,0,4,,,,,1.0,,,3.0,,
+sme_giella-ud-train,2257,0,28,,,,,1.0,,,27.0,,
+sme_giella-ud-test,865,0,11,,,2.0,,,,,9.0,,
+eu_bdt-ud-train,5396,0,4,,,,,,,,4.0,,
+eu_bdt-ud-test,1799,0,3,,,,,,,,3.0,,
+eu_bdt-ud-dev,1798,0,6,,,,,,,,6.0,,
+bxr_bdt-ud-test,908,0,5,,,,,3.0,,2.0,,,

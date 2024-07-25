@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,obl,orphan,parataxis,root
+hu_szeged-ud-dev,441,0,9,,1.0,8,,,
+hu_szeged-ud-test,449,0,10,,,10,,,
+hu_szeged-ud-train,910,0,20,,1.0,19,,,
+et_ewt-ud-train,5444,0,21,,4.0,16,,,1.0
+et_ewt-ud-test,913,0,2,,,2,,,
+et_ewt-ud-dev,833,0,6,,1.0,5,,,
+olo_kkpp-ud-test,106,0,1,,,1,,,
+vep_vwt-ud-test,103,0,1,,,1,,,
+kpv_ikdp-ud-test,214,0,1,,,1,,,
+kpv_lattice-ud-test,643,0,12,,1.0,11,,,
+et_edt-ud-dev,3128,0,39,,3.0,36,,,
+et_edt-ud-train,24615,0,299,1.0,30.0,259,3.0,2.0,4.0
+et_edt-ud-test,3214,0,36,,5.0,31,,,
+ab_abnc-ud-test,263,0,1,,,1,,,

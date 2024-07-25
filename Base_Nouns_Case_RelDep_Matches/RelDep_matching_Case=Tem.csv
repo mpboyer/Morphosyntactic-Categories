@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,ccomp,clf,compound,csubj,flat,iobj,list,nmod,nsubj,obj,obl,parataxis,root,xcomp
+hu_szeged-ud-dev,441,0,8,,,,,,,,,,,,,,8.0,,,
+hu_szeged-ud-test,449,0,3,,,,,,,,,,,,,,3.0,,,
+hu_szeged-ud-train,910,0,1,,,,,,,,,,,,,,1.0,,,
+gub_tudet-ud-test,1182,0,1,,,,,,,,,,,,,,1.0,,,
+lzh_tuecl-ud-test,100,0,25,,3.0,,,,1.0,1.0,,,,,1.0,8.0,8.0,2.0,1.0,
+egy_ujaen-ud-test,721,0,1,,,,,,,,,,,1.0,,,,,,
+mdf_jr-ud-test,454,0,5,,,,,,,,,,,,,,4.0,,1.0,
+mdf_jr-ud-train,20,0,1,,,,,,,,,,,,,,1.0,,,
+myv_jr-ud-test,921,0,6,,,1.0,,,,,,,,,,,5.0,,,
+myv_jr-ud-train,1217,0,7,,,,,,,,,,,,,,7.0,,,
+lzh_kyoto-ud-dev,6102,0,654,1.0,1.0,,,123.0,2.0,,1.0,,,121.0,29.0,72.0,291.0,,13.0,
+lzh_kyoto-ud-train,74609,0,7404,7.0,8.0,,4.0,560.0,31.0,4.0,37.0,3.0,15.0,1562.0,445.0,857.0,3497.0,5.0,368.0,1.0
+lzh_kyoto-ud-test,5528,0,439,,2.0,,,14.0,,,2.0,,,91.0,19.0,43.0,254.0,1.0,13.0,
+gu_gujtb-ud-test,187,0,4,,,,,,,,,,,,,,4.0,,,

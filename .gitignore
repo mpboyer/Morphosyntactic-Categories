@@ -15,4 +15,5 @@ Administratif/*
 *__pycache*
 *Proximities/
 Old_Sources/
-AllFeatures_RelDep_Matches
+*AllFeatures*
+*Adpos*

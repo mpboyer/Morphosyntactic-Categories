@@ -1,0 +1,12 @@
+Treebank,Number of Sentences,Failures,Total,compound,csubj,flat,nmod,nummod,obj,obl
+ky_ktmu-ud-test,701,0,5,,,,4.0,,,1.0
+tt_nmctt-ud-test,148,0,4,,,,,,,4.0
+tr_gb-ud-test,2880,0,1,,,,,,,1.0
+ota_boun-ud-test,400,0,1,,,,,,,1.0
+qtd_sagt-ud-dev,801,0,1,,,,,1.0,,
+tr_imst-ud-train,3435,0,6,1.0,,1.0,1.0,,,3.0
+tr_imst-ud-dev,1100,0,3,1.0,,,,,1.0,1.0
+tr_imst-ud-test,1100,0,2,,,,,,,2.0
+tr_boun-ud-dev,979,0,1,,,,,1.0,,
+tr_boun-ud-test,979,0,3,1.0,,,,,,2.0
+tr_boun-ud-train,7803,0,19,,1.0,,3.0,,,15.0

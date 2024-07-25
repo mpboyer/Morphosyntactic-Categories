@@ -1,0 +1,12 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,aux,ccomp,compound,cop,csubj,dep,fixed,nmod,obl,orphan,root,xcomp
+mdf_jr-ud-test,454,0,55,,,13.0,4.0,,,,,,,,1.0,37.0,,,
+myv_jr-ud-test,921,0,81,,1.0,17.0,,,,,,,,2.0,,60.0,,1.0,
+myv_jr-ud-train,1217,0,101,,1.0,15.0,1.0,,,1.0,,,,,,82.0,1.0,,
+sjo_xdt-ud-test,810,0,3,,,,,,,,,,,,,3.0,,,
+eu_bdt-ud-train,5396,0,9,,,1.0,,,,,,,1.0,,,5.0,2.0,,
+eu_bdt-ud-test,1799,0,4,,,,,,,,,,,,,4.0,,,
+eu_bdt-ud-dev,1798,0,6,,,,,,,,,,,,,6.0,,,
+fi_ftb-ud-dev,1875,0,279,28.0,8.0,,,6.0,58.0,,16.0,12.0,,,,,,87.0,64.0
+fi_ftb-ud-train,14981,0,2593,297.0,60.0,,,33.0,556.0,,109.0,116.0,1.0,1.0,,,,788.0,632.0
+fi_ftb-ud-test,1867,0,311,33.0,11.0,,,1.0,70.0,,12.0,15.0,,,,,,94.0,75.0
+ab_abnc-ud-test,263,0,3,,,,,,,,,,,,,3.0,,,

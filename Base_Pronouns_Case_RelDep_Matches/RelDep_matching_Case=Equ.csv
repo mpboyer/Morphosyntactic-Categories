@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,advcl,discourse,nmod,obj,obl,parataxis,root
+gub_tudet-ud-test,1182,0,8,,,,1.0,7.0,,
+tr_gb-ud-test,2880,0,4,,,,,4.0,,
+ota_boun-ud-train,114,0,1,,,,,1.0,,
+ota_boun-ud-test,400,0,2,,,,,2.0,,
+qtd_sagt-ud-test,805,0,1,1.0,,,,,,
+qtd_sagt-ud-dev,801,0,7,,,,,4.0,2.0,1.0
+qtd_sagt-ud-train,578,0,4,,,,,3.0,1.0,
+tr_imst-ud-train,3435,0,15,,,4.0,,11.0,,
+tr_imst-ud-dev,1100,0,1,1.0,,,,,,
+tr_imst-ud-test,1100,0,4,,,2.0,,2.0,,
+tr_boun-ud-dev,979,0,2,,,,,2.0,,
+tr_boun-ud-train,7803,0,13,,2.0,,,11.0,,

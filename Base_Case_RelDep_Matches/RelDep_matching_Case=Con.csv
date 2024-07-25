@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,compound,discourse,dislocated,fixed,flat,mark,nmod,nsubj,obj,obl,parataxis,root,xcomp
+kmr_mg-ud-train,20,0,40,,,,,,,,,,,,21,10,4,1,,4,
+kmr_mg-ud-test,734,0,1169,7.0,1.0,1.0,9.0,15.0,12.0,1.0,1.0,3.0,21.0,3.0,621,215,137,39,14.0,68,1.0
