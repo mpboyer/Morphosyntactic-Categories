@@ -182,7 +182,7 @@ def vectorize_appos(filename):
             word += 1
 
         for p, pred in to_check:
-            try :
+            try:
                 pred_dict = sentence_dict[int(pred)]
             except ValueError:
                 continue
@@ -199,17 +199,12 @@ def vectorize_appos(filename):
             f"We have studied {number_of_studied_sentences} sentences and failed on {number_of_cpt_sentences} in "
             f"treebank `{filename}`.\n We get the following distribution "
             f"of RelDep for appos matching `Lemma={lemma}`:\n")
-        res_dict = {}
-        for t in trees:
-            for w in t:
-                res_dict[t[w]["edge_type"]] = res_dict.get(t[w]["edge_type"], 0) + 1
-
-        for v in res_dict:
-            reldep_for_grammar_feature += f"RelDep {v}: {res_dict[v]}\n"
+        for v in appos[lemma]:
+            reldep_for_grammar_feature += f"RelDep {v}: {appos[lemma][v]}\n"
 
         results.append((lemma, reldep_for_grammar_feature))
     return results
 
 
 if __name__ == "__main__":
-    vectorize_appos("../ud-treebanks-v2.14/UD_Classical_Armenian-CAVaL/xcl_caval-ud-train.conllu")
+    vectorize_appos("../ud-treebanks-v2.14/UD_French-FQB/fr_fqb-ud-test.conllu")

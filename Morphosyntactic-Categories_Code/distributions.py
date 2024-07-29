@@ -386,13 +386,18 @@ def appos_barycenters(appos):
         )
     overall_data = appos_data_sets.values[:, 4:]
     features = appos_data_sets.columns[4:]
-
+    broken_indices = []
     for i in range(len(overall_data)):
-        overall_data[i] /= appos_data_sets.loc[i, "Total"]
+        try:
+            overall_data[i] /= appos_data_sets.loc[i, "Total"]
+        except ZeroDivisionError:
+            broken_indices.append(i)
 
     all_data = {}
     for row, treebank in enumerate(appos_data_sets["Treebank"]):
         lang = treebank.split('_')[0]
+        if row in broken_indices:
+            continue
         try:
             all_data[lang] = np.concatenate((all_data[lang], np.array([overall_data[row]])), axis=0)
         except KeyError:
@@ -405,21 +410,20 @@ def appos_barycenters(appos):
         loss = ot.utils.dist0(n_bins)
         loss /= loss.max()
         weights = [1 / n_distributions] * n_distributions
-        wasserstein_mean = ot.lp.barycenter(distributions, loss, weights=weights, verbose=True)
+        wasserstein_mean = ot.lp.barycenter(distributions, loss, weights=weights, verbose=False)
         uniform_mean = np.array([np.mean(data[:, i]) for i in range(data.shape[1])])
+
 
         savepath = "Figures/Barycenter_Distances/Adpos_Barycenters"
         with open(f"{savepath}/barycenter_{lang}.csv", "a") as file:
             file.write(f"{appos=}\n")
-            file.write(f"Features,{",".join(features)}")
+            file.write(f"Features,{",".join(features)}\n")
             file.write(f"Wasserstein, {", ".join(f"{w:.5f}" for w in wasserstein_mean)}\n")
             file.write(f"Uniform, {", ".join(f"{w:.5f}"for w in uniform_mean)}\n\n\n")
 
 
 if __name__ == '__main__':
-    adposes = ["à", "dans", "par", "pour", "en", "vers", "avec", "de", "sans", "sous", "sur"]
-    for ad in adposes:
-        appos_barycenters(ad)
+    appos_barycenters('sauf')
     # compute_barycenters()
     # barycenter_distances(wasserstein_distance)
     # bary_space_part(wasserstein_distance, 'Acc')

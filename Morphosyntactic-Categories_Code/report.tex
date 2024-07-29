@@ -1,29 +1,59 @@
 \documentclass{cours}
 \usepackage{nicematrix}
-\title{Sur la Stabilité Interlangue des Catégories Morphosyntaxiques\\ \small Rapport de Stage de L3}
-\author{MatthieuBoyer}
-\date{}
+\title{Sur la Stabilité Interlangue des Catégories Morphosyntaxiques\\[2pt]\small Rapport de Stage de L3}
+\author{Matthieu Boyer}
+\date{2024}
 
 \begin{document}
+\titlepage % Output the title page
+	{}
+        {\centering %
+		{\Huge Sur la Stabilité Interlangue des Catégories Morphosyntaxiques\par}
+                \vspace{16pt}
+                {\Large Rapport de Stage de L3\par}
+                \vspace{24pt}
+                {\huge Matthieu \textsc{Boyer}\par}}
+	{../logo_lattice}
+	{\centering %
+                {\huge\sc Laboratoire Lattice \par}
+                \vspace{16pt}
+                {\large \sc CNRS --- ENS-PSL --- Université Sorbonne Nouvelle\par}
+                \vspace{24pt}
+		{\Large Sous la direction de Mathieu \textsc{Dehouck}\par}}
+
+\tableofcontents
 
 \begin{abstract}
 Dans ce rapport, nous nous intéressons à la stabilité interlangue des catégories morphosyntaxiques.
 Nous avons quantifié la manière dont différentes catégories descriptives d'un langage ont différentes significations dans différents langages, et particulièrement la manière dont un concept est matérialisé dans différents langages.
+Nous nous sommes tout particulièrement intéressés à la notion de cas grammatical, aux différences entre cas et à la définition fondamentale d'un cas. Nous avons également étudié la représentation des adpositions en parallèle à la notion de cas.
 \end{abstract}
 
-\section{Introduction}
-\subsection{Pourquoi?}
-Cette citation de Martin Haspelmath sur la différence entre une catégorie linguistique descriptive dans un langage et une catégorie linguistique comparative dans le méta-langage est le point de départ de notre étude.
 
-	\begin{quote}
+\section{Introduction}\label{sec:introduction}
+\subsection{Contextualisation}\label{subsec:contextualisation}
+\begin{quote}
 	There is a fundamental distinction between language-particular categories of languages (which descriptive linguists must describe by descriptive categories of their descriptions) and comparative concepts (which comparative linguists may use to compare languages).
-	{\flushright {\textit{Martin Haspelmath} \cite{Has18}}}
-	\end{quote}
+	{\flushright \textit{Martin Haspelmath} \cite{Has18}}
+\end{quote}
 
 Selon Haspelmath, il est possible que la manière de décrire les langues en linguistique soit basée sur des envies de comparaison, parfois mal placées.
 Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et comparer les descriptions dans différents langages de catégories linguistiques comparatives.
+Ceci permettrait de justifier la transposition de résultats d'une langue vers une autre.
 
-\subsection{Données et \emph{Universal Dependencies}}
+\subsection{Définitions Linguistiques}\label{subsec:linguistique}
+En linguistique, la morphologie est l'étude des mots, de la manière dont ils sont formés et des relations entre eux au sein dans langage.
+La syntaxe est l'étude de la manière dont se combinent les morphèmes (plus petites unités de son faisant sens dans un langage) et les mots pour former des structures plus grandes comme des phrases.
+La sémantique, enfin, est l'étude du sens linguistique, de comment les mots ont du sens, et de la manière dont le sens de parties d'une phrase influent sur le sens de celle-ci.\\
+\medskip
+La morphosyntaxe est la combinaison des aspects morphologiques et syntaxiques du langage, et examinent notamment comment les formes des mots et structures grammaticales intéragissent pour transmettre du sens dans une phrase.
+Une catégorie morphosyntaxique est une propriété syntaxique, c'est à dire ayant des influences sur la structure grammaticale de la phrase, qui est marquée morphologiquement sur certains mots.
+En français par exemple, le pluriel est une catégorie morphosyntaxique: il est marqué à la fin des mots et donne des informations sur quel groupe gouverne un autre groupe.
+Il existe également des catégories morphosémantiques, qui ne donnent que des informations sur la signification d'une phrase et pas sur sa structure.\\
+\medskip
+Les cas grammaticaux sont des exemples de catégories morphosyntaxiques et morphosémantiques.
+
+\subsection{Données et \emph{Universal Dependencies}}\label{subsec:données}
 Pour étudier la thèse d'Haspelmath, nous allons considérer que les relations de dépendances (\textit{reldep}) décrites par les annotations de \textsc{Universal Dependencies} (UD, version 2 décrite dans \cite{UDv2}) sont une manière de représenter des catégories comparatives.
 Une relation de dépendance est une manière de décrire les relations syntaxiques dans une phrase.
 Elles se déduisent de la construction par une grammaire de dépendance ou contextuelle de la phrase.
@@ -39,16 +69,17 @@ Par ailleurs, les mots sont annotés avec les propriétés morphologiques qu'ils
 Les propriétés morphologiques universelles utilisées par UD sont décrites table 2 dans \cite{UDv2}.\\
 Enfin, les mots sont annotés avec leur nature grammaticale (e.g. Nom, Verbe, Pronom\dots) comme décrits table 1 dans \cite{UDv2}.
 
-\subsection{Méthode}
+\subsection{Méthode}\label{subsec:méthode}
 Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs \textit{reldep} ne peuvent instancier une même catégorie comparative.
-En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une \textit{feature} d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation vectorielle des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
+En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une \textit{feature} d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
 Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, version 2.14 décrite dans \cite{UD214}.
 
-\section{Approche Géométrique}
+\section{Approche Géométrique}\label{sec:géométrie}
+Pour cette première approche, on considère la représentation obtenue comme une représentation vectorielle: on considère qu'on se place sur $\R^{\abs{R}}$ où $R$ est l'ensemble des \textit{reldep} et dont une base est l'ensemble des relations de dépendance.
+Ceci nous permet d'étudier la structure syntaxique de chaque cas d'une manière géométrique.
 
-\subsection{Avec la distance Cosinus}
-On mesure en utilisant la distance Cosinus entre deux vecteurs la proximité entre ceux ci:
-
+\subsection{Avec la distance Cosinus}\label{subsec:cosinus}
+On mesure d'abord la proximité de deux vecteurs en utilisant la distance\footnote{Ce n'est pas une distance au sens mathématique} Cosinus entre ceux-ci:
 \begin{equation}
 	d_{\cos}(v_{1},v_{2}) = \frac{\scalar{v_{1}\mid v_{2}}}{\norm{v_{1}}\norm{v_{2}}}
 \end{equation}
@@ -61,40 +92,41 @@ On obtient alors les résultats suivants pour quelques cas:
 
 \input{Figures/Visualisations/Angles_Case=Voc_Proximity}
 
-On obtient notamment le fait que le nominatif comme le vocatif ont des directions très particulières, et sont très différents de tous les autres cas. Pour le reste, les résultats sont assez flous, et il semble difficile de tirer
+On observe notamment le fait que le nominatif comme le vocatif ont des directions très particulières, et sont très différents de tous les autres cas. Pour le reste, les résultats sont assez flous, et il semble difficile de tirer des résultats généraux.\\
+\medskip
+Par ailleurs, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus.
+De plus, les résultats donnés ici sont à pondérer par la présence de nombreux corpus/langages ne possédant pas au moins l'un des cas ci-dessus, ce qui amène à une représentation trop brouillée des informations.
 
-Toutefois, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus. Par ailleurs, les résultats donnés ici sont à pondérer par la présence de nombreux corpus/langages ne possédant pas au moins l'un des cas ci-dessus, ce qui amène à une représentation trop brouillée des informations.
 
-
-\subsection{Avec l'algorithme de \textsc{Zassenhaus}}
+\subsection{Avec l'algorithme de \textsc{Zassenhaus}}\label{subsec:zassenhaus}
 On considère les espaces vectoriels engendrés par la représentation vectorielle du système de cas d'une langue, que l'on appellera \textit{espaces de cas}.
 Ceux-ci sont d'une certaine dimension finie.
-On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus, permettant de générer une base de l'espace somme et de l'espace intersubsection.
+On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus (voir \cite{zassenhaus}), permettant de générer une base de l'espace somme et de l'espace intersubsection.
 Toutefois, la grande variance au niveau des coordonnées, et la trop faible dimension (au plus 45, mais souvent de l'odrdre de 5) dans un grand espace (dimension 228), rend l'intersubsection toujours nulle numériquement.
-Par ailleurs, cet algorithme est très lent à exécuter car il demande de nombreux appels mémoire pour obtenir la matrice de l'espace de cas de chaque paire de cas, et demande de trouver une base de l'espace de colonne, ce qui est non-trivialement la matrice.
+Par ailleurs, cet algorithme est très lent à exécuter car il demande de nombreux appels mémoire pour obtenir la matrice de l'espace de cas de chaque paire de cas, et demande de trouver une base de l'espace de colonne, ce qui est non-nécessairement la matrice.
 
-\subsection{Angle entre Cas et Système de Cas}
+\subsection{Angle entre Cas et Système de Cas}\label{subsec:projection}
 On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
 Ceci est fait en considérant le projeté orthogonal d'un vecteur sur un espace de cas et en mesurant l'angle entre les deux (ou la distance cosinus).
-En observant les données de plus près, on trouve une anomalie: l'angle entre le vocatif du farsi et le système de cas arabe est de l'ordre de $\arccos{10^{-16}}$.
+En observant les données de plus près, on trouve une valeur inattendue: l'angle entre le vocatif du farsi et le système de cas arabe, deux langues syntaxiquement proches, est de l'ordre de $\arccos{10^{-16}}$.
 En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
-En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)
-% \textit{ای}\footnote{Translit=āī}
+En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)\label{farsi}
 est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
-Ce lemme agit donc en réalité plus comme une apposition.
+Ce lemme agit donc en réalité plus comme une adposition.
 Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.
 Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, du moins sur le système de cas.
-Il semble toutefois bon de noter qu'il y a sans doute de nombreuses autres anomalies du style dans les corpus.
+Il est toutefois bon de noter que plusieurs corpus adopte cette convention d'annotation des adpositions (cf \ref{subsec:adpos}) et certains l'adoptent également sur les adverbes.\\
 
-Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une apposition (cf. supra).
+\medskip
+Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une adposition (cf. supra).
 
-\subsection{Distance Euclidienne}
+\subsection{Distance Euclidienne}\label{subsec:l2}
 On considère cette fois la distance euclidienne entre tous deux vecteurs, qu'on aura au préalable normalisés pour qu'ils représentent des distributions de probabilité.
 
 \input{Figures/Visualisations/Distances_Case=Acc_Proximity}
 
 On utilise ces données pour déterminer, entre deux corpus (ici le Czech-CLTT et le Russian-GSD), quel cas de l'autre langage est le plus proche d'un cas du premier.
-On obtient qu'ici, le datif russe est plus proche du génitif tchèque que du datif tchèque.
+Dans notre cas par exemple, le datif russe est plus proche du génitif tchèque que du datif tchèque.
 
 \begin{table}[H]
 	\centering
@@ -115,10 +147,11 @@ On obtient qu'ici, le datif russe est plus proche du génitif tchèque que du da
 	\caption{Extraits des Vecteurs de Reldep pour le Russe et le Tchèque}
 \end{table}
 
-On enlève ensuite \texttt{conj, det} puisque ces reldep démontrent l'accord vers la tête, et donc des doublons dans les données, ceci permet d'éviter de compter comme plusieurs instances d'un même cas un groupe nominal de la forme \emph{Alice, le boulanger, la laitière et Bob}, qui remplit un usage sémantique uniforme dans la phrase.
-On enlève aussi case, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus, et de l'usage dans les grammaires du langage.\\
+On enlève ensuite \texttt{conj, det} puisque ces \textit{reldep} démontrent l'accord vers la tête du groupe/de la proposition, et donc des doublons dans les données, ceci permet d'éviter de compter comme plusieurs instances d'un même cas un groupe nominal de la forme \emph{Alice, le boulanger, la laitière et Bob}, qui remplit un usage sémantique et syntaxique unique dans la phrase.
+On enlève aussi \texttt{case}, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus, et de l'usage dans les grammaires du langage.\\
+\medskip
 En considérant le graphe orienté des plus proches voisins, on remarque que celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$ et décrit des relations de proximité minimale.
-On obtient alors le graphe suivant pour le tchèque et le russe:
+Pour le tchèque et le russe, le graphe est le suivant:
 
 \begin{figure}[H]
 	\centering
@@ -179,7 +212,6 @@ Cette fois ci, il y a une variance bien plus forte dans les distances, sans dout
 	\end{tabular}
 	\end{center}
 	\end{minipage}}
-
 	\framebox{
 	\begin{minipage}{.45\textwidth}
 	\begin{center}
@@ -218,71 +250,40 @@ Il faut cependant noter que les graphes dépendent très fortement du corpus pro
 	\centering
 	\includegraphics[width=\textwidth]{Figures/GNN/gnn_ru_gsd_cs_cltt}
 	\caption{Graphe des Plus Proches Voisins Russe-Tchèque}
+	\label{GNNRuCz}
 \end{figure}
 
 Ici, on ne considère plus le corpus \texttt{cs\_fictree} mais le \texttt{cs\_cltt}, bien plus petit (467 phrases contre 10160).
 Même si la forme du graphe ne semble que peu changer, la variance dans le corpus joue énormément.\\
 Par ailleurs, cette méthode n'est que peu applicable, puisqu'elle nécessite d'étudier toutes les langues par paire.
 
-\subsection{Visualisation des Données}
+\subsection{Visualisation des Données}\label{subsec:vis}
 Les résultats précédemment obtenus ne permettent d'observer les données ou bien à une échelle très importante, ce qui brouille les résultats, ou bien à une échelle trop faible pour qu'on puisse généraliser un résultat.
 Dans la suite, on propose donc des méthodes pour regrouper les vecteurs de cas dans différentes langues, afin d'essayer de constater l'uniformité (ou non) de certains groupes de cas.
 
-\subsubsection{PCA}
+\subsubsection{PCA}\label{subsub:pca}
 On commence par appliquer une analyse en deux composantes principales (PCA) aux vecteurs représentant deux cas différents.
 
 \begin{figure}[H]
-	\begin{center}
 	\begin{minipage}{.5\textwidth}
 	\begin{center}
 	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom}
 	\end{center}
 	\end{minipage}
-	\end{center}
 	\begin{minipage}{.5\textwidth}
 	\begin{center}
 	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Nouns}
 	\end{center}
 	\end{minipage}
-	\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Pronouns}
-	\end{center}
-	\end{minipage}
 	\caption{Représentations de l'Analyse en deux Composantes Principales sur le Génitif et le Nominatif}
 \end{figure}
 
-En regardant de plus près, les composantes déterminées par l'algorithme de PCA sont en fait basées sur deux langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
+En regardant les corpus qui sont éloignés du groupe principal, on observe que les composantes déterminées par l'algorithme de PCA sont en fait basées sur deux langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
 
-\subsubsection{Clustering avec ToMATo}
-L'algorithme est présenté dans \cite{ToMATo}.
-\begin{figure}[H]
-
-\begin{center}
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Gen_Nouns}
-	\end{center}
-\end{minipage}
-\end{center}
-
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Acc_Nouns}
-	\end{center}
-\end{minipage}
-
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Acc_Gen_Nouns}
-	\end{center}
-\end{minipage}
-
-\caption{Représentations des clusters trouvés par l'algorithme ToMATo sur les paires de $\{\tt Acc,Nom,Gen\}$}
-\end{figure}
-
-\subsubsection{AnalyseTopologique des Données}
+\subsubsection{Analyse Topologique des Données}\label{subsub:tda}
 Pour l'implémentation de ce qui suit, on utilise les biblothèques Python \texttt{Gudhi}, \texttt{POT} et \texttt{Hera}, dont les implémentations sont décrites dans~\cite{Gudhi},\cite{PythonPOT},~\cite{Hera}
+
+On utilise un complexe cubique pour essayer de représenter au mieux les groupes d'homologie (cf. \cite{tldrtda} pour les détails) de la variété triangulée par les points de chaque cas. En effet, ici, il est compliqué de calculer directement un complexe moins régulier de part le nombre de points et la dimension de l'espace.
 
 \begin{figure}[H]
 \begin{minipage}{.5\textwidth}
@@ -298,23 +299,9 @@ Pour l'implémentation de ce qui suit, on utilise les biblothèques Python \text
 \caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Abl,Acc\}$}
 \end{figure}
 
-\begin{figure}[H]
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/cc_Loc}
-	\end{center}
-\end{minipage}
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/cc_Nom}
-	\end{center}
-\end{minipage}
-\caption{Représentations de l'Homologie Persistente du Complexe Cubique sur $\{\tt Loc,Nom\}$}
-\end{figure}
-
-On utilise un complexe cubique pour essayer de représenter au mieux les groupes d'homologie (cf.  pour les détails) de la variété triangulée par les points de chaque cas.
-On remarque qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
+On a également calculé les complexes sur les Nominatifs et Accusatifs. On remarque qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
 Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes, on obtient le tableau suivant:
+
 \begin{table}[H]
 \centering
 \begin{tabular}{c|ccccc}
@@ -331,7 +318,7 @@ Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes, on obtient l
 \caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes Cubiques pour quelques Cas}
 \end{table}
 
-Les distances étant assez faibles, on obtient bien le résultat suggéré par les figures, il semble y avoir une structure générale de la notion topologique de variété engendrée par un cas.
+Les distances étant assez faibles compte tenu le nombre de points (on n'a, contrairement à \ref{subsec:bary}, pas des distributions de probabilité), on obtient bien le résultat suggéré par les figures, il semble y avoir une structure générale de la notion topologique de variété engendrée par un cas.
 Pour vérifier cette hypothèse, on teste de même en créant le complexe de Rips.
 Toutefois, les diagrammes restant très brouillons, il est difficile de trouver une variété plus abstraite avec la même homologie.
 
@@ -347,20 +334,6 @@ Toutefois, les diagrammes restant très brouillons, il est difficile de trouver 
 	\end{center}
 \end{minipage}
 \caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Abl,Acc\}$}
-\end{figure}
-
-\begin{figure}[H]
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/rc_Loc.pdf}
-	\end{center}
-\end{minipage}
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/rc_Nom.pdf}
-	\end{center}
-\end{minipage}
-\caption{Représentations de l'Homologie Persistente du Complexe de Rips sur $\{\tt Loc,Nom\}$}
 \end{figure}
 
 On remarque à nouveau qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
@@ -383,10 +356,12 @@ Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes pour quelques
 \caption{Distances de Wasserstein entre les Diagrammes de Persistence des Complexes de Rips pour quelques Cas}
 \end{table}
 
-Cela signifie notamment que la représentation d'un cas comme variété topologique ne varie que peu d'un cas à l'autre.
-En particulier, cela implique que si deux cas ont des \emph{directions} générales,
-\subsubsection{t-SNE}
-On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}
+Cela signifie notamment que la représentation d'un cas comme variété topologique ne varie que peu d'un cas à l'autre, sans toutefois pouvoir tirer plus d'informations que cela.
+Intuitivement, cela signifie que si deux cas peuvent avoir des directions \textit{générales} différentes, leurs représentations seront semblables, à une rotation près.
+
+\subsubsection{t-SNE}\label{subsub:tsne}
+On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}.
+Ici, on l'applique sur le Génitif et le Nominatif:
 \begin{figure}[H]
 
 \begin{center}
@@ -402,7 +377,6 @@ On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}
 	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Nouns.pdf}
 	\end{center}
 \end{minipage}
-
 \begin{minipage}{.5\textwidth}
 	\begin{center}
 	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Pronouns.pdf}
@@ -412,24 +386,59 @@ On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}
 \end{figure}
 
 Il semble que deux clusters se dégagent, avec des frontières toutefois assez floues.
-Il semblerait donc que syntaxiquement, le génitif et le nominatif aient des représentation assez différentes.
+Il semblerait donc que syntaxiquement, le génitif et le nominatif aient des représentation assez différentes, sans toutefois savoir à quel point.
 
-\subsubsection{Clustering avec KNN}
-Pour vérifier l'intuition qui apparaît avec le clustering proposé par l'algorithme t-SNE, on essaie d'appliquer à des paires $(c_{1}, c_{2})$ de cas l'algorithme KNN.
-On compte ensuite le nombre de corpus dans lesquels $c_{2}$ est majoritaire parmi les plus proches voisins de $c_{1}$ et réciproquement.
+\subsubsection{Clustering avec ToMATo}\label{subsub:tomato}
+On applique l'algorithme présenté dans \cite{ToMATo} avec la bibliothèque \texttt{Gudhi} (\cite{Gudhi}) sur des paires de cas, pour essayer de construire des clusters.
+\begin{figure}[H]
+
+\begin{center}
+\begin{minipage}{.5\textwidth}
+	\begin{center}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Gen_Nouns}
+	\end{center}
+\end{minipage}
+\end{center}
+
+\begin{minipage}{.5\textwidth}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Acc_Nouns}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Acc_Gen_Nouns}
+\end{minipage}
+
+\caption{Représentations des clusters trouvés par l'algorithme ToMATo sur les paires de $\{\tt Acc,Nom,Gen\}$}
+\end{figure}
+
+Ici cependant, aucun des cas n'est clairement regroupé au sein de certains clusters, et l'algorithme ne produit aucun résultat utilisable.
 
 
+\subsubsection{Clustering avec KNN}\label{subsub:knn}
+Pour vérifier l'intuition qui apparaît avec le clustering proposé par l'algorithme t-SNE, on essaie d'appliquer à des listes de cas l'algorithme KNN.
+On obtient la matrice de confusion suivante en appliquant l'algorithme pour $k = 11$ aux noms qui sont à l'Accusatif, au Génitif, au Locatif ou au Nominatif:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ccccc}
+		Case & Acc & Gen & Loc & Nom\\
+		\midrule
+		Acc & 130.000 & 62.000 & 51.000 & 34.000\\
+		Gen & 69.000 & 156.000 & 16.000 & 42.000\\
+		Loc & 35.000 & 57.000 & 29.000 & 34.000\\
+		Nom & 29.000 & 28.000 & 9.000 & 227.000\\
+	\end{tabular}
+	\caption{KNN Confusion Matrix for $k = 11$ on \texttt{Acc, Gen, Loc, Nom}}
+\end{table}
+
+On observe notamment que le \emph{Locatif} est plus difficile à reconnaître que les autres cas. Ceci peut venir du faible nombre de langues possédant un locatif en comparaison aux trois autres cas.
 
 \newpage
-\section{Approche Probabiliste}
-On voit dorénavant le vecteur représentant un cas dans un corpus comme une mesure de probabilité sur les relations de dépendances des mots possédant ce cas.
-On voit alors l'ensemble des données représentant un cas dans tous les corpus comme la mesure empirique de la variable aléatoire $Cas$.
+\section{Approche Probabiliste}\label{sec:probas}
+On considère désormais qu'à un cas donné on associe une variable aléatoire $C$ sur les distributions syntaxiques dont on connaît certaines réalisations (les représentations du cas dans les différents corpus.
 
-\subsection{Barycentrisation}
+\subsection{Barycentrisation}\label{subsec:bary}
 On a cherché jusque-là à comparer les cas.
 On va désormais essayer de les prototyper et de mesurer l'écart au prototype, afin de tirer une définition des cas.
 Celle-ci devrait coller à la description théorique proposée ci-dessous:
-
 \begin{multicols}{2}
 	\begin{description}
 		\item[Nom] \texttt{nsubj} d'un verbe
@@ -442,10 +451,10 @@ Celle-ci devrait coller à la description théorique proposée ci-dessous:
 \end{multicols}
 Pour calculer les prototypes, on procède comme suit.
 On peut ainsi calculer son espérance (en considérant les mesures équiprobables), mais également le barycentre de ses réalisations pour la distance-$1$ de Wasserstein (ou Earth Mover's Distance, voir \cite{PythonPOT} pour plus de détails).
-On rappelle par ailleurs que le barycentre de $n$ points pour une distance $d$ est le point qui minimise l'énergie associée
+On rappelle par ailleurs que le barycentre de $n$ points pour une distance $d$ est le point qui minimise l'énergie associée:
 
 \begin{equation*}
-	P = \argmin_{x} \frac{1}{n}\sum_{i = 1}^{n} d(x, x_{i}) = \argmin_{x} E\left(x, \left(x_{i}\right)_{i \in \onen{n}}\right)
+	P = \arg\min_{x} \frac{1}{n}\sum_{i = 1}^{n} d(x, x_{i}) = \arg\min_{x} E\left(x, \left(x_{i}\right)_{i \in \onen{n}}\right)
 \end{equation*}
 
 Ceci nous donne une forme de vecteur prototypique pour la distribution des relations de dépendance du cas.
@@ -493,7 +502,14 @@ On obtient la distribution ci-dessous, en ne considérant à nouveau que les nom
 \caption{Représentation des Principales \textit{reldep} des Prototypes pour quelques Cas sur les noms}
 \end{table}
 
-On retrouve assez globalement la représentation attendue.
+On retrouve bien la représentation attendue, ce qui découle notamment de la définition \emph{théorique} des cas. \\
+Il est important de noter que les vecteurs ci-dessus ne permettent pas nécessairement de différencier tous deux cas, mais seulement de différencier leurs usages syntaxiques.
+Par exemple, l'Instrumental (qui marque l'outil utilisé pour une action/un objet, e.g. dans une traduction de \textsl{J'ai mangé \emph{avec} une fourchette}, on utiliserait l'instrumental pour \textsl{fourchette})
+et le Locatif (qui marque le lieu d'une action, ou d'un objet, e.g. \textsl{J'ai péleriné jusqu'à Saclay} ou \textsl{J'ai couru à côté de l'école} se traduiraient avec des locatifs\footnote{certaines langues comme le finnois possèdent plusieurs \textit{locatifs} appelés inessif, élatif, illatif, adessif, ablatif, allatif\ldots Ceux-ci servent à différencier, la destination, la direction, le lieu à côté\ldots}) sont principalement des cas morphosémantiques, au sens où ils ne modifient pas la structure de la phrase mais seulement son sens.
+Ainsi, il est difficile de les différencier syntaxiquement: ils agissent principalement sur un verbe en précisant son action (\texttt{obl}), mais également sur les noms en précisant leur fonction ou leur position (\texttt{nmod}).
+À l'inverse, le nominatif (sujet du verbe), l'accusatif (objet du verbe), le datif (objet indirect du verbe), l'ergatif (sujet du verbe transitif) et l'absolutif (sujet du verbe intransitif et objet du verbe transitif), sont des cas plus fortement marqués syntaxiquement et sont donc plus facilement reconnaissables.\\
+
+\medskip
 Par ailleurs, l'énergie associée au prototype obtenu en prenant la moyenne des réalisations est de l'ordre de celle du barycentre pour la distance-$1$ de Wasserstein, ce qui justifie ce que l'on pouvait inférer du tableau ci-dessus, le barycentre pour la distance de Wasserstein présente un profil similaire à la moyenne des instances.
 Par exemple:
 
@@ -506,6 +522,51 @@ Par exemple:
 Sur la figure ci-dessus, l'axe des abscisses représente les différentes \textit{reldep} apparaissant pour des noms à l'accusatif.
 On représente sur le graphe du haut en jaune la fréquence associée à une reldep pour chaque corpus.
 Le graphe du bas représente, en rouge, la moyenne uniforme des distributions, en jaune, le barycentre des distributions pour la distance de wasserstein, et violet la proportion des corpus pour lesquels la \textit{reldep} apparaît.
+On vérifie bien notamment que pour la moyenne uniforme, certaines relations sont légèrement représentées car très présentes dans quelques langues, ce qui n'est pas le cas pour le barycentre associé à la distance de Wasserstein.
+
+
+\subsection{Représentation des adpositions dans UD}\label{subsec:adpos}
+Dans UD, certains corpus dénotent, lorsqu'un groupe est combiné avec une adposition (e.g. les prépositions \textsl{à, dans, par} en français, \textsl{to, into, above} en anglais, ou la postposition \textsl{ile} en turc), l'adposition comme gouvernée par la relation \texttt{case} et donnent un cas à l'adposition (cf. l'interjection farsie présentée plus haut \ref{farsi}).
+Ceci découle du postulat linguistique selon lequel tous les langages humains sont également expressifs, ce qui implique qu'on peut traduire les cas par des adpositions (en français, tous exceptés le nominatif et l'accusatif).
+Dans \cite{morphenglish}, Kirov, Sylak-Flassman, Knowles et Cotterell décrivent une manière d'annoter des corpus anglais selon les caractéristiques morphologiques du tchèque, langage morphologiquement riche. \\
+Nous avons donc cherché à déterminer le cas de certaines adpositions.
+Pour cela, on compte les relations de dépendances des cibles des relations de dépendance depuis chaque adposition.
+On obtient une distribution des usages syntaxiques des adpositions, ce qui permet de comparer une adposition à un marqueur de cas.
+On ne donne que la moyenne uniforme des distributions uniformes pour une même langue, le barycentre pour la distance de Wasserstein étant trop volatile pour si peu de distributions (on n'en n'a que 9 pour le français).
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{NiceTabular}{>{\sc}rcccccc}
+		\bf Adposition & \tt advcl &\tt iobj & \tt nmod & \tt nsubj & \tt obj & \tt obl\\
+		À    & 0.01668 &  & 0.17343 & 0.00048 & 0.00381 & 0.63373\\
+		Dans & 0.00466 & & 0.13780 &  & 0.00196 & 0.78694\\
+		Par  & 0.00264 &  & 0.13715 & 0.00107 & 0.00178 & 0.74632\\
+		Pour & 0.29543 & & 0.15867 &  & 0.00024 & 0.41168\\
+		En   & 0.08128 &  & 0.17115 & & 0.00358 & 0.54076\\
+		Vers & 0.00262 &  & 0.35741 & & & 0.62160\\
+		Avec & 0.00613 & & 0.32369 &  &  & 0.62606\\
+		De   & 0.02096 &  & 0.67966 & 0.00138 & 0.01312 & 0.14296\\
+		Sans & 0.24451 & & 0.21142 & & 0.00781 & 0.43802\\
+		Sous & 0.00217 & & 0.22898 & 0.00020 & 0.72797 & \\
+		Sur  & 0.00477 & & 0.36267 &  & 0.00096 & 0.59385\\
+		Sauf & 0.10714 & & 0.22619 & & & 0.38095\\
+	\CodeAfter
+	\begin{tikzpicture}
+		\foreach \i in {2,...,13} {\draw[vulm] (1|-\i) --  (8|-\i);}
+	\end{tikzpicture}
+	\end{NiceTabular}
+	\caption{Représentation de quelques adpositions en français}
+	\label{tab:adpos_fr}
+\end{table}
+Ici, on retrouve le fait que les prépositions françaises s'utilisent dans des constructions similaires, et ne se différencient presque que sémantiquement.
+Plus spécifiquement, il semble que \textsl{de} ait un caractère semblable au géniitif et que \textsl{à, dans, par, en, vers, avec, sans, sous, sur} ont plutôt un caractère semblable à l'ablatif, au locatif et autres cas syntaxiquement similaires.
+Les prépositions \textsl{sauf} et \textsl{pour} quant à elle ont des usages plus particuliers, puisqu'elles servent souvent à introduire des clauses adverbiales (e.g. \textsl{il mange \ul{\emph{pour} vivre}}).
+
+\section{Conclusion}
+Nous avons pu montrer que si les cas ont une structure syntaxique générale assez similaire, il existe plusieurs familles assez distinctes au sein desquelles les cas ne diffèrent que sémantiquement.
+Par ailleurs, il faut noter que le formalisme de \textsc{Universal Dependencies} et la différence dans les annotateurs cause de fortes disparités dans les manières d'annoter, notamment sur l'annotation de cas sur les adverbes et les adpositions.
+Toutefois, il n'est pas illogique d'annoter un cas sur les adpositions, de par leurs fonctions sémantiques. Cependant, il apparaît que syntaxiquement elles ne sont que rarement distinguées.
+
 
 \newpage
 \appendix

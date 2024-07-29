@@ -2,7 +2,6 @@
 \ProvidesClass{cours}
 
 \LoadClassWithOptions{article}
-\RequirePackage[a4paper, margin=2cm]{geometry}
 \RequirePackage{cmap}
 \RequirePackage{lmodern}
 \RequirePackage[utf8]{inputenc}
@@ -11,6 +10,7 @@
 \RequirePackage{texnames}
 \RequirePackage{array}
 \RequirePackage{tikz}
+\usepackage{tikzfill}
 \RequirePackage{booktabs}
 \RequirePackage{textcomp}
 \RequirePackage{pdfpages}
@@ -39,17 +39,32 @@
 \author{Null}
 \title{None}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{contour}
+\usepackage{soul}
+\setulcolor{yulm}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+\fancyhf{}
+
+\fancyhead[LE, RO]{\sffamily\thepage}
+
+\fancyhead[LO]{\rightmark}
+
+\fancyhead[RE]{\leftmark}
+
+\fancypagestyle{plain}{
+        \fancyhead{}
+        \renewcommand{\headrulewidth}{0pt}
+}
+
+\usepackage{emptypage}
+
 
 \AtBeginDocument{\def\labelitemi{$\bullet$}}
-\AfterBeginDocument{
-    \maketitle
-    \begin{center}
-        \includegraphics[height=6em]{/home/matthieu/Documents/ETUDES/ENS/ens_psl.pdf}
-    \end{center}
-    %\newpage
-    \tableofcontents}
-
-
 \newtheorem{theorem}{Théorème}[subsection]
 \newtheorem{corollary}{Corollaire}[theorem]
 \newtheorem{lemma}[theorem]{Lemme}
@@ -94,7 +109,7 @@
 \DeclareMathOperator{\pgcd}{pgcd}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\argmin}{argmin}
+
 \DeclareMathOperator{\rg}{rg}
 \DeclareMathOperator{\ch}{ch}
 \DeclareMathOperator{\sh}{sh}
@@ -142,8 +157,62 @@
     citebordercolor=vulm,
     menubordercolor=yulm
 }
+\usepackage{geometry}
 
-\RequirePackage{tcolorbox}
+\geometry{
+        top=2.5cm,
+        bottom=2cm,
+        inner=2cm,
+        outer=2cm,
+        headsep=10pt,
+        headheight=0.5cm,
+        footskip=1.4cm,
+        columnsep=1cm,
+        %showframe,
+}
+
+\renewcommand{\titlepage}[4]{
+        \thispagestyle{empty}
+	\begin{tikzpicture}[overlay,remember picture]
+         \end{tikzpicture}
+        \begin{tikzpicture}[remember picture, overlay]
+		\path[fill tile picture={%
+		      \node[inner sep=0pt,outer sep=0pt] {\usebox{\tileone}};
+		    }] (current page.south east) rectangle (current page.north west);
+		\node [inner sep=0pt] at (current page.center) {#1};
+		\node [anchor=center, yshift=4cm, inner sep=1.25cm, rectangle, fill=vulm!50, fill opacity=1, text opacity=1, minimum height=0.2\paperheight, text width=.9\paperwidth, minimum width=\paperwidth] (title) at (current page.center) {#2};
+		\node [anchor=north east, xshift=-.1\paperwidth] at (title.south) {\includegraphics[width=.3\linewidth]{#3}};
+		\node [anchor=south, yshift=3cm, inner sep=1.25cm, minimum height=0.2\paperheight, minimum width=\paperwidth, text width=0.9\paperwidth, rectangle, fill=vulm!30, fill opacity=1, text opacity=1] at (current page.south) {#4};
+		\node [anchor=north west, xshift=+.1\paperwidth, yshift=-1.4cm] at (title.south) {\includegraphics[width=.3\linewidth]{~/Documents/ETUDES/ENS/ens_psl}};
+        \end{tikzpicture}
+        \cleardoublepage\pagenumbering{arabic}
+}
+
+\usepackage{adforn}
+\definecolor{stictchbrown}{HTML}{E7D192}
+
+\newsavebox{\tileone}
+\sbox{\tileone}{%
+  \begin{tikzpicture}[x=1cm,y=1cm]
+  \clip (0,0) rectangle (2,2);
+  \foreach \x in {0,1} {
+    \foreach \y in {0,1} {
+       \node[font=\Huge,text=vulm!30]
+         at (2*\x, 2*\y) {\adforn{5}};
+       \node[font=\Huge,text=yulm!80!black!40]
+         at (2*\x+1, 2*\y+1) {\adforn{35}};
+     }
+  }
+  \begin{scope}[dashed,stictchbrown]
+    \draw plot (\x,\x-1);
+    \draw plot (\x,\x+1);
+    \draw plot (\x,-\x+1);
+    \draw plot (\x,-\x+3);
+  \end{scope}
+  \end{tikzpicture}%
+}
+
+\RequirePackage[skins]{tcolorbox}
 \tcbuselibrary{theorems}
 \NewTcbTheorem[auto counter, number within=section]{définition}{Définition}%
  {colback=yulm!10, colframe=vulm!45!black, fonttitle=\bfseries}{def}
