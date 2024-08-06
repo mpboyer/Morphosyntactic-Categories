@@ -2,39 +2,40 @@
 \ProvidesClass{cours}
 
 \LoadClassWithOptions{article}
-\RequirePackage{cmap}
-\RequirePackage{lmodern}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage[british, french]{babel}
-\RequirePackage{texnames}
-\RequirePackage{array}
-\RequirePackage{tikz}
+\usepackage{cmap}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british, french]{babel}
+\usepackage{texnames}
+\usepackage{array}
+\usepackage{tikz}
 \usepackage{tikzfill}
-\RequirePackage{booktabs}
-\RequirePackage{textcomp}
-\RequirePackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{pdfpages}
 \tikzset{>=stealth}
-\RequirePackage{ragged2e}
-\RequirePackage{amsmath}
-\RequirePackage{dsfont}
-\RequirePackage{amsfonts}
-\RequirePackage{mathrsfs}
-\RequirePackage{amsthm}
-\RequirePackage{amssymb}
-\RequirePackage{multirow}
-\RequirePackage{listings}
-\RequirePackage{algorithm}
-\RequirePackage{titlesec}
-\RequirePackage{enumitem}
-\RequirePackage{algpseudocode}
-\RequirePackage{etoc}
-\RequirePackage{stmaryrd}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{algpseudocode}
+\usepackage{etoc}
+\usepackage{stmaryrd}
 \setcounter{secnumdepth}{4}
-\RequirePackage{wrapfig}
-\RequirePackage{graphicx}
-\RequirePackage{hyperref}
-\RequirePackage[justification=centering]{caption}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[justification=centering]{caption}
 
 \author{Null}
 \title{None}
@@ -181,9 +182,9 @@
 		    }] (current page.south east) rectangle (current page.north west);
 		\node [inner sep=0pt] at (current page.center) {#1};
 		\node [anchor=center, yshift=4cm, inner sep=1.25cm, rectangle, fill=vulm!50, fill opacity=1, text opacity=1, minimum height=0.2\paperheight, text width=.9\paperwidth, minimum width=\paperwidth] (title) at (current page.center) {#2};
-		\node [anchor=north east, xshift=-.1\paperwidth] at (title.south) {\includegraphics[width=.3\linewidth]{#3}};
-		\node [anchor=south, yshift=3cm, inner sep=1.25cm, minimum height=0.2\paperheight, minimum width=\paperwidth, text width=0.9\paperwidth, rectangle, fill=vulm!30, fill opacity=1, text opacity=1] at (current page.south) {#4};
-		\node [anchor=north west, xshift=+.1\paperwidth, yshift=-1.4cm] at (title.south) {\includegraphics[width=.3\linewidth]{~/Documents/ETUDES/ENS/ens_psl}};
+		\node [anchor=north east, rectangle, fill=white, fill opacity=.5, text opacity=1, yshift=-1.4cm, xshift=-.1\paperwidth] at (title.south) {\includegraphics[width=.3\linewidth]{#3}};
+		\node [anchor=south, yshift=3cm, inner sep=1.25cm, minimum height=0.2\paperheight, minimum width=\paperwidth, text width=0.9\paperwidth, rectangle, fill=white, fill opacity=.5, text opacity=1] at (current page.south) {#4};
+		\node [anchor=north west, rectangle, fill=white, fill opacity=.5, text opacity=1, xshift=+.1\paperwidth, yshift=-1.4cm] at (title.south) {\includegraphics[width=.3\linewidth]{~/Documents/ETUDES/ENS/ens_psl}};
         \end{tikzpicture}
         \cleardoublepage\pagenumbering{arabic}
 }
@@ -197,13 +198,13 @@
   \clip (0,0) rectangle (2,2);
   \foreach \x in {0,1} {
     \foreach \y in {0,1} {
-       \node[font=\Huge,text=vulm!30]
-         at (2*\x, 2*\y) {\adforn{5}};
-       \node[font=\Huge,text=yulm!80!black!40]
-         at (2*\x+1, 2*\y+1) {\adforn{35}};
+       \node[font=\Large,text=vulm!20]
+         at (2*\x, 2*\y) {$\beth$};
+       \node[font=\Large,text=yulm!80!black!40]
+         at (2*\x+1, 2*\y+1) {$\aleph$};
      }
   }
-  \begin{scope}[dashed,stictchbrown]
+  \begin{scope}[dashed, double, stictchbrown!50]
     \draw plot (\x,\x-1);
     \draw plot (\x,\x+1);
     \draw plot (\x,-\x+1);
@@ -212,7 +213,7 @@
   \end{tikzpicture}%
 }
 
-\RequirePackage[skins]{tcolorbox}
+\usepackage[skins]{tcolorbox}
 \tcbuselibrary{theorems}
 \NewTcbTheorem[auto counter, number within=section]{définition}{Définition}%
  {colback=yulm!10, colframe=vulm!45!black, fonttitle=\bfseries}{def}

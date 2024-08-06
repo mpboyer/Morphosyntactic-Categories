@@ -2,22 +2,22 @@
 \usepackage{nicematrix}
 \title{Sur la Stabilité Interlangue des Catégories Morphosyntaxiques\\[2pt]\small Rapport de Stage de L3}
 \author{Matthieu Boyer}
-\date{2024}
+\date{Été 2024}
 
 \begin{document}
 \titlepage % Output the title page
 	{}
         {\centering %
-		{\Huge Sur la Stabilité Interlangue des Catégories Morphosyntaxiques\par}
+		{\Huge Sur\, la\, Stabilité\, Interlangue\, des\, Catégories\, Morphosyntaxiques\par}
                 \vspace{16pt}
                 {\Large Rapport de Stage de L3\par}
                 \vspace{24pt}
                 {\huge Matthieu \textsc{Boyer}\par}}
 	{../logo_lattice}
 	{\centering %
-                {\huge\sc Laboratoire Lattice \par}
+                {\huge\sc Laboratoire\, Lattice \par}
                 \vspace{16pt}
-                {\large \sc CNRS --- ENS-PSL --- Université Sorbonne Nouvelle\par}
+                {\large \sc CNRS --- ENS --- Université Sorbonne Nouvelle\par}
                 \vspace{24pt}
 		{\Large Sous la direction de Mathieu \textsc{Dehouck}\par}}
 
@@ -41,11 +41,11 @@ Selon Haspelmath, il est possible que la manière de décrire les langues en lin
 Dans ce rapport, nous allons donc nous intéresser à la notion fondamentale de catégorie morphosyntaxique, et comparer les descriptions dans différents langages de catégories linguistiques comparatives.
 Ceci permettrait de justifier la transposition de résultats d'une langue vers une autre.
 
-\subsection{Définitions Linguistiques}\label{subsec:linguistique}
-En linguistique, la morphologie est l'étude des mots, de la manière dont ils sont formés et des relations entre eux au sein dans langage.
+\medskip
+\label{subsec:linguistique}
+En linguistique, la morphologie est l'étude des mots, de la manière dont ils sont formés et des relations entre eux au sein du langage.
 La syntaxe est l'étude de la manière dont se combinent les morphèmes (plus petites unités de son faisant sens dans un langage) et les mots pour former des structures plus grandes comme des phrases.
 La sémantique, enfin, est l'étude du sens linguistique, de comment les mots ont du sens, et de la manière dont le sens de parties d'une phrase influent sur le sens de celle-ci.\\
-\medskip
 La morphosyntaxe est la combinaison des aspects morphologiques et syntaxiques du langage, et examinent notamment comment les formes des mots et structures grammaticales intéragissent pour transmettre du sens dans une phrase.
 Une catégorie morphosyntaxique est une propriété syntaxique, c'est à dire ayant des influences sur la structure grammaticale de la phrase, qui est marquée morphologiquement sur certains mots.
 En français par exemple, le pluriel est une catégorie morphosyntaxique: il est marqué à la fin des mots et donne des informations sur quel groupe gouverne un autre groupe.
@@ -109,7 +109,7 @@ Par ailleurs, cet algorithme est très lent à exécuter car il demande de nombr
 On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
 Ceci est fait en considérant le projeté orthogonal d'un vecteur sur un espace de cas et en mesurant l'angle entre les deux (ou la distance cosinus).
 En observant les données de plus près, on trouve une valeur inattendue: l'angle entre le vocatif du farsi et le système de cas arabe, deux langues syntaxiquement proches, est de l'ordre de $\arccos{10^{-16}}$.
-En regardant de plus près les corpus farsis\footnote{et non pas les dindes.}, on observe que cela découle d'une idiosyncracie dans les annotations.
+En regardant de plus près les corpus farsis\footnote{et non pas les dindes. farsies.}, on observe que cela découle d'une idiosyncracie dans les annotations.
 En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)\label{farsi}
 est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
 Ce lemme agit donc en réalité plus comme une adposition.
@@ -117,7 +117,6 @@ Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette sit
 Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, du moins sur le système de cas.
 Il est toutefois bon de noter que plusieurs corpus adopte cette convention d'annotation des adpositions (cf \ref{subsec:adpos}) et certains l'adoptent également sur les adverbes.\\
 
-\medskip
 Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une adposition (cf. supra).
 
 \subsection{Distance Euclidienne}\label{subsec:l2}
@@ -150,6 +149,7 @@ Dans notre cas par exemple, le datif russe est plus proche du génitif tchèque 
 On enlève ensuite \texttt{conj, det} puisque ces \textit{reldep} démontrent l'accord vers la tête du groupe/de la proposition, et donc des doublons dans les données, ceci permet d'éviter de compter comme plusieurs instances d'un même cas un groupe nominal de la forme \emph{Alice, le boulanger, la laitière et Bob}, qui remplit un usage sémantique et syntaxique unique dans la phrase.
 On enlève aussi \texttt{case}, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus, et de l'usage dans les grammaires du langage.\\
 \medskip
+
 En considérant le graphe orienté des plus proches voisins, on remarque que celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$ et décrit des relations de proximité minimale.
 Pour le tchèque et le russe, le graphe est le suivant:
 
@@ -264,19 +264,19 @@ Dans la suite, on propose donc des méthodes pour regrouper les vecteurs de cas 
 \subsubsection{PCA}\label{subsub:pca}
 On commence par appliquer une analyse en deux composantes principales (PCA) aux vecteurs représentant deux cas différents.
 
-\begin{figure}[H]
-	\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom}
-	\end{center}
-	\end{minipage}
-	\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Nouns}
-	\end{center}
-	\end{minipage}
-	\caption{Représentations de l'Analyse en deux Composantes Principales sur le Génitif et le Nominatif}
-\end{figure}
+%\begin{figure}[H]
+%	\begin{minipage}{.5\textwidth}
+%	\begin{center}
+%	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom}
+%	\end{center}
+%	\end{minipage}
+%	\begin{minipage}{.5\textwidth}
+%	\begin{center}
+%	\includegraphics[width=\linewidth]{Figures/Visualisations/pca_Gen_Nom_Nouns}
+%	\end{center}
+%	\end{minipage}
+%	\caption{Représentations de l'Analyse en deux Composantes Principales sur le Génitif et le Nominatif}
+%\end{figure}
 
 En regardant les corpus qui sont éloignés du groupe principal, on observe que les composantes déterminées par l'algorithme de PCA sont en fait basées sur deux langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
 
@@ -363,23 +363,14 @@ Intuitivement, cela signifie que si deux cas peuvent avoir des directions \texti
 On essaie ensuite d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}.
 Ici, on l'applique sur le Génitif et le Nominatif:
 \begin{figure}[H]
-
-\begin{center}
 \begin{minipage}{.5\textwidth}
 	\begin{center}
 	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom.pdf}
 	\end{center}
 \end{minipage}
-\end{center}
-
 \begin{minipage}{.5\textwidth}
 	\begin{center}
 	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Nouns.pdf}
-	\end{center}
-\end{minipage}
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/tsne_Gen_Nom_Pronouns.pdf}
 	\end{center}
 \end{minipage}
 \caption{Représentations de l'Analyse t-SNE à deux Composantes sur le Génitif et le Nominatif}
@@ -391,15 +382,6 @@ Il semblerait donc que syntaxiquement, le génitif et le nominatif aient des rep
 \subsubsection{Clustering avec ToMATo}\label{subsub:tomato}
 On applique l'algorithme présenté dans \cite{ToMATo} avec la bibliothèque \texttt{Gudhi} (\cite{Gudhi}) sur des paires de cas, pour essayer de construire des clusters.
 \begin{figure}[H]
-
-\begin{center}
-\begin{minipage}{.5\textwidth}
-	\begin{center}
-	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Gen_Nouns}
-	\end{center}
-\end{minipage}
-\end{center}
-
 \begin{minipage}{.5\textwidth}
 	\includegraphics[width=\linewidth]{Figures/Visualisations/tomato_Nom_Acc_Nouns}
 \end{minipage}
@@ -431,9 +413,9 @@ On obtient la matrice de confusion suivante en appliquant l'algorithme pour $k =
 
 On observe notamment que le \emph{Locatif} est plus difficile à reconnaître que les autres cas. Ceci peut venir du faible nombre de langues possédant un locatif en comparaison aux trois autres cas.
 
-\newpage
+% \newpage
 \section{Approche Probabiliste}\label{sec:probas}
-On considère désormais qu'à un cas donné on associe une variable aléatoire $C$ sur les distributions syntaxiques dont on connaît certaines réalisations (les représentations du cas dans les différents corpus.
+On considère désormais qu'à un cas donné on associe une variable aléatoire $C$ sur les distributions syntaxiques dont on connaît certaines réalisations (les représentations du cas dans les différents corpus).
 
 \subsection{Barycentrisation}\label{subsec:bary}
 On a cherché jusque-là à comparer les cas.
@@ -493,10 +475,8 @@ On obtient la distribution ci-dessous, en ne considérant à nouveau que les nom
 									& Wasserstein & 0.000 & 0.172 & 0.000 & 0.000 & 0.785\\
 	\CodeAfter
 	\begin{tikzpicture}
-		\draw[vulm, double] (1|-1) -- (8|-1);
-		\foreach \i in {2, 4,...,20} {\draw[vulm] (1|-\i) -- (8|-\i);}
-		\foreach \i in {3, 5,...,19} {\draw[yulm!60!white] (2|-\i) -- (8|-\i);}
-		\draw[vulm] (2|-1) -- (2|-20);
+		\foreach \i in {2, 4,...,19} {\draw[black] (1|-\i) -- (8|-\i);}
+		\draw[black] (2|-1) -- (2|-20);
 	\end{tikzpicture}
 \end{NiceTabular}
 \caption{Représentation des Principales \textit{reldep} des Prototypes pour quelques Cas sur les noms}
@@ -505,9 +485,9 @@ On obtient la distribution ci-dessous, en ne considérant à nouveau que les nom
 On retrouve bien la représentation attendue, ce qui découle notamment de la définition \emph{théorique} des cas. \\
 Il est important de noter que les vecteurs ci-dessus ne permettent pas nécessairement de différencier tous deux cas, mais seulement de différencier leurs usages syntaxiques.
 Par exemple, l'Instrumental (qui marque l'outil utilisé pour une action/un objet, e.g. dans une traduction de \textsl{J'ai mangé \emph{avec} une fourchette}, on utiliserait l'instrumental pour \textsl{fourchette})
-et le Locatif (qui marque le lieu d'une action, ou d'un objet, e.g. \textsl{J'ai péleriné jusqu'à Saclay} ou \textsl{J'ai couru à côté de l'école} se traduiraient avec des locatifs\footnote{certaines langues comme le finnois possèdent plusieurs \textit{locatifs} appelés inessif, élatif, illatif, adessif, ablatif, allatif\ldots Ceux-ci servent à différencier, la destination, la direction, le lieu à côté\ldots}) sont principalement des cas morphosémantiques, au sens où ils ne modifient pas la structure de la phrase mais seulement son sens.
+et le Locatif (qui marque le lieu d'une action, ou d'un objet, e.g. \textsl{J'ai péleriné jusqu'à Saclay} ou \textsl{J'ai couru à côté de l'école} se traduiraient avec des locatifs\footnote{certaines langues comme le finnois possèdent plusieurs \textit{locatifs} appelés inessif, élatif, illatif, adessif, ablatif, allatif\dots\ Ceux-ci servent à différencier, la destination, la direction, le lieu à côté\ldots}) sont principalement des cas morphosémantiques, au sens où ils ne modifient pas la structure de la phrase mais seulement son sens.
 Ainsi, il est difficile de les différencier syntaxiquement: ils agissent principalement sur un verbe en précisant son action (\texttt{obl}), mais également sur les noms en précisant leur fonction ou leur position (\texttt{nmod}).
-À l'inverse, le nominatif (sujet du verbe), l'accusatif (objet du verbe), le datif (objet indirect du verbe), l'ergatif (sujet du verbe transitif) et l'absolutif (sujet du verbe intransitif et objet du verbe transitif), sont des cas plus fortement marqués syntaxiquement et sont donc plus facilement reconnaissables.\\
+À l'inverse, le nominatif (sujet du verbe), l'accusatif (objet du verbe), le datif (objet indirect du verbe), l'ergatif (sujet du verbe transitif) et l'absolutif (sujet du verbe intransitif et objet du verbe transitif), sont des cas plus fortement marqués syntaxiquement et sont donc plus facilement reconnaissables.
 
 \medskip
 Par ailleurs, l'énergie associée au prototype obtenu en prenant la moyenne des réalisations est de l'ordre de celle du barycentre pour la distance-$1$ de Wasserstein, ce qui justifie ce que l'on pouvait inférer du tableau ci-dessus, le barycentre pour la distance de Wasserstein présente un profil similaire à la moyenne des instances.
@@ -552,7 +532,7 @@ On ne donne que la moyenne uniforme des distributions uniformes pour une même l
 		Sauf & 0.10714 & & 0.22619 & & & 0.38095\\
 	\CodeAfter
 	\begin{tikzpicture}
-		\foreach \i in {2,...,13} {\draw[vulm] (1|-\i) --  (8|-\i);}
+		\foreach \i in {2,...,13} {\draw[black] (1|-\i) --  (8|-\i);}
 	\end{tikzpicture}
 	\end{NiceTabular}
 	\caption{Représentation de quelques adpositions en français}
@@ -564,18 +544,12 @@ Les prépositions \textsl{sauf} et \textsl{pour} quant à elle ont des usages pl
 
 \section{Conclusion}
 Nous avons pu montrer que si les cas ont une structure syntaxique générale assez similaire, il existe plusieurs familles assez distinctes au sein desquelles les cas ne diffèrent que sémantiquement.
-Par ailleurs, il faut noter que le formalisme de \textsc{Universal Dependencies} et la différence dans les annotateurs cause de fortes disparités dans les manières d'annoter, notamment sur l'annotation de cas sur les adverbes et les adpositions.
-Toutefois, il n'est pas illogique d'annoter un cas sur les adpositions, de par leurs fonctions sémantiques. Cependant, il apparaît que syntaxiquement elles ne sont que rarement distinguées.
+Il faut également noter que le formalisme de \textsc{Universal Dependencies} et la différence dans les annotateurs cause de fortes disparités dans les manières d'annoter, notamment sur l'annotation de cas sur les adverbes et les adpositions.\\
+Toutefois, il n'est pas illogique d'annoter un cas sur les adpositions, de par leurs fonctions sémantiques, mais il apparaît que syntaxiquement elles ne sont que rarement distinguées.
 
-
-\newpage
 \appendix
 
 \bibliography{report}
 \bibliographystyle{alpha-fr}
-
-\appendix
-\listoftables
-\listoffigures
 
 \end{document}
