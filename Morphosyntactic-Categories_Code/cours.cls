@@ -181,11 +181,11 @@
 		      \node[inner sep=0pt,outer sep=0pt] {\usebox{\tileone}};
 		    }] (current page.south east) rectangle (current page.north west);
 		\node [inner sep=0pt] at (current page.center) {#1};
-		\node [anchor=center, yshift=4cm, inner sep=1.25cm, rectangle, fill=vulm!50, fill opacity=1, text opacity=1, minimum height=0.2\paperheight, text width=.9\paperwidth, minimum width=\paperwidth] (title) at (current page.center) {#2};
+		\node [anchor=center, yshift=5cm, inner sep=1.25cm, rectangle, fill=vulm!50, fill opacity=1, text opacity=1, minimum height=0.2\paperheight, text width=.9\paperwidth, minimum width=\paperwidth] (title) at (current page.center) {#2};
 		\node [anchor=north east, rectangle, fill=white, fill opacity=.5, text opacity=1, yshift=-1.4cm, xshift=-.1\paperwidth] at (title.south) {\includegraphics[width=.3\linewidth]{#3}};
-		\node [anchor=south, yshift=3cm, inner sep=1.25cm, minimum height=0.2\paperheight, minimum width=\paperwidth, text width=0.9\paperwidth, rectangle, fill=white, fill opacity=.5, text opacity=1] at (current page.south) {#4};
 		\node [anchor=north west, rectangle, fill=white, fill opacity=.5, text opacity=1, xshift=+.1\paperwidth, yshift=-1.4cm] at (title.south) {\includegraphics[width=.3\linewidth]{~/Documents/ETUDES/ENS/ens_psl}};
-        \end{tikzpicture}
+		\node [anchor=south, yshift=4cm, inner sep=1.25cm, minimum height=0.2\paperheight, minimum width=\paperwidth, text width=0.9\paperwidth, rectangle, fill=white, fill opacity=.5, text opacity=1] at (current page.south) {#4};
+		        \end{tikzpicture}
         \cleardoublepage\pagenumbering{arabic}
 }
 

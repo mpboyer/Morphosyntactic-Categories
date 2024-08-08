@@ -25,8 +25,9 @@
 
 \begin{abstract}
 Dans ce rapport, nous nous intéressons à la stabilité interlangue des catégories morphosyntaxiques.
-Nous avons quantifié la manière dont différentes catégories descriptives d'un langage ont différentes significations dans différents langages, et particulièrement la manière dont un concept est matérialisé dans différents langages.
-Nous nous sommes tout particulièrement intéressés à la notion de cas grammatical, aux différences entre cas et à la définition fondamentale d'un cas. Nous avons également étudié la représentation des adpositions en parallèle à la notion de cas.
+Nous nous sommes interrogés quant à la réalité de la comparaison interlangue de catégories descriptives du langage, et tout particulièrement aux cas grammaticaux.
+Nous avons observé les différences dans la forme syntaxique de certains cas, et remarqué les similarités entre d'autres plus sémantiquement distincts, en observant toutefois une forme géométrique générale.
+Nous avons déterminé des prototypes syntaxiques de cas et étudié la représentation des adpositions.
 \end{abstract}
 
 
@@ -92,7 +93,8 @@ On obtient alors les résultats suivants pour quelques cas:
 
 \input{Figures/Visualisations/Angles_Case=Voc_Proximity}
 
-On observe notamment le fait que le nominatif comme le vocatif ont des directions très particulières, et sont très différents de tous les autres cas. Pour le reste, les résultats sont assez flous, et il semble difficile de tirer des résultats généraux.\\
+On observe notamment le fait que le nominatif comme le vocatif ont des directions très particulières, et sont très différents de tous les autres cas. Pour le reste, les résultats sont assez flous, et il semble difficile de tirer des résultats généraux.
+
 \medskip
 Par ailleurs, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus.
 De plus, les résultats donnés ici sont à pondérer par la présence de nombreux corpus/langages ne possédant pas au moins l'un des cas ci-dessus, ce qui amène à une représentation trop brouillée des informations.
@@ -113,10 +115,9 @@ En regardant de plus près les corpus farsis\footnote{et non pas les dindes. far
 En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fait} sont deux graphies du même lemme \textsl{faire}, conjugué à deux personnes différentes)\label{farsi}
 est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
 Ce lemme agit donc en réalité plus comme une adposition.
-Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.
+Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.\\
 Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, du moins sur le système de cas.
-Il est toutefois bon de noter que plusieurs corpus adopte cette convention d'annotation des adpositions (cf \ref{subsec:adpos}) et certains l'adoptent également sur les adverbes.\\
-
+Il est toutefois bon de noter que plusieurs corpus adoptent cette convention d'annotation des adpositions (cf \ref{subsec:adpos}) et certains l'adoptent également sur certains adverbes.\\
 Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une adposition (cf. supra).
 
 \subsection{Distance Euclidienne}\label{subsec:l2}
@@ -134,6 +135,7 @@ Dans notre cas par exemple, le datif russe est plus proche du génitif tchèque 
 		&Dat RU & Gen CZ & Gen RU & Dat CZ\\
 		\midrule
 		Total & 1711 & 2631 & 2070 & 277\\
+		\midrule
 		obl & 450 & 208 & 219 & 48\\
 		iobj & 340 & 0 & 0 & 0\\
 		amod & 243 & 736 & 475 & 54\\
@@ -150,8 +152,8 @@ On enlève ensuite \texttt{conj, det} puisque ces \textit{reldep} démontrent l'
 On enlève aussi \texttt{case}, qui souvent (notamment visible dans l'exemple ci-dessous), est utilisé pour marquer le cas avec une apposition (sur, sous), et ceci dépend très fortement de la personne qui a annoté le corpus, et de l'usage dans les grammaires du langage.\\
 \medskip
 
-En considérant le graphe orienté des plus proches voisins, on remarque que celui-ci ne peut pas avoir de $n$-cycle pour $n \geq 3$ et décrit des relations de proximité minimale.
-Pour le tchèque et le russe, le graphe est le suivant:
+On observe les relations de proximités entre les cas de deux langues en considérant le graphe orienté des plus proches voisins.
+Celui-ci permet de découvrir quels groupes de cas ont les mêmes fonctions syntaxiques dans les deux langues, et pourraient être interchangés lors de l'analyse grammaticale (parsing).
 
 \begin{figure}[H]
 	\centering
@@ -414,6 +416,7 @@ On obtient la matrice de confusion suivante en appliquant l'algorithme pour $k =
 On observe notamment que le \emph{Locatif} est plus difficile à reconnaître que les autres cas. Ceci peut venir du faible nombre de langues possédant un locatif en comparaison aux trois autres cas.
 
 % \newpage
+\newpage
 \section{Approche Probabiliste}\label{sec:probas}
 On considère désormais qu'à un cas donné on associe une variable aléatoire $C$ sur les distributions syntaxiques dont on connaît certaines réalisations (les représentations du cas dans les différents corpus).
 
@@ -485,7 +488,9 @@ On obtient la distribution ci-dessous, en ne considérant à nouveau que les nom
 On retrouve bien la représentation attendue, ce qui découle notamment de la définition \emph{théorique} des cas. \\
 Il est important de noter que les vecteurs ci-dessus ne permettent pas nécessairement de différencier tous deux cas, mais seulement de différencier leurs usages syntaxiques.
 Par exemple, l'Instrumental (qui marque l'outil utilisé pour une action/un objet, e.g. dans une traduction de \textsl{J'ai mangé \emph{avec} une fourchette}, on utiliserait l'instrumental pour \textsl{fourchette})
-et le Locatif (qui marque le lieu d'une action, ou d'un objet, e.g. \textsl{J'ai péleriné jusqu'à Saclay} ou \textsl{J'ai couru à côté de l'école} se traduiraient avec des locatifs\footnote{certaines langues comme le finnois possèdent plusieurs \textit{locatifs} appelés inessif, élatif, illatif, adessif, ablatif, allatif\dots\ Ceux-ci servent à différencier, la destination, la direction, le lieu à côté\ldots}) sont principalement des cas morphosémantiques, au sens où ils ne modifient pas la structure de la phrase mais seulement son sens.
+et le Locatif (qui marque le lieu d'une action, ou d'un objet, e.g. \textsl{J'ai péleriné jusqu'à Saclay} ou \textsl{J'ai couru à côté de l'école} se traduiraient avec des
+locatifs\footnote{certaines langues comme le finnois possèdent plusieurs \textit{locatifs} appelés inessif, élatif, illatif, adessif, ablatif, allatif\dots\ Ceux-ci servent à différencier différent types de lieux liés à une action: la destination (à Saclay), la direction (vers le Sud), un lieu à proximité (près du Panthéon)\ldots})
+sont principalement des cas morphosémantiques, au sens où ils ne modifient pas la structure de la phrase mais seulement son sens.
 Ainsi, il est difficile de les différencier syntaxiquement: ils agissent principalement sur un verbe en précisant son action (\texttt{obl}), mais également sur les noms en précisant leur fonction ou leur position (\texttt{nmod}).
 À l'inverse, le nominatif (sujet du verbe), l'accusatif (objet du verbe), le datif (objet indirect du verbe), l'ergatif (sujet du verbe transitif) et l'absolutif (sujet du verbe intransitif et objet du verbe transitif), sont des cas plus fortement marqués syntaxiquement et sont donc plus facilement reconnaissables.
 
