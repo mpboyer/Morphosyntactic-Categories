@@ -36,6 +36,9 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[justification=centering]{caption}
+\usepackage{colortbl}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
 
 \author{Null}
 \title{None}
@@ -92,6 +95,7 @@
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\ml}{\mathcal{l}}
 \newcommand{\mP}{\mathcal{P}}
+\newcommand{\mE}{\mathcal{E}}
 \renewcommand{\P}{\mathbb{P}}
 \renewcommand{\d}{{\rm \, d}}
 
@@ -213,6 +217,7 @@
   \end{tikzpicture}%
 }
 
+
 \usepackage[skins]{tcolorbox}
 \tcbuselibrary{theorems}
 \NewTcbTheorem[auto counter, number within=section]{définition}{Définition}%
@@ -232,3 +237,65 @@
 
 \NewTcbTheorem[auto counter, number within=section]{remarque}{Remarque}%
  {colback=yulm!10, colframe=vulm!65!black, fonttitle=\bfseries}{rem}
+
+
+\pgfplotsset{colormap/violet}
+\pgfplotstableset{
+    /color cells/min/.initial=0,
+    /color cells/max/.initial=1000,
+    /color cells/textcolor/.initial=,
+    %
+    % Usage: 'color cells={min=<value which is mapped to lowest color>,
+    %   max = <value which is mapped to largest>}
+    color cells/.code={%
+        \pgfqkeys{/color cells}{#1}%
+        \pgfkeysalso{%
+            postproc cell content/.code={%
+                %
+                \begingroup
+                %
+                % acquire the value before any number printer changed
+                % it:
+                \pgfkeysgetvalue{/pgfplots/table/@preprocessed cell content}\value
+                \ifx\value\empty
+                    \endgroup
+                \else
+                \pgfmathfloatparsenumber{\value}%
+                \pgfmathfloattofixed{\pgfmathresult}%
+                \let\value=\pgfmathresult
+                %
+                % map that value:
+                \pgfplotscolormapaccess
+                    [\pgfkeysvalueof{/color cells/min}:\pgfkeysvalueof{/color cells/max}]
+                    {\value}
+                    {\pgfkeysvalueof{/pgfplots/colormap name}}%
+                % now, \pgfmathresult contains {<R>,<G>,<B>}
+                %
+                % acquire the value AFTER any preprocessor or
+                % typesetter (like number printer) worked on it:
+                \pgfkeysgetvalue{/pgfplots/table/@cell content}\typesetvalue
+                \pgfkeysgetvalue{/color cells/textcolor}\textcolorvalue
+                %
+                % tex-expansion control
+                % see https://tex.stackexchange.com/questions/12668/where-do-i-start-latex-programming/27589#27589
+                \toks0=\expandafter{\typesetvalue}%
+                \xdef\temp{%
+                    \noexpand\pgfkeysalso{%
+                        @cell content={%
+                            \noexpand\cellcolor[rgb]{\pgfmathresult}%
+                            \noexpand\definecolor{mapped color}{rgb}{\pgfmathresult}%
+                            \ifx\textcolorvalue\empty
+                            \else
+                                \noexpand\color{\textcolorvalue}%
+                            \fi
+                            \the\toks0 %
+                        }%
+                    }%
+                }%
+                \endgroup
+                \temp
+                \fi
+            }%
+        }%
+    }
+}
