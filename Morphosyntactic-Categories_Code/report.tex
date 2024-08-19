@@ -17,7 +17,7 @@
 	{\centering %
                 {\huge\sc Laboratoire\, Lattice \par}
                 \vspace{16pt}
-                {\large \sc CNRS --- ENS --- Université Sorbonne Nouvelle\par}
+                {\large \sc CNRS --- ENS-PSL --- Université Sorbonne Nouvelle\par}
                 \vspace{24pt}
 		{\Large Sous la direction de Mathieu \textsc{Dehouck}\par}}
 
@@ -69,12 +69,13 @@ Elles se déduisent de la construction par une grammaire de dépendance ou conte
 Il existe 37 relations de dépendances de base, mais les personnes annotant les corpus ont la possibilité d'en créer de nouvelles, sous la syntaxe \texttt{str1:str2:\dots} où \texttt{str1} doit être une relation de dépendance décrite comme relation basique dans la table 3 de \cite{UDv2}.\\
 Par ailleurs, les mots sont annotés avec les propriétés morphologiques qu'ils possèdent, par exemple leur temps ou leur aspect pour un verbe ou leur cas et leur genre pour un nom.
 Les propriétés morphologiques universelles utilisées par UD sont décrites table 2 dans \cite{UDv2}.\\
-Enfin, les mots sont annotés avec leur nature grammaticale (e.g. Nom, Verbe, Pronom\dots) comme décrits table 1 dans \cite{UDv2}.
+Enfin, les mots sont annotés avec leur nature grammaticale (e.g. Nom, Verbe, Pronom\dots) comme décrit table 1 dans \cite{UDv2}.
 
 \subsection{Méthode}\label{subsec:méthode}
 Nous considérons tout d'abord que chaque \textit{reldep} décrit une unique catégorie comparative et que plusieurs \textit{reldep} ne peuvent instancier une même catégorie comparative.
-En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une \textit{feature} d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
-Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, version 2.14 décrite dans \cite{UD214}.
+En comptant le nombre d'instances de chaque \textit{reldep} pour un mot vérifiant une propriété grammaticale de la langue (i.e.\ une catégorie descriptive, que l'on représente par une propriété morphologique d'UD, typiquement les cas pour des langues en utilisant), on obtient une représentation des catégories descriptives et on peut donc mesurer la proximité de deux catégories descriptives dans deux langues différentes.
+Les corpus utilisés dans cette première partie sont ceux du projet \textsc{Universal Dependencies}, version 2.14 décrite dans \cite{UD214}.\\
+On n'utilise jamais la signification sémantique a priori d'un cas pour en induire un résultat. C'est pourquoi on ne donne la définition théorique d'aucun cas, sauf pour donner un exemple ou expliquer un résultat.
 
 \section{Approche Géométrique}\label{sec:géométrie}
 Pour cette première approche, on considère la représentation obtenue comme une représentation vectorielle: on considère qu'on se place sur $\R^{\abs{R}}$ où $R$ est l'ensemble des \textit{reldep} et dont une base est l'ensemble des relations de dépendance.
@@ -83,7 +84,7 @@ Dans la suite, on notera $\nu(T, C)$ la représentation du cas $C$ dans le corpu
 On définit également $\mE(C)$ l'ensemble des corpus $T$ pour lesquels $\nu(T, C)$ est non nul et $\cont(T)$ l'ensemble des cas $C$ tels que $\nu(T, C)$ est non nul.
 
 \subsection{Avec la distance Cosinus}\label{subsec:cosinus}
-On mesure d'abord la proximité de deux vecteurs en utilisant la distance\footnote{Ce n'est pas une distance au sens mathématique} Cosinus entre ceux-ci:
+On mesure d'abord la proximité de deux vecteurs en utilisant la distance\footnote{Ce n'est pas une distance au sens mathématique} cosinus entre ceux-ci:
 \begin{equation}
 	d_{\cos}(v_{1},v_{2}) = \frac{\scalar{v_{1}\mid v_{2}}}{\norm{v_{1}}\norm{v_{2}}}
 \end{equation}
@@ -152,16 +153,16 @@ On obtient alors les résultats décrits dans \ref{tab:angle_gen}, \ref{tab:angl
 On observe notamment le fait que le nominatif comme le vocatif ont des directions très particulières, et sont très différents de tous les autres cas. Pour le reste, les résultats sont assez flous, et il semble difficile de tirer des résultats généraux.
 
 \medskip
-Par ailleurs, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus.
+Néanmoins, cette méthode est très limitée. En effet, on ne considère ici que 9 des 45 cas définis dans au moins un corpus.
 De plus, les résultats donnés ici sont à pondérer par la présence de nombreux corpus/langages ne possédant pas au moins l'un des cas ci-dessus, ce qui amène à une représentation trop brouillée des informations.
 
 
 \subsection{Avec l'algorithme de \textsc{Zassenhaus}}\label{subsec:zassenhaus}
 On considère les espaces vectoriels engendrés par la représentation vectorielle du système de cas d'une langue, que l'on appellera \emph{espaces de cas}.
 Ceux-ci sont d'une certaine dimension finie.
-On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus (voir \cite{zassenhaus}), permettant de générer une base de l'espace somme et de l'espace intersection.
+On applique alors sur toute paire de système de cas l'algorithme de Zassenhaus (voir \cite{zassenhaus}), permettant de générer une base de l'espace somme et de l'espace intersection.\\
 Toutefois, la grande variance au niveau des coordonnées, et la trop faible dimension (au plus 45, mais souvent de l'ordre de 5) dans un grand espace (dimension 228), rend l'intersection toujours nulle numériquement.
-Par ailleurs, cet algorithme est très lent à exécuter car il demande de nombreux appels mémoire pour obtenir la matrice de l'espace de cas de chaque paire de cas, et demande de trouver une base de l'espace de colonne, ce qui est non-nécessairement la matrice.
+De plus, cet algorithme est très lent à exécuter car il demande de nombreux appels mémoire pour obtenir la matrice de l'espace de cas de chaque paire de cas, et demande de trouver une base de l'espace de colonnes, ce qui n'est pas nécessairement la famille de colonnes de la matrice.
 
 \subsection{Angle entre Cas et Système de Cas}\label{subsec:projection}
 On considère à nouveau la distance cosinus, mais cette fois-ci, non pas entre deux vecteurs, mais entre un vecteur et un espace de cas.
@@ -172,7 +173,7 @@ En farsi, le lemme (unité morphologique abstraite: \textsl{fais} et \textsl{fai
 est décrit comme une interjection portant le vocatif et se reliant à un nom au cas absolu par la relation de transmission de cas (c'est à dire de marquer le cas pour un autre mot).
 Ce lemme agit donc en réalité plus comme une adposition\footnote{Mot-outil immédiatement associé à un élément subordonné qui en précise les relations syntaxiques et sémantiques avec le reste de la phrase}.
 Le vocatif n'apparaît que très peu en farsi, et majoritairement dans cette situation.\\
-Ainsi, il semble que nous ne pouvons pas tirer d'enseignements du farsi vers une autre langue, du moins sur le système de cas.
+Ainsi, il semble que nous ne pouvons pas appliquer de propriétés apprises du farsi à une autre langue, du moins sur le système de cas.
 Il est toutefois bon de noter que plusieurs corpus adoptent cette convention d'annotation des adpositions (cf \ref{subsec:adpos}) et certains l'adoptent également sur certains adverbes.\\
 Par ailleurs, il n'est pas rare qu'au sein d'une même langue, deux corpus produisent des résultats assez différents. Ceci peut venir de la variance des phrases considérées, mais plus souvent de la présence ou non des reldeps \texttt{conj, case} et de la manière d'annoter le cas d'une adposition, comme décrit plus haut..
 
@@ -250,10 +251,11 @@ On obtient alors le graphe \ref{fig_gnn_nouns_ru_cz} pour le tchèque et le russ
 \end{figure}
 
 On observe notamment que pour les noms, la structure du graphe reste la même.
-Le vocatif russe et le vocatif tchèque, peu utilisées et le partitif russe n'ayant pas d'équivalent en tchèque, ils sont bien plus éloignés des autres cas.
+Le vocatif russe et le vocatif tchèque, peu utilisés et le partitif russe n'ayant pas d'équivalent en tchèque, ils sont bien plus éloignés des autres cas.
 On retrouve par ailleurs un bloc datif -- génitif qui était déjà présent auparavant, à variance dans le corpus près.
-Par ailleurs, on observe également que les paires accusatif -- accusatif et nominatif -- nominatif restent stables et plus proches que toutes les autres paires de cas.\\
-En ne considérant que les pronoms, on obtient le graphe \ref{fig_gnn_pronouns_ru_cz}
+Par ailleurs, on observe également que les paires accusatif -- accusatif et nominatif -- nominatif restent stables et plus proches que toutes les autres paires de cas.
+En ne considérant que les pronoms, on obtient le graphe \ref{fig_gnn_pronouns_ru_cz}.
+
 
 \begin{figure}
 	\centering
@@ -262,7 +264,7 @@ En ne considérant que les pronoms, on obtient le graphe \ref{fig_gnn_pronouns_r
 	\label{fig_gnn_pronouns_ru_cz}
 \end{figure}
 
-Cette fois ci, il y a une variance bien plus forte dans les distances, sans doute due à la variance dans les données. En effet, à part au nominatif et à l'accusatif les échantillons de données sont bien plus faibles (cf \ref{tab_echantillons}.
+Cette fois ci, il y a une variance bien plus forte dans les distances, sans doute due à la variance dans les données. En effet, à part au nominatif et à l'accusatif les échantillons de données sont bien plus faibles (cf \ref{tab_echantillons}).
 
 \begin{table}
 	\centering
@@ -325,7 +327,7 @@ Cette fois ci, il y a une variance bien plus forte dans les distances, sans dout
 	\label{tab_echantillons}
 \end{table}
 
-Finalement, il semble que considérer les pronoms fait perdre en information car ceux-ci sont bien moins usités en général. Toutefois, on remarque également qu'une structure générale de la langue semble transparaitre de ces graphes.
+Finalement, il semble que considérer les pronoms fait perdre en information car ceux-ci sont bien moins usités en général. Toutefois, on remarque également qu'une structure générale de la langue semble transparaître de ces graphes.
 Il faut cependant noter que les graphes dépendent très fortement du corpus proposé comme le montre \ref{GNNRuCz}
 
 \begin{figure}[H]
@@ -340,14 +342,14 @@ Même si la forme du graphe ne semble que peu changer, la variance dans le corpu
 Par ailleurs, cette méthode n'est que peu applicable, puisqu'elle nécessite d'étudier toutes les langues par paire.
 
 \subsection{Visualisation des Données}\label{subsec:vis}
-Les résultats précédemment obtenus ne permettent d'observer les données ou bien à une échelle très importante, ce qui brouille les résultats, ou bien à une échelle trop faible pour qu'on puisse généraliser un résultat.
+Les résultats précédemment obtenus ne permettent d'observer les données ou bien qu'à une échelle très importante, ce qui brouille les résultats, ou bien qu'à une échelle trop faible pour qu'on puisse généraliser un résultat.
 Dans la suite, on propose donc des méthodes pour regrouper les vecteurs de cas dans différentes langues, afin d'essayer de constater l'uniformité (ou non) de certains groupes de cas.
 L'objectif est ici de réussir à repérer, au sein des données, des patterns, afin de pouvoir mener les analyses présentées plus haut sur des groupes de corpus intéressants.
 
 
 \subsubsection{PCA}\label{subsub:pca}
 On commence par appliquer une analyse en deux composantes principales (PCA) aux vecteurs représentant deux cas différents.
-Cette analyse va procéder à une réduction linéaire de la dimension des données de départ afin de trouver deux vecteurs (les composantes) qui forment un système de coordonnées pour lequel les variation selon chaque axe sont les plus fortes.
+Cette analyse va procéder à une réduction linéaire de la dimension des données de départ afin de trouver deux vecteurs (les composantes) qui forment un système de coordonnées pour lequel les variations selon chaque axe sont les plus fortes.
 Pour ceci, on calcule la première composante comme combinaison linéaire des vecteurs d'entrée qui maximise la variance des projections des vecteurs d'entrée sur cette première composante. Puis on recommence pour la seconde composante en prenant un vecteur orthogonal à la première composante.
 
 \begin{figure}
@@ -365,23 +367,23 @@ Pour ceci, on calcule la première composante comme combinaison linéaire des ve
 	\label{fig:pca}
 \end{figure}
 
-En regardant les corpus qui sont éloignés du groupe principal (cf \ref{fig:pca}, on observe que les composantes déterminées par l'algorithme de PCA sont en fait basées sur deux langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
+En regardant les corpus qui sont éloignés du groupe principal (cf \ref{fig:pca}), on observe que les composantes déterminées par l'algorithme de PCA sont en fait basées sur deux langues, et donc les deux composantes n'ont pas de sens au regard de la syntaxe.
 
 \subsubsection{Analyse Topologique des Données}\label{subsub:tda}
 Dans ce paragraphe, on applique des méthodes topologiques dans l'espoir d'obtenir une manière de différencier (ou de regrouper) des ensembles de données (les $\nu(T, C)$ pour $T\in \mE(C)$).
-En effet, on essaie de reconstruire topologiquement la variété dont les vecteurs d'entrée forment une triangulation\footnote{i.e. la représentation de la variété par des espaces linéaires par morceaux, des simplexes}, ce qui permet d'obtenir des invariants algébriques et de les comparer entre deux variétés.
+En effet, on essaie de reconstruire topologiquement la variété dont les vecteurs d'entrée forment une triangulation\footnote{i.e. la représentation de la variété par des espaces linéaires par morceaux, des simplexes (voir ci-dessous)}, ce qui permet d'obtenir des invariants algébriques et de les comparer entre deux variétés.
 
 On rappelle qu'un complexe simplicial est une sorte de généralisation à plusieurs dimensions des graphes. Le complexe simplicial $k$-dimensionnel d'un ensemble $X = \{x_{0}, \ldots, x_{k}\}$ de points est l'enveloppe convexe de $X$.
 Les points de $X$ sont appelés sommets et les simplexes\footnote{Généralisation à $n$-dimension du triangle. Le tétraèdre est un simplexe en dimension $3$} engendrés par les parties de $X$ sont appelés faces du complexe.
-Le $k$-ème groupe d'homologie $H_{k}$ est un espace vectoriel dont la dimension représente le nombre de \og\emph{ trous}\fg $k$-dimensionnels.
-$H_{0}$ représente les composantes connexes, $H_{1}$ les boucles unidimensionneles et $H_{2}$ les cavités $2$-dimensionnelles.
-Les nombres de Betti sont les dimensions des groupes d'homologie et donnent donc le nombre de \og\emph{trous}\fg $k$-dimensionnels (voir \cite{tldrtda} pour plus de détails).
+Le $k$-ème groupe d'homologie $H_{k}$ est un espace vectoriel dont la dimension représente le nombre de \og\emph{trous}\fg\ $k$-dimensionnels.
+$H_{0}$ représente ainsi les composantes connexes, $H_{1}$ les boucles unidimensionnelles et $H_{2}$ les cavités $2$-dimensionnelles.
+Les nombres de Betti sont les dimensions des groupes d'homologie et donnent donc le nombre de \og\emph{trous}\fg\ $k$-dimensionnels (voir \cite{tldrtda} pour plus de détails).
 
 Pour l'implémentation de ce qui suit, on utilise les bibliothèques Python \texttt{Gudhi}, \texttt{POT} et \texttt{Hera}, dont les implémentations sont décrites dans~\cite{Gudhi},\cite{PythonPOT},~\cite{Hera} qui permettent de calculer efficacement les complexes simpliciaux des données et leurs diagrammes d'homologie, la distance de Wasserstein (ou Earth Mover's Distance) entre deux distributions ou diagrammes d'homologie.
 
-On utilise d'abord un complexe cubique plutôt qu'un complexe simplicial pour essayer de représenter au mieux les groupes d'homologie de la variété triangulée par les points de chaque cas.
+On utilise d'abord un complexe cubique plutôt qu'un complexe simplicial pour essayer de représenter plus efficacement les groupes d'homologie de la variété triangulée par les points de chaque cas.
 Un complexe cubique est un ensemble $\mathcal{K}$ de cubes\footnote{produits d'intervalles} tel que la frontière de chaque cube soit dans $\mathcal{K}$ (voir \cite{cubicalhomology}).
-En effet, ici, il est compliqué de calculer directement un complexe simplicial de part le nombre de points et la dimension de l'espace.
+On utilise un complexe cubique puisqu'ici, il est compliqué de calculer directement un complexe simplicial de par le nombre de points et la dimension de l'espace.
 
 \begin{figure}
 \begin{minipage}{.5\textwidth}
@@ -398,7 +400,7 @@ En effet, ici, il est compliqué de calculer directement un complexe simplicial 
 \label{fig_cc_hom}
 \end{figure}
 
-On a également calculé les complexes sur les Nominatifs et Accusatifs. On remarque sur \ref{fig_cc_hom} qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
+On a également calculé les complexes sur les Nominatifs et Accusatifs. On remarque sur \ref{fig_cc_hom} qu'une forme générale se retrouve dans les diagrammes de persistence de chacun des cas.
 Pour vérifier l'intuition, on calcule la distance-$1$ de Wasserstein entre les distributions de points. On rappelle que la distance-$p$ de Wasserstein pour $p \in \left[1, +\infty\right]$ entre deux mesures de probabilités $\mu, \pi$ dont les moments d'ordre $p$ sont finis est:
 \begin{equation*}
 W_{p}(\mu, \pi) = \inf_{\gamma\in\Gamma\left(\mu, \pi\right)}\sqrt[p]{\mathbb{E}_{(x, y) \sim \gamma}d(x, y)^{p}}
@@ -441,7 +443,7 @@ Toutefois, les diagrammes présentés dans \ref{fig_rc_hom} restant très brouil
 \label{fig_rc_hom}
 \end{figure}
 
-On remarque à nouveau qu'une forme générale se retrouve dans les diagrammes de persistences de chacun des cas.
+On remarque à nouveau qu'une forme générale se retrouve dans les diagrammes de persistence de chacun des cas.
 Lorsqu'on calcule la distance de Wasserstein entre deux diagrammes pour quelques cas, on obtient le tableau suivant:
 
 \begin{table}
@@ -470,7 +472,7 @@ Cependant, d'un point de vue linguistique, il est difficile de tirer des conclus
 \subsubsection{t-SNE}\label{subsub:tsne}
 Dans la suite, nous allons essayer différentes techniques de clustering, afin de vérifier si deux cas supposément distincts peuvent être aisément différenciés.
 On essaie d'abord d'appliquer une analyse t-SNE en 2D, décrite dans~\cite{tSNE}.
-L'algorithme définit une distribution\footnote{On le note plutôt comme des probabilité conditionnelles, mais c'est équivalent} $D_{1}$ de probabilités sur les paires de points de l'espace de départ (si $x, y$ sont proches alors $D_{1}(x \mid y)$ est proche de $1$) et construit alors une distribution $D_{2}$ sur les paires de points d'un espace à $2$-dimension minimisant la divergence de Kullback-Leibler $\sum_{x, y}D_{1}(x \mid y)\log\frac{D_{1}(x\mid y)}{D_{2}(x\mid y)}$ entre $D_{1}$ et $D_{2}$.
+L'algorithme définit une distribution\footnote{On le note plutôt comme des probabilités conditionnelles, mais c'est équivalent} $D_{1}$ de probabilités sur les paires de points de l'espace de départ (si $x, y$ sont proches alors $D_{1}(x \mid y)$ est proche de $1$) et construit alors une distribution $D_{2}$ sur les paires de points d'un espace à $2$ dimensions minimisant la divergence de Kullback-Leibler $\sum_{x, y}D_{1}(x \mid y)\log\frac{D_{1}(x\mid y)}{D_{2}(x\mid y)}$ entre $D_{1}$ et $D_{2}$.
 Ici, on l'applique sur le Génitif et le Nominatif, voir \ref{fig_tsne}
 \begin{figure}
 \begin{minipage}{.5\textwidth}
@@ -488,7 +490,7 @@ Ici, on l'applique sur le Génitif et le Nominatif, voir \ref{fig_tsne}
 \end{figure}
 
 Il semble que deux clusters se dégagent, avec des frontières toutefois assez floues.
-Il semblerait donc que syntaxiquement, le génitif et le nominatif aient des représentation assez différentes, sans toutefois savoir à quel point.
+Il semblerait donc que syntaxiquement, le génitif et le nominatif aient des représentations assez différentes, sans toutefois savoir à quel point.
 
 \subsubsection{Clustering avec ToMATo}\label{subsub:tomato}
 On applique l'algorithme présenté dans \cite{ToMATo} avec la bibliothèque \texttt{Gudhi} (\cite{Gudhi}) sur des paires de cas, pour essayer de construire des clusters.
@@ -535,7 +537,8 @@ De plus, du point de vue géométrique, l'ensemble des instances\footnote{des ve
 Toutefois, il est clair que plusieurs types de cas se dégagent, et que chacun de ces types est fortement différenciable des autres sémantiquement, mais que cela ne suffit pas à former plusieurs types.
 
 \section{Approche Probabiliste}\label{sec:probas}
-On considère désormais qu'à un cas donné on associe une variable aléatoire $C$ sur les distributions syntaxiques dont on connaît certaines réalisations (les représentations du cas dans les différents corpus).
+On considère désormais qu'à un cas donné on associe une variable aléatoire sur les distributions de relations de dépendances dont on connaît certaines réalisations (les représentations du cas dans les différents corpus).
+C'est à dire une variable aléatoire qui a un langage va associer une distribution de probabilité sur les relations de dépendances des mots à ce cas.
 
 \subsection{Barycentrisation}\label{subsec:bary}
 On a cherché jusque-là à comparer les cas.
@@ -543,16 +546,16 @@ On va désormais essayer de les prototyper\footnote{Trouver un vecteur \textit{t
 Celle-ci devrait coller à la description théorique proposée ci-dessous:
 \begin{multicols}{2}
 	\begin{description}
-		\item[Nom] \texttt{nsubj} d'un verbe
-		\item[Acc] \texttt{obj} d'un verbe
-		\item[Erg] \texttt{nsubj} d'un verbe sans \texttt{obj}, ou \texttt{obj} d'un verbe
-		\item[Abs] \texttt{nsubj} d'un verbe avec \texttt{obj}
-		\item[Gen] \texttt{nmod}
-		\item[Dat] \texttt{iobj}
+		\item[Nom] Agent (sujet) d'un verbe
+		\item[Acc] Patient (objet direct) d'un verbe
+		\item[Erg] Agent (et donc patient) d'un verbe intransitif (sans objet), ou patient d'un verbe transitif
+		\item[Abs] Agent d'un verbe transitif
+		\item[Gen] Complément du nom
+		\item[Dat] Objet indirect d'un verbe
 	\end{description}
 \end{multicols}
-Pour calculer les prototypes, on procède comme suit.
-On peut ainsi calculer son espérance (en considérant les mesures équiprobables), mais également le barycentre de ses réalisations pour la distance-$1$ de Wasserstein (ou Earth Mover's Distance, voir \cite{PythonPOT} pour plus de détails).
+Pour calculer les prototypes, on procède comme suit:
+On calcule l'espérance de la variable aléatoire de chaque cas (en considérant les mesures équiprobables), mais également le barycentre de ses réalisations pour la distance-$1$ de Wasserstein (ou Earth Mover's Distance, voir \cite{PythonPOT} pour plus de détails).
 On rappelle par ailleurs que le barycentre de $n$ points pour une distance $d$ est le point $P$ qui minimise l'énergie $E$ associée:
 
 \begin{equation*}
@@ -606,7 +609,7 @@ On obtient la distribution \ref{tab_proto}, en ne considérant à nouveau que le
 On retrouve bien la représentation attendue, ce qui découle notamment de la définition \emph{théorique} des cas. \\
 Il est important de noter que les vecteurs ci-dessus ne permettent pas nécessairement de différencier tous deux cas, mais seulement de différencier leurs usages syntaxiques.
 Prenons un exemple:
-L'instrumental est le cas qui marque l'outil utilisé pour une action/un objet: Dans une traduction de \textsl{J'ai mangé \emph{avec} une fourchette}, on utiliserait l'instrumental pour \textsl{fourchette}.
+l'instrumental est le cas qui marque l'outil utilisé pour une action/un objet: Dans une traduction de \textsl{J'ai mangé \emph{avec} une fourchette}, on utiliserait l'instrumental pour \textsl{fourchette}.
 Le Locatif est le cas qui marque le lieu d'une action, ou d'un objet: \textsl{J'ai péleriné jusqu'à Saclay} ou \textsl{J'ai couru à côté de l'école} se traduiraient avec des locatifs\footnote{certaines langues comme le finnois possèdent plusieurs \textit{locatifs} appelés inessif, élatif, illatif, adessif, ablatif, allatif\dots\ Ceux-ci servent à différencier différent types de lieux liés à une action: la destination (à Saclay), la direction (vers le Sud), un lieu à proximité (près du Panthéon)\ldots}.
 Le locatif et l'instrumental sont principalement des cas morphosémantiques, au sens où ils ne modifient pas la structure de la phrase mais seulement son sens.
 Ainsi, il est difficile de les différencier syntaxiquement: ils agissent principalement sur un verbe en précisant son action (\texttt{obl}), mais également sur les noms en précisant leur fonction ou leur position (\texttt{nmod}).
@@ -625,15 +628,16 @@ Comme on pouvait s'y attendre au vu des données, le barycentre pour la distance
 
 Sur la figure \ref{fig_proto}, l'axe des abscisses représente les différentes \textit{reldep} apparaissant pour des noms à l'accusatif.
 On représente sur le graphe du haut en jaune la fréquence associée à une reldep pour chaque corpus.
-Le graphe du bas représente, en rouge, la moyenne uniforme des distributions, en jaune, le barycentre des distributions pour la distance de wasserstein, et violet la proportion des corpus pour lesquels la \textit{reldep} apparaît.
+Le graphe du bas représente, en rouge, la moyenne uniforme des distributions, en jaune, le barycentre des distributions pour la distance de Wasserstein, et violet la proportion des corpus pour lesquels la \textit{reldep} apparaît.
 On vérifie bien notamment que pour la moyenne uniforme, certaines relations sont légèrement représentées car très présentes dans quelques langues, ce qui n'est pas le cas pour le barycentre associé à la distance de Wasserstein.
 
 
 \subsection{Représentation des adpositions dans \textsc{Universal Dependencies}}\label{subsec:adpos}
 Dans UD, certains corpus dénotent, lorsqu'un groupe est combiné avec une adposition (e.g. les prépositions \textsl{à, dans, par} en français, \textsl{to, into, above} en anglais, ou la postposition \textsl{ile} en turc), l'adposition comme gouvernée par la relation \texttt{case} et donnent un cas à l'adposition (cf. l'interjection farsie présentée plus haut \ref{farsi}).
 Ceci découle du postulat linguistique selon lequel tous les langages humains sont également expressifs, ce qui implique qu'on peut traduire les cas par des adpositions (en français, tous exceptés le nominatif et l'accusatif).
-Dans \cite{morphenglish}, Kirov, Sylak-Flassman, Knowles et Cotterell décrivent une manière d'annoter des corpus anglais selon les caractéristiques morphologiques du tchèque, langage morphologiquement riche. \\
-Nous avons donc cherché à déterminer le cas de certaines adpositions.
+Dans \cite{morphenglish}, Kirov, Sylak-Flassman, Knowles et Cotterell décrivent une manière d'annoter des corpus en anglais (langue morphologiquement pauvre) selon les caractéristiques morphologiques du tchèque (langue morphologiquement riche). \\
+Nous avons donc cherché à déterminer le cas syntaxiquement équivalent à certaines adpositions.
+A priori, il n'a aucune raison d'être également le cas sémantiquement équivalent à une adposition, même si l'on considère différents représentants d'une même classe syntaxique de cas (inessif, allatif, essif sont syntaxiquement équivalents parmi les locatifs par exemple).
 Pour cela, on compte les relations de dépendances des cibles des relations de dépendance depuis chaque adposition.
 On obtient une distribution des usages syntaxiques des adpositions, ce qui permet de comparer une adposition à un marqueur de cas.
 On ne donne que la moyenne uniforme des distributions uniformes pour une même langue, le barycentre pour la distance de Wasserstein étant trop volatile pour si peu de distributions (on n'en n'a que 9 pour le français).
@@ -663,27 +667,27 @@ On ne donne que la moyenne uniforme des distributions uniformes pour une même l
 	\label{tab:adpos_fr}
 \end{table}
 Dans la table \ref{tab:adpos_fr} on retrouve le fait que les prépositions françaises s'utilisent dans des constructions similaires, et ne se différencient presque que sémantiquement.
-Plus spécifiquement, il semble que \textsl{de} ait un caractère semblable au géniitif et que \textsl{à, dans, par, en, vers, avec, sans, sous, sur} ont plutôt un caractère semblable à l'ablatif, au locatif et autres cas syntaxiquement similaires.
-Les prépositions \textsl{sauf} et \textsl{pour} quant à elle ont des usages plus particuliers, puisqu'elles servent souvent à introduire des clauses adverbiales (e.g. \textsl{il mange \ul{\emph{pour} vivre}}).
+Plus spécifiquement, il semble que \textsl{de} ait un caractère semblable au génitif et que \textsl{à, dans, par, en, vers, avec, sans, sous, sur} ont plutôt un caractère semblable à l'ablatif, au locatif et autres cas syntaxiquement similaires.
+Les prépositions \textsl{sauf} et \textsl{pour} quant à elle ont des usages plus particuliers, puisqu'elles servent souvent à introduire des clauses adverbiales (e.g. \textsl{il mange \emph{pour} vivre}).
 
 \section{Conclusion}
-Nous avons pu montrer que si les cas ont une structure syntaxique générale assez similaire, il existe plusieurs familles assez distinctes au sein desquelles les cas ne diffèrent que sémantiquement.
-Il faut également noter que le formalisme de \textsc{Universal Dependencies} et le nombre d'annotateurs différents cause de fortes disparités dans les manières d'annoter, notamment sur l'annotation de cas sur les adverbes et les adpositions selon la langue.
-Ainsi, comme le supposait Martin \textsc{Haspelmath}, il est justifiable d'utiliser des catégories descriptives d'un langage pour en décrire un autre, mais il faut rester vigilant et ne pas calquer d'idiosyncracies d'une méta-langue sur une autre.
-Pour les cas cela ne pose pas de problème syntaxiquement à priori, mais il est nécessaire de revérifier pour une paire de langue avant de traduire les propriétés syntaxiques d'une langue sur une autre.
+Nous avons pu montrer que si les cas ont une structure syntaxique générale assez similaire géométriquement, il existe plusieurs classes syntaxiques assez distinctes au sein desquelles les cas ne diffèrent que sémantiquement.
+Il faut également noter que dans le formalisme de \textsc{Universal Dependencies}, avoir nombre d'annotateurs différents cause de fortes disparités dans les manières d'annoter, notamment sur l'annotation de cas sur les adverbes et les adpositions selon la langue.
+Ainsi, comme le supposait Martin \textsc{Haspelmath}, il est justifiable d'utiliser des catégories descriptives d'un langage pour en décrire un autre, mais il faut rester vigilant et ne pas calquer d'idiosyncrasies d'une méta-langue de comparaison lors de la description d'une autre.
+Pour les cas cela ne pose pas de problème du point de vue syntaxique a priori, mais il est nécessaire de revérifier pour une paire de langues avant de traduire les propriétés syntaxiques d'une langue sur une autre.
 \\
-Par ailleurs, il n'est pas illogique de donner des cas adpositions, de par leurs fonctions sémantiques, mais il apparaît que syntaxiquement elles ne sont que rarement distinguées, et pas toujours de la manière dont on l'attendrait du cas sémantiquement équivalent.
+Par ailleurs, il n'est pas illogique de donner des cas aux adpositions, de par leurs fonctions sémantiques, mais il apparaît que syntaxiquement elles ne sont que rarement distinguées, et pas toujours de la manière dont on l'attendrait du cas sémantiquement équivalent.
 
 \medskip
 
 Pour complètement finaliser les résultats de cet étude et justifier leur applicabilité, il reste à vérifier:
 \begin{itemize}
-		\item si un parser syntaxique\footnote{Annotant les mots avec leurs \textit{reldeps}} entraîné sur une langue dont on aurait fusionné des catégories morphosyntaxiques ayant des signifaction syntaxiques (des vecteurs de \textit{reldep}) proches est justifiable;
-		\item si un parser entraîné sur une première langue peut, sur une langue ayant un système de cas proches (à fusion de cas près), obtenir des résultats dignes d'un parser entraîné sur cette seconde langue.
-	\end{itemize}
+	\item si un parser syntaxique\footnote{Annotant les mots avec leurs \textit{reldeps}} entraîné sur une langue dont on aurait fusionné des catégories morphosyntaxiques ayant des significations syntaxiques (des vecteurs de \textit{reldep}) proches est indistingable probabilistiquement d'un parser syntaxique entraîné sur cette même langue sans fusions;
+	\item si un parser entraîné sur une première langue peut, sur une langue ayant un système de cas proches (à fusion de cas près), obtenir des résultats dignes d'un parser entraîné sur cette seconde langue.
+\end{itemize}
 
 Ceci a été étudié par Mathieu \textsc{Dehouck}\footnote{qui se trouve être mon encadrant} durant mon stage.
-La vérification n'est pas encore statistiquement concluante, mais les premiers essais indiquaient que les deux questions ont des réponses positives.
+La vérification n'est pas encore statistiquement robuste, mais les premiers essais indiquent que les deux questions ont des réponses positives.
 
 
 \appendix
