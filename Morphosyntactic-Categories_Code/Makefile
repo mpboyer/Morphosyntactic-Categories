@@ -1,10 +1,18 @@
 all:
 	make clean
-	make main
+	make report
 	make clean
 
-main:
-	latexmk -pdf report.tex
+fall:
+	make clean
+	make pres
+	make clean
+
+report:
+	latexmk -pdf --shell-escape report.tex
+
+pres:
+	latexmk -pdf --shell-escape pres.tex
 
 clean:
 	latexmk -c;
