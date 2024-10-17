@@ -112,9 +112,9 @@ def tomato(case1, case2):
     for i in range(len(data)):
         data[i] /= case_data_set[i][4]
     t = Tomato()
+    t.n_clusters_ = 2
     t.fit(data)
     plot_tomato(t)
-    # plt.scatter(data[:,0], data[:, 1], marker='.', s=1, c=t.labels_)
     plt.title(
         r"\Large Tomato Algorithm Clusters for \textcolor{vulm}{" + case1 + r"}, \textcolor{yulm!80!black}{" + case2 + "}"
     )
@@ -279,8 +279,5 @@ def cc_manifold_bank_list(treebanks):
 
 
 if __name__ == '__main__':
-    for cas in tqdm(['Abl', 'Acc', 'Dat', 'Gen', 'Loc', 'Nom']):
-        rips_complex(cas)
-        cubical_complex(cas)
     for cas1, cas2 in itertools.combinations(["Acc", "Nom", "Gen"], 2):
         tomato(cas1, cas2)

@@ -163,7 +163,7 @@ def closest_list(treebanks):
 
 
 def closest_graph_list(treebanks):
-    edges = closest_list(treebanks)
+    edges = closest_list(list(treebanks.keys()))
     graphical = graphviz.Digraph(
         f"Graph of Nearest Neighbours for {MODE} in " + ",".join(
             treebanks
@@ -172,12 +172,11 @@ def closest_graph_list(treebanks):
     # graphical.graph_attr['ratio'] = '0.1'
     graphical.graph_attr['engine'] = 'circo'
     for treebank1, treebank2, distances in tqdm(edges, desc="Reporting Edges to the Graph"):
-        treebank1 = treebank1.split("-")[0]
-        treebank2 = treebank2.split("-")[0]
         for n1, (n2, length) in distances.items():
-            cbar = ['plum', 'purple', 'orangered', 'orange', 'goldenrod', 'lawngreen', 'forestgreen', 'springgreen', 'turquoise', 'deepskyblue']
+            cbar = ['plum', 'purple', 'orangered', 'orange', 'goldenrod', 'lawngreen', 'forestgreen', 'springgreen',
+                    'turquoise', 'deepskyblue']
             c = str(cbar[-int(np.floor(5*length))])
-            graphical.edge(f"{treebank1}_{n1}", f"{treebank2}_{n2}", label=f"{length:.3}", color=c, penwidth='2.0')
+            graphical.edge(f"{treebanks[treebank1]}_{n1}", f"{treebanks[treebank2]}_{n2}", label=f"{length:.3}", color=c, penwidth='2.0')
 
     # graphical = graphical.unflatten(stagger=3)
     if MODE:
@@ -210,9 +209,10 @@ def sample_size(treebank):
 studied_languages = ['tr_boun-ud-train', 'sk_snk-ud-train', 'ab_abnc-ud-test', 'eu_bdt-ud-train', 'fi_ftb-ud-train',
                      'hit_hittb-ud-test', 'ta_ttb-ud-train', 'wbp_ufal-ud-test']
 
+russian_czech = {'cs_cltt-ud-dev': 'Czech', 'ru_gsd-ud-dev': 'Russian'}
+
 if __name__ == "__main__":
-    for l in itertools.combinations(studied_languages, 3):
-        closest_graph_list(list(l))
+    closest_graph_list(russian_czech)
     # compute_angles_csv()
     # compute_distances_csv()
     # tabulize_angle_pairs_csv()

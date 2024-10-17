@@ -435,65 +435,75 @@ def sample_size(treebank):
 
 
 def closest_list(treebanks):
-    matrices = list(zip(*(get_matrix_csv(t) for t in treebanks)))
-    print(matrices)
+    matrices = list(get_matrix_csv(t) for t in treebanks)
     result = []
-    for i1, m1, i2, m2 in itertools.product(enumerate(matrices), enumerate(matrices)):
+    for (i1, m1), (i2, m2) in tqdm(
+            itertools.combinations(enumerate(matrices), 2), desc="Computing Distances", colour="#7d1dd3",
+            total=len(matrices) * (len(matrices) - 1) / 2
+            ):
+
         distances = np.array([[0. for _ in m2[0]] for _ in m1[0]])
+        t1 = treebanks[i1]
+        t2 = treebanks[i2]
         for i in range(len(m1[0])):
             for j in range(len(m2[0])):
                 distances[i, j] = distance(m1[1][:, i], m2[1][:, j])
+
         pair_result_dict = {}
         for row, c in enumerate(m1[0]):
             d = min(enumerate(distances[row, :]), key=itemgetter(1))
             pair_result_dict[c] = m2[0][d[0]], d[1]
+        result.append((t1, t2, pair_result_dict))
+
+        pair_result_dict = {}
         for column, c in enumerate(m2[0]):
             d = min(enumerate(distances[:, column]), key=itemgetter(1))
             pair_result_dict[c] = m1[0][d[0]], d[1]
-        result.append((treebanks[i1], treebanks[i2], pair_result_dict))
+        result.append((t2, t1, pair_result_dict))
 
     return result
 
 
 def closest_graph_list(treebanks):
-    edges = closest_list(treebanks)
+    edges = closest_list(list(treebanks.keys()))
     graphical = graphviz.Digraph(
-        f"Graph of Nearest Neighbours for {MODE} Features in " + ",".join(
+        f"Graph of Nearest Neighbours on Cases for {MODE} in " + ",".join(
             treebanks
-        ) if MODE else f"Graph of Nearest Neighbours for {MODE} Features in " + ",".join(treebanks)
+        ) if MODE else f"Graph of Nearest Neighbours on Cases in " + ",".join(treebanks)
     )
-    for treebank1, treebank2, distances in edges:
-        treebank1 = treebank1.split("-")[0]
-        treebank2 = treebank2.split("-")[0]
+    # graphical.graph_attr['ratio'] = '0.1'
+    graphical.graph_attr['engine'] = 'circo'
+    for treebank1, treebank2, distances in tqdm(edges, desc="Reporting Edges to the Graph"):
         for n1, (n2, length) in distances.items():
-            graphical.edge(f"{treebank1}_{n1}", f"{treebank2}_{n2}", label=f"{length:.3}")
+            cbar = ['plum', 'purple', 'orangered', 'orange', 'goldenrod', 'lawngreen', 'forestgreen', 'springgreen',
+                    'turquoise', 'deepskyblue']
+            c = str(cbar[-int(np.floor(5*length))])
+            graphical.edge(f"{treebanks[treebank1]} {n1}", f"{treebanks[treebank2]} {n2}", label=f"{length:.3}", color=c, penwidth='2.0')
+
+    # graphical = graphical.unflatten(stagger=3)
     if MODE:
-        graphical.render(f"Figures/GNN/gnn_{MODE}_Only_" + "_".join(treebanks), format="pdf")
-        try:
-            os.remove(f"Figures/GNN/gnn_{MODE}_Only_" + "_".join(treebanks))
-        except FileNotFoundError:
-            pass
+        graphical.render(f"Figures/GNN/gnn_{MODE}_Case_Only_" + "_".join(treebanks), format="pdf")
     else:
-        graphical.render(f"Figures/GNN/gnn_" + "_".join(treebanks), format="pdf")
-        try:
-            os.remove(f"Figures/GNN/gnn_" + "_".join(treebanks))
-        except FileNotFoundError:
-            pass
+        graphical.render("Figures/GNN/gnn_Case_Only_" + "_".join(treebanks), format="pdf")
 
 
 studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
 
+russian_czech = {'cs_cltt-ud-dev': 'Czech', 'ru_gsd-ud-dev': 'Russian'}
+
+
 if __name__ == "__main__":
-    # compute_distances_csv()
-    # tabulize_angle_pairs_csv()
-    # compute_angles_csv()
-    results = []
-    banks = banks_with_case()
-    for bank1, bank2 in tqdm(itertools.combinations(banks, 2), total=len(banks) * (len(banks) - 1) /  2):
-        t1, m1, t2, m2 = closest(bank1, bank2)
-        r = "\n".join(f"{c} in {t1} closest to {m1[c][0]} in {t2}" for c in m1 if c in m2 and m1[c][0] != c)
-        r += "\n"
-        r += "\n".join(f"{c} in {t2} closest to {m2[c][0]} in {t1}" for c in m2 if c in m1 and m2[c][0] != c)
-        results.append(r)
-    with open(f"{SAVE_DIR}/diff.txt", 'w') as f:
-        f.write("\n\n".join(results))
+    # # compute_distances_csv()
+    # # tabulize_angle_pairs_csv()
+    # # compute_angles_csv()
+    # results = []
+    # banks = banks_with_case()
+    # for bank1, bank2 in tqdm(itertools.combinations(banks, 2), total=len(banks) * (len(banks) - 1) /  2):
+    #     t1, m1, t2, m2 = closest(bank1, bank2)
+    #     r = "\n".join(f"{c} in {t1} closest to {m1[c][0]} in {t2}" for c in m1 if c in m2 and m1[c][0] != c)
+    #     r += "\n"
+    #     r += "\n".join(f"{c} in {t2} closest to {m2[c][0]} in {t1}" for c in m2 if c in m1 and m2[c][0] != c)
+    #     results.append(r)
+    # with open(f"{SAVE_DIR}/diff.txt", 'w') as f:
+    #     f.write("\n\n".join(results))
+    closest_graph_list(russian_czech)

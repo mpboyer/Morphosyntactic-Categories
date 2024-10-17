@@ -1,0 +1,16 @@
+digraph "Graph of Nearest Neighbours on Cases for Nouns in cs_cltt-ud-dev,ru_gsd-ud-dev" {
+	graph [engine=circo]
+	"Czech Acc" -> "Russian Acc" [label=0.254 color=deepskyblue penwidth=2.0]
+	"Czech Dat" -> "Russian Dat" [label=0.362 color=deepskyblue penwidth=2.0]
+	"Czech Gen" -> "Russian Gen" [label=0.0905 color=plum penwidth=2.0]
+	"Czech Ins" -> "Russian Ins" [label=0.406 color=turquoise penwidth=2.0]
+	"Czech Loc" -> "Russian Dat" [label=0.251 color=deepskyblue penwidth=2.0]
+	"Czech Nom" -> "Russian Nom" [label=0.175 color=plum penwidth=2.0]
+	"Russian Acc" -> "Czech Acc" [label=0.254 color=deepskyblue penwidth=2.0]
+	"Russian Dat" -> "Czech Loc" [label=0.251 color=deepskyblue penwidth=2.0]
+	"Russian Gen" -> "Czech Gen" [label=0.0905 color=plum penwidth=2.0]
+	"Russian Ins" -> "Czech Ins" [label=0.406 color=turquoise penwidth=2.0]
+	"Russian Loc" -> "Czech Loc" [label=0.362 color=deepskyblue penwidth=2.0]
+	"Russian Nom" -> "Czech Nom" [label=0.175 color=plum penwidth=2.0]
+	"Russian Par" -> "Czech Loc" [label=0.708 color=springgreen penwidth=2.0]
+}

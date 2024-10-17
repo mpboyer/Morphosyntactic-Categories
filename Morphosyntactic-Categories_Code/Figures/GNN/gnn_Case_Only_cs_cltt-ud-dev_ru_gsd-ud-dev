@@ -1,0 +1,16 @@
+digraph "Graph of Nearest Neighbours on Cases in cs_cltt-ud-dev,ru_gsd-ud-dev" {
+	graph [engine=circo]
+	"Czech Acc" -> "Russian Ins" [label=0.264 color=deepskyblue penwidth=2.0]
+	"Czech Dat" -> "Russian Ins" [label=0.384 color=deepskyblue penwidth=2.0]
+	"Czech Gen" -> "Russian Gen" [label=0.196 color=plum penwidth=2.0]
+	"Czech Ins" -> "Russian Ins" [label=0.284 color=deepskyblue penwidth=2.0]
+	"Czech Loc" -> "Russian Ins" [label=0.428 color=turquoise penwidth=2.0]
+	"Czech Nom" -> "Russian Nom" [label=0.251 color=deepskyblue penwidth=2.0]
+	"Russian Acc" -> "Czech Acc" [label=0.295 color=deepskyblue penwidth=2.0]
+	"Russian Dat" -> "Czech Ins" [label=0.391 color=deepskyblue penwidth=2.0]
+	"Russian Gen" -> "Czech Gen" [label=0.196 color=plum penwidth=2.0]
+	"Russian Ins" -> "Czech Acc" [label=0.264 color=deepskyblue penwidth=2.0]
+	"Russian Loc" -> "Czech Ins" [label=0.416 color=turquoise penwidth=2.0]
+	"Russian Nom" -> "Czech Nom" [label=0.251 color=deepskyblue penwidth=2.0]
+	"Russian Par" -> "Czech Dat" [label=0.923 color=forestgreen penwidth=2.0]
+}

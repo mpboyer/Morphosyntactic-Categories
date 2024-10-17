@@ -237,9 +237,9 @@ def tsne(case1, case2):
     plt.ylabel('Component 2', fontsize=20)
 
     if files.interactive:
-        title = f"Analyse t-SNE àn deux Composantes sur les {fronce(MODE)} pour {case1}, {case2}" if MODE else f"Analyse t-SNE à deux Composantes sur {case1}, {case2}"
+        title = f"Analyse t-SNE à deux Composantes sur les {fronce(MODE)} pour {case1}, {case2}" if MODE else f"Analyse t-SNE à deux Composantes sur {case1}, {case2}"
     else:
-        title = "Analyse t-SNE à deux Composantes sur\n" + f"les {fronce(MODE)} " + r"\textcolor{vulm}{" + f"{case1}" + r"}, \textcolor{yulm!80!black}{" + f"{case2}" + r"}" if MODE else "Analyse t-SNE à deux Composantes\n sur " + r"\textcolor{vulm}{" + f"{case1}" + r"}, \textcolor{yulm!80!black}{" + f"{case2}" + r"}"
+        title = "2D t-SNE Analysis on \n" + f"{MODE} " + r"for \textcolor{vulm}{" + f"{case1}" + r"}, \textcolor{yulm!80!black}{" + f"{case2}" + r"}" if MODE else "2D t-SNE Analysis \n for " + r"\textcolor{vulm}{" + f"{case1}" + r"}, \textcolor{yulm!80!black}{" + f"{case2}" + r"}"
     plt.title(title, fontsize=20)
     targets = [case1, case2]
     keep_indices = case_data_set['Case'] == case1
@@ -454,9 +454,5 @@ def get_cases(languages):
 
 
 if __name__ == '__main__':
-    studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
-    tsne_lang_list(studied_languages)
-
-    pca("Gen", 'Nom')
-    for cas1, cas2 in itertools.combinations(['Acc', 'Gen', 'Nom'], 2):
+    for cas1, cas2 in itertools.combinations(['Gen', 'Nom'], 2):
         tsne(cas1, cas2)
