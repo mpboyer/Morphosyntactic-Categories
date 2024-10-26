@@ -1,5 +1,7 @@
 import joblib
 import itertools
+
+import numpy
 import pandas
 import scipy.linalg
 from tqdm import tqdm
@@ -205,7 +207,7 @@ def compute_angles_csv():
             vector = [0. for _ in basis]
             for coordinate, base_vector in enumerate(basis):
                 vector[coordinate] = case_dict.get(base_vector, 0.) / case_dict["Total"] if case_dict[
-                                                                                                "Total"] != 0. else 0.
+                    "Total"] != 0. else 0.
 
             if case_space_matrix.shape[1]:
                 a = angle(vector, case_space_matrix)
@@ -440,14 +442,18 @@ def closest_list(treebanks):
     for (i1, m1), (i2, m2) in tqdm(
             itertools.combinations(enumerate(matrices), 2), desc="Computing Distances", colour="#7d1dd3",
             total=len(matrices) * (len(matrices) - 1) / 2
-            ):
-
+    ):
         distances = np.array([[0. for _ in m2[0]] for _ in m1[0]])
         t1 = treebanks[i1]
         t2 = treebanks[i2]
         for i in range(len(m1[0])):
             for j in range(len(m2[0])):
                 distances[i, j] = distance(m1[1][:, i], m2[1][:, j])
+        print(m1[0], m2[0])
+        if MODE:
+            numpy.savetxt(f"Figures/GNN/distmat_{MODE}_" + '_'.join(treebanks) + ".csv", distances, delimiter=',', fmt='%.3f', newline='\n')
+        else:
+            numpy.savetxt(f"Figures/GNN/distmat_" + '_'.join(treebanks) + ".csv", distances, delimiter=',', fmt='%.3f', newline='\n')
 
         pair_result_dict = {}
         for row, c in enumerate(m1[0]):
@@ -469,16 +475,19 @@ def closest_graph_list(treebanks):
     graphical = graphviz.Digraph(
         f"Graph of Nearest Neighbours on Cases for {MODE} in " + ",".join(
             treebanks
-        ) if MODE else f"Graph of Nearest Neighbours on Cases in " + ",".join(treebanks)
+        ) if MODE else "Graph of Nearest Neighbours on Cases in " + ",".join(treebanks)
     )
     # graphical.graph_attr['ratio'] = '0.1'
     graphical.graph_attr['engine'] = 'circo'
     for treebank1, treebank2, distances in tqdm(edges, desc="Reporting Edges to the Graph"):
         for n1, (n2, length) in distances.items():
-            cbar = ['plum', 'purple', 'orangered', 'orange', 'goldenrod', 'lawngreen', 'forestgreen', 'springgreen',
-                    'turquoise', 'deepskyblue']
-            c = str(cbar[-int(np.floor(5*length))])
-            graphical.edge(f"{treebanks[treebank1]} {n1}", f"{treebanks[treebank2]} {n2}", label=f"{length:.3}", color=c, penwidth='2.0')
+            cbar = ['violet', '#cea2fd', 'pink', 'magenta', 'red', '#ffb07c', 'orange', 'gold',
+                    'yellow', 'chartreuse', 'green', 'turquoise', 'lightblue', 'royalblue', 'darkblue', 'deeppurple']
+            c = str(cbar[int(np.floor((len(cbar) / 2) * length))])
+            graphical.edge(
+                f"{treebanks[treebank1]} {n1}", f"{treebanks[treebank2]} {n2}", label=f"{length:.3f}", color=c,
+                penwidth='2.0'
+            )
 
     # graphical = graphical.unflatten(stagger=3)
     if MODE:
@@ -489,7 +498,27 @@ def closest_graph_list(treebanks):
 
 studied_languages = ['tr', 'sk', 'ab', 'eu', 'fi', 'hit', 'ta', 'wbp']
 
-russian_czech = {'cs_cltt-ud-dev': 'Czech', 'ru_gsd-ud-dev': 'Russian'}
+russian_czech = {
+    'cs_cltt-ud-dev': 'Czech',
+    'ru_gsd-ud-dev': 'Russian'}
+
+
+def tmp():
+    pcbar = ['violet', 'lavender', 'pink', 'magenta', 'red', 'peach', 'orange', 'gold',
+             'yellow', 'chartreuse', 'green', 'turquoise', 'light blue', 'royal blue', 'dark blue', 'deep purple']
+    cbar = list(f"xkcd:{t}" for t in pcbar)
+    import matplotlib as mpl
+    from matplotlib import pyplot as plt
+    from matplotlib.colors import LinearSegmentedColormap
+    fig, ax = plt.subplots(figsize=(1, 6), layout='constrained')
+    cbar2 = LinearSegmentedColormap.from_list('cbar', cbar)
+    norm = mpl.colors.Normalize(vmin=0, vmax=2)
+    ax.invert_yaxis()
+    fig.colorbar(
+        mpl.cm.ScalarMappable(norm=norm, cmap=cbar2),
+        cax=ax, ticks=np.arange(0, 2.1, 0.2)
+    )
+    plt.savefig("bar.pdf", format="pdf")
 
 
 if __name__ == "__main__":
@@ -506,4 +535,5 @@ if __name__ == "__main__":
     #     results.append(r)
     # with open(f"{SAVE_DIR}/diff.txt", 'w') as f:
     #     f.write("\n\n".join(results))
-    closest_graph_list(russian_czech)
+    closest_list(['cs_cltt-ud-dev', 'cs_cltt-ud-dev'])
+    closest_list(['ru_gsd-ud-dev', 'ru_gsd-ud-dev'])

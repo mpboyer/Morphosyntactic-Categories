@@ -279,5 +279,5 @@ def cc_manifold_bank_list(treebanks):
 
 
 if __name__ == '__main__':
-    for cas1, cas2 in itertools.combinations(["Acc", "Nom", "Gen"], 2):
-        tomato(cas1, cas2)
+    tomato("Gen", "Nom")
+    tomato("Nom", "Gen")
