@@ -309,8 +309,8 @@ While this is not enough for us to have a classification algorithm, it hints tow
 
 To confirm this hunch we tried to use ToMATo \cite{ToMATo}, a persistence based clustering algorithm, which uses sub-level sets of a function to design a persistence diagram and derive clusters. 
 The implementation that was used comes from \newcite{Gudhi}.
+The idea behind ToMATo is to compute the density at each point in the representation space and to cluster points using geodesics: every point above a certain elevation and inside the same geodesic belongs in the same cluster (the same hill) and every point below is ignored.
 
-The idea behind ToMATo is to compute the density at each point in the representation space and to cluster points using geodesics : every point above a certain elevation and inside the same geodesic belongs in the same cluster (the same hill) and every point below is ignored.
 By repeating the process for different elevations we can see clusters appear and merge.
 When two clusters merge, the one with the highest elevation absorbs the other and we say that the lowest one dies.
 One can then represent on a diagram the birth and death time of each cluster.
