@@ -13,7 +13,6 @@ Administratif/*
 */.idea/*
 *.idea/*
 *__pycache*
-*Proximities/
 Old_Sources/
+*Proximities*
 *AllFeatures*
-*Adpos*

@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,nmod,obl
+tr_kenet-ud-train,15398,0,2,,,2.0
+tr_framenet-ud-train,2288,0,2,,1.0,1.0
+qtd_sagt-ud-dev,801,0,1,1.0,,
+tr_penn-ud-train,14850,0,2,1.0,,1.0

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,iobj,obj,obl
+ar_nyuad-ud-train,15789,0,10,1.0,9.0,
+gv_cadhan-ud-test,1164,0,1,,,1.0
+gv_cadhan-ud-train,1172,0,1,,,1.0

@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+ta_ttb-ud-train,400,0,3,2,1.0
+ta_ttb-ud-dev,80,0,1,1,

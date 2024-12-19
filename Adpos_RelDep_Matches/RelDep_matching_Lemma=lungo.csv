@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,orphan
+it_old-ud-train,1748,0,8,,7.0,1.0
+it_old-ud-dev,316,0,2,,2.0,
+it_old-ud-test,338,0,1,1.0,,
+it_pud-ud-test,1000,0,2,1.0,1.0,
+it_isdt-ud-test,482,0,2,,2.0,
+it_isdt-ud-train,13121,0,17,3.0,14.0,
+it_isdt-ud-dev,564,0,2,1.0,1.0,
+it_partut-ud-test,153,0,1,,1.0,
+it_partut-ud-train,1781,0,1,,1.0,
+it_markit-ud-test,340,0,1,,1.0,
+it_postwita-ud-train,5368,0,1,,1.0,
+it_vit-ud-train,8277,0,7,1.0,6.0,
+it_vit-ud-test,1067,0,1,,1.0,
+it_vit-ud-dev,743,0,1,,1.0,

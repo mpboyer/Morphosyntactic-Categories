@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,orphan,root
+orv_ruthenian-ud-test,390,0,1,,1.0
+orv_ruthenian-ud-train,2789,0,2,2.0,

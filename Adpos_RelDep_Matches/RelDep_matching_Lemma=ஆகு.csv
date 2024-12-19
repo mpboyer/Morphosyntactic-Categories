@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,nmod,obl,root
+ta_ttb-ud-train,400,0,19,1.0,2.0,2.0,14,
+ta_ttb-ud-dev,80,0,6,,,,5,1.0
+ta_ttb-ud-test,120,0,11,,,1.0,10,

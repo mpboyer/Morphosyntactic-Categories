@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,csubj,dep,nmod,obj,obl,parataxis,root,xcomp
+zh_gsd-ud-dev,500,0,18,1.0,9,3.0,,,,1.0,1,,1.0,2.0
+zh_gsd-ud-test,500,0,25,1.0,8,2.0,,,8.0,,2,,1.0,3.0
+zh_gsd-ud-train,3997,0,181,2.0,45,32.0,1.0,,43.0,1.0,19,2.0,11.0,25.0
+zh_pud-ud-test,1000,0,39,2.0,6,1.0,,4.0,,1.0,5,,,20.0
+zh_hk-ud-test,1004,0,5,,4,,,,,,1,,,

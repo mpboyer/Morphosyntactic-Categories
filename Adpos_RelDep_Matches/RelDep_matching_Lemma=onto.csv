@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+en_gum-ud-train,9521,0,16,1.0,15
+en_gum-ud-test,1285,0,1,,1
+en_gum-ud-dev,1341,0,1,,1
+en_lines-ud-train,3176,0,8,1.0,7
+en_lines-ud-dev,1032,0,1,,1
+en_lines-ud-test,1035,0,2,,2
+en_ewt-ud-test,2077,0,3,,3
+en_ewt-ud-dev,2001,0,1,,1
+en_ewt-ud-train,12544,0,7,,7
+pcm_nsc-ud-dev,990,0,4,,4
+pcm_nsc-ud-train,7279,0,1,,1
+en_pud-ud-test,1000,0,1,,1

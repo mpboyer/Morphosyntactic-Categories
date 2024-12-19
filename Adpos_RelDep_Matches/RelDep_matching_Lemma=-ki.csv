@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod
+az_tuecl-ud-test,108,0,1,1
+tr_gb-ud-test,2880,0,7,7

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+en_gum-ud-train,9521,0,2,1.0,1
+en_gum-ud-test,1285,0,2,,2
+en_ewt-ud-train,12544,0,1,,1

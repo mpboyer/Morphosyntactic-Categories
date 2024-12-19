@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,obl
+ky_tuecl-ud-test,145,0,2,,2.0
+tt_nmctt-ud-test,148,0,1,,1.0
+kk_ktb-ud-test,1047,0,8,6.0,2.0
+kk_ktb-ud-train,31,0,1,1.0,

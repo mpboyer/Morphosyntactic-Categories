@@ -1,0 +1,462 @@
+%
+% File nodalida2025.tex
+%
+% Contact: Sara Stymne
+% Email:  sara.stymne@lingfil.uu.se
+%
+% Based on the instruction file for NoDaLiDa 2023 by Mark Fishel which in turn were
+% Based on the instruction file for NoDaLiDa 2021 by Lilja Øvrelid which in turn were
+% Based on the instruction file for NoDaLiDa 2019 by Barbara Plank and Mareike Hartmann which in turn were based on the instruction files from NoDaLiDa 2017 and 2015 by
+% Beata Megyesi (beata.megyesi@lingfil.uu.se) and EACL 2014
+% which in turn was based on the instruction files for previous 
+% ACL and EACL conferences. The BibTeX file is based on NAACL 2019
+% style files, which in turn are based on style files for ACL 2018 and NAACL 2018, which were
+% Based on the style files for ACL-2015, with some improvements
+% taken from the NAACL-2016 style
+% Based on the style files for ACL-2014, which were, in turn, 
+% based on ACL-2013, ACL-2012, ACL-2011, ACL-2010, ACL-IJCNLP-2009, 
+% EACL-2009, IJCNLP-2008...
+% Based on the style files for EACL 2006 by 
+% e.agirre@ehu.es or Sergi.Balari@uab.es
+% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt]{article}
+\usepackage{nodalida2025}
+\usepackage{times}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{latexsym}
+\usepackage{diagbox}
+\usepackage{float}
+\usepackage{nicematrix}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathrsfs, stmaryrd}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{hyperref}
+\usepackage{tikz-dependency}
+
+\newcommand{\scsf}[1]{\textsc{\textsf{#1}}} % Descriptive Categories
+
+\captionsetup{belowskip=0pt, aboveskip=6pt}
+
+\pgfplotsset{compat=1.18}
+\pgfplotstableset{
+  /color cells/min/.initial=0, 
+  /color cells/max/.initial=1000, 
+  /color cells/textcolor/.initial=, 
+  %
+  % Usage: 'color cells={min=<value which is mapped to lowest color>, 
+  %  max = <value which is mapped to largest>}
+  color cells/.code={%
+    \pgfqkeys{/color cells}{#1}%
+    \pgfkeysalso{%
+      postproc cell content/.code={%
+        %
+        \begingroup
+        %
+        % acquire the value before any number printer changed
+        % it:
+        \pgfkeysgetvalue{/pgfplots/table/@preprocessed cell content}\value
+        \ifx\value\empty
+          \endgroup
+        \else
+        \pgfmathfloatparsenumber{\value}%
+        \pgfmathfloattofixed{\pgfmathresult}%
+        \let\value=\pgfmathresult
+        %
+        % map that value:
+        \pgfplotscolormapaccess
+          [\pgfkeysvalueof{/color cells/min}:\pgfkeysvalueof{/color cells/max}]
+          {\value}
+          {\pgfkeysvalueof{/pgfplots/colormap name}}%
+        % now, \pgfmathresult contains {<R>, <G>, <B>}
+        % 
+        % acquire the value AFTER any preprocessor or
+        % typesetter (like number printer) worked on it:
+        \pgfkeysgetvalue{/pgfplots/table/@cell content}\typesetvalue
+        \pgfkeysgetvalue{/color cells/textcolor}\textcolorvalue
+        %
+        % tex-expansion control
+        % see https://tex.stackexchange.com/questions/12668/where-do-i-start-latex-programming/27589#27589
+        \toks0=\expandafter{\typesetvalue}%
+        \xdef\temp{%
+          \noexpand\pgfkeysalso{%
+            @cell content={%
+              \noexpand\cellcolor[rgb]{\pgfmathresult}%
+              \noexpand\definecolor{mapped color}{rgb}{\pgfmathresult}%
+              \ifx\textcolorvalue\empty
+              \else
+                \noexpand\color{\textcolorvalue}%
+              \fi
+              \the\toks0 %
+            }%
+          }%
+        }%
+        \endgroup
+        \temp
+        \fi
+      }%
+    }%
+  }
+}
+%\aclfinalcopy % Uncomment this line for the final submission
+
+%\title{Instructions for NoDaLiDa/Baltic-HLT 2025 Proceedings}
+
+
+
+\title{Comparative Concepts or Descriptive Categories: a UD Case study}
+
+
+\author{Anonymous Author \\
+ Affiliation / Address line 1 \\
+ Affiliation / Address line 2 \\
+ Affiliation / Address line 3 \\
+ {\tt email@domain} \\\And
+ Anonymouser Author \\
+ Affiliation / Address line 1 \\
+ Affiliation / Address line 2 \\
+ Affiliation / Address line 3 \\
+ {\tt email@domain} \\\And
+ Anonymousest Author \\
+ Affiliation / Address line 1 \\
+ Affiliation / Address line 2 \\
+ Affiliation / Address line 3 \\
+ {\tt email@domain} \\}
+ 
+% \author{Mathieu Dehouck \\ % J'ai mis nos noms dans le préordre défini par le nombre de `t` dans le prénom.
+%  Affiliation / Address line 1 \\
+%  Affiliation / Address line 2 \\
+%  Affiliation / Address line 3 \\
+%  {\tt email@domain} \\\And
+%  Matthieu Pierre Boyer \\
+%  Lattice\\
+%  DI ENS\\
+%  Paris, France\\ 
+%  {\tt matthieu.boyer@ens.fr} \\}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+In this paper, we present a series of methods used to quantify the soundness of using the same names to annotate cases in different languages.
+We follow the idea described by Martin Haspelmath that descriptive categories and comparative concepts are different objects and we look at the necessary simplification taken by the Universal Dependencies project. 
+We thus compare cases in closely related languages as belonging to commensurable descriptive categories.
+Then we look at the corresponding underlying comparative concepts.
+Before eventually looking at the possibility to assign cases to adpositions.
+%We use our findings to derive conditions for coherent annotations as well as ways to annotate replacements of cases in case-free languages. 
+\end{abstract}
+
+\section{Introduction}
+
+\begin{quote}
+    There is a fundamental distinction between language-particular categories of languages (which descriptive linguists must describe by descriptive categories of their descriptions) and comparative concepts (which comparative linguists may use to compare languages).
+    {\begin{flushright}\textit{Martin Haspelmath} in \cite{Has18}\end{flushright}}
+\end{quote}
+
+Language description and language comparison are two intertwined yet distinct endeavours.
+Language description is often done in a language different from the one being described (many grammars have been written in English, French, Russian, Spanish and Portuguese for example) and often uses a conventionalised descriptive meta-language associated with a given descriptive school.
+Language comparison relies on the previous step of language description as it main data source but also needs a common meta-language to name the various phenomena under study.
+
+In his paper, \newcite{Has18} warns us against the confusion of the different meta-languages (the descriptive languages used in each individual description and the common comparative meta-language).
+He advocates for a careful choice of terms when describing similar categories across multiple languages, even when the similarities compel us to use the same term.
+%That is, one should not use a same word to describe two different concepts in two different languages.
+That is, one should avoid using a single term to describe two categories from two different languages.
+Even more so, when this term is also used as a comparative concept which then further increases the risk of cross-meta-language confusion.
+
+With all its qualities, the Universal Dependencies (UD) project \cite{UD214} puts itself exactly in this somewhat uncomfortable situation.
+One of the main aims of the project is to foster linguistic typological research, and thus it proposes a common annotation scheme for creating treebanks for all natural languages \cite{UDv2}.
+Figure \ref{fig:ud} depicts the dependency tree of a Turkish sentence as an example.
+While the scheme has means to accommodate language specific phenomena, its core is language agnostic and treebank creators are compelled to reuse previously defined language specific extensions when annotating similar structures in new languages as a mean to increase the overall consistency and comparability of the corpora.
+However, the annotation also needs to be sound from the point of view of each annotated language (see points 1 and 2 of the presentation page at \url{https://universaldependencies.org/introduction.html}).
+Each individual treebank can thus be seen as a kind of description of its language.
+Indeed, that is exactly what \newcite{herrera-etal-2024-sparse} do in their work, where they use sparse representation methods to try to extract a grammar sketch for a language from its annotated treebank. 
+In UD, the same terms are thus used both as comparative concepts and as descriptive categories for all the languages that express that category.
+
+\begin{figure*}
+\centering
+  \begin{dependency}
+    \begin{deptext}[column sep=.05cm, row sep=.01cm]
+      Eşeklerin\& sırtlarına\& yüklenmiş\& sepetlerle\&[.07cm] taşınırdı\&[.07cm] üzümler\&.\\
+      NOUN \& NOUN \& VERB \& NOUN \& VERB \& NOUN \& PUNCT\\
+      \tt Case=Gen \&\tt Case=Dat \& \&\tt Case=Ins \& \&\tt Case=Nom \& \\
+      Number=Plur \& Number=Plur \& Number=Sing \& Number=Plur \& Number=Sing \& \& \\
+    \end{deptext}
+    \deproot{5}{root}
+    \depedge{1}{2}{nmod:poss}
+    \depedge{2}{3}{obl}
+    \depedge{3}{4}{acl}
+    \depedge{4}{5}{obl}
+    \depedge{6}{5}{nsubj}
+    \depedge{7}{5}{punct}
+    %
+    % \wordgroup{3}{1}{2}{donkey}
+    % \wordgroup{3}{3}{3}{carry}
+    % \wordgroup{3}{4}{4}{baskets}
+    % \wordgroup{3}{5}{5}{transport}
+    % \wordgroup{3}{6}{6}{grapes}
+    % \groupedge[edge below]{donkey}{carry}{obl}{2ex}
+    % \groupedge[edge below]{carry}{baskets}{acl}{2ex}
+    % \groupedge[edge below]{baskets}{transport}{obl}{2ex}
+    % \groupedge[edge below]{grapes}{transport}{nsubj}{2ex}
+  \end{dependency}
+  \caption{Representation of the dependency graph of the Turkish sentence "Eşeklerin sırtlarına yüklenmiş sepetlerle taşınırdı üzümler." from UD's Turkish BOUN corpus, meaning "Grapes were carried in baskets loaded on donkeys' backs."}
+  \label{fig:ud}
+\end{figure*}
+%# text = Eşeklerin sırtlarına yüklenmiş sepetlerle taşınırdı üzümler.
+%1    Eşeklerin    eşek  NOUN  _    Case=Gen|Number=Plur|Person=3  2    nmod:poss    _    _
+%2    sırtlarına   sırt  NOUN  _    Case=Dat|Number=Plur|Number[psor]=Sing|Person=3|Person[psor]=3 3    obl   _    _
+%3    yüklenmiş    yükle  VERB  _    Evident=Nfh|Number=Sing|Person=3|Polarity=Pos|Tense=Past|Voice=Pass   4    acl   _    _
+%4    sepetlerle   sepet  NOUN  _    Case=Ins|Number=Plur|Person=3  5    obl   _    _
+%5    taşınırdı    taşın  VERB  _    Aspect=Hab|Evident=Fh|Number=Sing|Person=3|Polarity=Pos|Tense=Pres   0    root  _    _
+%6    üzümler üzüm  NOUN  _    Case=Nom|Number=Plur|Person=3  5    nsubj  _    SpaceAfter=No
+%7    .    .    PUNCT  Stop  _    5    punct  _    SpacesAfter=\n
+
+
+In this study, we investigate the descriptive-comparative confusion arising from UD's annotation scheme at the morphosyntactic level.
+We especially focused on the category of case and its different realisations across several languages with the following question in mind: 
+Do cases sharing their name have the same value across different languages?
+The main reason to focus on the case category, is that it has both strongly syntactic and strongly semantic values.
+For example, in languages with a case marking the subject of both transitive and intransitive verbs, this case is usually called \scsf{nominative}\footnote{In this paper, we use faces to distinguish between \scsf{descriptive categories}, \textsc{comparative concepts} and UD's \texttt{annotation scheme}.} based on its syntactic properties. 
+If the same language has another case marking the "together with" relation, it will usually be called \scsf{comitative} on semantic ground.
+
+This study should provide insight on the extent to which one can transfer information about a feature from a language to another simply by reusing the same name (using the same descriptive category).
+In the end, it could help improve cross-lingual learning scenarios where we want to use as much information from other languages as we can, even at the morphological and syntactic levels. 
+
+%the corpora in UD version 2.14 \cite{UD214}.
+
+%For each corpus, we gather the dependency relations (DepRel) of all the words with a case annotation into probability distributions for all cases present in the corpus. 
+
+This paper is organised as follows.
+Section 2 gives an overview of UD's guidelines on case annotation and how these are realised in practice.
+Section 3 describes how we assign representations to cases.
+Section 4 looks at the similarity between cases from different languages as if they were descriptive categories.
+Section 5 then turns to looking at cases as comparative concepts applied to each individual treebank.
+Section 6 takes an in between look directly at the cases from all the treebanks.
+Section 7 investigates the possibility of assigning cases directly to adpositions.
+Eventually, Section 8 concludes this paper.
+%We will first give a computable representation of cases, which we will then use to look at the relevance of using a same name for descriptive categories in multiple language. Then, we change our point of view and assume UD defines comparative concepts and extract prototypes of those concepts. We will then look at visual methods we might use to distinguish cases. Finally, we will study the different ways case markers are used in UD and whether this might be used to homogenise the markers on adpositions. (!!!!!!!!!!!)
+
+\subsection{Theoretical Note}
+In this work, we decided to question the relevance of using the same name to refer to cases in different languages.
+%This means that we assume the existence in each language of interest of a category that we name case and that these categories are commensurable. 
+This assumes the existence of a commensurable case category in each language of interest.
+There is however no reason to take it for granted.
+%This could in fact also be questioned.
+
+We decided to take a very pragmatic stance.
+Universal Dependencies (and indeed, many linguists) assumes a commensurable case category existing across languages.
+So, we acknowledge this choice. 
+We neither question the existence of a case category in different languages, nor do we question the number of values displayed by said category in each language of interest.
+We question the relevance of the names given to the different values in different languages.
+
+\input{case feature in UD}
+
+
+\input{representation}
+
+
+\input{descriptive}
+
+\input{comparative}
+
+
+\section{Case Clustering}
+
+In this section we apply data visualisation techniques as a mean to look at the general landscape of case across languages.
+This is a way to explore similarity between cases for many languages at once and without assuming a prototypical representation for each case.
+
+From a practical annotation perspective, this is interesting since it is more likely too capture the underlying structure of UD's annotations.
+Indeed, UD's guidelines are sometimes underspecified, which is expected from an annotation scheme whose aim is to be applicable to as many languages as possible.
+Not all use cases and language specific phenomena will have been thought of during the creation of the guidelines.
+Therefore, when annotators stumble upon a new structure that does not lend itself to a straightforward analysis, they will both turn to the guidelines and to other treebanks in order to see how similar phenomena might have been annotated in other languages.
+
+We first used a t-SNE analysis \cite{tSNE} with the hope of seeing well defined clusters.
+However, plotting all the cases at once proved unmanageable and so we resorted to visualising only a pair of cases each time.
+%of finding two clusters, one for each case.
+
+The algorithm consists in looking at the probability distribution generated by the high dimensional vectors representing each instance of the cases and generating a distribution over pairs of those vectors in a way that pairs of \emph{close} vectors are assigned higher probabilities. 
+Then t-SNE defines a probability distribution on pairs of 2D points that minimizes the Kullback-Leibler divergence between the two distributions. 
+
+
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[width=.9\linewidth]{Images/tsne_Gen_Nom.pdf}
+    \end{center}
+    \caption{Representation of 2D t-SNE analysis of \scsf{genitive} and \scsf{nominative} profiles gathered on all the words marked for these cases.}
+    \label{fig:tsne1}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[width=.9\linewidth]{Images/tsne_Gen_Nom_Nouns.pdf}
+    \end{center}
+    \caption{Representation of 2D t-SNE analysis of \scsf{genitive} and \scsf{nominative} profiles gathered only on the nouns inflected for these cases.}
+\label{fig:tsne2}
+\end{figure}
+
+Figures \ref{fig:tsne1} and \ref{fig:tsne2} represents the t-SNE applied to all the \scsf{nominatives} and \scsf{genitives} using either the profiles computed on all the words, or just on nouns.
+It seems that the two cases make for clusters, in the sense they can be grouped along distinct directions. 
+While this is not enough for us to have a classification algorithm, it hints towards possible ways to visualise the difference between cases. 
+
+To confirm this hunch we tried to use ToMATo \cite{ToMATo}, a persistence based clustering algorithm, which uses sub-level sets of a function to design a persistence diagram and derive clusters. 
+The implementation that was used comes from \newcite{Gudhi}.
+
+The idea behind ToMATo is to compute the density at each point in the representation space and to cluster points using geodesics : every point above a certain elevation and inside the same geodesic belongs in the same cluster (the same hill) and every point below is ignored.
+By repeating the process for different elevations we can see clusters appear and merge.
+When two clusters merge, the one with the highest elevation absorbs the other and we say that the lowest one dies.
+One can then represent on a diagram the birth and death time of each cluster.
+This is depicted on figure \ref{fig:tomato1} for \scsf{genitives} and \scsf{nominatives}.
+The closer a cluster is to the diagonal the shorter its life and therefore the more likely it is to represent random noise rather than an actual cluster.
+%So there seems to be two or three clusters.
+
+\begin{figure}[h]
+  \centering
+  \vspace*{-12pt}
+  \includegraphics[width=\linewidth]{Images/tomato_Gen_Nom_Nouns.pdf}
+  \caption{Representation of the ToMATo algorithm for \scsf{genitive} and \scsf{nominative} profiles.}
+  \label{fig:tomato1}
+\end{figure}
+
+In figure \ref{fig:tomato1} the algorithm proposes multiple clusters, which couldn't be combined to form better defined clusters. 
+This suggests, as already suggested by figures \ref{fig:tsne1} and \ref{fig:tsne2} that the possible clusters are not well defined and might overlap with each other. 
+To try and measure the overlap of the clusters, we computed a confusion matrix by the method of the $k$-nearest neighbours. 
+
+\begin{table}[h]
+	\centering
+	\pgfplotsset{colormap={CM}{rgb255=(125, 29, 211) color=(pink) rgb255=(255, 229, 0)}, width=\linewidth}
+% \pgfplotstabletypeset[
+% 	color cells={min=0, max=250}, 
+% 	col sep=comma, 
+%   every columns/.style ={}, 
+%   display columns/0/.style={column name={Acc}}, 
+%   display columns/1/.style={column name={Gen}}, 
+%   display columns/2/.style={column name={Loc}}, 
+%   display columns/3/.style={column name={Nom}}, 
+% ]{
+% 	130, 62, 51, 34
+% 	69, 156, 16, 42
+% 	35, 57, 29, 34
+% 	29, 28, 9, 227
+% }
+\begin{tabular}{|c|cccc|}%
+    \hline
+  \diagbox{Pred.}{Target} & Acc & Gen & Loc & Nom\\%
+  \hline
+  Acc & \cellcolor [rgb]{0.99998, 0.75583, 0.72043}\definecolor {mapped color}{rgb}{0.99998, 0.75583, 0.72043}\pgfutilensuremath {130}&\cellcolor [rgb]{0.7429, 0.42914, 0.78905}\definecolor {mapped color}{rgb}{0.7429, 0.42914, 0.78905}\pgfutilensuremath {62}&\cellcolor [rgb]{0.69807, 0.37317, 0.79585}\definecolor {mapped color}{rgb}{0.69807, 0.37317, 0.79585}\pgfutilensuremath {51}&\cellcolor [rgb]{0.62877, 0.28668, 0.80638}\definecolor {mapped color}{rgb}{0.62877, 0.28668, 0.80638}\pgfutilensuremath {34}\\%
+  Gen & \cellcolor [rgb]{0.77144, 0.46475, 0.78471}\definecolor {mapped color}{rgb}{0.77144, 0.46475, 0.78471}\pgfutilensuremath {69}&\cellcolor [rgb]{0.99998, 0.7866, 0.56451}\definecolor {mapped color}{rgb}{0.99998, 0.7866, 0.56451}\pgfutilensuremath {156}&\cellcolor [rgb]{0.5554, 0.19511, 0.81752}\definecolor {mapped color}{rgb}{0.5554, 0.19511, 0.81752}\pgfutilensuremath {16}&\cellcolor [rgb]{0.66138, 0.3274, 0.80142}\definecolor {mapped color}{rgb}{0.66138, 0.3274, 0.80142}\pgfutilensuremath {42}\\%
+  Loc & \cellcolor [rgb]{0.63284, 0.29178, 0.80576}\definecolor {mapped color}{rgb}{0.63284, 0.29178, 0.80576}\pgfutilensuremath {35}&\cellcolor [rgb]{0.72253, 0.4037, 0.79214}\definecolor {mapped color}{rgb}{0.72253, 0.4037, 0.79214}\pgfutilensuremath {57}&\cellcolor [rgb]{0.6084, 0.26125, 0.80948}\definecolor {mapped color}{rgb}{0.6084, 0.26125, 0.80948}\pgfutilensuremath {29}&\cellcolor [rgb]{0.62877, 0.28668, 0.80638}\definecolor {mapped color}{rgb}{0.62877, 0.28668, 0.80638}\pgfutilensuremath {34}\\%
+  Nom & \cellcolor [rgb]{0.6084, 0.26125, 0.80948}\definecolor {mapped color}{rgb}{0.6084, 0.26125, 0.80948}\pgfutilensuremath {29}&\cellcolor [rgb]{0.60431, 0.25616, 0.81009}\definecolor {mapped color}{rgb}{0.60431, 0.25616, 0.81009}\pgfutilensuremath {28}&\cellcolor [rgb]{0.52687, 0.1595, 0.82185}\definecolor {mapped color}{rgb}{0.52687, 0.1595, 0.82185}\pgfutilensuremath {9}&\cellcolor [rgb]{0.99998, 0.87062, 0.13875}\definecolor {mapped color}{rgb}{0.99998, 0.87062, 0.13875}\pgfutilensuremath {227}\\%
+  \hline
+\end{tabular}%         
+
+\medskip 
+
+\pgfplotscolorbardrawstandalone[%
+  colorbar style={
+    ticklabel style={
+      font=\tiny, 
+      /pgf/number format/precision=3, 
+      /pgf/number format/relative*=4, 
+    }, 
+  }, 
+  colorbar horizontal, 
+  colormap access=const, 
+   point meta min=0, point meta max=250]
+	\caption{Confusion matrix for $k$-NN with $k = 11$ on \texttt{Acc, Gen, Loc, Nom}. 
+ Rows correspond to the prediction and columns to the expected value.}
+	\label{tab:knn}
+\end{table}
+
+As we can see in table \ref{tab:knn}, while cases that are present in many languages (\scsf{Nominative, Accusative, Genitive}) are quite recognisable, it is definitely not obvious, especially when throwing on other less common cases such as locative. 
+In fact, changing the parameter $k$ does not lead to significantly better results. 
+The more common cases are less recognisable with decreasing $k$, leading to a worse classification, and the less common cases are even more blurred when increasing $k$, since they are flooded in the total number of samples. 
+Moreover, whatever the parameter, there are always samples from common core cases that are classified as other cases. 
+It appears that the portion of space occupied by each case is neither fully distinct from the others, causing confusion when trying to cluster cases with the same names as well as limiting our ability to distinguish smaller cases from ones that take more space, nor is it well connected, given the fact some samples are always closer to other cases.% leading us to interrogations on the shape of the portion of space occupied. 
+
+%\input{case feature in UD}
+
+\section{Adposition Annotation}
+
+As discussed in section 2, some corpora in UD make use of the \texttt{Case} feature on adpositions and it is recommended by UD's guidelines.
+
+Given the postulate according to which all natural languages are equally expressive, one could indeed see case marking and the use of adpositions as two means of achieving the same linguistic goals.
+Two means that are by no mean exclusive since languages that use case tend to have a rather limited inventory and use adpositions to express a broader range of meanings and relations.
+
+Following \newcite{morphenglish}, we have applied the methods described above to represent certain adpositions and to give them a syntactically equivalent case representation. 
+This could partially prove the postulate, as well as help justifying the way some corpora annotate adpositions for case. 
+
+To do so, we counted the dependency relations leading to the governors of each adposition. 
+This gave us a distribution on syntactic usage of adpositions similar to a profile, and allowed us to compare adpositions to cases. 
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \addtolength{\tabcolsep}{-.3ex}
+    \begin{NiceTabular}{>{\sc}rcccccc}
+    \bf Adpos & \tt advcl & \tt nmod & \tt nsubj & \tt obj & \tt obl\\
+    À     & 16.7   & 17.3   & 0.04   & 0.38  & 63.4\\
+    Dans   & 0.46   & 13.8   &      & 0.19  & 78.7\\
+    Par    & 0.26   & 13.7   & 0.10   & 0.18  & 74.6\\
+    Pour   & 29.5   & 15.9   &      & 0.02  & 41.2\\
+    En    & 8.13   & 17.1   &      & 0.36  & 54.1\\
+    Vers   & 0.26   & 35.7   &      &     & 62.1\\
+    Avec   & 0.61   & 32.4   &      &     & 62.6\\
+    De    & 2.10   & 68.0   & 0.14   & 1.31  & 14.3\\
+    Sans   & 24.4   & 21.1   &      & 0.78  & 43.8\\
+    Sous   & 0.21   & 22.9   & 0.02   & 72.8  &   \\
+    Sur    & 0.47   & 36.3   &      & 0.10  & 59.4\\
+    Sauf   & 10.7   & 22.6   &      &     & 38.1\\
+    \CodeAfter
+    \begin{tikzpicture}
+        \draw[black] (1|-2) -- (7|-2);
+        \foreach \i in {3, ..., 13} {\draw[black] (1|-\i) -- (7|-\i);}
+        \draw[black, dashed] (2|-1) -- (2|-14);
+    \end{tikzpicture}
+    \end{NiceTabular}
+    \caption{Dependency relation profiles of the governors irrespective of its part-of-speech of a few French adpositions.}
+    \addtolength{\tabcolsep}{.3ex}
+    \label{tab:adpos_fr}
+\end{table}
+
+Table \ref{tab:adpos_fr} represents the uniform means of the representations of a few French adpositions across all French corpora. 
+As we can see, and could be predicted by French speakers, most adpositions are used in a similar way in French, mainly as \textsc{locatives} (\textsl{dans, par, sur, sous, vers\ldots}) or \textsc{instrumentals/comitative} (\textsl{avec}). 
+For the other adpositions, we see that there is a non-negligible proportion of usage that leads to \texttt{advcl}. 
+This comes from infinitive constructions marking goal (\textsl{pour}), intent (\textsl{à}), avoidance (\textsl{sans}) or gerundive constructions marking manner (\textsl{en}).% is used before a verb, creating an adverbial clause.
+
+This justifies the idea of giving a case to adpositions as a reasonable supposition, and confirms our postulate that adpositions replace some cases in language without cases (French actually has cases on personal pronouns; but not for any of the cases \textit{replaced} by adpositions). 
+We believe that this method could be extended to any other part of speech with adequate semantics and syntactic constructions. 
+
+% \section{Parsing ? }
+
+\section{Conclusion}
+
+In this paper, we have investigated the comparative-descriptive confusion that Haspelmath warned us about using Universal Dependency data.
+We have compared cases between different languages as is it was a commensurable descriptive category and seen that at least for some closely related languages the alignment stands at least for core cases.
+We then tried to represent archetypal cases as if case was a comparative concept applied onto each treebank, and saw that core cases mostly align with our expectations.
+However, this asks for a more principled analysis of the use of the term \textit{nominative} for the default case especially so when the nominative-accusative distinction does not exist or when it does not simply mark a syntactic role but also definiteness for example.
+
+
+
+
+\bibliographystyle{acl_natbib}
+\bibliography{main}
+
+%\newpage
+
+\section*{Appendix}
+\input{distmats}
+List of the dependency relations used for the $x$-axis in \ref{fig:prototypes}:
+
+\texttt{\_; acl; advcl; advmod; amod; appos; aux; case; cc; ccomp; clf; compound; conj; cop; csubj; dep; det; discourse; dislocated; expl; fixed; flat; iobj; list; mark; nmod; nsubj; nummod; obj; obl; orphan; parataxis; punct; reparandum; root; vocative; xcomp}
+
+
+\end{document}

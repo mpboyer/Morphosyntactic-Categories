@@ -1,0 +1,18 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,nmod,nsubj,obj,obl,root,xcomp
+tr_pud-ud-test,1000,0,25,1.0,1.0,,,5.0,,,17.0,,1.0
+tr_atis-ud-dev,572,0,1,,,,,,,,,1.0,
+tr_atis-ud-train,4274,0,2,,,,,1.0,,,1.0,,
+tr_kenet-ud-train,15398,0,9,,,,,,,,9.0,,
+tr_framenet-ud-train,2288,0,1,,,,,,,,1.0,,
+tr_gb-ud-test,2880,0,1,,1.0,,,,,,,,
+qtd_sagt-ud-dev,801,0,1,,,,,,,,1.0,,
+qtd_sagt-ud-train,578,0,3,,,,,,1.0,,2.0,,
+tr_tourism-ud-train,15473,0,2,,,,,,,,2.0,,
+tr_imst-ud-train,3435,0,13,1.0,,1.0,,3.0,3.0,,3.0,2.0,
+tr_imst-ud-dev,1100,0,2,,1.0,,,1.0,,,,,
+tr_boun-ud-dev,979,0,5,,,,,,1.0,,4.0,,
+tr_boun-ud-test,979,0,6,,,,,,,,5.0,1.0,
+tr_boun-ud-train,7803,0,30,,4.0,,2.0,1.0,1.0,,21.0,1.0,
+tr_penn-ud-dev,622,0,1,,,,,,,,1.0,,
+tr_penn-ud-test,924,0,1,,,,,,,,,1.0,
+tr_penn-ud-train,14850,0,26,,1.0,,,2.0,,1.0,15.0,7.0,

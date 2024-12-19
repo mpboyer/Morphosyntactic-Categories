@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,nmod,obl,reparandum,xcomp
+pcm_nsc-ud-dev,990,0,1,1.0,,,,,
+pcm_nsc-ud-train,7279,0,12,1.0,1.0,1.0,9.0,,
+cy_ccg-ud-train,1189,0,1,,,,1.0,,
+ha_northernautogramm-ud-test,400,0,2,,,,,1.0,1.0

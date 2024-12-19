@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,obl,parataxis
+sa_vedic-ud-test,2709,0,1,1.0,
+sa_vedic-ud-train,21477,0,2,1.0,1.0
+sa_vedic-ud-dev,2996,0,0,,

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,compound,dep,dislocated,iobj,nmod,nsubj,nummod,obj,obl,root,vocative,xcomp
+ur_udtb-ud-train,4043,0,1920,13,95,11,,9.0,1.0,5.0,187,122,12,4.0,270,1161,6.0,6.0,18
+ur_udtb-ud-dev,552,0,272,1,15,4,1.0,,,,27,20,3,,34,166,,,1
+ur_udtb-ud-test,535,0,245,3,15,1,,,,2.0,18,21,2,1.0,44,135,,,3

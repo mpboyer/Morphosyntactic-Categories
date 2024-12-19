@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,iobj,nmod,nsubj,obj,obl,root
+hi_pud-ud-test,1000,0,5,4.0,,,,,,1.0
+xnr_kdtb-ud-test,288,0,38,,5.0,3.0,6.0,11.0,13.0,

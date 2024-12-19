@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,nmod,obl,root
+fa_perdt-ud-train,26196,0,1,,,1,
+ur_udtb-ud-train,4043,0,22,1.0,1.0,20,
+ur_udtb-ud-dev,552,0,11,,,10,1.0
+ur_udtb-ud-test,535,0,3,,,3,

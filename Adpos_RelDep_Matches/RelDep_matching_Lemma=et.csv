@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+ga_twittirish-ud-test,866,0,0,,
+la_ittb-ud-train,22775,0,4,3.0,1.0

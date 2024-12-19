@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advmod
+it_vit-ud-train,8277,0,1,1.0
+it_vit-ud-test,1067,0,0,

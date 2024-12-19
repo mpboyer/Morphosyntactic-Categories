@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,ccomp,discourse,mark,obj,root
+en_atis-ud-test,586,0,3,2.0,,,,,,1.0,
+en_atis-ud-train,4274,0,6,2.0,,,4.0,,,,
+en_atis-ud-dev,572,0,3,1.0,,,1.0,1.0,,,
+en_gum-ud-train,9521,0,18,,1.0,1.0,,,16.0,,
+en_gum-ud-test,1285,0,1,,,,,,,,1.0
+en_gentle-ud-test,1334,0,1,1.0,,,,,,,

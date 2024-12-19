@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,obj,obl,root
+wo_wtb-ud-dev,449,0,1,,1.0,
+it_valico-ud-test,398,0,1,,1.0,
+fr_parisstories-ud-dev,692,0,2,1.0,,1.0
+lb_luxbank-ud-test,20,0,1,,1.0,

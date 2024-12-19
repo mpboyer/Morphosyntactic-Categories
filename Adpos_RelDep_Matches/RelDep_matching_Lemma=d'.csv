@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,flat,iobj,nmod,obj,obl,parataxis
+es_gsd-ud-train,14187,0,17,,,,7.0,,10.0,,,
+wo_wtb-ud-test,470,0,1,,,1.0,,,,,,
+wo_wtb-ud-train,1188,0,2,,,,,1.0,1.0,,,
+fr_gsd-ud-train,14450,0,6,,,,,,6.0,,,
+fr_gsd-ud-dev,1476,0,1,,,,,,1.0,,,
+it_isdt-ud-test,482,0,1,,,,,,1.0,,,
+it_isdt-ud-train,13121,0,16,,,,,,16.0,,,
+qaf_arabizi-ud-train,1003,0,17,,,,1.0,,11.0,1.0,3.0,1.0
+qaf_arabizi-ud-test,145,0,2,1.0,1.0,,,,,,,
+qaf_arabizi-ud-dev,139,0,4,,,,,,4.0,,,

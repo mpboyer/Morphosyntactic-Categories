@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,nmod,obj,obl,orphan,parataxis,root
+be_hse-ud-train,22853,0,1,,,,,1.0,,,,,
+orv_ruthenian-ud-train,2789,0,3,,,,,1.0,,2.0,,,
+ru_taiga-ud-train,16045,0,50,,,,,3.0,,24.0,,15.0,8.0
+ru_taiga-ud-test,881,0,1,,,,,,,1.0,,,
+ru_syntagrus-ud-train,69630,0,359,,1.0,,1.0,53.0,1.0,126.0,1.0,174.0,2.0
+ru_syntagrus-ud-dev,8906,0,42,,,,,7.0,,12.0,,23.0,
+ru_syntagrus-ud-test,8800,0,80,1.0,1.0,,,17.0,,22.0,,39.0,
+ru_poetry-ud-train,3569,0,2,,,,,1.0,,,,1.0,
+ru_pud-ud-test,1000,0,4,,,,,1.0,,1.0,,2.0,
+ru_gsd-ud-test,601,0,6,,,,,,,5.0,,1.0,
+ru_gsd-ud-dev,579,0,6,,,,,2.0,,4.0,,,
+ru_gsd-ud-train,3850,0,36,,,1.0,,10.0,,20.0,,5.0,

@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,aux,ccomp,flat,mark,nmod,nsubj,obl,punct,root,xcomp
+es_gsd-ud-test,426,0,7,,1.0,,,,,,1.0,,5,,,
+es_gsd-ud-dev,1400,0,13,,4.0,,,,,,,,9,,,
+es_gsd-ud-train,14187,0,257,,62.0,,,,,,31.0,,163,,1.0,
+es_ancora-ud-train,14287,0,331,5.0,93.0,1.0,5.0,,,21.0,24.0,4.0,172,5.0,,1.0
+es_ancora-ud-test,1721,0,43,,16.0,,,,1.0,3.0,4.0,,19,,,
+es_ancora-ud-dev,1654,0,33,,7.0,,1.0,,,1.0,1.0,,22,,,1.0
+gl_treegal-ud-train,600,0,1,,,,,,,,,,1,,,
+gl_ctg-ud-dev,860,0,4,,,,,,,,,,4,,,
+gl_ctg-ud-test,861,0,5,,,,,,,,1.0,,4,,,
+gl_ctg-ud-train,2272,0,9,,,,,1.0,,,1.0,,7,,,
+es_pud-ud-test,1000,0,21,,1.0,,,,,,1.0,,14,,,5.0
+gl_pud-ud-test,1000,0,27,2.0,6.0,,,,,,2.0,,14,,,3.0

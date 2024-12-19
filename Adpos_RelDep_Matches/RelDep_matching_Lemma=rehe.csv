@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,root
+gn_oldtudet-ud-test,59,0,1,1.0,,
+urb_tudet-ud-test,83,0,2,,1.0,1.0
+eme_tudet-ud-test,913,0,1,,1.0,

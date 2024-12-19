@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+kmr_mg-ud-test,734,0,11,11.0,
+bor_bdt-ud-test,881,0,2,,2.0
+af_afribooms-ud-train,1315,0,1,,1.0
+af_afribooms-ud-dev,194,0,1,,1.0
+af_afribooms-ud-test,425,0,1,,1.0

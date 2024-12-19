@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl
+it_old-ud-train,1748,0,1,1
+it_old-ud-dev,316,0,1,1
+it_old-ud-test,338,0,1,1

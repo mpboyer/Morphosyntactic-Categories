@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,csubj,dislocated,flat,nmod,nsubj,obj,obl,orphan,parataxis,root,xcomp
+grc_perseus-ud-dev,1137,0,67,,,,,,,,,8.0,,,59,,,,
+grc_perseus-ud-train,11476,0,356,3.0,9.0,,,,1.0,,,19.0,,2.0,298,,,17.0,7.0
+grc_perseus-ud-test,1306,0,35,,,,,,,,,3.0,,,30,,,2.0,
+grc_proiel-ud-test,1047,0,32,,,,1.0,,,,,2.0,,,27,,,2.0,
+grc_proiel-ud-train,15016,0,723,4.0,12.0,17.0,10.0,4.0,,,4.0,64.0,5.0,9.0,546,29.0,1.0,15.0,3.0
+grc_proiel-ud-dev,1019,0,50,1.0,,1.0,1.0,,,,,6.0,,2.0,35,1.0,,3.0,
+grc_ptnk-ud-train,727,0,47,,,,,,,,,,,,46,1.0,,,
+grc_ptnk-ud-dev,439,0,83,1.0,,,1.0,,,2.0,,8.0,,,67,4.0,,,
+grc_ptnk-ud-test,410,0,39,,,,,1.0,,,,1.0,,,37,,,,

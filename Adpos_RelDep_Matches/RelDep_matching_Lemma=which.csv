@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl
+en_atis-ud-test,586,0,2,2
+en_atis-ud-train,4274,0,26,26

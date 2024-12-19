@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,obl,root
+gun_dooley-ud-test,1046,0,9,9,
+gun_thomas-ud-test,98,0,2,2,
+gn_oldtudet-ud-test,59,0,2,1,1.0

@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,obl,orphan,reparandum,root
+sl_ssj-ud-test,1282,0,16,,,15,1.0,,
+sl_ssj-ud-dev,1250,0,8,,,8,,,
+sl_ssj-ud-train,10903,0,95,1.0,,91,3.0,,
+sl_sst-ud-train,4558,0,17,,2.0,11,2.0,1.0,1.0
+sl_sst-ud-test,1041,0,2,,,1,,,1.0
+sl_sst-ud-dev,505,0,2,,,2,,,

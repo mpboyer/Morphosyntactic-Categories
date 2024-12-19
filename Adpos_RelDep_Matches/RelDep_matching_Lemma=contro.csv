@@ -1,0 +1,20 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,csubj,nmod,nsubj,nummod,obj,obl,parataxis,root
+it_old-ud-train,1748,0,14,,,,,,,,,,13.0,1.0,
+it_old-ud-dev,316,0,4,,,,,,,,,,4.0,,
+it_old-ud-test,338,0,4,,,,,,1.0,,,,3.0,,
+it_valico-ud-test,398,0,2,,,,,,,,,,2.0,,
+it_pud-ud-test,1000,0,14,1.0,,,,,9.0,,,,4.0,,
+it_isdt-ud-test,482,0,5,,,,,,3.0,,,,2.0,,
+it_isdt-ud-train,13121,0,137,1.0,,,1.0,,70.0,,2.0,,62.0,,1.0
+it_isdt-ud-dev,564,0,6,,,,,,6.0,,,,,,
+it_partut-ud-dev,156,0,1,,,,,,1.0,,,,,,
+it_partut-ud-train,1781,0,23,,,,,,12.0,,,,11.0,,
+it_twittiro-ud-train,1138,0,12,2.0,,,,,7.0,,,,1.0,1.0,1.0
+it_markit-ud-test,340,0,1,,,,,,1.0,,,,,,
+it_markit-ud-train,611,0,3,,,,,,3.0,,,,,,
+it_postwita-ud-train,5368,0,123,2.0,1.0,,1.0,1.0,62.0,,,1.0,36.0,9.0,10.0
+it_postwita-ud-dev,670,0,17,,,,,,12.0,,,,1.0,1.0,3.0
+it_postwita-ud-test,674,0,6,,,,,,5.0,,,,1.0,,
+it_vit-ud-train,8277,0,113,,,,,,49.0,1.0,11.0,,51.0,,1.0
+it_vit-ud-test,1067,0,13,,,1.0,,,6.0,,,,6.0,,
+it_parlamint-ud-train,326,0,3,,,,,,2.0,,,,1.0,,

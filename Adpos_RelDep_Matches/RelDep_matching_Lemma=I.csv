@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,obj,obl,parataxis,root
+sv_talbanken-ud-train,4303,0,1,,,,1.0,,
+ga_twittirish-ud-test,866,0,1,,,,,,1.0
+ga_idt-ud-train,4005,0,44,1.0,1.0,,37.0,2.0,3.0
+ga_idt-ud-test,454,0,6,,,,5.0,,1.0
+ga_idt-ud-dev,451,0,5,,,,5.0,,
+tr_boun-ud-train,7803,0,1,,,1.0,,,

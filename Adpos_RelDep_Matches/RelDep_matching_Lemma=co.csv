@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,dep,nmod,obl,parataxis
+pl_pdb-ud-test,2215,0,4,,,1.0,1.0,2.0,
+pl_pdb-ud-train,17722,0,28,,3.0,,1.0,23.0,1.0
+pl_pdb-ud-dev,2215,0,7,,1.0,,,6.0,
+pt_petrogold-ud-test,1039,0,1,,,,1.0,,
+pt_gsd-ud-train,9616,0,1,,,,,1.0,
+lij_glt-ud-test,296,0,21,1.0,,,3.0,17.0,
+pl_pud-ud-test,1000,0,2,,,,,2.0,
+pl_lfg-ud-test,1727,0,3,,,,,3.0,
+pl_lfg-ud-train,13774,0,15,,,,1.0,14.0,
+pl_lfg-ud-dev,1745,0,3,,,,,3.0,

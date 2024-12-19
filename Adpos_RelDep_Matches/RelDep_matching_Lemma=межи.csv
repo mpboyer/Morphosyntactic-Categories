@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,nmod,obl,orphan,root,xcomp
+uk_iu-ud-train,5521,0,1,,,,1,,,
+orv_rnc-ud-test,717,0,2,,,1.0,1,,,
+orv_ruthenian-ud-test,390,0,2,,,,2,,,
+orv_birchbark-ud-train,1045,0,1,,,,1,,,
+orv_birchbark-ud-dev,1062,0,2,,,1.0,1,,,
+orv_torot-ud-test,2955,0,7,,,2.0,4,1.0,,
+orv_torot-ud-dev,3061,0,3,,,,3,,,
+orv_torot-ud-train,20480,0,35,1.0,1.0,2.0,28,1.0,1.0,1.0

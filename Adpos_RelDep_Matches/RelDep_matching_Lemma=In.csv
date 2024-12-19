@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nummod,obj,obl,parataxis,root,xcomp
+de_hdt-ud-test,18459,0,417,12.0,,2.0,402.0,,1.0,
+de_hdt-ud-train,153035,0,3664,113.0,,13.0,3517.0,,17.0,4.0
+de_hdt-ud-dev,18434,0,449,12.0,,3.0,418.0,,16.0,
+ro_nonstandard-ud-train,24121,0,1,1.0,,,,,,
+sv_pud-ud-test,1000,0,1,1.0,,,,,,
+it_twittiro-ud-test,142,0,1,,,,1.0,,,
+it_twittiro-ud-train,1138,0,8,,,,3.0,4.0,1.0,
+it_postwita-ud-train,5368,0,29,2.0,1.0,,21.0,2.0,3.0,
+it_postwita-ud-dev,670,0,4,1.0,,,2.0,1.0,,
+it_postwita-ud-test,674,0,8,2.0,,,5.0,1.0,,
+it_vit-ud-train,8277,0,52,6.0,,,45.0,,1.0,
+it_vit-ud-dev,743,0,1,,,,1.0,,,

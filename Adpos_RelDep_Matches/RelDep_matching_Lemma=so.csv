@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,obl,root
+gl_ctg-ud-dev,860,0,1,,,,1.0
+gl_ctg-ud-train,2272,0,1,,1.0,,
+en_atis-ud-train,4274,0,1,1.0,,,
+is_icepahc-ud-train,34007,0,44,1.0,,43.0,
+en_gentle-ud-test,1334,0,1,,,,1.0

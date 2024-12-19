@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,obl,xcomp
+no_bokmaal-ud-dev,2409,0,7,,3,4,
+no_bokmaal-ud-test,1939,0,8,,3,5,
+no_bokmaal-ud-train,15696,0,53,1.0,24,27,1.0

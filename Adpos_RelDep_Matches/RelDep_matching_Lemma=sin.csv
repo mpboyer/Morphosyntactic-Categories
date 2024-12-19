@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,advcl,advmod,aux,cc,ccomp,dep,expl,fixed,mark,nmod,nsubj,nummod,obj,obl,parataxis,punct,root,xcomp
+es_gsd-ud-test,426,0,12,,,2.0,,,,,,,,,2.0,,,,7,,,1.0,
+es_gsd-ud-dev,1400,0,45,,,7.0,1.0,,,1.0,,,,,6.0,,,,5,,,25.0,
+es_gsd-ud-train,14187,0,366,,1.0,78.0,1.0,,,,,,,,76.0,,,,93,1.0,,114.0,2.0
+es_ancora-ud-train,14287,0,509,12.0,33.0,83.0,6.0,5.0,1.0,6.0,1.0,2.0,3.0,33.0,50.0,2.0,2.0,3.0,122,1.0,5.0,131.0,8.0
+es_ancora-ud-test,1721,0,59,1.0,,11.0,3.0,3.0,,,,,,1.0,11.0,,,,13,,2.0,14.0,
+es_ancora-ud-dev,1654,0,55,1.0,2.0,7.0,1.0,1.0,,,,,,7.0,10.0,1.0,,,11,,,13.0,1.0
+ga_twittirish-ud-train,866,0,1,,,,,,,,,,,,,,,,1,,,,
+es_pud-ud-test,1000,0,36,,,,,,,,,,,,4.0,,,,7,,,18.0,7.0
+nhi_itml-ud-test,909,0,1,,,,,,,,,,,,,,,,1,,,,
+es_coser-ud-test,539,0,3,,,,,,,,,,,,,,,,2,,,,1.0

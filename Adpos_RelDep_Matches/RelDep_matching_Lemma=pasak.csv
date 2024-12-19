@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,parataxis
+lt_hse-ud-train,153,0,1,,1
+lt_hse-ud-dev,55,0,1,,1
+lt_alksnis-ud-test,684,0,5,,5
+lt_alksnis-ud-dev,617,0,4,1.0,3
+lt_alksnis-ud-train,2341,0,5,,5

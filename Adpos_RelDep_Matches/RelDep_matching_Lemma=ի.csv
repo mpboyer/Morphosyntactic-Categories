@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,compound,csubj,dislocated,iobj,mark,nmod,nummod,obj,obl,orphan,parataxis,root,xcomp
+xcl_caval-ud-train,3185,0,2483,33.0,97.0,2.0,12.0,44.0,,9.0,,1.0,1.0,227.0,4.0,4.0,1954,41.0,1.0,44.0,9.0
+xcl_caval-ud-dev,411,0,353,6.0,10.0,,3.0,3.0,,2.0,,,,23.0,,,293,6.0,,6.0,1.0
+xcl_caval-ud-test,550,0,442,11.0,13.0,,2.0,3.0,,3.0,,,,41.0,,,354,4.0,,9.0,2.0
+hy_bsut-ud-train,1226,0,11,,,,1.0,,,1.0,,,,,,,3,,1.0,4.0,1.0
+hy_bsut-ud-test,595,0,4,,,,,,,,,,,,,,2,,1.0,1.0,
+hy_bsut-ud-dev,479,0,7,,,,,,,,,,,,,,4,,,3.0,
+hy_armtdp-ud-train,1974,0,23,1.0,,1.0,2.0,1.0,3.0,,,,,,,,7,,3.0,5.0,
+hy_armtdp-ud-dev,249,0,4,,,,,,1.0,,,,,,,,2,,,1.0,
+hy_armtdp-ud-test,277,0,2,,,,,,,,,,,,,,2,,,,
+hyw_armtdp-ud-test,680,0,18,,,2.0,,,1.0,,,,,,,,12,,1.0,2.0,
+hyw_armtdp-ud-dev,694,0,12,1.0,,,,,,,,,,2.0,,,8,,,1.0,
+hyw_armtdp-ud-train,5282,0,147,5.0,1.0,3.0,,2.0,3.0,,2.0,,,8.0,,1.0,93,,4.0,24.0,1.0

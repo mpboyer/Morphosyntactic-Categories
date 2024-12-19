@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+sk_snk-ud-dev,1060,0,15,,15
+sk_snk-ud-test,1061,0,14,2.0,12
+sk_snk-ud-train,8483,0,14,3.0,11

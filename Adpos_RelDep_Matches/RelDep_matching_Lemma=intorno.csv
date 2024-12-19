@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,root
+it_old-ud-train,1748,0,1,,,1.0
+it_partut-ud-train,1781,0,2,,2.0,
+it_markit-ud-train,611,0,1,1.0,,
+it_postwita-ud-train,5368,0,1,,1.0,

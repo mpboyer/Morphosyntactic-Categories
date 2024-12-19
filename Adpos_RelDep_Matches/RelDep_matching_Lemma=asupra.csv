@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,appos,iobj,nmod,obl,root
+ro_nonstandard-ud-train,24121,0,185,,2.0,25.0,157,1.0
+ro_simonero-ud-test,491,0,13,,,11.0,2,
+ro_simonero-ud-train,3747,0,125,1.0,1.0,102.0,21,
+ro_simonero-ud-dev,443,0,11,,,8.0,3,
+ro_tuecl-ud-test,210,0,1,,,,1,
+ro_rrt-ud-test,729,0,7,,,4.0,3,
+ro_rrt-ud-train,8043,0,130,,4.0,76.0,50,
+ro_rrt-ud-dev,752,0,13,,,9.0,4,

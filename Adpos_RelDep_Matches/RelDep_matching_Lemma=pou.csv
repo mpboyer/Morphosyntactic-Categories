@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,dep,nmod,obl
+ht_autogramm-ud-test,144,0,80,15,2,2,1,32,9,19

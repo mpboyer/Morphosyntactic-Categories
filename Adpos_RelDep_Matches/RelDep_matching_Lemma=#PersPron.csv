@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total
+cs_pdt-ud-test,10146,0,0
+cs_pdt-ud-dev,9270,0,0
+cs_pdt-ud-train,68491,0,0

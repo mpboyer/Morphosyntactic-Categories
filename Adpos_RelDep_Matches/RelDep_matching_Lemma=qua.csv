@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,nmod,nsubj,obl,root
+de_hdt-ud-train,153035,0,1,,,1.0,,,
+vi_tuecl-ud-test,100,0,4,,,,,4.0,
+vi_vtb-ud-dev,1123,0,1,,,,,1.0,
+vi_vtb-ud-train,1400,0,12,1.0,2.0,,,9.0,
+vi_vtb-ud-test,800,0,17,,2.0,,,11.0,4.0
+en_lines-ud-train,3176,0,1,,,1.0,,,
+nl_lassysmall-ud-test,1761,0,2,,,1.0,,1.0,
+nl_lassysmall-ud-train,13817,0,10,,,4.0,,6.0,
+nl_alpino-ud-train,12289,0,1,,,,,1.0,
+cs_cac-ud-train,23478,0,1,,,,1.0,,

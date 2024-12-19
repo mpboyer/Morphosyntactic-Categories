@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obj
+de_gsd-ud-train,13814,0,1,1.0,
+qtd_sagt-ud-test,805,0,1,,1.0

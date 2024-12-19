@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,dep,nmod,obj,obl,root
+fa_perdt-ud-test,1455,0,28,,1.0,,,1,,1,,25,
+fa_perdt-ud-train,26196,0,430,2.0,,1.0,1.0,1,1.0,50,2.0,363,9.0
+fa_perdt-ud-dev,1456,0,23,,,,,1,,1,,21,

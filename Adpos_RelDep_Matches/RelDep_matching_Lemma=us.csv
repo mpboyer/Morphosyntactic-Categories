@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,dislocated,nmod,nsubj,obj,obl,orphan,parataxis,root,xcomp
+got_proiel-ud-dev,985,0,42,,2.0,,6,,,27,,,2,5
+got_proiel-ud-train,3387,0,183,3.0,6.0,1.0,33,1.0,2.0,102,5.0,3.0,5,22
+got_proiel-ud-test,1029,0,55,2.0,,,10,,1.0,36,,,3,3

@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,csubj,dislocated,nmod,nummod,obl,parataxis,root,xcomp
+sv_talbanken-ud-dev,504,0,7,,3.0,,,,,,,3,,1.0,
+sv_talbanken-ud-test,1219,0,11,3.0,4.0,,,,,1.0,,2,,,1.0
+sv_talbanken-ud-train,4303,0,41,3.0,1.0,,,,,13.0,,17,1.0,5.0,1.0
+sv_lines-ud-dev,1032,0,32,3.0,2.0,,2.0,,,8.0,,17,,,
+sv_lines-ud-train,3176,0,113,7.0,2.0,1.0,7.0,,1.0,24.0,,66,,5.0,
+sv_lines-ud-test,1035,0,41,2.0,,1.0,1.0,1.0,1.0,10.0,,24,,,1.0
+sv_pud-ud-test,1000,0,30,1.0,1.0,,,,,13.0,1.0,13,,1.0,

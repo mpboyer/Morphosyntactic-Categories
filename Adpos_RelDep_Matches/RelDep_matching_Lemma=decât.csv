@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,iobj,nmod,obj,obl,orphan,xcomp
+ro_nonstandard-ud-test,1052,0,15,3.0,,,,,11,1.0,
+ro_nonstandard-ud-dev,1052,0,4,1.0,,,,,3,,
+ro_nonstandard-ud-train,24121,0,142,21.0,2.0,1.0,9.0,1.0,106,1.0,1.0
+ro_rrt-ud-train,8043,0,1,,,,,,1,,

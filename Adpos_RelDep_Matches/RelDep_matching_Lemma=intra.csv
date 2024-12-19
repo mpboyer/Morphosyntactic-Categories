@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,acl,ccomp,dep,nmod,obl,root
+la_circse-ud-test,1263,0,0,,,,,,
+la_perseus-ud-test,939,0,3,,,,,3.0,
+la_perseus-ud-train,1334,0,4,,,,,4.0,
+la_proiel-ud-test,1260,0,4,,,1.0,,2.0,1.0
+la_proiel-ud-dev,1233,0,2,,,,,2.0,
+la_proiel-ud-train,16196,0,24,,,,1.0,22.0,1.0
+is_icepahc-ud-train,34007,0,1,1.0,,,,,
+la_udante-ud-train,926,0,2,,,,,2.0,
+la_udante-ud-test,419,0,1,,1.0,,,,
+la_udante-ud-dev,376,0,2,,,,,2.0,
+la_ittb-ud-dev,2101,0,1,,,,,1.0,
+la_ittb-ud-train,22775,0,7,1.0,,,,5.0,1.0

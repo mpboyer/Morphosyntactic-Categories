@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,obl
+zh_gsdsimp-ud-test,500,0,3,,1.0,2
+zh_gsdsimp-ud-train,3997,0,4,,,4
+zh_beginner-ud-test,2295,0,1,,,1
+zh_gsd-ud-test,500,0,3,,1.0,2
+zh_gsd-ud-train,3997,0,4,,,4
+yue_hk-ud-test,1004,0,1,,,1
+zh_pud-ud-test,1000,0,3,,,3
+zh_hk-ud-test,1004,0,7,1.0,,6

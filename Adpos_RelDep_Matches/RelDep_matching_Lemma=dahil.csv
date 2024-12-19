@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,root
+tr_pud-ud-test,1000,0,1,1.0,,
+tl_ugnayan-ud-test,94,0,3,,2.0,1.0

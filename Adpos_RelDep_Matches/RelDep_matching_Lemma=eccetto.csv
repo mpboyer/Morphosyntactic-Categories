@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+it_valico-ud-test,398,0,1,,1.0
+it_isdt-ud-train,13121,0,1,,1.0
+it_vit-ud-train,8277,0,1,1.0,

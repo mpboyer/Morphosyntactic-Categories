@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,dep,nsubj,obj,obl,parataxis,root
+pt_cintil-ud-test,3840,0,1425,1,2,16,,1,1337,21,47
+pt_cintil-ud-dev,3840,0,884,2,3,10,,1,803,7,58
+pt_cintil-ud-train,30720,0,6737,8,3,109,10.0,5,5649,54,899

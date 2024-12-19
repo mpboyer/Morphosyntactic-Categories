@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,csubj,nmod,nsubj,nummod,obl,orphan,parataxis,root,xcomp
+ro_nonstandard-ud-test,1052,0,5,,,,,,,,5,,,,
+ro_nonstandard-ud-dev,1052,0,6,,,,,1.0,,,5,,,,
+ro_nonstandard-ud-train,24121,0,177,1.0,2.0,,1.0,20.0,,,148,,,3.0,2.0
+ro_simonero-ud-test,491,0,15,,,,,9.0,,2.0,4,,,,
+ro_simonero-ud-train,3747,0,143,1.0,,1.0,,71.0,,24.0,43,,1.0,2.0,
+ro_simonero-ud-dev,443,0,30,,,,,19.0,,4.0,7,,,,
+ro_tuecl-ud-test,210,0,4,,,,,,,,4,,,,
+ro_rrt-ud-test,729,0,20,,,,,6.0,,4.0,9,,,1.0,
+ro_rrt-ud-train,8043,0,184,1.0,1.0,,,62.0,1.0,17.0,94,3.0,2.0,3.0,
+ro_rrt-ud-dev,752,0,18,,,,,5.0,,4.0,8,,,1.0,

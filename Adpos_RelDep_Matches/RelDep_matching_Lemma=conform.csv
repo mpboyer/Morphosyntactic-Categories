@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,iobj,nmod,obl,root,xcomp
+ro_simonero-ud-test,491,0,5,,1.0,4,,
+ro_simonero-ud-train,3747,0,42,,8.0,34,,
+ro_simonero-ud-dev,443,0,3,,1.0,2,,
+nl_lassysmall-ud-train,13817,0,1,,,1,,
+ro_rrt-ud-test,729,0,4,,1.0,3,,
+ro_rrt-ud-train,8043,0,45,3.0,4.0,36,1.0,1.0
+ro_rrt-ud-dev,752,0,6,,,6,,
+nl_alpino-ud-train,12289,0,1,,,1,,
+nl_alpino-ud-dev,718,0,1,,,1,,

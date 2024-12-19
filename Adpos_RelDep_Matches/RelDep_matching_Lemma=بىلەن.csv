@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,cc,compound,dep,nmod,nsubj,nummod,obj,obl,parataxis,root
+ug_udt-ud-test,900,0,80,2,1.0,1.0,5,1.0,,4,1,,1.0,62,,2.0
+ug_udt-ud-dev,900,0,99,1,,,1,,2.0,6,2,,2.0,82,2.0,1.0
+ug_udt-ud-train,1656,0,146,3,,,1,,,13,1,1.0,,126,1.0,

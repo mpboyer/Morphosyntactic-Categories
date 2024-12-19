@@ -1,0 +1,9 @@
+Comparative Concepts or Descriptive Categories: a UD Case study
+In this paper, we present a series of methods used to quantify the soundness of using the same names to annotate cases in different languages.
+We follow the idea described by Martin Haspelmath that descriptive categories and comparative concepts are different objects and we look at the necessary simplification taken by the Universal Dependencies project. 
+We thus compare cases in closely related languages as belonging to commensurable descriptive categories.
+Then we look at the corresponding underlying comparative concepts.
+Before eventually looking at the possibility to assign cases to adpositions.
+
+
+Note: This abstract has been submitted to NoDaLiDa BalticHLT 2025 and thus the paper is unavailable for me to send. 

@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,obl
+sme_giella-ud-train,2257,0,7,1.0,6
+sme_giella-ud-test,865,0,8,,8

@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,parataxis
+de_hdt-ud-test,18459,0,20,3,17,
+de_hdt-ud-train,153035,0,217,32,184,1.0
+de_hdt-ud-dev,18434,0,36,2,34,
+de_pud-ud-test,1000,0,10,1,9,
+de_gsd-ud-train,13814,0,71,16,55,
+de_gsd-ud-dev,799,0,3,1,2,

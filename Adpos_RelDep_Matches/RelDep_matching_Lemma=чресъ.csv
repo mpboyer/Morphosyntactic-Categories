@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,csubj,nummod,obl,orphan
+orv_rnc-ud-dev,943,0,0,,,,
+orv_rnc-ud-train,1868,0,24,1.0,1.0,18.0,4.0
+orv_rnc-ud-test,717,0,2,,,2.0,

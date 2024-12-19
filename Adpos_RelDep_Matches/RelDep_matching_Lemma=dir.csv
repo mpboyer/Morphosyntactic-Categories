@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl
+tr_imst-ud-train,3435,0,4,,1.0,3.0
+tr_imst-ud-dev,1100,0,1,1.0,,
+tr_imst-ud-test,1100,0,5,,2.0,3.0

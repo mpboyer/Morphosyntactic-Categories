@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl
+fr_gsd-ud-test,416,0,1,,,1.0
+fr_gsd-ud-train,14450,0,14,,1.0,13.0
+fr_gsd-ud-dev,1476,0,2,,,2.0
+fr_partut-ud-train,803,0,1,,,1.0
+fr_sequoia-ud-train,2231,0,3,2.0,,1.0
+fr_sequoia-ud-dev,412,0,2,2.0,,

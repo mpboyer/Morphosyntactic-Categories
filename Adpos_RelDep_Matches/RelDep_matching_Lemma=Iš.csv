@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advmod,obl
+lt_hse-ud-train,153,0,1,,1.0
+lt_alksnis-ud-dev,617,0,1,1.0,

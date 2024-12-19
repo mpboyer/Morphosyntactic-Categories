@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,dep,flat,iobj,nmod,obj,obl,parataxis,root,xcomp
+kmr_mg-ud-train,20,0,6,,,,,,,,,5,,,,1,
+kmr_mg-ud-test,734,0,235,,,1.0,1.0,2.0,,1.0,,219,,1.0,,10,
+bor_bdt-ud-test,881,0,223,4.0,3.0,1.0,1.0,13.0,2.0,,5.0,2,1.0,126.0,11.0,52,2.0

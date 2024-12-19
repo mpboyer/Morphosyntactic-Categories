@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,mark,nmod,obl
+pt_gsd-ud-train,9616,0,2,1.0,,,1
+pt_bosque-ud-test,1167,0,1,,,,1
+pt_bosque-ud-train,7018,0,4,,1.0,2.0,1

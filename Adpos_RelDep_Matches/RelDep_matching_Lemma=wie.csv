@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,dep,nmod,nsubj,obj,obl,parataxis,root
+de_lit-ud-test,1920,0,6,,,,,,,,,3.0,,3.0
+de_gsd-ud-train,13814,0,221,1.0,1.0,8.0,1.0,1.0,150.0,,,59.0,,
+de_gsd-ud-dev,799,0,1,,,,,,,1.0,,,,
+de_gsd-ud-test,977,0,5,,,,,,1.0,,,4.0,,
+qtd_sagt-ud-test,805,0,6,,1.0,,,,1.0,,1.0,2.0,,1.0
+qtd_sagt-ud-dev,801,0,2,,,,,,,2.0,,,,
+qtd_sagt-ud-train,578,0,8,,2.0,,,,1.0,,1.0,3.0,1.0,

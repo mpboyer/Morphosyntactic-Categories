@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,appos,dep,flat,nmod,obl,root,xcomp
+la_circse-ud-test,1263,0,3,,,,,2,1.0,
+la_perseus-ud-test,939,0,1,,,,,1,,
+la_llct-ud-train,7289,0,3,,,,2.0,1,,
+la_proiel-ud-test,1260,0,8,,,,1.0,6,,1.0
+la_proiel-ud-dev,1233,0,3,,,,,3,,
+la_proiel-ud-train,16196,0,28,2.0,1.0,1.0,,24,,

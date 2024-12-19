@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+no_nynorsk-ud-dev,1890,0,1,1,
+no_nynorsk-ud-test,1511,0,1,1,
+no_nynorsk-ud-train,14174,0,5,1,4.0

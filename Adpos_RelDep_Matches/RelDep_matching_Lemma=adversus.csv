@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,dep,nmod,nsubj,obj,obl,orphan,parataxis,root
+la_perseus-ud-test,939,0,1,,,,,,,1,,,
+la_perseus-ud-train,1334,0,2,,,,,,,2,,,
+la_proiel-ud-test,1260,0,1,,,,,,,1,,,
+la_proiel-ud-dev,1233,0,6,,,,1.0,,,5,,,
+la_proiel-ud-train,16196,0,58,1.0,1.0,1.0,10.0,2.0,1.0,34,5.0,1.0,2.0

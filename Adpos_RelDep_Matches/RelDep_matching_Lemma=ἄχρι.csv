@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,nmod,obl
+grc_perseus-ud-dev,1137,0,3,,,,3.0
+grc_perseus-ud-train,11476,0,1,1.0,,,
+grc_perseus-ud-test,1306,0,1,,,,1.0
+grc_proiel-ud-train,15016,0,32,4.0,1.0,2.0,25.0
+grc_proiel-ud-dev,1019,0,3,,1.0,,2.0

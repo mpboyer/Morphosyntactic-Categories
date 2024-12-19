@@ -1,0 +1,20 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,compound,dep,nmod,nummod,obl,root,xcomp
+en_partut-ud-dev,156,0,1,,,,,,,1.0,,,,
+en_partut-ud-train,1781,0,42,2.0,,,,,,25.0,1.0,14.0,,
+en_partut-ud-test,153,0,1,,,,,,,1.0,,,,
+ga_twittirish-ud-test,866,0,1,,,,,,,,,,1.0,
+en_atis-ud-test,586,0,47,,,,,,,35.0,1.0,11.0,,
+en_atis-ud-train,4274,0,311,,,,,,,224.0,20.0,63.0,4.0,
+en_atis-ud-dev,572,0,45,,,,,,,30.0,,14.0,1.0,
+en_gum-ud-train,9521,0,95,,,,1.0,1.0,1.0,62.0,1.0,28.0,1.0,
+en_gum-ud-test,1285,0,12,,,,,,,3.0,,8.0,,1.0
+en_gum-ud-dev,1341,0,6,,,2.0,,,,,,4.0,,
+en_lines-ud-train,3176,0,33,,1.0,,,,,14.0,,18.0,,
+en_lines-ud-dev,1032,0,14,,,,,,,8.0,,6.0,,
+en_lines-ud-test,1035,0,12,,,,,,,8.0,,4.0,,
+en_ewt-ud-test,2077,0,11,,,1.0,,,,10.0,,,,
+en_ewt-ud-dev,2001,0,10,,,,,,,5.0,,5.0,,
+en_ewt-ud-train,12544,0,89,1.0,,1.0,,,,57.0,1.0,27.0,2.0,
+pcm_nsc-ud-train,7279,0,7,,,,1.0,,,5.0,,,,1.0
+en_gentle-ud-test,1334,0,5,,,,,,,4.0,,1.0,,
+en_pud-ud-test,1000,0,25,,,,,,,17.0,,8.0,,

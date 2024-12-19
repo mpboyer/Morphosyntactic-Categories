@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,iobj,obl,parataxis,root,xcomp
+grc_perseus-ud-train,11476,0,2,,,2,,,
+grc_perseus-ud-test,1306,0,3,,,3,,,
+grc_ptnk-ud-train,727,0,20,4.0,,15,,,1.0
+grc_ptnk-ud-dev,439,0,8,,1.0,7,,,
+grc_ptnk-ud-test,410,0,6,1.0,,3,1.0,1.0,

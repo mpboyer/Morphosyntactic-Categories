@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,obl,root
+lzh_kyoto-ud-dev,6102,0,1,1,
+lzh_kyoto-ud-train,74609,0,43,41,2.0

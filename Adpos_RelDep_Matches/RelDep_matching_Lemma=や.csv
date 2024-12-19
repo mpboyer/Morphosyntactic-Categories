@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,appos,compound,nmod,obl
+ja_pudluw-ud-test,1000,0,75,,,3.0,,70,2
+ja_gsd-ud-dev,507,0,40,,,,,38,2
+ja_gsd-ud-train,7050,0,525,1.0,2.0,,,518,4
+ja_gsd-ud-test,543,0,45,1.0,,,,41,3
+ja_gsdluw-ud-train,7050,0,523,1.0,,,3.0,516,3
+ja_gsdluw-ud-dev,507,0,40,,,,,39,1
+ja_gsdluw-ud-test,543,0,45,1.0,,,,43,1
+ja_pud-ud-test,1000,0,77,,2.0,3.0,,71,1

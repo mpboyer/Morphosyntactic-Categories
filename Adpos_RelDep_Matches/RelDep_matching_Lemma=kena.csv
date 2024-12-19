@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,root
+id_csui-ud-test,374,0,3,2,,1.0
+id_csui-ud-train,656,0,7,3,4.0,

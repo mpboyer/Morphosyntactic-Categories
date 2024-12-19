@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,obl,xcomp
+ga_twittirish-ud-test,866,0,1,1.0,
+ga_twittirish-ud-train,866,0,1,1.0,
+ga_idt-ud-train,4005,0,1,1.0,
+ga_idt-ud-dev,451,0,1,,1.0
+is_icepahc-ud-train,34007,0,1,1.0,

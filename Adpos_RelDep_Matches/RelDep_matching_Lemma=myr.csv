@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,parataxis,root,xcomp
+gv_cadhan-ud-test,1164,0,9,1.0,5,,1,2
+gv_cadhan-ud-train,1172,0,18,,10,1.0,5,2

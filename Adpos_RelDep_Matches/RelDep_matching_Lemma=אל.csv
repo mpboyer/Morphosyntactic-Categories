@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,nmod,obl,orphan,root
+he_iahltwiki-ud-train,4298,0,86,,1.0,26.0,59,,
+he_iahltwiki-ud-dev,348,0,5,,,1.0,4,,
+he_iahltwiki-ud-test,393,0,13,,,3.0,10,,
+he_htb-ud-train,5168,0,116,1.0,,15.0,100,,
+he_htb-ud-dev,484,0,16,,,2.0,14,,
+he_htb-ud-test,491,0,11,,,3.0,8,,
+hbo_ptnk-ud-train,730,0,247,1.0,1.0,3.0,237,5.0,
+hbo_ptnk-ud-test,410,0,142,,2.0,2.0,138,,
+hbo_ptnk-ud-dev,439,0,91,,,,88,1.0,2.0

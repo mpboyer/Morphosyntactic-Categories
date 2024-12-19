@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,compound,discourse,dislocated,iobj,nmod,nsubj,obj,obl,root,xcomp
+hi_hdtb-ud-train,13306,0,5876,7.0,84.0,,,,1407,38,606,2712.0,1020,1.0,1.0
+hi_hdtb-ud-dev,1659,0,677,,11.0,,,1.0,178,2,66,329.0,90,,
+hi_hdtb-ud-test,1684,0,745,,13.0,1.0,,,159,4,55,367.0,146,,
+hi_pud-ud-test,1000,0,370,3.0,1.0,,,,92,1,56,180.0,35,,2.0
+bho_bhtb-ud-test,357,0,59,,,4.0,1.0,,1,47,3,,2,,1.0

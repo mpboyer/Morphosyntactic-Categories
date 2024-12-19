@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,appos,ccomp,nmod,nsubj,obj,obl,root,xcomp
+zh_gsdsimp-ud-test,500,0,10,,1.0,,,,9.0,,
+zh_gsdsimp-ud-train,3997,0,116,,2.0,5.0,1.0,,101.0,2.0,5.0
+zh_gsdsimp-ud-dev,500,0,10,,2.0,,,,8.0,,
+lzh_tuecl-ud-test,100,0,1,,,,,1.0,,,
+zh_gsd-ud-dev,500,0,10,,2.0,,,,8.0,,
+zh_gsd-ud-test,500,0,10,,1.0,,,,9.0,,
+zh_gsd-ud-train,3997,0,116,3.0,2.0,5.0,1.0,,98.0,2.0,5.0
+zh_pud-ud-test,1000,0,4,,,,,,4.0,,
+zh_hk-ud-test,1004,0,1,,,,,,1.0,,

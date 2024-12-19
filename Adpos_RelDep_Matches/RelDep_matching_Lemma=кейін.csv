@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,obl,xcomp
+kk_ktb-ud-test,1047,0,19,5.0,2.0,11,1.0
+kk_ktb-ud-train,31,0,2,,,2,

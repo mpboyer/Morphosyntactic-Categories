@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nummod,obl
+nyq_aha-ud-test,10,0,2,1,1
+kfm_aha-ud-test,10,0,2,1,1

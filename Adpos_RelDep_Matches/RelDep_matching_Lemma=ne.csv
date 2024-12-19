@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl
+wo_wtb-ud-dev,449,0,1,,,1.0
+wo_wtb-ud-test,470,0,4,,,4.0
+wo_wtb-ud-train,1188,0,4,,,4.0
+aln_gps-ud-test,966,0,3,,2.0,1.0
+it_twittiro-ud-train,1138,0,1,1.0,,
+it_markit-ud-train,611,0,1,,,1.0
+it_markit-ud-dev,341,0,1,,,1.0

@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,nmod,obl,root
+sl_ssj-ud-test,1282,0,2,,,,,2,
+sl_ssj-ud-dev,1250,0,2,,1.0,,,1,
+sl_ssj-ud-train,10903,0,15,1.0,,2.0,2.0,9,1.0
+sl_sst-ud-train,4558,0,3,,,,,2,1.0

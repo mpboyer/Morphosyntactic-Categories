@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,obl
+wo_wtb-ud-test,470,0,2,,,2
+wo_wtb-ud-train,1188,0,4,1.0,1.0,2

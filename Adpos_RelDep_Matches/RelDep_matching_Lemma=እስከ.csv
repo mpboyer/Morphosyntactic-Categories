@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,nmod,obl
+am_att-ud-test,1074,0,10,4,1,1,1,3

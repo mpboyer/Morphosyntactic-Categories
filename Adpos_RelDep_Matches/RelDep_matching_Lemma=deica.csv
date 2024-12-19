@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,nmod,obl
+gl_ctg-ud-dev,860,0,1,,,1.0
+gl_ctg-ud-test,861,0,1,,1.0,
+gl_ctg-ud-train,2272,0,1,1.0,,

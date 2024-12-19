@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,obl,root
+xcl_caval-ud-train,3185,0,37,35,2.0
+xcl_caval-ud-dev,411,0,5,5,
+xcl_caval-ud-test,550,0,3,3,

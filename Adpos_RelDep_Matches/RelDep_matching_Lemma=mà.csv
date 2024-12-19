@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,obl,parataxis
+bm_crb-ud-test,1026,0,93,,92.0,1.0
+vi_vtb-ud-dev,1123,0,1,1.0,,
+ha_southernautogramm-ud-test,1918,0,14,,14.0,
+ha_northernautogramm-ud-test,400,0,14,,14.0,

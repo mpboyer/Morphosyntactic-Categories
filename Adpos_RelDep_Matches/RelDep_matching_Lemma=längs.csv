@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,obl
+sv_lines-ud-dev,1032,0,1,,,1
+sv_lines-ud-train,3176,0,15,1.0,3.0,11
+sv_lines-ud-test,1035,0,2,,,2
+sv_pud-ud-test,1000,0,3,,2.0,1
+de_gsd-ud-train,13814,0,1,,,1

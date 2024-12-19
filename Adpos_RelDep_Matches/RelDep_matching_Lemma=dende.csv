@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,ccomp,nmod,obj,obl,root
+gl_treegal-ud-train,600,0,7,1.0,1.0,,,,5,
+gl_treegal-ud-test,400,0,1,,,,,,1,
+gl_ctg-ud-dev,860,0,10,,2.0,,2.0,,6,
+gl_ctg-ud-test,861,0,15,,1.0,2.0,,,10,2.0
+gl_ctg-ud-train,2272,0,38,,1.0,2.0,8.0,1.0,22,4.0
+gl_pud-ud-test,1000,0,12,,,,4.0,,8,

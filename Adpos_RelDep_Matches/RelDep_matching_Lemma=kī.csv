@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,dep,obl
+akk_pisandub-ud-test,101,0,2,1.0,1.0,
+akk_riao-ud-test,1874,0,7,,,7.0

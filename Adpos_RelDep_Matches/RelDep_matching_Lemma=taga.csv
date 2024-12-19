@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,nmod,obl,parataxis,root
+et_ewt-ud-train,5444,0,4,,,,,1.0,2.0,,1.0
+et_ewt-ud-test,913,0,1,1.0,,,,,,,
+et_ewt-ud-dev,833,0,2,,,,,,2.0,,
+vep_vwt-ud-test,103,0,2,,,,,,2.0,,
+et_edt-ud-dev,3128,0,13,,,,,1.0,9.0,,3.0
+et_edt-ud-train,24615,0,75,1.0,2.0,1.0,1.0,7.0,52.0,1.0,10.0
+et_edt-ud-test,3214,0,10,1.0,1.0,,,1.0,5.0,,2.0

@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod
+ko_kaist-ud-train,23010,0,1,1
+ko_kaist-ud-test,2287,0,1,1

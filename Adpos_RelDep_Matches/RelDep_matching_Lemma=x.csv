@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nummod
+pt_porttinari-ud-train,5893,0,1,1,
+pt_petrogold-ud-train,7170,0,6,5,1.0
+pt_petrogold-ud-test,1039,0,3,3,
+pt_gsd-ud-train,9616,0,3,3,
+en_gum-ud-train,9521,0,1,1,
+pt_bosque-ud-train,7018,0,1,1,
+de_gsd-ud-train,13814,0,1,1,
+fr_sequoia-ud-train,2231,0,1,1,

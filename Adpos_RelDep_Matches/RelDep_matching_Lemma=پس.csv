@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,nmod,obl,root
+fa_seraji-ud-dev,599,0,1,,,,,1.0,
+fa_seraji-ud-test,600,0,0,,,,,,
+fa_seraji-ud-train,4798,0,5,,,4.0,,,1.0
+fa_perdt-ud-test,1455,0,21,,1.0,,,20.0,
+fa_perdt-ud-train,26196,0,366,4.0,4.0,,35.0,317.0,6.0
+fa_perdt-ud-dev,1456,0,15,,,,2.0,13.0,

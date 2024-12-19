@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,appos,ccomp,flat,nmod,obl,orphan,reparandum,root
+orv_ruthenian-ud-test,390,0,11,,,,,5,6,,,
+orv_ruthenian-ud-train,2789,0,464,1.0,13.0,1.0,,207,221,19.0,1.0,1.0
+orv_ruthenian-ud-dev,344,0,3,,,,1.0,1,1,,,

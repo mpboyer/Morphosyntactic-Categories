@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,nmod,obj,obl
+cy_ccg-ud-test,953,0,20,1.0,8,,2.0,,9
+cy_ccg-ud-dev,409,0,6,,2,1.0,,,3
+cy_ccg-ud-train,1189,0,18,,2,,3.0,1.0,12

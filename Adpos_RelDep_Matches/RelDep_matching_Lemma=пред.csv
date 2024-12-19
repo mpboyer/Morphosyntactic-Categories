@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,advcl,csubj,iobj,nmod,obl,root
+ru_taiga-ud-train,16045,0,2,,,,,2.0,
+ru_taiga-ud-dev,946,0,2,,,,,2.0,
+mk_mtb-ud-test,155,0,2,1.0,,,,1.0,
+ru_poetry-ud-test,728,0,8,,,,1.0,6.0,1.0
+ru_poetry-ud-dev,789,0,5,,,,,5.0,
+ru_poetry-ud-train,3569,0,10,,,,,10.0,
+ru_gsd-ud-train,3850,0,1,,,,,,1.0
+bg_btb-ud-train,8907,0,138,,1.0,26.0,27.0,83.0,1.0
+bg_btb-ud-test,1116,0,16,,,3.0,4.0,9.0,
+bg_btb-ud-dev,1115,0,10,,,1.0,1.0,8.0,

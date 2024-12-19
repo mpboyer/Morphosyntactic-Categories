@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,discourse,nmod,obj,obl,parataxis,root
+gun_dooley-ud-test,1046,0,1,,,,,,,,1,,
+gub_tudet-ud-test,1182,0,126,,2.0,,1.0,1.0,1.0,1.0,106,,14.0
+gun_thomas-ud-test,98,0,12,,1.0,1.0,,,,,9,,1.0
+tpn_tudet-ud-test,581,0,15,1.0,2.0,,,1.0,,1.0,8,1.0,1.0
+eme_tudet-ud-test,913,0,12,,3.0,,,,,,8,,1.0

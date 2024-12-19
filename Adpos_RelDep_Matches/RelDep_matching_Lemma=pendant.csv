@@ -1,0 +1,19 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,nmod,obl,reparandum,root
+fr_pud-ud-test,1000,0,33,,2.0,,,1.0,30.0,,
+fr_fqb-ud-test,2289,0,10,,,,,,10.0,,
+fr_gsd-ud-test,416,0,1,,1.0,,,,,,
+fr_gsd-ud-train,14450,0,177,2.0,5.0,1.0,2.0,18.0,148.0,,1.0
+fr_gsd-ud-dev,1476,0,13,1.0,2.0,,,1.0,9.0,,
+fr_rhapsodie-ud-train,1288,0,8,,1.0,2.0,,,5.0,,
+fr_rhapsodie-ud-dev,1081,0,4,,2.0,,,,2.0,,
+fr_rhapsodie-ud-test,840,0,5,,,,,,4.0,,1.0
+fr_parisstories-ud-dev,692,0,3,,1.0,,,,2.0,,
+fr_parisstories-ud-train,1387,0,20,,,1.0,,2.0,14.0,1.0,2.0
+fr_parisstories-ud-test,697,0,12,,,1.0,,,10.0,1.0,
+qaf_arabizi-ud-train,1003,0,1,,,,,,1.0,,
+fr_partut-ud-dev,107,0,2,,1.0,,,,1.0,,
+fr_partut-ud-test,110,0,3,,,,,,3.0,,
+fr_partut-ud-train,803,0,5,,,,,1.0,4.0,,
+fr_sequoia-ud-test,456,0,10,,1.0,,,2.0,7.0,,
+fr_sequoia-ud-train,2231,0,26,,1.0,,,2.0,23.0,,
+fr_sequoia-ud-dev,412,0,10,,,,,1.0,9.0,,

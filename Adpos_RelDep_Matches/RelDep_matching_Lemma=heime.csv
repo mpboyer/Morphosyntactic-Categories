@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obj,obl,root,xcomp
+no_nynorsk-ud-dev,1890,0,0,,,,,,
+no_nynorsk-ud-train,14174,0,22,6.0,2.0,1.0,8.0,3.0,2.0

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,dep,obj
+ko_gsd-ud-train,4400,0,3,,2.0,1.0
+ko_kaist-ud-dev,2066,0,1,1.0,,
+ko_kaist-ud-train,23010,0,3,3.0,,

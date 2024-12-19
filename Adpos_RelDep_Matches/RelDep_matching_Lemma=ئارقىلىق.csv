@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,obl
+ug_udt-ud-test,900,0,4,2,1.0,1
+ug_udt-ud-dev,900,0,6,1,,5
+ug_udt-ud-train,1656,0,14,1,,13

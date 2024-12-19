@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advmod,appos,obl,orphan
+orv_rnc-ud-train,1868,0,1,,,1,
+orv_torot-ud-test,2955,0,2,,,2,
+orv_torot-ud-dev,3061,0,11,1.0,,9,1.0
+orv_torot-ud-train,20480,0,31,,1.0,30,

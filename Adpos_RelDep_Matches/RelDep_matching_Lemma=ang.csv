@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,appos,csubj,nmod,nsubj,obj,parataxis,root
+tl_ugnayan-ud-test,94,0,56,,,,55,,,1.0
+ceb_gja-ud-test,188,0,47,1.0,2.0,4.0,31,,1.0,8.0
+tl_trg-ud-test,128,0,88,,2.0,,83,3.0,,

@@ -1,0 +1,21 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,nsubj,nummod,obj,obl,parataxis,root
+it_old-ud-train,1748,0,4,,,,,,4.0,,
+it_old-ud-dev,316,0,1,,,,,,1.0,,
+it_old-ud-test,338,0,0,,,,,,,,
+it_pud-ud-test,1000,0,1,,,,,,1.0,,
+it_isdt-ud-test,482,0,3,,,,,,3.0,,
+it_isdt-ud-train,13121,0,28,,3.0,,2.0,,23.0,,
+it_partut-ud-test,153,0,4,,,,,,4.0,,
+it_partut-ud-train,1781,0,6,1.0,,,,,5.0,,
+it_twittiro-ud-test,142,0,1,,,,,,1.0,,
+it_twittiro-ud-train,1138,0,1,1.0,,,,,,,
+it_markit-ud-test,340,0,2,,1.0,,,,1.0,,
+it_markit-ud-train,611,0,1,,,,,,1.0,,
+it_markit-ud-dev,341,0,1,1.0,,,,,,,
+it_postwita-ud-train,5368,0,10,3.0,2.0,1.0,,,2.0,1.0,1.0
+it_postwita-ud-dev,670,0,2,,1.0,,,,1.0,,
+it_postwita-ud-test,674,0,2,,,,,,1.0,,1.0
+it_vit-ud-train,8277,0,23,,5.0,,,1.0,16.0,,1.0
+it_vit-ud-test,1067,0,3,,,,,,3.0,,
+it_vit-ud-dev,743,0,2,,,,2.0,,,,
+it_parlamint-ud-train,326,0,0,,,,,,,,

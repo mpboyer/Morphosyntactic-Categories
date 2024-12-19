@@ -1,0 +1,12 @@
+Treebank,Number of Sentences,Failures,Total,acl,appos,compound,csubj,dislocated,nmod,obl,parataxis,root
+xcl_caval-ud-train,3185,0,0,,,,,,,,,
+xcl_caval-ud-test,550,0,0,,,,,,,,,
+hy_bsut-ud-train,1226,0,17,,,,,,1.0,12.0,1.0,3.0
+hy_bsut-ud-test,595,0,4,,,,,,,3.0,,1.0
+hy_bsut-ud-dev,479,0,11,,1.0,,,,,10.0,,
+hy_armtdp-ud-train,1974,0,41,1.0,1.0,1.0,,1.0,2.0,34.0,,1.0
+hy_armtdp-ud-dev,249,0,1,,,,,,,1.0,,
+hy_armtdp-ud-test,277,0,6,,,,,,,6.0,,
+hyw_armtdp-ud-test,680,0,4,,,,,,,4.0,,
+hyw_armtdp-ud-dev,694,0,10,,,,1.0,,,9.0,,
+hyw_armtdp-ud-train,5282,0,52,,4.0,,,,2.0,44.0,,2.0

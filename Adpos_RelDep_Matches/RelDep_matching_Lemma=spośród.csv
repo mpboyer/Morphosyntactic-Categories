@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+pl_pdb-ud-test,2215,0,2,2,
+pl_pdb-ud-train,17722,0,15,6,9.0
+pl_pud-ud-test,1000,0,4,3,1.0
+pl_lfg-ud-train,13774,0,5,1,4.0

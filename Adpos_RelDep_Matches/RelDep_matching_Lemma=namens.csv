@@ -1,0 +1,9 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,nsubj,obl
+de_hdt-ud-test,18459,0,64,,64.0,,
+de_hdt-ud-train,153035,0,201,2.0,198.0,,1.0
+de_hdt-ud-dev,18434,0,43,,43.0,,
+af_afribooms-ud-train,1315,0,9,,,,9.0
+af_afribooms-ud-dev,194,0,2,,1.0,1.0,
+nl_lassysmall-ud-train,13817,0,5,,1.0,,4.0
+de_gsd-ud-train,13814,0,12,,12.0,,
+nl_alpino-ud-train,12289,0,10,,1.0,,9.0

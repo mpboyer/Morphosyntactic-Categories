@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,nmod,nummod,obl
+ro_nonstandard-ud-train,24121,0,2,2.0,,,,
+bor_bdt-ud-test,881,0,3,,,,,3.0
+tr_gb-ud-test,2880,0,2,,,2.0,,
+tr_imst-ud-train,3435,0,17,,16.0,,1.0,
+tr_imst-ud-dev,1100,0,10,,9.0,,1.0,
+tr_imst-ud-test,1100,0,4,,4.0,,,

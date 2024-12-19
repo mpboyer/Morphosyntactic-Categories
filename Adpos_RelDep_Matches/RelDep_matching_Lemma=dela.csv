@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+ro_nonstandard-ud-test,1052,0,3,,3
+ro_nonstandard-ud-dev,1052,0,4,,4
+ro_nonstandard-ud-train,24121,0,4,2.0,2

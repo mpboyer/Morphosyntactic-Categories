@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,obl
+ja_pudluw-ud-test,1000,0,14,14
+ja_gsdluw-ud-train,7050,0,111,111
+ja_gsdluw-ud-dev,507,0,8,8
+ja_gsdluw-ud-test,543,0,7,7

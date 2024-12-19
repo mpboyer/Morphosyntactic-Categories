@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,dep,nmod,obl,parataxis,root
+pt_porttinari-ud-train,5893,0,4,,,,3.0,,1.0
+pt_porttinari-ud-dev,842,0,1,,,,1.0,,
+gl_treegal-ud-train,600,0,1,,,1.0,,,
+pt_petrogold-ud-train,7170,0,1,,,,1.0,,
+pt_cintil-ud-test,3840,0,8,,1.0,,7.0,,
+pt_cintil-ud-dev,3840,0,4,,,,2.0,,2.0
+pt_cintil-ud-train,30720,0,59,2.0,1.0,,40.0,2.0,14.0
+pt_bosque-ud-dev,1172,0,0,,,,,,
+pt_bosque-ud-test,1167,0,2,,,,2.0,,
+pt_bosque-ud-train,7018,0,15,1.0,,3.0,11.0,,

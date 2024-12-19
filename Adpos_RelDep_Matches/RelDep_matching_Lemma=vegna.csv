@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,nmod,obl,parataxis,root,xcomp
+is_pud-ud-test,1000,0,22,,,,3.0,15,1.0,3.0,
+is_gc-ud-test,540,0,19,,,,,19,,,
+is_gc-ud-train,3960,0,99,2.0,,,,95,,2.0,
+is_gc-ud-dev,500,0,18,,,,,18,,,
+is_icepahc-ud-dev,4865,0,48,,1.0,,,46,,1.0,
+is_icepahc-ud-train,34007,0,183,,1.0,1.0,,176,,5.0,
+is_icepahc-ud-test,5157,0,44,,,,,42,,2.0,
+is_modern-ud-dev,394,0,14,,,,,13,,1.0,
+is_modern-ud-train,2703,0,141,,1.0,1.0,,121,2.0,14.0,2.0
+is_modern-ud-test,438,0,14,,,,,13,,1.0,

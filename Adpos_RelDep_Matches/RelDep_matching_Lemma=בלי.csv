@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,compound,nmod,obl,parataxis
+he_iahltwiki-ud-train,4298,0,10,1.0,,,3.0,6.0,
+he_iahltwiki-ud-dev,348,0,1,,,,,,1.0
+he_htb-ud-train,5168,0,27,5.0,1.0,,3.0,17.0,1.0
+he_htb-ud-dev,484,0,5,1.0,,1.0,1.0,2.0,
+he_htb-ud-test,491,0,1,1.0,,,,,

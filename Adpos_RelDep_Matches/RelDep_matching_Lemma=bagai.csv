@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,nmod,obj,obl
+bor_bdt-ud-test,881,0,8,1.0,,2.0,,1.0,4
+id_gsd-ud-train,4482,0,1,,,,,,1
+id_pud-ud-test,1000,0,77,,,,14.0,,63
+id_csui-ud-test,374,0,15,,,,2.0,,13
+id_csui-ud-train,656,0,22,,1.0,,4.0,,17

@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,orphan,parataxis,root,xcomp
+pl_pdb-ud-test,2215,0,80,4.0,76,,,,
+pl_pdb-ud-train,17722,0,835,25.0,804,2.0,2.0,1.0,1.0
+pl_pdb-ud-dev,2215,0,102,2.0,100,,,,
+pl_pud-ud-test,1000,0,71,2.0,69,,,,
+pl_lfg-ud-test,1727,0,26,,26,,,,
+pl_lfg-ud-train,13774,0,208,1.0,207,,,,
+pl_lfg-ud-dev,1745,0,23,,23,,,,

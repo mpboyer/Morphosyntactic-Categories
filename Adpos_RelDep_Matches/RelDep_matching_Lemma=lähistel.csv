@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,obl,punct,root
+et_ewt-ud-train,5444,0,1,,,1.0
+et_edt-ud-dev,3128,0,1,1.0,,
+et_edt-ud-train,24615,0,11,10.0,1.0,

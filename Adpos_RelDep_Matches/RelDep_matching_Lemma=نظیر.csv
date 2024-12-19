@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod
+fa_perdt-ud-test,1455,0,1,1
+fa_perdt-ud-train,26196,0,6,6
+fa_perdt-ud-dev,1456,0,1,1

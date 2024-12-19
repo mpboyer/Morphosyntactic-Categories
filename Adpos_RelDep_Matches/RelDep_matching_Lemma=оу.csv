@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,nsubj,obj,obl,root,xcomp
+cu_proiel-ud-train,18327,0,52,1.0,1.0,2.0,1.0,41,3.0,3.0
+cu_proiel-ud-test,2096,0,10,,,,,10,,
+cu_proiel-ud-dev,2205,0,12,1.0,1.0,,,9,,1.0

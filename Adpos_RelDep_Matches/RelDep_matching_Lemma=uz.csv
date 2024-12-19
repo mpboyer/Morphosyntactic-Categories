@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,advcl,appos,ccomp,compound,csubj,dep,discourse,iobj,nmod,nummod,obj,obl,orphan,parataxis,punct,root
+hr_set-ud-dev,960,0,17,,,,,,,,,,,3.0,,,13,,1.0,,
+hr_set-ud-train,6914,0,149,,,,,,,,,5.0,,30.0,,,108,,6.0,,
+hr_set-ud-test,1136,0,9,,,,,,,,,,,3.0,,,5,,1.0,,
+sr_set-ud-test,520,0,2,,,,,,,,,,,1.0,,,1,,,,
+sr_set-ud-train,3328,0,17,,,,,,,,,1.0,,1.0,,,14,,1.0,,
+sr_set-ud-dev,536,0,1,,,,,,,,,,,,,,1,,,,
+lv_lvtb-ud-test,2412,0,195,,1.0,1.0,,,,,,,46.0,26.0,1.0,,117,1.0,,,2.0
+lv_lvtb-ud-train,14358,0,1492,2.0,5.0,3.0,,1.0,1.0,,,1.0,315.0,240.0,7.0,1.0,903,1.0,,2.0,10.0
+lv_lvtb-ud-dev,2080,0,209,,2.0,1.0,1.0,,,1.0,1.0,1.0,38.0,20.0,,,141,,,,3.0
+lv_cairo-ud-test,20,0,1,,,,,,,,,,,,,,1,,,,

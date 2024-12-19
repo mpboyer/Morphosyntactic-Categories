@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,ccomp,nmod,obl,parataxis,root,xcomp
+tpn_tudet-ud-test,581,0,9,,,2,4,,3.0,
+gd_arcosg-ud-test,545,0,51,1.0,,4,28,,,18.0
+gd_arcosg-ud-train,3541,0,481,17.0,2.0,39,311,1.0,2.0,109.0
+gd_arcosg-ud-dev,655,0,55,,,4,42,,,9.0

@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,nmod,nsubj,obj,obl,parataxis,root
+zh_gsdsimp-ud-test,500,0,16,,,2.0,1.0,6.0,7,,
+zh_gsdsimp-ud-train,3997,0,153,2.0,,22.0,19.0,20.0,87,1.0,2.0
+zh_gsdsimp-ud-dev,500,0,24,,1.0,5.0,1.0,2.0,15,,
+zh_beginner-ud-test,2295,0,9,,,,,,9,,
+zh_cfl-ud-test,451,0,20,,1.0,3.0,,,16,,

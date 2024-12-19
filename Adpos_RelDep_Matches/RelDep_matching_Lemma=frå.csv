@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,csubj,dislocated,nmod,obj,obl,parataxis,reparandum,root,xcomp
+no_nynorsk-ud-dev,1890,0,148,,2,1,,,,,70,,71,,,4,
+no_nynorsk-ud-test,1511,0,104,,3,2,1.0,,,,55,,42,,,1,
+no_nynorsk-ud-train,14174,0,1154,5.0,14,21,8.0,1.0,1.0,1.0,651,1.0,434,1.0,1.0,14,1.0

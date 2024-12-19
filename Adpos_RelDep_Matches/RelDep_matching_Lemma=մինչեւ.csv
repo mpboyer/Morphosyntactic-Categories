@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,ccomp,dislocated,flat,nmod,obj,obl,orphan,parataxis,root
+xcl_caval-ud-train,3185,0,63,11.0,12.0,,2.0,,,3.0,,35,,,
+xcl_caval-ud-dev,411,0,6,3.0,1.0,,,,,,,2,,,
+xcl_caval-ud-test,550,0,1,,,,,,,,,1,,,
+hyw_armtdp-ud-test,680,0,14,,,,,1.0,,2.0,,11,,,
+hyw_armtdp-ud-dev,694,0,17,,,,,,,3.0,,13,,1.0,
+hyw_armtdp-ud-train,5282,0,71,,1.0,2.0,,,1.0,13.0,1.0,50,1.0,,2.0

@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+orv_rnc-ud-train,1868,0,3,1.0,2.0
+ru_taiga-ud-train,16045,0,1,,1.0
+ru_taiga-ud-dev,946,0,2,1.0,1.0
+ru_syntagrus-ud-train,69630,0,7,4.0,3.0
+ru_syntagrus-ud-test,8800,0,1,1.0,
+ru_gsd-ud-test,601,0,2,2.0,
+ru_gsd-ud-train,3850,0,2,,2.0

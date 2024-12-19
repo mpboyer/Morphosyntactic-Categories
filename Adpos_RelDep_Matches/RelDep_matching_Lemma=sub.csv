@@ -1,0 +1,26 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,csubj,dep,iobj,mark,nmod,nummod,obl,orphan,root,xcomp
+la_circse-ud-test,1263,0,6,,,,,,,,,,,,5,,1.0,
+la_perseus-ud-test,939,0,12,,1.0,,,,,,,,,,11,,,
+la_perseus-ud-train,1334,0,6,,,,,,,,,,,,6,,,
+ro_nonstandard-ud-test,1052,0,12,1.0,,,,,,,1.0,,1.0,,9,,,
+ro_nonstandard-ud-dev,1052,0,3,,,,,,,,,,1.0,,2,,,
+ro_nonstandard-ud-train,24121,0,245,17.0,3.0,,,1.0,2.0,,,1.0,34.0,,177,,7.0,3.0
+ro_simonero-ud-test,491,0,15,,,,,,,,,,5.0,,9,,1.0,
+ro_simonero-ud-train,3747,0,97,,,,,,,,,,28.0,7.0,61,,1.0,
+ro_simonero-ud-dev,443,0,9,,,,,,,,,,6.0,,3,,,
+ro_tuecl-ud-test,210,0,1,,,,,,,,,,,,1,,,
+la_llct-ud-dev,850,0,10,,,,,,,,,,,,8,,,2.0
+la_llct-ud-test,884,0,7,,,,,,,,,,,,7,,,
+la_llct-ud-train,7289,0,127,,,,,,,,,,4.0,,121,,,2.0
+la_proiel-ud-test,1260,0,1,,,,,,,,,,,,1,,,
+la_proiel-ud-dev,1233,0,4,,,,,1.0,,,,,,,3,,,
+la_proiel-ud-train,16196,0,74,8.0,2.0,,,2.0,,1.0,,,2.0,,51,,7.0,1.0
+la_udante-ud-train,926,0,44,3.0,6.0,,,1.0,,,,,,,33,,1.0,
+la_udante-ud-test,419,0,9,,,,,,,,,,1.0,,7,,1.0,
+la_udante-ud-dev,376,0,15,,,,,,,,,,,,15,,,
+ro_rrt-ud-test,729,0,13,,,,,,,,,,7.0,,6,,,
+ro_rrt-ud-train,8043,0,140,,1.0,1.0,2.0,,1.0,,1.0,,23.0,,109,,,2.0
+ro_rrt-ud-dev,752,0,11,,,,,,,,,,1.0,,9,,,1.0
+la_ittb-ud-dev,2101,0,3,,,,,,,,,,1.0,,2,,,
+la_ittb-ud-test,2101,0,12,,1.0,,,,,,,,,,11,,,
+la_ittb-ud-train,22775,0,288,14.0,31.0,,,3.0,7.0,,,,5.0,,205,10.0,12.0,1.0

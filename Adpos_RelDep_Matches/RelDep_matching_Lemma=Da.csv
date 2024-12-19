@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,parataxis,root
+it_isdt-ud-train,13121,0,1,1.0,,,
+it_twittiro-ud-test,142,0,2,,2.0,,
+it_twittiro-ud-train,1138,0,1,,,1.0,
+it_twittiro-ud-dev,144,0,1,,,1.0,
+it_postwita-ud-train,5368,0,14,5.0,3.0,4.0,2.0
+it_postwita-ud-dev,670,0,3,2.0,,1.0,
+it_postwita-ud-test,674,0,4,1.0,2.0,1.0,
+it_vit-ud-train,8277,0,4,1.0,3.0,,
+it_vit-ud-dev,743,0,1,,1.0,,

@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,compound,discourse,dislocated,nmod,obl,root,xcomp
+say_autogramm-ud-test,1864,0,41,3,3,2,1,1,1,5,9,9,4,3

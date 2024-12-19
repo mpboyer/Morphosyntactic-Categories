@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,dep,flat,nmod,nsubj,nummod,obj,obl,orphan,root,xcomp
+kmr_mg-ud-train,20,0,4,,,,,,3.0,,,,,,1.0,
+kmr_mg-ud-test,734,0,224,2.0,,3.0,,2.0,198.0,2.0,1.0,,8.0,,8.0,
+wo_wtb-ud-test,470,0,2,,1.0,,,,1.0,,,,,,,
+wo_wtb-ud-train,1188,0,1,,,,,,1.0,,,,,,,
+nds_lsdc-ud-test,500,0,1,,,,,,,,,,1.0,,,
+myu_tudet-ud-test,158,0,1,,,,,,,,,,1.0,,,
+got_proiel-ud-dev,985,0,57,,1.0,,,,4.0,,,,47.0,,4.0,1.0
+got_proiel-ud-train,3387,0,207,,3.0,2.0,1.0,,21.0,1.0,,2.0,159.0,6.0,5.0,7.0
+got_proiel-ud-test,1029,0,41,,2.0,,,,4.0,1.0,,1.0,32.0,,1.0,

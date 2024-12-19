@@ -1,0 +1,17 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,compound,csubj,dep,nmod,obl,parataxis,reparandum,root,xcomp
+en_partut-ud-dev,156,0,1,1.0,,,,,,,,,,,,
+en_partut-ud-train,1781,0,4,3.0,,,,,,,,,,,1.0,
+en_gum-ud-train,9521,0,70,3.0,12.0,,,3.0,2.0,,,10.0,2.0,1.0,27.0,10.0
+en_gum-ud-test,1285,0,6,1.0,1.0,,,,,,,2.0,,,1.0,1.0
+en_gum-ud-dev,1341,0,4,,,,,,,,1.0,,,,3.0,
+en_lines-ud-train,3176,0,13,,,,,,,,1.0,12.0,,,,
+en_lines-ud-dev,1032,0,2,,,,,,,,,2.0,,,,
+en_lines-ud-test,1035,0,2,,,,,,,,,2.0,,,,
+en_ewt-ud-test,2077,0,4,,,,,,,,,1.0,1.0,,2.0,
+en_ewt-ud-dev,2001,0,6,,,,,,,,1.0,1.0,1.0,,2.0,1.0
+en_ewt-ud-train,12544,0,51,4.0,9.0,,1.0,,1.0,,,6.0,3.0,,16.0,11.0
+pcm_nsc-ud-dev,990,0,9,,3.0,1.0,1.0,1.0,,,,,,,3.0,
+pcm_nsc-ud-train,7279,0,73,7.0,15.0,,8.0,9.0,1.0,,,1.0,6.0,,26.0,
+pcm_nsc-ud-test,972,0,6,,,,1.0,,,1.0,,,,,4.0,
+en_gentle-ud-test,1334,0,3,,1.0,,,,,,,1.0,,,,1.0
+en_pud-ud-test,1000,0,4,2.0,,,,,,,,,1.0,,1.0,

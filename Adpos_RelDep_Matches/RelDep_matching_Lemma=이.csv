@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,csubj,dep,flat,nsubj,nummod,obl,root
+ko_gsd-ud-test,989,0,6,,,,,2.0,3,,,1.0
+ko_gsd-ud-train,4400,0,35,2.0,1.0,,4.0,14.0,9,1.0,1.0,3.0
+ko_gsd-ud-dev,950,0,3,,1.0,,,1.0,1,,,
+ko_kaist-ud-dev,2066,0,3,,,,,,3,,,
+ko_kaist-ud-train,23010,0,63,,,9.0,,,54,,,
+ko_kaist-ud-test,2287,0,10,,,1.0,,,9,,,

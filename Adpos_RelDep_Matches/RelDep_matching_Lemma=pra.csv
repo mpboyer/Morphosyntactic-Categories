@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,csubj,flat,nmod,obj,obl,orphan,parataxis,root
+sa_vedic-ud-test,2709,0,7,,,,,2.0,,,,1.0,,4.0
+sa_vedic-ud-train,21477,0,59,5.0,7.0,1.0,1.0,16.0,,2.0,3.0,2.0,1.0,21.0
+sa_vedic-ud-dev,2996,0,8,,,1.0,,,,2.0,,,1.0,4.0
+pt_gsd-ud-train,9616,0,3,,,,,,2.0,,1.0,,,
+pt_bosque-ud-train,7018,0,4,,,,,,1.0,,2.0,,,1.0

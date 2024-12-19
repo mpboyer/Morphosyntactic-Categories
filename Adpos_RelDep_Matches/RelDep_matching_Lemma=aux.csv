@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+ga_twittirish-ud-test,866,0,1,,1.0
+it_isdt-ud-train,13121,0,1,1.0,
+fr_parisstories-ud-dev,692,0,1,,1.0
+fr_parisstories-ud-train,1387,0,1,,1.0
+qaf_arabizi-ud-train,1003,0,3,,3.0

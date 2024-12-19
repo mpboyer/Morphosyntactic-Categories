@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,nmod,obj,obl,parataxis,root
+id_gsd-ud-train,4482,0,32,1.0,1.0,20,,6.0,1.0,3.0
+id_gsd-ud-test,557,0,6,,,4,1.0,,,1.0
+id_gsd-ud-dev,559,0,2,,,2,,,,

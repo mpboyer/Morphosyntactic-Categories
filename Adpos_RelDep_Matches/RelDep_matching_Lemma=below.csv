@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,nummod,obl,root
+en_partut-ud-train,1781,0,5,,1.0,2.0,2.0,
+en_gum-ud-train,9521,0,5,1.0,2.0,,,2.0
+en_gum-ud-test,1285,0,1,,,,1.0,
+en_lines-ud-train,3176,0,1,,1.0,,,
+en_lines-ud-dev,1032,0,1,,,,1.0,
+en_lines-ud-test,1035,0,1,,,,1.0,
+en_ewt-ud-test,2077,0,1,,,,1.0,
+en_ewt-ud-train,12544,0,11,,5.0,,4.0,2.0
+en_pud-ud-test,1000,0,2,,,,2.0,

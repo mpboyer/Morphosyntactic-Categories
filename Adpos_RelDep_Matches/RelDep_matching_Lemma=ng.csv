@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,iobj,nmod,nsubj,obj,obl
+tl_ugnayan-ud-test,94,0,45,,23.0,3.0,17,2.0
+tl_trg-ud-test,128,0,38,3.0,,,35,

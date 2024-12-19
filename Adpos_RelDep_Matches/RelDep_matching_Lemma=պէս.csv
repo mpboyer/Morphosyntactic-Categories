@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,appos,dislocated,nmod,obl,parataxis
+hyw_armtdp-ud-test,680,0,12,,,,,10,2.0
+hyw_armtdp-ud-dev,694,0,22,,,,2.0,20,
+hyw_armtdp-ud-train,5282,0,55,1.0,2.0,1.0,7.0,43,1.0

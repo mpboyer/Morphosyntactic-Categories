@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+ga_twittirish-ud-train,866,0,1,1,
+ga_idt-ud-train,4005,0,4,4,
+ga_idt-ud-dev,451,0,2,1,1.0

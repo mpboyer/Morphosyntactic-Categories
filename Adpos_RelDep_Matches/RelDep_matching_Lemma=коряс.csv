@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl,orphan
+mdf_jr-ud-test,454,0,7,3.0,1.0,3,
+myv_jr-ud-test,921,0,5,,,4,1.0
+myv_jr-ud-train,1217,0,2,,,2,

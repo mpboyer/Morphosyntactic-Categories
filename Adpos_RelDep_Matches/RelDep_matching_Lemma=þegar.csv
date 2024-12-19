@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,obj,parataxis,root
+is_icepahc-ud-dev,4865,0,1,,,,1.0,,
+is_icepahc-ud-train,34007,0,8,1.0,1.0,,,,6.0
+is_icepahc-ud-test,5157,0,2,2.0,,,,,
+is_modern-ud-train,2703,0,3,,,1.0,,1.0,1.0

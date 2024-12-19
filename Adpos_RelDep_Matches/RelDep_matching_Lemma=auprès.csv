@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,obl,root,xcomp
+fr_pud-ud-test,1000,0,1,1.0,,
+fr_partut-ud-test,110,0,1,1.0,,
+fr_partut-ud-train,803,0,2,2.0,,
+fr_sequoia-ud-train,2231,0,2,,1.0,1.0

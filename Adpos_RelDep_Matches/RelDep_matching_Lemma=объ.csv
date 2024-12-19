@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,dislocated,nmod,obl,orphan,root
+orv_rnc-ud-train,1868,0,14,1.0,1.0,9.0,1.0,2.0
+orv_rnc-ud-test,717,0,0,,,,,
+orv_ruthenian-ud-train,2789,0,7,,3.0,4.0,,

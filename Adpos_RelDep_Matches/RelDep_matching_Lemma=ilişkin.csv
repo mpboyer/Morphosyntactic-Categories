@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,nmod,nsubj,nummod,obj,obl,root,xcomp
+tr_pud-ud-test,1000,0,8,2.0,,6.0,,,,,,
+tr_kenet-ud-train,15398,0,2,,,1.0,,,,1.0,,
+tr_imst-ud-train,3435,0,7,1.0,,5.0,,,,1.0,,
+tr_imst-ud-dev,1100,0,4,1.0,,2.0,,1.0,,,,
+tr_imst-ud-test,1100,0,3,,,2.0,,,,1.0,,
+tr_boun-ud-dev,979,0,5,,,1.0,,,1.0,2.0,1.0,
+tr_boun-ud-test,979,0,0,,,,,,,,,
+tr_boun-ud-train,7803,0,6,,,1.0,,,1.0,4.0,,
+tr_penn-ud-dev,622,0,1,,,1.0,,,,,,
+tr_penn-ud-train,14850,0,52,,3.0,35.0,3.0,,3.0,6.0,1.0,1.0

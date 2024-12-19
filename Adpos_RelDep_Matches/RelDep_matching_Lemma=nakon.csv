@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,nmod,obl,orphan,parataxis,root
+hr_set-ud-dev,960,0,38,,,5,33,,,
+hr_set-ud-train,6914,0,198,3.0,1.0,20,170,1.0,2.0,1.0
+hr_set-ud-test,1136,0,39,,,4,35,,,
+sr_set-ud-test,520,0,6,,,2,4,,,
+sr_set-ud-train,3328,0,32,1.0,,7,24,,,
+sr_set-ud-dev,536,0,3,,,1,2,,,

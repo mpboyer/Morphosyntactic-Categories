@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,compound,csubj,nmod,nsubj,nummod,obj,obl,parataxis,reparandum,root,xcomp
+kmr_mg-ud-train,20,0,9,,,,,,,,8.0,,,,,,,1.0,
+kmr_mg-ud-test,734,0,219,5.0,2.0,2.0,,3.0,,,190.0,,,,2.0,2.0,,13.0,
+tr_gb-ud-test,2880,0,34,4.0,3.0,,,,,,17.0,,2.0,,2.0,,,4.0,2.0
+qtd_sagt-ud-test,805,0,17,,,,,,1.0,,3.0,1.0,,,7.0,1.0,1.0,,3.0
+qtd_sagt-ud-dev,801,0,15,,2.0,,,,,,8.0,,,,1.0,,,2.0,2.0
+qtd_sagt-ud-train,578,0,5,,,,1.0,,,,2.0,,,,2.0,,,,
+tr_imst-ud-train,3435,0,68,,1.0,5.0,,,,1.0,18.0,4.0,3.0,2.0,8.0,,,26.0,
+tr_imst-ud-dev,1100,0,17,,,5.0,,1.0,,,2.0,2.0,1.0,,1.0,,,5.0,
+tr_imst-ud-test,1100,0,10,,,1.0,,,,,2.0,,,1.0,1.0,,,5.0,
+tr_boun-ud-dev,979,0,1,,,,,,,,,,,,1.0,,,,
+tr_boun-ud-test,979,0,3,,,,,,,,1.0,,,1.0,,,,,1.0
+tr_boun-ud-train,7803,0,24,1.0,,1.0,,,,,15.0,,,,4.0,,,3.0,

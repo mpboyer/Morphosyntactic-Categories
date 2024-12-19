@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,compound,flat,iobj,nmod,nummod,obj,obl,orphan,parataxis,root,xcomp
+el_gud-ud-train,1071,0,377,,1.0,2.0,,1.0,,1.0,,22,,1.0,342,,,7,
+el_gud-ud-test,736,0,311,,,2.0,,,1.0,,,20,,,286,,,2,
+cpg_tuecl-ud-test,350,0,167,,,,,,,,6.0,8,1.0,2.0,147,,,2,1.0
+el_gdt-ud-test,456,0,332,,,,,,,,,72,,1.0,253,1.0,1.0,3,1.0
+el_gdt-ud-train,1662,0,1391,1.0,6.0,1.0,6.0,2.0,,,,332,1.0,,1016,8.0,2.0,14,2.0
+el_gdt-ud-dev,403,0,367,,2.0,,4.0,,,,,73,,,282,2.0,,4,

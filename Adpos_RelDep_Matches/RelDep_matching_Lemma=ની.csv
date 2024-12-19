@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,nmod,nummod,obj,obl
+gu_gujtb-ud-test,187,0,35,3,2,1,24,1,1,3

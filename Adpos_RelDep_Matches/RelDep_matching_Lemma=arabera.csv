@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,flat,nmod,nummod,obl,xcomp
+eu_bdt-ud-train,5396,0,58,,6,1.0,51,
+eu_bdt-ud-test,1799,0,18,2.0,1,1.0,14,
+eu_bdt-ud-dev,1798,0,23,,2,,20,1.0

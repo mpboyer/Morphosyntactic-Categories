@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,nmod,nsubj,obl,root,xcomp
+ga_twittirish-ud-dev,864,0,6,,,,,,6.0,,
+ga_twittirish-ud-test,866,0,4,,,,1.0,,1.0,1.0,1.0
+ga_twittirish-ud-train,866,0,4,,,,1.0,,2.0,1.0,
+ga_idt-ud-train,4005,0,54,1.0,1.0,1.0,10.0,,35.0,1.0,5.0
+ga_idt-ud-test,454,0,8,1.0,1.0,,2.0,,4.0,,
+ga_idt-ud-dev,451,0,3,,,,,1.0,1.0,,1.0
+gd_arcosg-ud-test,545,0,5,,,,5.0,,,,
+gd_arcosg-ud-train,3541,0,10,,,,10.0,,,,
+gd_arcosg-ud-dev,655,0,4,,,,1.0,,3.0,,
+ga_cadhan-ud-test,193,0,3,,,,,,3.0,,

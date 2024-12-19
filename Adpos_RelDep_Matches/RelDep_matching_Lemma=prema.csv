@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,discourse,dislocated,nmod,obl,parataxis
+hr_set-ud-dev,960,0,25,,,6,18,1
+hr_set-ud-train,6914,0,193,2.0,1.0,46,125,19
+hr_set-ud-test,1136,0,44,2.0,,11,27,4
+sr_set-ud-test,520,0,17,,,1,15,1
+sr_set-ud-train,3328,0,88,,,17,66,5
+sr_set-ud-dev,536,0,17,,,3,12,2

@@ -1,0 +1,17 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,advcl,ccomp,flat,nmod,nsubj,obl,orphan,parataxis,punct,root
+uk_iu-ud-dev,673,0,3,,,,,,,,3,,,,
+uk_iu-ud-train,5521,0,54,,,,,,10.0,,39,2.0,1.0,,2.0
+uk_iu-ud-test,898,0,7,,,,,,5.0,,2,,,,
+ru_taiga-ud-train,16045,0,65,,,,,,19.0,,44,,1.0,,1.0
+ru_taiga-ud-dev,946,0,3,,,,,,,,3,,,,
+ru_taiga-ud-test,881,0,4,,,,,,,,4,,,,
+ru_syntagrus-ud-train,69630,0,467,1.0,3.0,5.0,1.0,,112.0,1.0,325,,6.0,,13.0
+ru_syntagrus-ud-dev,8906,0,56,,1.0,,,,16.0,,36,,,,3.0
+ru_syntagrus-ud-test,8800,0,72,1.0,1.0,,,1.0,9.0,,55,,,1.0,4.0
+ru_poetry-ud-test,728,0,3,,,,,,,,3,,,,
+ru_poetry-ud-dev,789,0,1,,,,,,,,1,,,,
+ru_poetry-ud-train,3569,0,16,,,,,,1.0,,13,,,,2.0
+ru_pud-ud-test,1000,0,8,,,,,,,,8,,,,
+ru_gsd-ud-test,601,0,7,,,,,,,,7,,,,
+ru_gsd-ud-dev,579,0,2,,,,,,1.0,,1,,,,
+ru_gsd-ud-train,3850,0,17,,,,,,10.0,,7,,,,

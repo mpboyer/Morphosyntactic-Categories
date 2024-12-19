@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,ccomp,discourse,dislocated,mark,nmod,nsubj,obl,reparandum,root,xcomp
+xav_xdt-ud-test,171,0,14,,,,,1.0,,9.0,,4,,,
+gub_tudet-ud-test,1182,0,19,,,2.0,,,,1.0,,15,,1.0,
+sq_tsa-ud-test,60,0,11,,,,,,,6.0,,5,,,
+gun_thomas-ud-test,98,0,5,,,,,1.0,,1.0,,3,,,
+mpu_tudet-ud-test,37,0,4,,,,,,,,,4,,,
+aln_gps-ud-test,966,0,335,1.0,1.0,,2.0,,1.0,152.0,2.0,161,9.0,2.0,4.0

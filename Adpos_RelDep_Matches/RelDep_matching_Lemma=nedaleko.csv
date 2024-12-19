@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,nmod,obl
+cs_fictree-ud-train,10160,0,1,,,1.0
+cs_fictree-ud-test,1291,0,1,,1.0,
+cs_pdt-ud-test,10146,0,2,,1.0,1.0
+cs_pdt-ud-dev,9270,0,2,,1.0,1.0
+cs_pdt-ud-train,68491,0,14,1.0,6.0,7.0
+cs_cac-ud-train,23478,0,6,,3.0,3.0

@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,obl
+is_pud-ud-test,1000,0,1,1
+is_gc-ud-train,3960,0,4,4
+is_gc-ud-dev,500,0,1,1
+is_modern-ud-train,2703,0,3,3
+is_modern-ud-test,438,0,1,1

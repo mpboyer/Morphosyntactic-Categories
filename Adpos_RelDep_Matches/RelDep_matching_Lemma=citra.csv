@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,obl
+la_circse-ud-test,1263,0,0,,,
+la_proiel-ud-train,16196,0,5,2.0,,3.0
+la_udante-ud-train,926,0,2,1.0,1.0,
+la_udante-ud-dev,376,0,2,,,2.0

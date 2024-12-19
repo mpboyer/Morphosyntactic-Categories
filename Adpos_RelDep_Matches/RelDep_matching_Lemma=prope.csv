@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,nmod,obl,root,xcomp
+la_llct-ud-dev,850,0,40,3.0,1.0,22.0,14,,
+la_llct-ud-test,884,0,15,,,9.0,5,,1.0
+la_llct-ud-train,7289,0,171,9.0,,75.0,85,1.0,1.0
+la_proiel-ud-train,16196,0,4,,,,3,1.0,

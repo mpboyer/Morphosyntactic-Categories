@@ -1,0 +1,19 @@
+Treebank,Number of Sentences,Failures,Total,acl,ccomp,dep,nmod,obl,root
+en_partut-ud-dev,156,0,1,,,,1.0,,
+en_partut-ud-train,1781,0,14,,,,3.0,11.0,
+en_partut-ud-test,153,0,5,,,,,5.0,
+en_atis-ud-test,586,0,1,,,,,1.0,
+en_atis-ud-train,4274,0,1,,,,1.0,,
+en_gum-ud-train,9521,0,31,,,1.0,12.0,16.0,2.0
+en_gum-ud-test,1285,0,1,,,,,1.0,
+en_gum-ud-dev,1341,0,6,,,,3.0,3.0,
+en_lines-ud-train,3176,0,20,,,,5.0,15.0,
+en_lines-ud-dev,1032,0,5,,,,2.0,3.0,
+en_lines-ud-test,1035,0,6,,,,1.0,5.0,
+en_ewt-ud-test,2077,0,5,,,,1.0,4.0,
+en_ewt-ud-dev,2001,0,6,,,,1.0,5.0,
+en_ewt-ud-train,12544,0,53,1.0,,,13.0,38.0,1.0
+pcm_nsc-ud-dev,990,0,1,,,,,1.0,
+pcm_nsc-ud-train,7279,0,5,,,,,5.0,
+en_gentle-ud-test,1334,0,9,,,,1.0,8.0,
+en_pud-ud-test,1000,0,6,,1.0,,2.0,3.0,

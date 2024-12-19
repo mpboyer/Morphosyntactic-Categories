@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,obl
+en_partut-ud-train,1781,0,1,,1.0
+en_gum-ud-train,9521,0,1,1.0,

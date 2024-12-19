@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,obj,obl,root
+akk_pisandub-ud-test,101,0,7,2.0,1.0,,4,
+akk_riao-ud-test,1874,0,362,,,1.0,359,2.0

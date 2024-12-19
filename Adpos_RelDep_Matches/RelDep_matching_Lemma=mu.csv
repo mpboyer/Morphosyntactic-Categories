@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,ccomp,nmod,nummod,obj,obl,reparandum,root,xcomp
+wo_wtb-ud-test,470,0,3,,,2,,1.0,,,,
+wo_wtb-ud-train,1188,0,2,,,1,1.0,,,,,
+gd_arcosg-ud-test,545,0,22,1.0,,5,,,13.0,,,3.0
+gd_arcosg-ud-train,3541,0,140,,1.0,32,1.0,,91.0,1.0,1.0,13.0
+gd_arcosg-ud-dev,655,0,19,,,7,,,10.0,,,2.0

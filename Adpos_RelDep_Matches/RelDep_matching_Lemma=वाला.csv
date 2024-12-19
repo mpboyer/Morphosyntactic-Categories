@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,csubj,nmod,nsubj,obj,root,xcomp
+hi_pud-ud-test,1000,0,60,50.0,,1,1,,,8
+bho_bhtb-ud-test,357,0,8,,1.0,2,1,1.0,2.0,1

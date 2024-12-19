@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,appos,obl,reparandum,root
+zh_gsd-ud-dev,500,0,19,,19.0,,
+zh_gsd-ud-test,500,0,14,2.0,12.0,,
+zh_gsd-ud-train,3997,0,102,,101.0,,1.0
+yue_hk-ud-test,1004,0,4,,3.0,1.0,
+zh_pud-ud-test,1000,0,13,,13.0,,
+zh_hk-ud-test,1004,0,1,,,,1.0
+lzh_kyoto-ud-train,74609,0,0,,,,

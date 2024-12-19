@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,appos,ccomp,nmod,obl,parataxis
+sv_talbanken-ud-dev,504,0,15,,,5,10,
+sv_talbanken-ud-test,1219,0,16,,,5,11,
+sv_talbanken-ud-train,4303,0,84,1.0,,30,52,1.0
+sv_lines-ud-dev,1032,0,10,,,4,6,
+sv_lines-ud-train,3176,0,18,,,4,14,
+sv_lines-ud-test,1035,0,6,,,3,3,
+sv_pud-ud-test,1000,0,8,,1.0,4,3,

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,appos,nmod,obl,orphan,root
+uk_iu-ud-dev,673,0,8,,,,8,,
+uk_iu-ud-train,5521,0,42,1.0,1.0,7.0,28,4.0,1.0
+uk_iu-ud-test,898,0,2,,,,2,,

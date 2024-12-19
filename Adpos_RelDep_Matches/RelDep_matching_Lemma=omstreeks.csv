@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nsubj,obl
+nl_lassysmall-ud-dev,1542,0,1,,,1
+nl_lassysmall-ud-train,13817,0,13,3.0,1.0,9
+nl_alpino-ud-train,12289,0,12,1.0,,11

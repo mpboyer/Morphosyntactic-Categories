@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,obl,parataxis,root
+he_iahltwiki-ud-train,4298,0,2,,1.0,1
+he_htb-ud-train,5168,0,4,3.0,,1

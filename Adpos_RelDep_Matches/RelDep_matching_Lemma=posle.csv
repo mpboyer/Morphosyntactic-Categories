@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,parataxis
+sr_set-ud-test,520,0,13,2,11,
+sr_set-ud-train,3328,0,84,8,75,1.0
+sr_set-ud-dev,536,0,14,3,11,

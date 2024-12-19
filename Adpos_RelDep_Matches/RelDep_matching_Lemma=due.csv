@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,nmod,obl,root
+en_partut-ud-train,1781,0,3,,,,3.0,
+en_partut-ud-test,153,0,1,,,1.0,,
+en_lines-ud-dev,1032,0,1,,,1.0,,
+en_ewt-ud-test,2077,0,4,,,,4.0,
+en_ewt-ud-dev,2001,0,3,,,,3.0,
+en_ewt-ud-train,12544,0,49,6.0,2.0,6.0,31.0,4.0
+en_pud-ud-test,1000,0,7,,,,7.0,

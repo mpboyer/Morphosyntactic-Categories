@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,nmod,nummod,obj,obl,root
+ceb_gja-ud-test,188,0,28,1,2,2,1,1,16,3,2

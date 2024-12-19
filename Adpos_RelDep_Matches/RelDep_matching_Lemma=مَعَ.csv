@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,csubj,dep,mark,nmod,nsubj,nummod,obl,root,xcomp
+ar_padt-ud-dev,909,0,104,,,,,,48.0,,,56,,
+ar_padt-ud-train,6075,0,868,4.0,1.0,,3.0,1.0,457.0,4.0,7.0,389,,2.0
+ar_padt-ud-test,680,0,98,,,,,,56.0,,,42,,
+ar_pud-ud-test,1000,0,81,,,1.0,,,29.0,,,51,,
+ajp_madar-ud-test,100,0,2,,,,,,,,,1,1.0,

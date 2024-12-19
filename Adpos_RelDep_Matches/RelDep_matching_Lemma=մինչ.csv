@@ -1,0 +1,12 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,obl
+xcl_caval-ud-train,3185,0,6,3.0,1.0,2.0
+xcl_caval-ud-dev,411,0,1,1.0,,
+xcl_caval-ud-test,550,0,1,1.0,,
+hy_bsut-ud-train,1226,0,1,,,1.0
+hy_bsut-ud-test,595,0,1,,,1.0
+hy_bsut-ud-dev,479,0,3,,,3.0
+hy_armtdp-ud-train,1974,0,5,,,5.0
+hy_armtdp-ud-test,277,0,1,,,1.0
+hyw_armtdp-ud-test,680,0,1,,,1.0
+hyw_armtdp-ud-dev,694,0,1,,,1.0
+hyw_armtdp-ud-train,5282,0,5,,,5.0

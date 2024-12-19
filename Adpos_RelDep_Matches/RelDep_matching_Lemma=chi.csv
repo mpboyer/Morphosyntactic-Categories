@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,dep,mark,nmod,obl,root,xcomp
+quc_iu-ud-test,1435,0,267,8,2,1,10,240,1,5

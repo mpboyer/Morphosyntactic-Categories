@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl
+da_ddt-ud-train,4383,0,12,1.0,1.0,10
+da_ddt-ud-test,565,0,1,,,1

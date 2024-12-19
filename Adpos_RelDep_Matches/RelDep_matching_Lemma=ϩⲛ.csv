@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,dep,dislocated,mark,nmod,obl,orphan,parataxis,root
+cop_scriptorium-ud-dev,381,0,154,8,3,,1,,,,11,125,1.0,1.0,4
+cop_scriptorium-ud-train,1419,0,519,32,10,1.0,1,2.0,2.0,1.0,31,428,,1.0,10
+cop_scriptorium-ud-test,403,0,154,5,1,,1,,,,10,135,,,2

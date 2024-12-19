@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,obl,root
+it_partut-ud-dev,156,0,1,,1.0,,
+it_partut-ud-test,153,0,2,,,2.0,
+it_partut-ud-train,1781,0,12,1.0,4.0,6.0,1.0
+it_twittiro-ud-train,1138,0,1,,,1.0,
+it_postwita-ud-train,5368,0,8,3.0,2.0,3.0,
+it_vit-ud-train,8277,0,4,1.0,1.0,2.0,

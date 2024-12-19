@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+orv_ruthenian-ud-test,390,0,4,,4
+orv_ruthenian-ud-train,2789,0,7,3.0,4

@@ -1,0 +1,22 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,aux,cc,ccomp,csubj,dep,discourse,flat,mark,nmod,nsubj,obl,orphan,parataxis,root,xcomp
+pt_porttinari-ud-train,5893,0,53,,2.0,3.0,,,,4.0,,,,,,1.0,,,,,,43.0
+pt_porttinari-ud-test,1683,0,15,,,,,,,,,,,1.0,,,,,,,,14.0
+pt_porttinari-ud-dev,842,0,11,,,,,,,1.0,,,,,,,,,,,,10.0
+pt_pud-ud-test,1000,0,1,1.0,,,,,,,,,,,,,,,,,,
+pt_petrogold-ud-train,7170,0,20,,,,,,,,,,,,,,,18.0,1.0,1.0,,
+pt_petrogold-ud-test,1039,0,1,,,,,,,,,,,,,,,1.0,,,,
+pt_petrogold-ud-dev,737,0,5,,,,,,,,,,,,,1.0,,4.0,,,,
+pt_gsd-ud-dev,1204,0,2,2.0,,,,,,,,,,,,,,,,,,
+pt_gsd-ud-train,9616,0,2,1.0,1.0,,,,,,,,,,,,,,,,,
+es_pud-ud-test,1000,0,75,1.0,2.0,4.0,1.0,1.0,3.0,1.0,,,1.0,,29.0,1.0,,17.0,,,5.0,9.0
+fr_pud-ud-test,1000,0,60,4.0,2.0,5.0,,,,16.0,1.0,,,,8.0,7.0,,16.0,,1.0,,
+pt_cintil-ud-test,3840,0,10,,,,,,,,,10.0,,,,,,,,,,
+pt_bosque-ud-dev,1172,0,1,,,,,,,,,,,,,1.0,,,,,,
+pt_bosque-ud-test,1167,0,3,,1.0,,,,,,,,,,,2.0,,,,,,
+pt_bosque-ud-train,7018,0,2,,1.0,,,,,,,,,,,,,1.0,,,,
+qaf_arabizi-ud-train,1003,0,11,,,,,,,1.0,,,,1.0,,1.0,2.0,5.0,,1.0,,
+nhi_itml-ud-test,909,0,2,,,,,,,1.0,,,,,,,,1.0,,,,
+gl_pud-ud-test,1000,0,10,,,,,1.0,,,,,,,3.0,1.0,,3.0,,,1.0,1.0
+fr_partut-ud-dev,107,0,2,,,,,,,,,,,,1.0,,,1.0,,,,
+fr_partut-ud-test,110,0,5,,,,,,,,,,,,1.0,,,4.0,,,,
+fr_partut-ud-train,803,0,15,2.0,,1.0,,,,2.0,,,,,,5.0,,5.0,,,,

@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advmod,obl,parataxis,root
+myv_jr-ud-test,921,0,9,1.0,5,1.0,2
+myv_jr-ud-train,1217,0,2,,1,,1

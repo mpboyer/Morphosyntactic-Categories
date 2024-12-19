@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+la_llct-ud-dev,850,0,28,,28
+la_llct-ud-test,884,0,24,,24
+la_llct-ud-train,7289,0,44,3.0,41

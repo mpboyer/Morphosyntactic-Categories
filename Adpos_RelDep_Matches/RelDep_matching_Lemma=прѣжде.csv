@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,appos,nmod,obl,orphan,root
+cu_proiel-ud-train,18327,0,47,3.0,1.0,1.0,1.0,38,3.0,
+cu_proiel-ud-test,2096,0,11,,,1.0,1.0,8,,1.0
+cu_proiel-ud-dev,2205,0,4,,,,,4,,
+orv_torot-ud-test,2955,0,1,,,,,1,,
+orv_torot-ud-dev,3061,0,1,,,,,1,,
+orv_torot-ud-train,20480,0,5,,,,,4,1.0,

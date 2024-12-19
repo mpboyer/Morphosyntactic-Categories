@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,nmod,obj,obl,root
+it_isdt-ud-train,13121,0,18,,1.0,13.0,,4.0,
+it_isdt-ud-dev,564,0,1,,,1.0,,,
+it_partut-ud-test,153,0,1,,,1.0,,,
+it_partut-ud-train,1781,0,8,1.0,,5.0,,2.0,
+it_markit-ud-test,340,0,1,,,1.0,,,
+it_markit-ud-train,611,0,2,,,1.0,,,1.0
+it_markit-ud-dev,341,0,1,,,,1.0,,
+it_vit-ud-train,8277,0,21,,,15.0,,6.0,
+it_vit-ud-test,1067,0,1,1.0,,,,,
+it_parlamint-ud-train,326,0,1,,,,,1.0,

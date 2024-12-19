@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,root
+fi_ftb-ud-dev,1875,0,5,5,
+fi_ftb-ud-train,14981,0,37,36,1.0
+fi_ftb-ud-test,1867,0,4,4,

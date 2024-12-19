@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,nsubj,obl,root,xcomp
+af_afribooms-ud-train,1315,0,99,,37,1,57,3.0,1.0
+af_afribooms-ud-dev,194,0,20,1.0,8,1,10,,
+af_afribooms-ud-test,425,0,28,,13,1,14,,

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advmod,obl
+la_perseus-ud-train,1334,0,1,,1.0
+la_proiel-ud-test,1260,0,1,1.0,
+la_proiel-ud-train,16196,0,2,2.0,

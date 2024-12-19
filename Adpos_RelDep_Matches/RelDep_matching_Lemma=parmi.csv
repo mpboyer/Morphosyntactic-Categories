@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,acl,nmod,obl,root
+frm_profiterole-ud-test,512,0,1,,,1.0,
+fr_pud-ud-test,1000,0,2,,,2.0,
+fr_gsd-ud-test,416,0,2,,1.0,1.0,
+fr_gsd-ud-train,14450,0,82,,18.0,62.0,2.0
+fr_gsd-ud-dev,1476,0,10,,4.0,6.0,
+fr_rhapsodie-ud-train,1288,0,1,,,1.0,
+fr_rhapsodie-ud-test,840,0,4,,1.0,3.0,
+fro_profiterole-ud-train,15503,0,19,1.0,,18.0,
+qaf_arabizi-ud-train,1003,0,1,,1.0,,
+fr_partut-ud-test,110,0,1,,,1.0,
+fr_partut-ud-train,803,0,6,,,6.0,
+fr_sequoia-ud-test,456,0,2,,1.0,1.0,
+fr_sequoia-ud-train,2231,0,6,,1.0,5.0,
+fr_sequoia-ud-dev,412,0,3,,,3.0,

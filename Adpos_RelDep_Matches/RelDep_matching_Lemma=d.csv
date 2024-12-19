@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nummod,obj,obl
+es_gsd-ud-train,14187,0,2,2.0,,,
+id_gsd-ud-train,4482,0,1,,1.0,,
+ga_idt-ud-train,4005,0,1,,,,1.0
+ht_autogramm-ud-test,144,0,1,1.0,,,
+qaf_arabizi-ud-dev,139,0,1,,,1.0,
+it_postwita-ud-train,5368,0,1,1.0,,,

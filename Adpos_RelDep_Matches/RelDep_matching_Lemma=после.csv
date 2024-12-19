@@ -1,0 +1,17 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,advcl,appos,ccomp,nmod,nsubj,nummod,obl,orphan,parataxis,root,xcomp
+orv_ruthenian-ud-test,390,0,1,,,,,,,,,1,,,,
+orv_ruthenian-ud-train,2789,0,17,,,,,,6.0,,,11,,,,
+orv_ruthenian-ud-dev,344,0,3,,,,,,,,,2,1.0,,,
+ru_taiga-ud-train,16045,0,225,,,2.0,,1.0,31.0,1.0,,182,2.0,3.0,3.0,
+ru_taiga-ud-dev,946,0,4,,,,,,,,,3,,,1.0,
+ru_taiga-ud-test,881,0,5,,,,,,,,,5,,,,
+ru_syntagrus-ud-train,69630,0,1200,1.0,1.0,3.0,1.0,,172.0,,,984,1.0,17.0,19.0,1.0
+ru_syntagrus-ud-dev,8906,0,121,,,1.0,,,10.0,,,109,,,1.0,
+ru_syntagrus-ud-test,8800,0,164,,,,,,19.0,,1.0,138,,3.0,3.0,
+ru_poetry-ud-test,728,0,2,,,,,,,,,1,,,1.0,
+ru_poetry-ud-dev,789,0,6,,,,,,1.0,,,4,,,1.0,
+ru_poetry-ud-train,3569,0,8,,,,,,2.0,,,5,,,1.0,
+ru_pud-ud-test,1000,0,47,,,,2.0,,5.0,,,40,,,,
+ru_gsd-ud-test,601,0,20,,,,,,1.0,,,19,,,,
+ru_gsd-ud-dev,579,0,23,,,,,,4.0,,,19,,,,
+ru_gsd-ud-train,3850,0,148,,,,,,19.0,,,128,1.0,,,

@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,ccomp,flat,nmod,obj,obl,orphan,root,xcomp
+ru_taiga-ud-train,16045,0,1,,,,,,,1,,,
+orv_torot-ud-test,2955,0,20,,3.0,,,,,14,,3.0,
+orv_torot-ud-dev,3061,0,10,,,,1.0,,,7,1.0,,1.0
+orv_torot-ud-train,20480,0,157,3.0,4.0,1.0,,6.0,1.0,105,7.0,25.0,5.0

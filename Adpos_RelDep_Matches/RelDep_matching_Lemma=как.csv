@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,flat,nmod,obl,orphan,parataxis
+ru_pud-ud-test,1000,0,1,,1,,,
+ru_gsd-ud-test,601,0,18,,3,15.0,,
+ru_gsd-ud-dev,579,0,17,2.0,7,8.0,,
+ru_gsd-ud-train,3850,0,114,,45,64.0,1.0,4.0

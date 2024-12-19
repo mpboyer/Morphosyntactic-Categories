@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,root
+ca_ancora-ud-dev,1709,0,6,,6,
+ca_ancora-ud-test,1846,0,7,1.0,5,1.0
+ca_ancora-ud-train,13123,0,33,3.0,30,

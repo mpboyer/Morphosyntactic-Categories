@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,obl
+grc_proiel-ud-train,15016,0,5,,5.0
+grc_ptnk-ud-train,727,0,1,1.0,
+grc_ptnk-ud-dev,439,0,1,,1.0
+grc_ptnk-ud-test,410,0,4,2.0,2.0

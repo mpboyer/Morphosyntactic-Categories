@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl,root
+sk_snk-ud-dev,1060,0,2,,1.0,1.0,
+sk_snk-ud-test,1061,0,1,,1.0,,
+cs_fictree-ud-train,10160,0,5,1.0,2.0,1.0,1.0
+cs_pdt-ud-test,10146,0,1,,,1.0,
+cs_pdt-ud-train,68491,0,2,,,2.0,

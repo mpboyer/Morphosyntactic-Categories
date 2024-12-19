@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,_,advcl,nmod,obl,parataxis
+nl_lassysmall-ud-test,1761,0,2,,,1.0,1,
+nl_lassysmall-ud-dev,1542,0,3,,,1.0,2,
+nl_lassysmall-ud-train,13817,0,40,,,9.0,27,4.0
+nl_alpino-ud-train,12289,0,27,1.0,1.0,7.0,18,
+nl_alpino-ud-test,596,0,1,,,,1,
+nl_alpino-ud-dev,718,0,5,,,,5,

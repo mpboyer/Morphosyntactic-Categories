@@ -1,0 +1,16 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,compound,fixed,iobj,nmod,obj,obl,orphan,parataxis,punct,root,xcomp
+be_hse-ud-train,22853,0,2,,,,,,,,,2,,,,,
+ru_taiga-ud-train,16045,0,141,1.0,,1.0,1.0,,1.0,55.0,,76,1.0,3.0,,2.0,
+ru_taiga-ud-dev,946,0,8,,,,,,,3.0,,5,,,,,
+ru_taiga-ud-test,881,0,4,,,,,,,2.0,,2,,,,,
+mk_mtb-ud-test,155,0,6,,,,,,,1.0,,5,,,,,
+ru_syntagrus-ud-train,69630,0,364,,2.0,2.0,,1.0,,166.0,1.0,180,,4.0,1.0,6.0,1.0
+ru_syntagrus-ud-dev,8906,0,30,,,,,,,9.0,,19,,2.0,,,
+ru_syntagrus-ud-test,8800,0,54,,1.0,,,,,18.0,1.0,34,,,,,
+ru_poetry-ud-test,728,0,15,,,,,,,,,13,,1.0,,1.0,
+ru_poetry-ud-dev,789,0,7,,,,,,,,,4,,,,3.0,
+ru_poetry-ud-train,3569,0,23,,,,,,,1.0,,18,,1.0,,3.0,
+ru_pud-ud-test,1000,0,14,,,,,,,4.0,,10,,,,,
+ru_gsd-ud-test,601,0,10,,,,,,,4.0,,6,,,,,
+ru_gsd-ud-dev,579,0,5,,,,,,,,,5,,,,,
+ru_gsd-ud-train,3850,0,52,,,,,,,21.0,,31,,,,,

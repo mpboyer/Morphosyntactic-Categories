@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,nmod,obl
+orv_rnc-ud-dev,943,0,1,1.0,,
+orv_rnc-ud-test,717,0,1,,,1.0
+orv_ruthenian-ud-train,2789,0,5,,1.0,4.0

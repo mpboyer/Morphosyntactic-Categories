@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advmod,appos,ccomp,dislocated,nmod,nsubj,obl,parataxis,root
+myv_jr-ud-test,921,0,49,,1.0,1,,7,1.0,31,,8
+myv_jr-ud-train,1217,0,75,1.0,,1,1.0,32,,32,2.0,6

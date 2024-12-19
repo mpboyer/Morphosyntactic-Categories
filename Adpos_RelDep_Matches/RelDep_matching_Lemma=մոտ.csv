@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,nmod,obl,orphan,root
+hy_bsut-ud-train,1226,0,14,1.0,,1,12,,
+hy_bsut-ud-test,595,0,3,,,2,1,,
+hy_bsut-ud-dev,479,0,5,,,1,4,,
+hy_armtdp-ud-train,1974,0,19,,2.0,4,11,,2.0
+hy_armtdp-ud-dev,249,0,7,,1.0,1,4,1.0,
+hy_armtdp-ud-test,277,0,4,,,1,3,,

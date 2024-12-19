@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,nmod,parataxis
+bxr_bdt-ud-test,908,0,20,1,1,17,1

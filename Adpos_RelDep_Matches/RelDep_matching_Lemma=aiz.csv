@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,iobj,nmod,nummod,obl
+lv_lvtb-ud-test,2412,0,10,1.0,,1,,8
+lv_lvtb-ud-train,14358,0,78,,5.0,5,1.0,67
+lv_lvtb-ud-dev,2080,0,13,1.0,1.0,2,,9

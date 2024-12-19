@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,parataxis,root
+uk_iu-ud-dev,673,0,4,3.0,1,,
+uk_iu-ud-train,5521,0,54,23.0,26,3.0,2.0
+uk_iu-ud-test,898,0,10,8.0,2,,
+be_hse-ud-train,22853,0,11,2.0,6,3.0,
+be_hse-ud-test,1077,0,2,,2,,

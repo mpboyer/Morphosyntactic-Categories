@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl,parataxis,root
+hsb_ufal-ud-test,623,0,16,1.0,11.0,4.0,,
+hsb_ufal-ud-train,23,0,4,,3.0,1.0,,
+nds_lsdc-ud-train,500,0,2,,,2.0,,
+eme_tudet-ud-test,913,0,2,,,,1.0,1.0

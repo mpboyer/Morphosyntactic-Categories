@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,nmod,obl,orphan
+pl_pdb-ud-test,2215,0,5,,4,1.0,
+pl_pdb-ud-train,17722,0,19,1.0,7,10.0,1.0
+pl_pdb-ud-dev,2215,0,1,,1,,
+pl_lfg-ud-train,13774,0,6,,1,5.0,

@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+sr_set-ud-test,520,0,11,11.0,
+sr_set-ud-train,3328,0,17,13.0,4.0
+sr_set-ud-dev,536,0,2,1.0,1.0
+bm_crb-ud-test,1026,0,58,58.0,
+aln_gps-ud-test,966,0,9,,9.0

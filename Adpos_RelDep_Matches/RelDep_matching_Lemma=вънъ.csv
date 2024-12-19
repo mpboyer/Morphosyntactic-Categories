@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,root
+cu_proiel-ud-train,18327,0,5,,4.0,1.0
+cu_proiel-ud-test,2096,0,1,1.0,,
+cu_proiel-ud-dev,2205,0,1,,1.0,
+orv_torot-ud-test,2955,0,1,,1.0,

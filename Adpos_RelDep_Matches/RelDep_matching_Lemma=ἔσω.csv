@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,advcl,iobj,nsubj,obl,root,xcomp
+grc_perseus-ud-train,11476,0,11,2,1,1,5,1,1

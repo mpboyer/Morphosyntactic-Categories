@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+de_hdt-ud-test,18459,0,12,1.0,11
+de_hdt-ud-train,153035,0,76,4.0,72
+de_hdt-ud-dev,18434,0,14,,14

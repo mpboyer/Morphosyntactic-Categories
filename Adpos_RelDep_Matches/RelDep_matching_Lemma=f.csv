@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,iobj,nmod,obj,obl
+no_bokmaal-ud-test,1939,0,1,,,,1.0
+no_bokmaal-ud-train,15696,0,3,,2.0,,1.0
+ar_nyuad-ud-train,15789,0,1,,,1.0,
+qpm_philotis-ud-train,980,0,2,,,,2.0
+qpm_philotis-ud-dev,635,0,1,1.0,,,
+is_gc-ud-train,3960,0,1,,,,1.0

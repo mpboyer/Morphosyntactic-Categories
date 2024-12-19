@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,dislocated,nmod,obl,parataxis,reparandum,root,xcomp
+pcm_nsc-ud-dev,990,0,15,1.0,,,,1,12,,,,1
+pcm_nsc-ud-train,7279,0,158,3.0,3.0,7.0,3.0,6,125,1.0,1.0,4.0,5
+pcm_nsc-ud-test,972,0,22,,,,,3,14,2.0,,1.0,2

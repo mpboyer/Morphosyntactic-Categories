@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,ccomp,nmod,obj,obl,xcomp
+tr_pud-ud-test,1000,0,2,,,,,,2,
+wo_wtb-ud-dev,449,0,34,,,1.0,2.0,1.0,29,1.0
+wo_wtb-ud-test,470,0,34,,,,1.0,,33,
+wo_wtb-ud-train,1188,0,73,,1.0,1.0,6.0,1.0,63,1.0
+ht_autogramm-ud-test,144,0,41,1.0,,,19.0,1.0,20,

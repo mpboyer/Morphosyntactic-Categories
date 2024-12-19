@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,root,xcomp
+gd_arcosg-ud-test,545,0,0,,,,
+gd_arcosg-ud-train,3541,0,7,1.0,1.0,1.0,4.0
+gd_arcosg-ud-dev,655,0,1,,,1.0,

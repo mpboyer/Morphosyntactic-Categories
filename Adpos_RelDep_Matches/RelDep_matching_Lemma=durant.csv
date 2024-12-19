@@ -1,0 +1,14 @@
+Treebank,Number of Sentences,Failures,Total,advmod,cc,nmod,nummod,obl,root
+fr_pud-ud-test,1000,0,8,,,,,8,
+fr_fqb-ud-test,2289,0,1,,,,,1,
+fr_gsd-ud-test,416,0,1,,,,,1,
+fr_gsd-ud-train,14450,0,115,1.0,,10.0,,103,1.0
+fr_gsd-ud-dev,1476,0,19,,,3.0,,16,
+ca_ancora-ud-dev,1709,0,48,,,3.0,3.0,42,
+ca_ancora-ud-test,1846,0,39,,,1.0,3.0,34,1.0
+ca_ancora-ud-train,13123,0,384,1.0,1.0,18.0,8.0,355,1.0
+fr_partut-ud-test,110,0,1,,,,,1,
+fr_partut-ud-train,803,0,2,,,1.0,,1,
+fr_sequoia-ud-test,456,0,4,,,1.0,,3,
+fr_sequoia-ud-train,2231,0,9,,,1.0,,8,
+fr_sequoia-ud-dev,412,0,5,,,1.0,,4,

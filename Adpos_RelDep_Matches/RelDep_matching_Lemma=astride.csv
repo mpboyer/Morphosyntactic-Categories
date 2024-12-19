@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,compound,nmod
+en_gum-ud-dev,1341,0,1,1.0,
+en_ewt-ud-train,12544,0,1,,1.0

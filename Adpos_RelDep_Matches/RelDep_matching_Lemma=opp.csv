@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,nmod,nummod,obl,root,xcomp
+no_bokmaal-ud-dev,2409,0,7,,,,,,7,,
+no_bokmaal-ud-test,1939,0,13,,,,1.0,1.0,11,,
+no_bokmaal-ud-train,15696,0,88,3.0,5.0,1.0,4.0,4.0,63,5.0,3.0
+no_nynorsk-ud-dev,1890,0,14,1.0,1.0,,3.0,2.0,6,1.0,
+no_nynorsk-ud-test,1511,0,10,1.0,,,,2.0,6,1.0,
+no_nynorsk-ud-train,14174,0,77,2.0,1.0,,5.0,3.0,62,3.0,1.0

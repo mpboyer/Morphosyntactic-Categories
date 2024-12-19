@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,nmod,obl,reparandum,root
+sq_tsa-ud-test,60,0,30,,,,5,25,,
+aln_gps-ud-test,966,0,82,3.0,1.0,4.0,9,63,1.0,1.0

@@ -1,0 +1,18 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,nmod,obl,orphan,parataxis,reparandum,root
+frm_profiterole-ud-test,512,0,5,,,,,5,,,,
+fr_pud-ud-test,1000,0,15,,,,3.0,12,,,,
+fr_gsd-ud-test,416,0,8,,,,,8,,,,
+fr_gsd-ud-train,14450,0,281,3.0,16.0,,40.0,218,3.0,,,1.0
+fr_gsd-ud-dev,1476,0,34,,1.0,1.0,2.0,30,,,,
+fr_rhapsodie-ud-train,1288,0,11,2.0,1.0,,,7,,,1.0,
+fr_rhapsodie-ud-dev,1081,0,2,,,,,1,,,,1.0
+fr_rhapsodie-ud-test,840,0,8,,2.0,,,5,,,,1.0
+fr_parisstories-ud-dev,692,0,4,1.0,1.0,,,1,,,1.0,
+fr_parisstories-ud-train,1387,0,5,1.0,1.0,,1.0,2,,,,
+qaf_arabizi-ud-train,1003,0,1,,,,,1,,,,
+qaf_arabizi-ud-dev,139,0,2,,,,,1,,1.0,,
+fr_partut-ud-test,110,0,1,,,,,1,,,,
+fr_partut-ud-train,803,0,6,,,,,6,,,,
+fr_sequoia-ud-test,456,0,8,,1.0,,1.0,6,,,,
+fr_sequoia-ud-train,2231,0,19,,,,2.0,17,,,,
+fr_sequoia-ud-dev,412,0,3,,,,,3,,,,

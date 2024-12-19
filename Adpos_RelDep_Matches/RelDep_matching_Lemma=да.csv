@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,dep,flat,list,nmod,nsubj,nummod,obj,obl,orphan,parataxis,root
+be_hse-ud-train,22853,0,1181,1.0,2.0,4.0,2.0,2.0,1.0,352.0,9.0,2.0,5.0,760.0,1.0,10.0,30.0
+be_hse-ud-dev,1301,0,75,,,1.0,,,,19.0,,,,53.0,,2.0,
+be_hse-ud-test,1077,0,63,,,,,,,23.0,,,,38.0,,1.0,1.0
+ru_syntagrus-ud-train,69630,0,2,,,,,,,2.0,,,,,,,
+bxr_bdt-ud-test,908,0,1,1.0,,,,,,,,,,,,,

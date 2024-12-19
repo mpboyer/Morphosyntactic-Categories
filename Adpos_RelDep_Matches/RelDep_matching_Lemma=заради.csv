@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,iobj,nmod,obl,parataxis,root
+uk_iu-ud-train,5521,0,4,,,,4,,
+bg_btb-ud-train,8907,0,77,1.0,,,69,1.0,6.0
+bg_btb-ud-test,1116,0,12,,,2.0,8,,2.0
+bg_btb-ud-dev,1115,0,10,,1.0,1.0,8,,

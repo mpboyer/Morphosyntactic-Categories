@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,csubj,nmod,obl,root,xcomp
+wo_wtb-ud-dev,449,0,36,1.0,22,1.0,1.0,4.0,5,1.0,1.0
+wo_wtb-ud-test,470,0,18,,15,,1.0,,2,,
+wo_wtb-ud-train,1188,0,75,2.0,55,1.0,,2.0,14,1.0,

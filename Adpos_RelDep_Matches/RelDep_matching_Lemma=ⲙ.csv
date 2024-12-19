@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obj,obl,root
+cop_scriptorium-ud-test,403,0,17,7,3,6,1

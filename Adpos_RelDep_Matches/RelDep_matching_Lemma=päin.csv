@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advmod,nmod,obl
+fi_tdt-ud-train,12217,0,13,3.0,1.0,9.0
+fi_tdt-ud-test,1555,0,1,,,1.0
+fi_tdt-ud-dev,1364,0,1,1.0,,
+fi_ftb-ud-train,14981,0,5,,5.0,

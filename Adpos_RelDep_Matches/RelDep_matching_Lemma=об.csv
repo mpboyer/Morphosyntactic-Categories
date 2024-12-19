@@ -1,0 +1,16 @@
+Treebank,Number of Sentences,Failures,Total,_,advcl,appos,flat,nmod,obl,orphan,parataxis,reparandum,root
+uk_iu-ud-train,5521,0,10,,,,1.0,,9.0,,,,
+uk_iu-ud-test,898,0,1,,,,,,1.0,,,,
+ru_taiga-ud-train,16045,0,54,,1.0,,,11.0,39.0,1.0,,1.0,1.0
+ru_taiga-ud-dev,946,0,4,,,,,1.0,3.0,,,,
+ru_taiga-ud-test,881,0,6,,,,,1.0,3.0,,,,2.0
+ru_syntagrus-ud-train,69630,0,193,,,3.0,,54.0,134.0,1.0,,,1.0
+ru_syntagrus-ud-dev,8906,0,24,1.0,,,,8.0,14.0,,1.0,,
+ru_syntagrus-ud-test,8800,0,19,,,,,6.0,12.0,,,,1.0
+ru_poetry-ud-test,728,0,1,,,,,1.0,,,,,
+ru_poetry-ud-dev,789,0,3,,,,,,3.0,,,,
+ru_poetry-ud-train,3569,0,4,,,,,,3.0,1.0,,,
+ru_pud-ud-test,1000,0,7,,,,,2.0,5.0,,,,
+ru_gsd-ud-test,601,0,6,,,,,2.0,4.0,,,,
+ru_gsd-ud-dev,579,0,4,,,,,1.0,3.0,,,,
+ru_gsd-ud-train,3850,0,25,,,,1.0,13.0,11.0,,,,

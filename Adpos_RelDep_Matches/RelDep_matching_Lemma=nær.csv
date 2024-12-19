@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,nmod,obl,root
+is_gc-ud-test,540,0,1,,,,1.0,
+is_gc-ud-train,3960,0,3,,,,2.0,1.0
+is_icepahc-ud-dev,4865,0,11,1.0,1.0,,8.0,1.0
+is_icepahc-ud-train,34007,0,9,,,,9.0,
+is_icepahc-ud-test,5157,0,8,,,,7.0,1.0
+da_ddt-ud-train,4383,0,2,,,1.0,,1.0

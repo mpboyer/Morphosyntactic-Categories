@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,ccomp,nmod,obl
+el_gud-ud-train,1071,0,8,,,3,5
+el_gud-ud-test,736,0,6,,,3,3
+el_gdt-ud-test,456,0,20,,,11,9
+el_gdt-ud-train,1662,0,51,1.0,1.0,36,13
+el_gdt-ud-dev,403,0,13,,1.0,5,7

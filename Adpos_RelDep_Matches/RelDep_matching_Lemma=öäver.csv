@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,ccomp,dislocated,nmod,obl,parataxis,root
+nds_lsdc-ud-train,500,0,22,,,,1.0,1.0,,20,,
+nds_lsdc-ud-test,500,0,25,2.0,3.0,1.0,,,3.0,14,1.0,1.0

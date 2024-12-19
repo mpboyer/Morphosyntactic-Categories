@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,root
+kmr_mg-ud-train,20,0,0,,
+kmr_mg-ud-test,734,0,9,8.0,1.0

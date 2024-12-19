@@ -1,0 +1,22 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,compound,nmod,nsubj,nummod,obj,obl,parataxis,root
+tr_pud-ud-test,1000,0,15,,4.0,,1.0,,,2.0,,,,8.0,,
+tr_atis-ud-dev,572,0,10,,,,,,,3.0,,,,7.0,,
+tr_atis-ud-train,4274,0,147,,,,,,,28.0,,,,119.0,,
+tr_atis-ud-test,586,0,23,,,,,,,9.0,,,,13.0,,1.0
+tr_kenet-ud-dev,1646,0,2,,,1.0,,,,,,,,1.0,,
+tr_kenet-ud-test,1643,0,3,,,,,,,1.0,,,,2.0,,
+tr_kenet-ud-train,15398,0,15,,1.0,1.0,,,,2.0,,,,11.0,,
+tr_framenet-ud-train,2288,0,7,,3.0,,,,,1.0,,,,3.0,,
+tr_gb-ud-test,2880,0,17,,5.0,,,,,1.0,,,,11.0,,
+qtd_sagt-ud-test,805,0,5,,3.0,,,,,,,,,2.0,,
+qtd_sagt-ud-dev,801,0,6,,2.0,,,,,,,,,3.0,,1.0
+qtd_sagt-ud-train,578,0,1,,,,,,,,,,,1.0,,
+tr_imst-ud-train,3435,0,40,1.0,6.0,7.0,,,,4.0,1.0,3.0,1.0,15.0,,2.0
+tr_imst-ud-dev,1100,0,6,,3.0,1.0,,,,1.0,,,,1.0,,
+tr_imst-ud-test,1100,0,11,,2.0,2.0,,,,1.0,,1.0,,5.0,,
+tr_boun-ud-dev,979,0,10,,3.0,,,,,,,,,7.0,,
+tr_boun-ud-test,979,0,4,,,,,,,1.0,,,,3.0,,
+tr_boun-ud-train,7803,0,46,,2.0,7.0,,1.0,1.0,4.0,,,1.0,28.0,,2.0
+tr_penn-ud-dev,622,0,6,,2.0,,,,,4.0,,,,,,
+tr_penn-ud-test,924,0,4,,1.0,,,,,,,,,2.0,,1.0
+tr_penn-ud-train,14850,0,56,,1.0,2.0,,,,18.0,,,,34.0,1.0,

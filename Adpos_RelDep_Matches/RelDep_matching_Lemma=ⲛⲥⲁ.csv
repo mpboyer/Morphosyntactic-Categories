@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,dislocated,nmod,obl,parataxis
+cop_scriptorium-ud-dev,381,0,28,1.0,1,26,
+cop_scriptorium-ud-train,1419,0,73,,4,69,
+cop_scriptorium-ud-test,403,0,25,,1,23,1.0

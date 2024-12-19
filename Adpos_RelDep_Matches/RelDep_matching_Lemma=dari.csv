@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,mark,nmod,nsubj,nummod,obj,obl,root,xcomp
+id_gsd-ud-train,4482,0,904,6.0,,3.0,1.0,2.0,515,3.0,9.0,3.0,355,2.0,5.0
+id_gsd-ud-test,557,0,121,,,,,,74,,,1.0,46,,
+id_gsd-ud-dev,559,0,117,,,,,,66,1.0,2.0,,47,,1.0
+id_pud-ud-test,1000,0,173,1.0,,13.0,,,86,,,,73,,
+id_csui-ud-test,374,0,90,,,1.0,,,40,,,,49,,
+id_csui-ud-train,656,0,162,,4.0,2.0,,,75,,,,81,,

@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,advcl,appos,cc,ccomp,compound,csubj,expl,flat,mark,nmod,nsubj,nummod,obj,obl,orphan,parataxis,root
+af_afribooms-ud-train,1315,0,202,,,,,,,,,,,,61,,,,141,,,
+af_afribooms-ud-dev,194,0,34,,,,,,,,,,,,10,,,1.0,23,,,
+af_afribooms-ud-test,425,0,78,,,,,,,,,,,,19,,,,59,,,
+nl_lassysmall-ud-test,1761,0,201,1.0,4.0,3.0,,,,,,1.0,,,68,,,,122,,,2.0
+nl_lassysmall-ud-dev,1542,0,185,,2.0,5.0,1.0,,,,,,,,61,1.0,,1.0,113,,,1.0
+nl_lassysmall-ud-train,13817,0,1759,,25.0,47.0,4.0,1.0,2.0,1.0,1.0,1.0,,1.0,551,15.0,3.0,2.0,1072,,18.0,15.0
+nl_alpino-ud-train,12289,0,1296,,12.0,36.0,1.0,,3.0,1.0,,7.0,2.0,,296,2.0,2.0,,903,1.0,17.0,13.0
+nl_alpino-ud-test,596,0,69,,,2.0,,1.0,,,,,,,10,1.0,,,54,,,1.0
+nl_alpino-ud-dev,718,0,107,,,2.0,,,,,,,,,22,,,,82,,1.0,

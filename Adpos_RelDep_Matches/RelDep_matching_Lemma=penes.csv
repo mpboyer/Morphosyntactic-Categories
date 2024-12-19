@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,acl,obl,root
+la_circse-ud-test,1263,0,3,1.0,,2.0
+la_proiel-ud-train,16196,0,1,,1.0,
+la_ittb-ud-dev,2101,0,1,,1.0,
+la_ittb-ud-test,2101,0,1,,1.0,
+la_ittb-ud-train,22775,0,1,,1.0,

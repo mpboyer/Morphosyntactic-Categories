@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,ccomp,nmod,obj,obl,root,xcomp
+es_gsd-ud-test,426,0,2,,,,,,2,,
+es_gsd-ud-dev,1400,0,14,,,,7.0,1.0,6,,
+es_gsd-ud-train,14187,0,133,,,,28.0,,105,,
+es_ancora-ud-train,14287,0,74,1.0,1.0,1.0,15.0,,54,1.0,1.0
+es_ancora-ud-test,1721,0,9,,,,3.0,,6,,
+es_ancora-ud-dev,1654,0,9,,,,3.0,1.0,5,,
+es_pud-ud-test,1000,0,8,,,,2.0,,6,,

@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,compound,nmod,obj,obl
+id_gsd-ud-train,4482,0,276,1.0,,1.0,80.0,,194
+id_gsd-ud-test,557,0,34,,,,7.0,,27
+id_gsd-ud-dev,559,0,38,,,,14.0,2.0,22
+id_pud-ud-test,1000,0,93,,,,25.0,,68
+id_csui-ud-test,374,0,24,,,,9.0,,15
+id_csui-ud-train,656,0,42,3.0,1.0,,11.0,,27
+aln_gps-ud-test,966,0,2,,,,,,2

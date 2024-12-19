@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,appos,obl
+kpv_lattice-ud-test,643,0,4,1.0,3
+koi_uh-ud-test,94,0,1,,1

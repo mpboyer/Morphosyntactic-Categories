@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,nmod,nummod,obj,obl,root
+ro_nonstandard-ud-test,1052,0,15,,2.0,,1.0,12,
+ro_nonstandard-ud-dev,1052,0,15,,,,,15,
+ro_nonstandard-ud-train,24121,0,328,6.0,36.0,1.0,,283,2.0
+ro_simonero-ud-train,3747,0,12,,4.0,,,7,1.0
+ro_simonero-ud-dev,443,0,1,,,,,1,
+ro_rrt-ud-train,8043,0,15,,5.0,,,10,

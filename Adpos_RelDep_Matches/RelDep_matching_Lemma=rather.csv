@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nmod,obl
+en_partut-ud-train,1781,0,4,1.0,2.0,1.0
+en_ewt-ud-test,2077,0,0,,,
+en_ewt-ud-train,12544,0,1,1.0,,

@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+it_partut-ud-train,1781,0,1,,1.0
+it_parlamint-ud-train,326,0,1,1.0,

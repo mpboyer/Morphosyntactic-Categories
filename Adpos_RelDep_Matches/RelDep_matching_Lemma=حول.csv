@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,obl,root
+fa_seraji-ud-train,4798,0,3,3,
+fa_perdt-ud-train,26196,0,11,10,1.0
+ajp_madar-ud-test,100,0,1,1,

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+uk_iu-ud-dev,673,0,5,4.0,1
+uk_iu-ud-train,5521,0,9,6.0,3
+uk_iu-ud-test,898,0,1,,1

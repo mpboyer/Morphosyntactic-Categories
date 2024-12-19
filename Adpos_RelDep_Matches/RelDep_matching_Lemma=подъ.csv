@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,ccomp,dislocated,flat,nmod,nsubj,obl,orphan,parataxis,root,xcomp
+orv_rnc-ud-dev,943,0,25,,,,,,,13.0,1.0,9.0,,1.0,1.0,
+orv_rnc-ud-train,1868,0,55,5.0,,2.0,1.0,,,7.0,,37.0,2.0,,1.0,
+orv_rnc-ud-test,717,0,26,,,,,,,4.0,,20.0,1.0,,,1.0
+orv_ruthenian-ud-test,390,0,8,,,,,,,2.0,,6.0,,,,
+orv_ruthenian-ud-train,2789,0,73,2.0,1.0,2.0,2.0,,,8.0,,58.0,,,,
+orv_ruthenian-ud-dev,344,0,1,,,,,,,1.0,,,,,,
+cu_proiel-ud-train,18327,0,59,3.0,1.0,,1.0,,,4.0,,44.0,1.0,,3.0,2.0
+cu_proiel-ud-test,2096,0,3,1.0,,,,,,,,2.0,,,,
+cu_proiel-ud-dev,2205,0,5,,,,,,,1.0,,4.0,,,,
+orv_birchbark-ud-train,1045,0,1,,,,,,,,,,,,1.0,
+orv_birchbark-ud-dev,1062,0,2,,,,,,,1.0,,1.0,,,,
+orv_torot-ud-test,2955,0,16,,1.0,1.0,,1.0,,,,11.0,2.0,,,
+orv_torot-ud-dev,3061,0,19,,,,,,1.0,1.0,,13.0,4.0,,,
+orv_torot-ud-train,20480,0,112,9.0,,6.0,,1.0,1.0,1.0,,89.0,2.0,,2.0,1.0

@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,compound,csubj,parataxis,root,xcomp
+de_hdt-ud-test,18459,0,25,,,,,2.0,,21,2.0
+de_hdt-ud-train,153035,0,271,1.0,2.0,10.0,1.0,3.0,14.0,233,7.0
+de_hdt-ud-dev,18434,0,24,,,,,,,23,1.0
+de_lit-ud-test,1920,0,2,,,,,,,2,

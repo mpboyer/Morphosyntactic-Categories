@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,compound,nmod,nsubj,obl,parataxis,root,xcomp
+en_gum-ud-train,9521,0,22,,1.0,,,11.0,,9.0,,,1.0
+en_gum-ud-test,1285,0,4,,,,,2.0,1.0,1.0,,,
+en_gum-ud-dev,1341,0,2,,,,,1.0,,1.0,,,
+en_lines-ud-train,3176,0,28,,,,,9.0,,18.0,1.0,,
+en_lines-ud-dev,1032,0,4,,1.0,,,,,3.0,,,
+en_lines-ud-test,1035,0,3,,,,,,,2.0,1.0,,
+en_ewt-ud-test,2077,0,7,2.0,,,,4.0,,1.0,,,
+en_ewt-ud-dev,2001,0,1,,,1.0,,,,,,,
+en_ewt-ud-train,12544,0,24,,1.0,1.0,1.0,11.0,,7.0,,3.0,
+pcm_nsc-ud-train,7279,0,5,,,,,,,5.0,,,
+en_gentle-ud-test,1334,0,0,,,,,,,,,,
+en_pud-ud-test,1000,0,1,,,,,1.0,,,,,

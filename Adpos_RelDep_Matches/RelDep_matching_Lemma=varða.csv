@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,obl
+is_gc-ud-test,540,0,1,1
+is_gc-ud-train,3960,0,7,7
+is_gc-ud-dev,500,0,1,1

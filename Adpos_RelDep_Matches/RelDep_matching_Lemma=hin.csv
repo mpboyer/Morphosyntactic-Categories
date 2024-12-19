@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,acl,advmod,ccomp,nmod,obj,obl,parataxis,root,xcomp
+de_hdt-ud-test,18459,0,37,,2.0,,,1.0,9.0,,25.0,
+de_hdt-ud-train,153035,0,262,1.0,6.0,3.0,3.0,7.0,57.0,2.0,182.0,1.0
+de_hdt-ud-dev,18434,0,45,,1.0,,,,10.0,1.0,33.0,
+de_gsd-ud-train,13814,0,4,,,,,,4.0,,,
+qtd_sagt-ud-test,805,0,0,,,,,,,,,
+qtd_sagt-ud-train,578,0,1,,,1.0,,,,,,

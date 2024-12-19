@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+it_twittiro-ud-train,1138,0,2,,2.0
+it_postwita-ud-train,5368,0,9,7.0,2.0
+it_vit-ud-train,8277,0,1,1.0,

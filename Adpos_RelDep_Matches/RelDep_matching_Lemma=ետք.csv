@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,nmod,obl,root
+hyw_armtdp-ud-test,680,0,16,,,,16,
+hyw_armtdp-ud-dev,694,0,15,,2.0,1.0,12,
+hyw_armtdp-ud-train,5282,0,88,1.0,1.0,3.0,82,1.0

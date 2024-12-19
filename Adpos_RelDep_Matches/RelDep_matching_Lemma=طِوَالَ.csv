@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nummod,obl
+ar_padt-ud-dev,909,0,3,1,,2.0
+ar_padt-ud-train,6075,0,9,2,2.0,5.0
+ar_padt-ud-test,680,0,1,1,,
+ar_pud-ud-test,1000,0,4,1,,3.0

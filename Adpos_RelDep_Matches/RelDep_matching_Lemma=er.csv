@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,nmod,nsubj,obj,obl,orphan,root,xcomp
+gv_cadhan-ud-test,1164,0,304,1.0,,1.0,20.0,1.0,1.0,196,,,84.0
+gv_cadhan-ud-train,1172,0,337,,1.0,,27.0,,,192,1.0,,116.0
+br_keb-ud-test,884,0,1,,,,,,,1,,,
+is_icepahc-ud-train,34007,0,1,,,,,,,1,,,
+cy_ccg-ud-test,953,0,34,4.0,10.0,2.0,5.0,,,11,,2.0,
+cy_ccg-ud-dev,409,0,28,6.0,10.0,,1.0,,,11,,,
+cy_ccg-ud-train,1189,0,46,4.0,10.0,,8.0,,,21,,3.0,

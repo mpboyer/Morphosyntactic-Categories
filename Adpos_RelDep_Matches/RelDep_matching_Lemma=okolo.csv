@@ -1,0 +1,13 @@
+Treebank,Number of Sentences,Failures,Total,advmod,appos,cc,dep,mark,nmod,nsubj,nummod,obj,obl,root
+sk_snk-ud-dev,1060,0,4,,,,,,1.0,,,,3.0,
+sk_snk-ud-test,1061,0,6,,,,,,1.0,,,,5.0,
+sk_snk-ud-train,8483,0,50,,,,,,6.0,,,,44.0,
+cs_pud-ud-test,1000,0,2,,,,,,,,,,2.0,
+cs_fictree-ud-dev,1309,0,2,,,,,,,,,,2.0,
+cs_fictree-ud-train,10160,0,5,,,,,,1.0,,,,4.0,
+cs_fictree-ud-test,1291,0,2,,,,,,1.0,,,,1.0,
+cs_pdt-ud-test,10146,0,13,,,1.0,,,2.0,2.0,4.0,,4.0,
+cs_pdt-ud-dev,9270,0,11,,,,,,3.0,,1.0,1.0,6.0,
+cs_pdt-ud-train,68491,0,60,3.0,,,2.0,1.0,16.0,6.0,3.0,,28.0,1.0
+cs_cac-ud-train,23478,0,4,,1.0,,,,1.0,,2.0,,,
+cs_cac-ud-test,628,0,1,,,,,,,,,,1.0,

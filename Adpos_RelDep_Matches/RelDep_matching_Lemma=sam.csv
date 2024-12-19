@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,flat,obj,obl,orphan,parataxis,root
+sa_vedic-ud-test,2709,0,14,,,1.0,4.0,3.0,1.0,1.0,,4.0
+sa_vedic-ud-train,21477,0,57,4.0,3.0,1.0,25.0,,4.0,,,20.0
+sa_vedic-ud-dev,2996,0,10,1.0,1.0,,1.0,,,1.0,1.0,5.0
+qpm_philotis-ud-test,635,0,1,,,,,,1.0,,,

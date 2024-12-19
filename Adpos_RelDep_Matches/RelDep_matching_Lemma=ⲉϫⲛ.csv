@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+cop_scriptorium-ud-dev,381,0,12,,12
+cop_scriptorium-ud-train,1419,0,76,2.0,74
+cop_scriptorium-ud-test,403,0,22,,22

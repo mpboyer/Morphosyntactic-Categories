@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,dislocated,nmod,obl,parataxis,root
+hy_bsut-ud-train,1226,0,59,,,1.0,,26.0,31,,1
+hy_bsut-ud-test,595,0,73,,2.0,,,20.0,18,,33
+hy_bsut-ud-dev,479,0,30,,,,,13.0,15,,2
+hy_armtdp-ud-train,1974,0,85,1.0,1.0,,2.0,36.0,34,,11
+hy_armtdp-ud-dev,249,0,14,,,,,9.0,2,,3
+hy_armtdp-ud-test,277,0,16,,,,,5.0,7,,4
+hyw_armtdp-ud-test,680,0,13,,,,,,12,,1
+hyw_armtdp-ud-dev,694,0,17,,,,,5.0,11,,1
+hyw_armtdp-ud-train,5282,0,128,1.0,,,,34.0,87,1.0,5

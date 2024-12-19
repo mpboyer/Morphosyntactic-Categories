@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,csubj,obl
+id_csui-ud-test,374,0,2,,2
+id_csui-ud-train,656,0,2,1.0,1

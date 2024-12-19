@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,obl
+ta_mwtt-ud-test,534,0,2,,2
+ta_ttb-ud-train,400,0,1,,1
+ta_ttb-ud-test,120,0,2,1.0,1

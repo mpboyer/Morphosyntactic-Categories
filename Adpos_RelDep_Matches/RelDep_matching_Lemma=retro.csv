@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,dep,obl
+la_llct-ud-train,7289,0,2,,2.0
+la_proiel-ud-train,16196,0,1,1.0,

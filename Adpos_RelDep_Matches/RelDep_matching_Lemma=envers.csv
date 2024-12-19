@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,orphan
+fr_pud-ud-test,1000,0,3,3.0,,
+fr_gsd-ud-train,14450,0,13,9.0,3.0,1.0
+fr_gsd-ud-dev,1476,0,3,2.0,1.0,
+fro_profiterole-ud-train,15503,0,2,,2.0,
+ca_ancora-ud-train,13123,0,5,4.0,1.0,
+fr_partut-ud-train,803,0,3,1.0,2.0,

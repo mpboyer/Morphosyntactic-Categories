@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,nmod,parataxis,root
+ru_taiga-ud-train,16045,0,4,,1.0,3.0
+ru_syntagrus-ud-train,69630,0,4,3.0,1.0,
+ru_syntagrus-ud-dev,8906,0,1,1.0,,
+ru_syntagrus-ud-test,8800,0,1,1.0,,

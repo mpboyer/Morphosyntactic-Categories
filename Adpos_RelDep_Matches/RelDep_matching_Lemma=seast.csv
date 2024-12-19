@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nummod,obl
+et_ewt-ud-train,5444,0,2,,,2
+et_edt-ud-dev,3128,0,2,,,2
+et_edt-ud-train,24615,0,18,5.0,1.0,12
+et_edt-ud-test,3214,0,3,,,3

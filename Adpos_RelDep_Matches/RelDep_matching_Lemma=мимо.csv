@@ -1,0 +1,17 @@
+Treebank,Number of Sentences,Failures,Total,appos,nmod,obl,orphan,root,xcomp
+orv_rnc-ud-train,1868,0,1,,,1,,,
+orv_rnc-ud-test,717,0,5,,,5,,,
+orv_ruthenian-ud-test,390,0,5,,,1,2.0,,2.0
+orv_ruthenian-ud-train,2789,0,5,,,3,2.0,,
+orv_ruthenian-ud-dev,344,0,5,,1.0,4,,,
+ru_taiga-ud-train,16045,0,3,,,3,,,
+ru_taiga-ud-test,881,0,2,,,2,,,
+ru_syntagrus-ud-train,69630,0,34,,1.0,32,,1.0,
+ru_syntagrus-ud-dev,8906,0,6,,1.0,3,,2.0,
+ru_syntagrus-ud-test,8800,0,3,,,3,,,
+ru_poetry-ud-dev,789,0,1,,,1,,,
+ru_pud-ud-test,1000,0,1,,,1,,,
+orv_torot-ud-test,2955,0,3,,,3,,,
+orv_torot-ud-dev,3061,0,2,,,2,,,
+orv_torot-ud-train,20480,0,14,1.0,,13,,,
+ru_gsd-ud-train,3850,0,1,,,1,,,

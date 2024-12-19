@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,ccomp,discourse,iobj,nmod,nummod,obj,root,xcomp
+ar_nyuad-ud-train,15789,0,9889,46.0,1.0,2595.0,9.0,17.0,7151.0,45.0,25.0
+ar_nyuad-ud-dev,1986,0,1220,8.0,,324.0,2.0,,880.0,5.0,1.0
+ar_nyuad-ud-test,1963,0,1225,8.0,,334.0,1.0,,881.0,,1.0
+eme_tudet-ud-test,913,0,0,,,,,,,,

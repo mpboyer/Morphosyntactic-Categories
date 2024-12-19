@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,advcl,ccomp,csubj,discourse,obl,parataxis,root,xcomp
+tr_kenet-ud-dev,1646,0,4,,,,1.0,3.0,,,
+tr_kenet-ud-test,1643,0,7,,2.0,,,4.0,1.0,,
+tr_kenet-ud-train,15398,0,20,1.0,,1.0,,13.0,1.0,1.0,3.0
+tr_framenet-ud-train,2288,0,1,,,,,1.0,,,
+tr_framenet-ud-dev,205,0,1,,,,,1.0,,,
+ota_boun-ud-test,400,0,2,,,,,2.0,,,
+qtd_sagt-ud-test,805,0,1,,,,,1.0,,,
+tr_imst-ud-train,3435,0,1,1.0,,,,,,,
+tr_boun-ud-train,7803,0,1,,,,,1.0,,,
+tr_penn-ud-train,14850,0,2,,,,,1.0,,1.0,

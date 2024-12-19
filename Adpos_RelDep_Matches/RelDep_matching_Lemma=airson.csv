@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,nmod,obl,parataxis,reparandum,root,xcomp
+gd_arcosg-ud-test,545,0,34,4.0,,,1,6,10,,,2,11
+gd_arcosg-ud-train,3541,0,170,2.0,1.0,,3,26,60,1.0,,5,72
+gd_arcosg-ud-dev,655,0,31,,,1.0,2,2,6,1.0,1.0,2,16

@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,obl
+nl_lassysmall-ud-train,13817,0,2,1.0,1
+nl_alpino-ud-train,12289,0,3,,3
+nl_alpino-ud-test,596,0,1,,1

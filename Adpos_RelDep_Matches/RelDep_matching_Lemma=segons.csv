@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,aux,ccomp,dep,mark,nmod,obl,parataxis,punct
+ca_ancora-ud-dev,1709,0,58,,,,1.0,,1.0,1,55,,
+ca_ancora-ud-test,1846,0,66,,,,,,,2,64,,
+ca_ancora-ud-train,13123,0,514,3.0,3.0,1.0,,1.0,,5,499,1.0,1.0

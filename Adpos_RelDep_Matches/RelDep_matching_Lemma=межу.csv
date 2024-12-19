@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,appos,ccomp,flat,iobj,nmod,nummod,obl,orphan,root
+orv_rnc-ud-dev,943,0,6,,,,1.0,,,,,5,,
+orv_rnc-ud-train,1868,0,24,,1.0,,,,,5.0,,13,4.0,1.0
+orv_rnc-ud-test,717,0,21,,,,,,,2.0,,19,,
+orv_ruthenian-ud-test,390,0,23,,2.0,,,,,1.0,,20,,
+orv_ruthenian-ud-train,2789,0,57,,,1.0,1.0,,1.0,8.0,,45,1.0,
+orv_ruthenian-ud-dev,344,0,5,,,,,,,1.0,,4,,
+orv_torot-ud-test,2955,0,4,1.0,,,,,,,,2,1.0,
+orv_torot-ud-dev,3061,0,1,,,,,,,,,1,,
+orv_torot-ud-train,20480,0,44,2.0,,3.0,,1.0,,4.0,2.0,31,1.0,

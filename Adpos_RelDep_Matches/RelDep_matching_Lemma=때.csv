@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod
+ko_gsd-ud-test,989,0,7,7
+ko_gsd-ud-train,4400,0,14,14
+ko_gsd-ud-dev,950,0,2,2

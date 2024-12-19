@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,csubj,mark,obl,xcomp
+ar_pud-ud-test,1000,0,89,2,1,13,37,1,1,34

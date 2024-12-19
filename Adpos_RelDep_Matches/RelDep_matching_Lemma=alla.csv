@@ -1,0 +1,16 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,csubj,nmod,nsubj,nummod,obl,parataxis,root
+fi_ood-ud-test,2122,0,1,,,,,,,,1.0,,
+et_ewt-ud-train,5444,0,23,,,1.0,,1.0,,,21.0,,
+et_ewt-ud-test,913,0,5,,,,,,,1.0,4.0,,
+et_ewt-ud-dev,833,0,3,,,,,,,,3.0,,
+fi_tdt-ud-train,12217,0,28,,,,,3.0,,,25.0,,
+fi_tdt-ud-test,1555,0,3,,,,,,,,2.0,,1.0
+fi_tdt-ud-dev,1364,0,1,,,,,,,,1.0,,
+fi_pud-ud-test,1000,0,6,1.0,1.0,1.0,,,,,3.0,,
+et_edt-ud-dev,3128,0,13,,,,,1.0,,1.0,10.0,1.0,
+et_edt-ud-train,24615,0,110,,,,1.0,3.0,1.0,9.0,95.0,,1.0
+et_edt-ud-test,3214,0,17,,,,,,,,17.0,,
+krl_kkpp-ud-test,228,0,1,,,,,,,,1.0,,
+fi_ftb-ud-dev,1875,0,1,,,,,1.0,,,,,
+fi_ftb-ud-train,14981,0,14,,,,,14.0,,,,,
+fi_ftb-ud-test,1867,0,2,,,,,2.0,,,,,

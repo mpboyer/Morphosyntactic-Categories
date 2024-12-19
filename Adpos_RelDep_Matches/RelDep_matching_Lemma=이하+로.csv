@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,dep,nmod,nummod
+ko_gsd-ud-train,4400,0,3,1.0,2.0,
+ko_gsd-ud-dev,950,0,1,,,1.0

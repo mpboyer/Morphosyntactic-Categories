@@ -1,0 +1,14 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,dep,nmod,obl,root
+no_nynorsk-ud-dev,1890,0,1,,,,,,1.0,,
+no_nynorsk-ud-test,1511,0,1,,,,,,,1.0,
+no_nynorsk-ud-train,14174,0,32,,,,,,11.0,21.0,
+is_pud-ud-test,1000,0,5,,,,,,4.0,1.0,
+fo_oft-ud-test,1208,0,1,,,,,,,1.0,
+is_gc-ud-train,3960,0,20,,,1.0,,,,19.0,
+is_gc-ud-dev,500,0,1,,,1.0,,,,,
+is_icepahc-ud-dev,4865,0,10,,,,,,,10.0,
+is_icepahc-ud-train,34007,0,65,1.0,3.0,,,1.0,,59.0,1.0
+is_icepahc-ud-test,5157,0,11,,,,,,,10.0,1.0
+is_modern-ud-dev,394,0,2,,,,,,,2.0,
+is_modern-ud-train,2703,0,25,,,,2.0,,,23.0,
+is_modern-ud-test,438,0,8,,1.0,,,,,6.0,1.0

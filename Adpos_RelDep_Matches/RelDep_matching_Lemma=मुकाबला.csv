@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nummod,obl
+hi_hdtb-ud-train,13306,0,22,5,1.0,16
+hi_hdtb-ud-dev,1659,0,3,2,,1
+hi_hdtb-ud-test,1684,0,5,1,,4

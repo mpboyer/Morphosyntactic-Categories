@@ -1,0 +1,12 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,dep,nmod,obj,obl,orphan,parataxis,root,xcomp
+de_hdt-ud-test,18459,0,827,,,21.0,,,167.0,34.0,584,,2.0,18.0,1.0
+de_hdt-ud-train,153035,0,7604,,,297.0,2.0,,1593.0,180.0,5328,,5.0,178.0,21.0
+de_hdt-ud-dev,18434,0,722,,,25.0,1.0,,173.0,30.0,469,,2.0,20.0,2.0
+de_pud-ud-test,1000,0,64,,,3.0,,,12.0,,49,,,,
+de_lit-ud-test,1920,0,84,,,1.0,,,30.0,1.0,51,1.0,,,
+de_gsd-ud-train,13814,0,1086,2.0,,25.0,,,261.0,,782,,1.0,15.0,
+de_gsd-ud-dev,799,0,42,,,1.0,,1.0,7.0,,32,,,1.0,
+de_gsd-ud-test,977,0,55,,,1.0,,1.0,8.0,,41,,,4.0,
+qtd_sagt-ud-test,805,0,12,,1.0,,,,,,10,,,,1.0
+qtd_sagt-ud-dev,801,0,8,,,,,,,1.0,7,,,,
+qtd_sagt-ud-train,578,0,14,,,,,,,1.0,13,,,,

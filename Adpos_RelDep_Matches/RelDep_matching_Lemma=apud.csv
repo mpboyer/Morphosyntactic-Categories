@@ -1,0 +1,16 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,csubj,dep,dislocated,flat,nmod,obj,obl,orphan,root,xcomp
+la_circse-ud-test,1263,0,20,1.0,2.0,,,1.0,,,,,1.0,,15.0,,,
+la_perseus-ud-test,939,0,1,,,,,,,,,,,,1.0,,,
+la_perseus-ud-train,1334,0,14,,,,,,,,,1.0,1.0,,12.0,,,
+pt_petrogold-ud-train,7170,0,1,,,,,,,,,,1.0,,,,,
+pt_petrogold-ud-test,1039,0,2,,,,,,,,,,2.0,,,,,
+la_llct-ud-dev,850,0,7,,,,,,,,,,,,7.0,,,
+la_llct-ud-test,884,0,3,,,,,,,,,,,,3.0,,,
+la_llct-ud-train,7289,0,65,,,,,,,,,,,,65.0,,,
+la_proiel-ud-test,1260,0,11,,,,,,,,,,,,10.0,,1.0,
+la_proiel-ud-dev,1233,0,15,1.0,,2.0,,1.0,,,1.0,1.0,,,9.0,,,
+la_proiel-ud-train,16196,0,146,2.0,5.0,3.0,2.0,1.0,,1.0,1.0,2.0,5.0,1.0,108.0,3.0,10.0,2.0
+la_udante-ud-train,926,0,8,,1.0,,,,,,,,,,7.0,,,
+la_ittb-ud-dev,2101,0,7,2.0,,,,,,,,,,,3.0,,2.0,
+la_ittb-ud-test,2101,0,9,2.0,1.0,,,,1.0,,,,,,4.0,,1.0,
+la_ittb-ud-train,22775,0,67,2.0,5.0,,,,1.0,,,,3.0,,52.0,,4.0,

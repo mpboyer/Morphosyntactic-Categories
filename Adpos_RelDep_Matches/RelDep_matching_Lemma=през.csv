@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,iobj,nmod,obj,obl,root
+bg_btb-ud-train,8907,0,266,11,59,,195,1.0
+bg_btb-ud-test,1116,0,30,3,8,1.0,18,
+bg_btb-ud-dev,1115,0,29,2,7,,20,

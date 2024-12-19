@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,iobj,nmod,nsubj,nummod,obj,obl,orphan,parataxis,root
+be_hse-ud-train,22853,0,865,2.0,1.0,2.0,3.0,351,6.0,2.0,8.0,452,1.0,18,19.0
+be_hse-ud-dev,1301,0,58,,,,,32,,,,24,,2,
+be_hse-ud-test,1077,0,180,,,,,147,2.0,,,26,,3,2.0

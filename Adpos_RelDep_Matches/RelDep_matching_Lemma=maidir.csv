@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nsubj,obj,obl,root,xcomp
+ga_twittirish-ud-dev,864,0,8,1,1.0,,6.0,,
+ga_twittirish-ud-test,866,0,7,2,,,5.0,,
+ga_twittirish-ud-train,866,0,4,2,,,2.0,,
+ga_idt-ud-train,4005,0,99,14,,10.0,65.0,,10.0
+ga_idt-ud-test,454,0,5,4,,,,,1.0
+ga_idt-ud-dev,451,0,4,1,,,2.0,1.0,

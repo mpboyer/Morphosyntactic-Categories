@@ -1,0 +1,6 @@
+Treebank,Number of Sentences,Failures,Total,obl,parataxis
+hy_bsut-ud-train,1226,0,1,1,
+hy_bsut-ud-test,595,0,1,1,
+hy_armtdp-ud-train,1974,0,3,2,1.0
+hy_armtdp-ud-dev,249,0,1,1,
+hyw_armtdp-ud-train,5282,0,1,1,

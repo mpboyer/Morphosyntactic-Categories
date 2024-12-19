@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,obl,root
+sga_dipsgg-ud-test,64,0,2,1,,1.0
+sga_dipwbg-ud-test,34,0,3,1,2.0,

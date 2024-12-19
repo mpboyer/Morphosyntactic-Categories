@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod
+pt_petrogold-ud-train,7170,0,1,1
+pt_gsd-ud-train,9616,0,1,1

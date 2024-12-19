@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,advcl,nsubj,obl,root
+vi_tuecl-ud-test,100,0,1,,,1,
+vi_vtb-ud-dev,1123,0,3,,,3,
+vi_vtb-ud-train,1400,0,20,2.0,1.0,15,2.0
+vi_vtb-ud-test,800,0,10,,,9,1.0

@@ -1,0 +1,24 @@
+\section{Case Representation}
+
+In order to compare cases from different languages, we need to find a shared representation that should be as language agnostic as possible.
+We decided to use the syntactic profile of a case defined as the probability distribution over the dependency relations to its governors.
+This choice is both theoretical since core cases are usually defined in terms of syntactic relations to the other constituents of a sentence, and practical since UD treebanks are annotated with dependency labels.
+
+In order to make the representations even more language agnostic, we decided to ignore relation sub-types since they are not consistently used across languages and corpora.
+So, both \texttt{flat:foreign} and \texttt{flat:name} are counted as \texttt{flat}.
+
+We give two representations to each case in a language.
+The first is the empirical probability distribution of the relation of a word displaying that case to its governor.
+
+However, there are several mechanisms underlying case assignment, and not all are as informative.
+%The direct object of a verb will usually marked in the accusative case.
+For example, when determiners inflect for case, they usually inherit their value from their head noun, which therefore does not teach us much about that case since a determiner can in principle take any case that way.
+Similarly, it would artificially separate cases from languages with articles (a high proportion of \texttt{det} relations) from those of languages without.
+
+Furthermore, as mentioned in the previous section, UD also allows annotation of the \texttt{Case} feature on adpositions, which is quite different from the way cases are generally assigned to nouns.
+For all these reasons, we thus decided to have a part-of-speech based representation too.
+
+The second representation is thus the syntactic profile of the nouns (\texttt{NOUN}) which bear the said case.
+This gets rid of less informative dependency relations such as \texttt{case}, \texttt{amod} or \texttt{det} and we further decided to ignore the \texttt{conj} relation for similar reasons.
+
+The relation distributions are computed from the concatenation of the three parts (train, dev and test) of each treebank from UD version 2.14 \cite{UD214}.

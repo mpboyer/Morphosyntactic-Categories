@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,appos,flat,nmod,obl,root
+es_gsd-ud-test,426,0,1,,,1,,
+es_gsd-ud-dev,1400,0,4,,,4,,
+es_gsd-ud-train,14187,0,82,1.0,5.0,65,10.0,1.0
+es_ancora-ud-train,14287,0,1,,,1,,
+gl_treegal-ud-train,600,0,1,,,1,,
+it_postwita-ud-test,674,0,1,,,1,,
+cs_cac-ud-train,23478,0,1,,,1,,

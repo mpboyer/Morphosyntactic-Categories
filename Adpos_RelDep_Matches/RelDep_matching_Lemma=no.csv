@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,advcl,advmod,appos,cc,ccomp,dep,discourse,iobj,nmod,nsubj,nummod,obj,obl,orphan,parataxis,punct,root,xcomp
+lv_lvtb-ud-test,2412,0,257,1.0,1.0,,,,,,1.0,,43.0,80.0,,3.0,,118.0,,2.0,,8,
+lv_lvtb-ud-train,14358,0,1763,,8.0,4.0,,4.0,,1.0,3.0,12.0,372.0,524.0,4.0,21.0,1.0,779.0,5.0,3.0,2.0,17,3.0
+lv_lvtb-ud-dev,2080,0,230,,2.0,,1.0,,1.0,,,2.0,50.0,62.0,,1.0,,108.0,,2.0,,1,
+lv_cairo-ud-test,20,0,1,,,,,,,,,,,,,,,,,,,1,

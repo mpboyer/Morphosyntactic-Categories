@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl,parataxis
+be_hse-ud-train,22853,0,41,7,22,12
+be_hse-ud-dev,1301,0,6,1,4,1
+be_hse-ud-test,1077,0,8,1,6,1

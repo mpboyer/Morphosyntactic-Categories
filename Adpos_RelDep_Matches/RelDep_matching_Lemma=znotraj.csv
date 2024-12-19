@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+sl_ssj-ud-test,1282,0,2,1.0,1
+sl_ssj-ud-train,10903,0,21,6.0,15
+sl_sst-ud-train,4558,0,8,6.0,2
+sl_sst-ud-dev,505,0,2,,2

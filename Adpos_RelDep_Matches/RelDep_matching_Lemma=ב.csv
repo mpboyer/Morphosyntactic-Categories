@@ -1,0 +1,10 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,appos,ccomp,compound,csubj,dep,dislocated,flat,list,mark,nmod,nsubj,nummod,obj,obl,orphan,parataxis,reparandum,root,xcomp
+he_iahltwiki-ud-train,4298,0,6603,111,14.0,7.0,13.0,3.0,5.0,1.0,8.0,,,,1.0,2097,2.0,,2.0,4208,35.0,23.0,1.0,70,2.0
+he_iahltwiki-ud-dev,348,0,499,14,1.0,,1.0,,,1.0,1.0,,,1.0,,163,,,,298,5.0,4.0,,10,
+he_iahltwiki-ud-test,393,0,588,11,2.0,1.0,3.0,,1.0,,,,,,,198,,,1.0,365,1.0,3.0,,2,
+he_htb-ud-train,5168,0,6532,76,31.0,3.0,22.0,11.0,1.0,,95.0,,4.0,,,2060,,1.0,1.0,4167,,1.0,,56,3.0
+he_htb-ud-dev,484,0,485,5,1.0,1.0,1.0,1.0,,,5.0,,,,,148,,,,314,,1.0,,8,
+he_htb-ud-test,491,0,507,3,,,,,,,6.0,,,,,125,,,,366,,1.0,,6,
+hbo_ptnk-ud-train,730,0,401,27,25.0,,4.0,4.0,,,,5.0,,,,12,,,,306,5.0,7.0,,6,
+hbo_ptnk-ud-test,410,0,206,9,13.0,,1.0,2.0,,,,1.0,,,,9,,,,170,,,,1,
+hbo_ptnk-ud-dev,439,0,194,12,9.0,,1.0,4.0,,,,2.0,,,,7,,,,148,5.0,2.0,,4,

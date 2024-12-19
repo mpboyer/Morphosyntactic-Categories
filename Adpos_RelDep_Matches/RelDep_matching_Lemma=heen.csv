@@ -1,0 +1,5 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,ccomp,nmod,obl,root,xcomp
+nl_lassysmall-ud-test,1761,0,1,,,,,1,,
+nl_lassysmall-ud-train,13817,0,32,1.0,,2.0,3.0,24,1.0,1.0
+nl_alpino-ud-train,12289,0,19,,,,3.0,12,4.0,
+nl_alpino-ud-dev,718,0,2,,1.0,,,1,,

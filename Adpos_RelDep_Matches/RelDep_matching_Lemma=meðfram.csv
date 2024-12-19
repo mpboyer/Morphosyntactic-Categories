@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,obl
+is_pud-ud-test,1000,0,2,2
+is_icepahc-ud-dev,4865,0,1,1
+is_modern-ud-train,2703,0,2,2

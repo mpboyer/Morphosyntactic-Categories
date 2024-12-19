@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,acl,ccomp,nmod,obl
+ht_autogramm-ud-test,144,0,84,1.0,1.0,28,54.0
+cy_ccg-ud-train,1189,0,2,,,2,

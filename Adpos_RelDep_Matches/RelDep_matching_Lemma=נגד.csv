@@ -1,0 +1,7 @@
+Treebank,Number of Sentences,Failures,Total,advmod,dep,nmod,obl,root
+he_iahltwiki-ud-train,4298,0,49,1.0,,28,20,
+he_iahltwiki-ud-dev,348,0,6,,,4,2,
+he_iahltwiki-ud-test,393,0,12,,,10,2,
+he_htb-ud-train,5168,0,102,,,66,35,1.0
+he_htb-ud-dev,484,0,14,,1.0,9,4,
+he_htb-ud-test,491,0,5,,1.0,2,2,

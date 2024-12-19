@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,appos,flat,nmod,obl,root
+sga_dipsgg-ud-test,64,0,1,,,,,1.0,,
+kmr_mg-ud-test,734,0,69,,,,1.0,68.0,,
+gub_tudet-ud-test,1182,0,9,,,,,,9.0,
+ga_twittirish-ud-test,866,0,1,,,,,1.0,,
+tpn_tudet-ud-test,581,0,4,1.0,1.0,,,,1.0,1.0
+en_ewt-ud-dev,2001,0,1,,,,,1.0,,
+en_ewt-ud-train,12544,0,12,,,4.0,,3.0,2.0,3.0

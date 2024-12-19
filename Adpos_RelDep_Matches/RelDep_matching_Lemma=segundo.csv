@@ -1,0 +1,21 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,ccomp,dep,nmod,nsubj,obj,obl,parataxis,root
+pt_porttinari-ud-train,5893,0,97,3.0,,,,12.0,,,82,,
+pt_porttinari-ud-test,1683,0,36,1.0,,,,6.0,1.0,,28,,
+pt_porttinari-ud-dev,842,0,16,1.0,,,,,,,15,,
+gl_treegal-ud-train,600,0,3,1.0,,,,1.0,,,1,,
+gl_treegal-ud-test,400,0,2,,,,,,,,2,,
+gl_ctg-ud-dev,860,0,17,,,,,4.0,,1.0,11,,1.0
+gl_ctg-ud-test,861,0,15,,,2.0,,4.0,,,8,,1.0
+gl_ctg-ud-train,2272,0,42,,,4.0,,10.0,,,26,,2.0
+pt_petrogold-ud-train,7170,0,96,2.0,,,,15.0,,,79,,
+pt_petrogold-ud-test,1039,0,20,,,,,5.0,,,15,,
+pt_petrogold-ud-dev,737,0,12,,,,,3.0,,,9,,
+pt_gsd-ud-test,1200,0,6,,,,,,,,6,,
+pt_gsd-ud-train,9616,0,31,,,,,3.0,,,28,,
+pt_cintil-ud-test,3840,0,28,,,,,,,,28,,
+pt_cintil-ud-dev,3840,0,27,,1.0,,,,,,26,,
+pt_cintil-ud-train,30720,0,207,,,,2.0,,,,203,,2.0
+pt_bosque-ud-dev,1172,0,22,,,,,2.0,,,20,,
+pt_bosque-ud-test,1167,0,27,,,,,3.0,,,24,,
+pt_bosque-ud-train,7018,0,138,,,,,27.0,,,111,,
+gl_pud-ud-test,1000,0,10,,,,,2.0,,,7,1.0,

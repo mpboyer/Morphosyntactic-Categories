@@ -1,0 +1,21 @@
+Treebank,Number of Sentences,Failures,Total,advcl,appos,list,nmod,obl,orphan,parataxis,root
+sl_ssj-ud-test,1282,0,36,1.0,3.0,,5.0,27.0,,,
+sl_ssj-ud-dev,1250,0,43,,,,,42.0,,1.0,
+sl_ssj-ud-train,10903,0,319,,,3.0,47.0,257.0,8.0,2.0,2.0
+de_hdt-ud-train,153035,0,17,,,,2.0,15.0,,,
+de_hdt-ud-dev,18434,0,6,,,,,6.0,,,
+la_circse-ud-test,1263,0,3,,,,,2.0,1.0,,
+la_perseus-ud-train,1334,0,5,,,,,5.0,,,
+la_llct-ud-train,7289,0,1,,,,,1.0,,,
+la_proiel-ud-test,1260,0,1,,,,,1.0,,,
+la_proiel-ud-dev,1233,0,4,,,,,4.0,,,
+la_proiel-ud-train,16196,0,27,6.0,,,,21.0,,,
+la_udante-ud-train,926,0,4,,,,,4.0,,,
+la_udante-ud-dev,376,0,2,,,,,2.0,,,
+sl_sst-ud-train,4558,0,24,,,,3.0,19.0,,2.0,
+sl_sst-ud-test,1041,0,10,,,,1.0,8.0,1.0,,
+sl_sst-ud-dev,505,0,16,,,,1.0,11.0,2.0,,2.0
+de_gsd-ud-train,13814,0,1,,,,1.0,,,,
+la_ittb-ud-test,2101,0,2,,,,,2.0,,,
+la_ittb-ud-train,22775,0,3,,,,,3.0,,,
+cs_cac-ud-test,628,0,1,,,,,1.0,,,

@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,root
+gd_arcosg-ud-test,545,0,1,1.0
+gd_arcosg-ud-train,3541,0,0,

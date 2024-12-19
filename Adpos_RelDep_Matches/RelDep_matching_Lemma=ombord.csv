@@ -1,0 +1,3 @@
+Treebank,Number of Sentences,Failures,Total,nmod,root
+no_bokmaal-ud-test,1939,0,1,1,
+no_nynorsk-ud-train,14174,0,2,1,1.0

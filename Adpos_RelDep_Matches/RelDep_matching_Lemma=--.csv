@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,nmod,nsubj,obl,root,xcomp
+de_lit-ud-test,1920,0,11,2,1,4,3,1

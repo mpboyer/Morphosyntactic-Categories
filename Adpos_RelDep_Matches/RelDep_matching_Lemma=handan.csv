@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,acl,obl
+is_icepahc-ud-dev,4865,0,5,,5
+is_icepahc-ud-train,34007,0,5,1.0,4
+is_icepahc-ud-test,5157,0,1,,1

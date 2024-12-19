@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,acl,advcl,advmod,ccomp,compound,dep,nmod,obl,parataxis,root,xcomp
+no_bokmaal-ud-dev,2409,0,22,,1.0,,,,,,21,,,
+no_bokmaal-ud-test,1939,0,23,,2.0,1.0,,,,3.0,16,,1.0,
+no_bokmaal-ud-train,15696,0,159,,,5.0,,,,6.0,148,,,
+no_nynorsk-ud-dev,1890,0,33,,,,,,,1.0,32,,,
+no_nynorsk-ud-test,1511,0,14,,,1.0,,,,1.0,12,,,
+no_nynorsk-ud-train,14174,0,174,,5.0,7.0,,,,7.0,151,,3.0,1.0
+is_gc-ud-train,3960,0,1,,,,,,,,1,,,
+is_gc-ud-dev,500,0,1,,,,,,,,1,,,
+is_icepahc-ud-dev,4865,0,92,11.0,13.0,1.0,3.0,,,,48,,16.0,
+is_icepahc-ud-train,34007,0,531,63.0,57.0,3.0,29.0,6.0,,,233,1.0,138.0,1.0
+is_icepahc-ud-test,5157,0,96,10.0,8.0,,7.0,3.0,,,53,1.0,14.0,
+is_modern-ud-dev,394,0,8,,,,,,,,8,,,
+is_modern-ud-train,2703,0,83,7.0,1.0,2.0,2.0,,1.0,,69,,1.0,
+is_modern-ud-test,438,0,11,3.0,,,,,,,7,,1.0,

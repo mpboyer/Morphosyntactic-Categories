@@ -1,0 +1,4 @@
+Treebank,Number of Sentences,Failures,Total,nmod,obl
+es_ancora-ud-train,14287,0,0,,
+pt_bosque-ud-test,1167,0,1,1.0,
+pt_bosque-ud-train,7018,0,2,,2.0

@@ -1,0 +1,15 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,nmod,nummod,obj,obl,root,xcomp
+it_valico-ud-test,398,0,1,,,,,,1.0,,
+it_pud-ud-test,1000,0,22,2.0,3.0,1.0,,1.0,14.0,,1.0
+it_isdt-ud-train,13121,0,5,1.0,4.0,,,,,,
+it_partut-ud-dev,156,0,3,,,,,,3.0,,
+it_partut-ud-test,153,0,3,1.0,,,,,2.0,,
+it_partut-ud-train,1781,0,14,2.0,2.0,2.0,,,8.0,,
+it_twittiro-ud-train,1138,0,3,,1.0,,,,1.0,1.0,
+it_markit-ud-train,611,0,1,1.0,,,,,,,
+it_postwita-ud-train,5368,0,14,,3.0,1.0,1.0,,8.0,1.0,
+it_postwita-ud-dev,670,0,2,,1.0,1.0,,,,,
+it_postwita-ud-test,674,0,1,,,,1.0,,,,
+it_vit-ud-train,8277,0,4,,4.0,,,,,,
+it_vit-ud-test,1067,0,1,,1.0,,,,,,
+it_parlamint-ud-train,326,0,2,,,,,,2.0,,

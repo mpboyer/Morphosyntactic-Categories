@@ -1,0 +1,2 @@
+Treebank,Number of Sentences,Failures,Total,iobj,obj,obl,parataxis,root
+gub_tudet-ud-test,1182,0,17,3,2,1,1,10

@@ -1,0 +1,8 @@
+Treebank,Number of Sentences,Failures,Total,advcl,advmod,ccomp,compound,csubj,flat,nmod,nsubj,nummod,obj,obl,parataxis,root,xcomp
+ga_twittirish-ud-dev,864,0,27,,,,1.0,1.0,,7,,1.0,,15,1.0,1.0,
+ga_twittirish-ud-test,866,0,50,1.0,8.0,,,1.0,1.0,8,1.0,,,21,7.0,2.0,
+ga_twittirish-ud-train,866,0,34,,2.0,1.0,,1.0,,8,,,,19,2.0,1.0,
+ga_idt-ud-train,4005,0,181,7.0,12.0,7.0,,,,57,,2.0,1.0,90,,2.0,3.0
+ga_idt-ud-test,454,0,23,4.0,,,,,,7,,,,12,,,
+ga_idt-ud-dev,451,0,29,,,1.0,,1.0,,12,,,,12,1.0,2.0,
+ga_cadhan-ud-test,193,0,15,,,,,,,7,,,,8,,,

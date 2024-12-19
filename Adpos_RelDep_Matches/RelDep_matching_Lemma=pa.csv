@@ -1,0 +1,11 @@
+Treebank,Number of Sentences,Failures,Total,_,acl,advcl,advmod,dep,discourse,dislocated,flat,iobj,nmod,nsubj,nummod,obj,obl,orphan,parataxis,punct,reparandum,root,xcomp
+es_ancora-ud-train,14287,0,2,,,2.0,,,,,,,,,,,,,,,,,
+qpm_philotis-ud-train,980,0,35,,,1.0,2.0,,,,,,,1.0,1.0,1.0,27.0,,,,,2.0,
+qpm_philotis-ud-dev,635,0,19,,,,1.0,,,,,6.0,3.0,,,,9.0,,,,,,
+qpm_philotis-ud-test,635,0,14,,,,,,,,,,,,,,10.0,1.0,1.0,,,,2.0
+quc_iu-ud-test,1435,0,213,,,4.0,,,,1.0,,,7.0,,1.0,,196.0,,,,,3.0,1.0
+ht_autogramm-ud-test,144,0,2,,,,,,,,,,1.0,,,,1.0,,,,,,
+aln_gps-ud-test,966,0,10,,,,,,,,,,1.0,,,,3.0,,,,1.0,3.0,2.0
+lv_lvtb-ud-test,2412,0,53,,,,1.0,1.0,1.0,,1.0,,3.0,,,,44.0,,,,,2.0,
+lv_lvtb-ud-train,14358,0,297,1.0,3.0,5.0,1.0,,3.0,,1.0,14.0,17.0,6.0,4.0,,234.0,1.0,,2.0,,5.0,
+lv_lvtb-ud-dev,2080,0,42,,,,,2.0,,,,2.0,,,1.0,,37.0,,,,,,
